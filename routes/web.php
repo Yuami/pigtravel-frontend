@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/reservas', 'ReservasController@Index');
+Route::get('/reservas/{reserva}', 'ReservasController@Show');
