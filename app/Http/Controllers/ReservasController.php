@@ -12,6 +12,10 @@ class ReservasController extends Controller
     }
 
     public function show(Reserva $reserva) {
-        return Reserva::find($reserva->id);
+        return Reserva::findOrFail($reserva->id);
+    }
+
+    public function destroy(Reserva $reserva) {
+        $reserva->delete();
     }
 }
