@@ -15,5 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/reservas', 'ReservasController@Index');
-Route::get('/reservas/{reserva}', 'ReservasController@Show');
+Route::get('/test', 'TestController@index');
+Route::get('/reservas', 'ReservasController@index');
+Route::get('/reservas/{reserva}', 'ReservasController@show');

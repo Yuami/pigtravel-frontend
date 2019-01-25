@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,8 +23,9 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
     <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-
+    @csrf
     <title>Pig Travel</title>
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 <style>
 
@@ -354,5 +355,9 @@
         }
     });
 </script>
+
+<div id="app"></div>
+<script src="/js/app.js"></script>
+
 </body>
 </html>
