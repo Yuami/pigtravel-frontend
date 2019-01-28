@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 
 class MailReceiverController extends Controller
 {
-    public function create() {
+    public function create(Request $request) {
         csrf_token();
-        return print_r($_POST);
+        return $request->all();
     }
 }
