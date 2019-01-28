@@ -6,18 +6,18 @@
  * Time: 16:51
  */
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 
-use App\Http\Controllers\Controller;
 
 class MailSenderController extends Controller
 {
-    public function show() {
-        echo "nothing to see here";
+    public function index() {
+        return "lelele";
     }
 
     public function create() {
-        print_r($_POST);
+        return print_r($_POST);
     }
 }

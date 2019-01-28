@@ -18,4 +18,4 @@ Route::get('/', function () {
 Route::get('/test', 'TestController@index');
 Route::get('/reservas', 'ReservasController@index');
 Route::get('/reservas/{reserva}', 'ReservasController@show');
-Route::get('/mailsender', 'MailSenderController@create');
+Route::get('/mailsender', 'MailSenderController@index');
