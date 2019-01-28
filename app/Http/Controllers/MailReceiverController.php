@@ -11,7 +11,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-class MailSenderController extends Controller
+class MailReceiverController extends Controller
 {
     public function create() {
         return print_r($_POST);
