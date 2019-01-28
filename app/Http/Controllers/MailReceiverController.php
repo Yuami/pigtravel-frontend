@@ -21,7 +21,7 @@ class MailReceiverController extends Controller
         $mail->From = request('From');
         $mail->In_Reply_To = request('In-Reply-To');
         $mail->Subject = request('Subject');
-        $mail->to = request('to');
+        $mail->to = request('To');
         $mail->body_html = request('body-html');
         $mail->save();
     }
