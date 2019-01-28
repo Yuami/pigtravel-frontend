@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 class MailReceiverController extends Controller
 {
     public function create() {
+        csrf_token();
         return print_r($_POST);
     }
 }
