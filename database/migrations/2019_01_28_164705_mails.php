@@ -16,7 +16,7 @@ class Mails extends Migration
         Schema::create('mails', function (Blueprint $table) {
             $table->increments('id');
             $table->string('Content_Type')->nullable();
-            $table->date('Date')->nullable();
+            $table->string('Date')->nullable();
             $table->string('From')->nullable();
             $table->string('In_Reply_To')->nullable();
             $table->string('Subject')->nullable();

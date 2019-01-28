@@ -19,10 +19,10 @@ class MailReceiverController extends Controller
         $mail->Content_Type = request('Content-Type');
         $mail->Date = request('Date');
         $mail->From = request('From');
-        $mail->In_Reply_To = request('In_Reply_To');
+        $mail->In_Reply_To = request('In-Reply-To');
         $mail->Subject = request('Subject');
         $mail->to = request('to');
-        $mail->body_html = request('body_html');
+        $mail->body_html = request('body-html');
         $mail->save();
     }
 }
