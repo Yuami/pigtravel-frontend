@@ -1,0 +1,33 @@
+
+.header-title{
+  color:#FA6839;
+  font-family: "Segoe UI";
+  font-weight: bold;
+  margin-left: 450px;
+  text-align: center;
+}
+.header-links{
+  font-family: "Segoe UI";
+  font-size: 27px;
+  text-align: center;
+}
+.links{
+  float: right;
+}
+.navbar-nav li{
+  padding-right: 70px;
+}
+.header-logo{
+  padding-left: 70px;
+}
+
+nav .navbar-nav li a{
+  color: black !important;
+}
+
+@media (max-width: 767px) {
+  .header-logo {
+    padding-left: 10px;
+  }
+
+}
