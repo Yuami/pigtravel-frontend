@@ -6,10 +6,11 @@
  * Time: 16:51
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Mail;
 
 use App\MailReceiver;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 
 class MailReceiverController extends Controller
