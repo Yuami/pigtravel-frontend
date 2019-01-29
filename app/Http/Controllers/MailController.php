@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Mail;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\MailReceiver;
+use App\Mailer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
-    public function send() {
-        Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
-        {
+    public function validateEmail()
+    {
+        Mail::send('Sending emails with Mailgun and Laravel is easy!', function ($message) {
             $message->subject('Mailgun and Laravel are awesome!');
             $message->from('no-reply@website_name.com', 'Website Name');
             $message->to('newtimestube@gmail.com');
         });
     }
 
-    public function receive(Request $request) {
-        $mail = new MailReceiver;
+    public function receive(Request $request)
+    {
+        $mail = new Mail;
         $mail->Content_Type = request('Content-Type');
         $mail->Date = request('Date');
         $mail->From = request('From');

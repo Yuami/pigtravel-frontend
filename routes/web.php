@@ -18,8 +18,10 @@ Route::get('/', function () {
 Route::get('/test', 'TestController@index');
 Route::get('/reservas', 'ReservasController@index');
 Route::get('/reservas/{reserva}', 'ReservasController@show');
-Route::get('/verify', 'Token@show');
 
-Route::get('/genToken/{email}/{type}', 'Mail\TokenController@generate');
-Route::get('/sendmail', 'Mail\MailController@send');
-Route::post('/receivemail', 'Mail\MailController@receive');
+Route::get('/verify', 'TokenController@index');
+Route::get('/gentoken/{email}/{type}', 'TokenController@generate');
+
+
+Route::post('/receivemail', 'MailController@receive');
+Route::get('/sendhtmlemail','MailController@html_email');
