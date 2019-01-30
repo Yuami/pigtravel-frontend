@@ -24,4 +24,3 @@ Route::get('/gentoken/{email}/{type}', 'TokenController@generate');
 
 
 Route::post('/receivemail', 'MailController@receive');
-Route::get('/sendhtmlemail','MailController@html_email');
