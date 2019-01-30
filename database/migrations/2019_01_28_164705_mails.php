@@ -13,17 +13,19 @@ class Mails extends Migration
      */
     public function up()
     {
-        Schema::create('mails', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('Content_Type')->nullable();
-            $table->string('Date')->nullable();
-            $table->string('From')->nullable();
-            $table->string('In_Reply_To')->nullable();
-            $table->string('Subject')->nullable();
-            $table->string('to')->nullable();
-            $table->string('body_html')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('mails')) {
+            Schema::create('mails', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('Content_Type')->nullable();
+                $table->string('Date')->nullable();
+                $table->string('From')->nullable();
+                $table->string('In_Reply_To')->nullable();
+                $table->string('Subject')->nullable();
+                $table->string('to')->nullable();
+                $table->string('body_html')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

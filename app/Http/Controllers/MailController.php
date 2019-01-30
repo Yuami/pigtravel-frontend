@@ -1,22 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Phil
- * Date: 28/01/2019
- * Time: 16:51
- */
 
-namespace App\Http\Controllers\Mail;
+namespace App\Http\Controllers;
 
-use App\MailReceiver;
+use App\Mailer;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
-
-class MailReceiverController extends Controller
+class MailController extends Controller
 {
-    public function create(Request $request) {
-        $mail = new MailReceiver;
+    public function receive(Request $request)
+    {
+        $mail = new Mail;
         $mail->Content_Type = request('Content-Type');
         $mail->Date = request('Date');
         $mail->From = request('From');
