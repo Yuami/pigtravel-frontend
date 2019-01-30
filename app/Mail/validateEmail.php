@@ -15,18 +15,17 @@ class validateEmail extends Mailable
 
     public $token;
     public $email;
-
+    public $persona;
     public function __construct($token)
     {
+        $this->persona = Persona::getByCorreo($token->email);
         $this->token = $token->token;
         $this->email = $token->email;
-
-
     }
 
 
     public function build()
     {
-        return $this->view('mails/emailsvalidate');
+        return $this->markdown('mails/validateemail');
     }
 }
