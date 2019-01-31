@@ -1,38 +1,28 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+nav {
+  font-family: "Segoe UI";
+}
+
 .header-title {
-  color: #FA6839;
-  font-family: "Segoe UI";
+  font-size: 35px;
   font-weight: bold;
-  margin-left: 450px;
-  text-align: center;
-}
-
-.header-links {
-  font-family: "Segoe UI";
-  font-size: 27px;
-  text-align: center;
-}
-
-.links {
-  float: right;
-}
-
-.navbar-nav li {
-  padding-right: 70px;
+  color: orangered;
 }
 
 .header-logo {
-  padding-left: 70px;
+  margin-left: 100px;
+  height: 60px;
 }
 
-nav .navbar-nav li a {
-  color: black !important;
+.header-content {
+  padding-right: 50px;
+  font-size: 15px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .header-logo {
-    padding-left: 10px;
+    margin-left: 5px;
   }
 }
 

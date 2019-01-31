@@ -7,67 +7,57 @@ import {
     NavItem,
     NavLink,
     NavbarToggler,
-    Col,
-    DropdownItem,
+    Collapse,
+    UncontrolledDropdown,
     DropdownMenu,
     DropdownToggle,
-    Dropdown,
-    Collapse,
-    UncontrolledDropdown
+    DropdownItem
 } from 'reactstrap';
+import Col from "reactstrap/es/Col";
 
 export default class Main extends Component {
-    constructor(props) {
-        super(props);
-
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-            dropdownOpen: false
-        };
-    }
-
-    toggle() {
-        this.setState(prevState => ({
-            dropdownOpen: !prevState.dropdownOpen
-        }));
-    }
-
     render() {
         return (
-            <>
-                <Navbar expand="md" className="header">
-                    <NavbarBrand className="header-logo" href="/"><img src="img/clipboard.png" height="50"></img></NavbarBrand>
-                    <NavbarToggler onClick={this.toggle}/>
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <h1 className="header-title">Pig Travel</h1>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <NavLink href="/">Registrate</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="/">Inicia Sesion</NavLink>
-                            </NavItem>
-                            <UncontrolledDropdown nav inNavbar>
-                                <DropdownToggle nav caret>
-                                    <img src="img/spain-flag.png" height="20"></img>
-                                </DropdownToggle>
-                                <DropdownMenu right>
-                                    <DropdownItem>
-                                        <img src="img/spain-flag.png" height="20"></img> Español
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        <img src="img/united-kingdom-flag.png" height="20"></img> English
-                                    </DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-            </>
+            <Navbar className="navbar-light navbar-expand-md bg-faded justify-content-center">
+                <NavbarBrand href="/" className="navbar-brand d-flex w-50 mr-auto">
+                    <img src="img/clipboard.png" alt="logo" className="header-logo"></img>
+                </NavbarBrand>
+                <NavbarToggler  data-toggle="collapse" data-target="#collapsingNavbar3">
+                    <span className="navbar-toggler-icon"></span>
+                </NavbarToggler>
+                <Collapse className="navbar-collapse w-100" id="collapsingNavbar3">
+                    <Nav className="navbar-nav w-100 justify-content-center">
+                        <NavItem className="active">
+                            <h1 className="header-title">Pig Travel</h1>
+                        </NavItem>
+                    </Nav>
+                    <Nav className="navbar-nav ml-auto w-100 justify-content-end">
+                        <NavItem className="header-content">
+                            <NavLink href="#">Inicia Sesion</NavLink>
+                        </NavItem>
+                        <NavItem className="header-content">
+                            <NavLink href="#">Registrate</NavLink>
+                        </NavItem>
+                        <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                                <img src="img/spain-flag.png" height="20"></img>
+                            </DropdownToggle>
+                            <DropdownMenu right>
+                                <DropdownItem>
+                                    <img src="img/spain-flag.png" height="20"></img> Español
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <img src="img/united-kingdom-flag.png" height="20"></img> English
+                                </DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
+                    </Nav>
+                </Collapse>
+            </Navbar>
         );
     }
 }
 
-if (document.getElementById('app')) {
-    ReactDOM.render(<Main/>, document.getElementById('app'));
+if (document.body) {
+    ReactDOM.render(<Main/>, document.body);
 }
