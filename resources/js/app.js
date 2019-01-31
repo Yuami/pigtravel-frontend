@@ -14,4 +14,3 @@ require('./bootstrap');
  */
 
 require('./components/Main');
-require('./components/MyModal');
