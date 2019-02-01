@@ -16,6 +16,9 @@ import {
     DropdownItem
 } from 'reactstrap';
 import Col from "reactstrap/es/Col";
+import LanguagePicker from "../LanguagePicker";
+import Translate from "../../lang/Translate";
+
 
 class Header extends Component {
     render() {
@@ -35,26 +38,17 @@ class Header extends Component {
                     </Nav>
                     <Nav className="navbar-nav ml-auto w-100 justify-content-end">
                         <NavItem className="header-content">
-                            <NavLink href="#">{lang.header.login}</NavLink>
+                            <NavLink href="#"><Translate string={'login'}/></NavLink>
                         </NavItem>
                         <NavItem className="header-content">
-                            <NavLink href="#">{lang.header.register}</NavLink>
+                            <NavLink href="#"><Translate string={'register'}/></NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
                                 <img src="img/spain-flag.png" height="20"></img>
                             </DropdownToggle>
                             <DropdownMenu right>
-                                <DropdownItem>
-                                    <a href="/lang/es">
-                                        <img src="img/spain-flag.png" height="20"></img> Español
-                                    </a>
-                                </DropdownItem>
-                                <DropdownItem>
-                                    <a href="/lang/en">
-                                        <img src="img/united-kingdom-flag.png" height="20"></img> English
-                                    </a>
-                                </DropdownItem>
+                                <LanguagePicker changeLanguage={this.props.changeLanguage} />
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
