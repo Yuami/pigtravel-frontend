@@ -1,5 +1,18 @@
 {
-  "login": "Iniciar Session",
-  "logout": "Cerrar Session",
-  "register": "Registar"
+  "header": {
+    "login": "Iniciar Session",
+    "logout": "Cerrar Session",
+    "register": "Registrar"
+  },
+  "footer" : {
+    "about-us": "SOBRE PIG TRAVEL",
+    "about-us.who": "Quienes somos?",
+    "about-us.terms": "Politicas de privacidad",
+    "support": "ATENCIÓN AL CLIENTE",
+    "support.contact": "Contacto",
+    "follow": "SIGUENOS"
+  },
+  "general": {
+    "email": "contact@pigtravel.top"
+  }
 }

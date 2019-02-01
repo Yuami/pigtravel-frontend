@@ -38,10 +38,10 @@ class Header extends Component {
                     </Nav>
                     <Nav className="navbar-nav ml-auto w-100 justify-content-end">
                         <NavItem className="header-content">
-                            <NavLink href="#"><Translate string={'login'}/></NavLink>
+                            <NavLink href="#"><Translate string={'login'} type={'header'}/></NavLink>
                         </NavItem>
                         <NavItem className="header-content">
-                            <NavLink href="#"><Translate string={'register'}/></NavLink>
+                            <NavLink href="#"><Translate string={'register'} type={'header'}/></NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>

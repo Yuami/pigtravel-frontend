@@ -21,10 +21,11 @@ class Translate extends Component {
     // Renderitza la paraula a traduir amb l'idioma corresponent
     render() {
         const {langs} = this.state;
+        const {type} = this.props;
         const {string} = this.props;
         return (
             <LocaleContext.Consumer>
-                {value => langs[value][string]}
+                {value => langs[value][type][string]}
             </LocaleContext.Consumer>
         );
     }
