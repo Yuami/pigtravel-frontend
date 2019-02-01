@@ -13,6 +13,11 @@
 
 </head>
 <body>
+
+<div id="app">
+
+</div>
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="/js/app.js">

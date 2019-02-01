@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Header from "./layout/Header";
 import axios from 'axios';
+import Footer from "./layout/Footer";
 
 
 export default class Main extends Component {
@@ -9,11 +10,13 @@ export default class Main extends Component {
         return (
             <>
                 <Header/>
+
+                <Footer/>
             </>
         );
     }
 }
 
-if (document.body) {
-    ReactDOM.render(<Main/>, document.body);
+if (document.getElementById('app')) {
+    ReactDOM.render(<Main/>, document.getElementById('app'));
 }
