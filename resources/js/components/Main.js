@@ -13,12 +13,11 @@ import {
     DropdownToggle,
     DropdownItem
 } from 'reactstrap';
-import Col from "reactstrap/es/Col";
 
 export default class Main extends Component {
     render() {
         return (
-            <Navbar className="navbar-light navbar-expand-md bg-faded justify-content-center">
+            <Navbar className="navbar-light navbar-expand-md bg-white justify-content-center">
                 <NavbarBrand href="/" className="navbar-brand d-flex w-50 mr-auto">
                     <img src="img/clipboard.png" alt="logo" className="header-logo"></img>
                 </NavbarBrand>
@@ -58,6 +57,6 @@ export default class Main extends Component {
     }
 }
 
-if (document.body) {
-    ReactDOM.render(<Main/>, document.body);
+if (document.getElementById("header")) {
+    ReactDOM.render(<Main/>, document.getElementById("header"));
 }
