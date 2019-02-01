@@ -30,6 +30,48 @@ nav {
   }
 }
 
+@media (max-width: 1000px) {
+  .header-content {
+    padding-right: 0px;
+  }
+}
+
+nav {
+  font-family: "Segoe UI";
+}
+
+.header-title {
+  font-size: 35px;
+  font-weight: bold;
+  color: orangered;
+}
+
+.header-logo {
+  margin-left: 100px;
+  height: 60px;
+}
+
+.header-content {
+  padding-right: 50px;
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .header-logo {
+    margin-left: 5px;
+  }
+
+  .header-title {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .header-content {
+    padding-right: 0px;
+  }
+}
+
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
