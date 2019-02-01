@@ -71721,16 +71721,16 @@ function (_Component) {
     key: "render",
     value: function render() {
       var changeLanguage = this.props.changeLanguage;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         id: "es",
         onClick: changeLanguage
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "img/spain-flag.png",
         height: "20"
-      }), " Espa\xF1ol")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }), " Espa\xF1ol")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         id: "en",
         onClick: changeLanguage
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "img/united-kingdom-flag.png",
         height: "20"
       }), " English")));
@@ -71799,23 +71799,34 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "changeLanguage", function (_ref) {
       var id = _ref.currentTarget.id;
+      localStorage["locale"] = id;
 
       _this.setState({
-        preferredLocale: id
+        locale: id
       });
     });
 
     _this.state = {
-      preferredLocale: "es"
+      preferredLocale: "es",
+      locale: "es"
     };
     return _this;
   }
 
   _createClass(Main, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (localStorage.hasOwnProperty('locale')) {
+        this.setState({
+          "locale": localStorage["locale"]
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext_js__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Provider, {
-        value: this.state.preferredLocale
+        value: this.state.locale
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         changeLanguage: this.changeLanguage
       }));

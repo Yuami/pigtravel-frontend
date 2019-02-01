@@ -8,17 +8,27 @@ export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            preferredLocale: "es"
+            preferredLocale: "es",
+            locale: "es"
         };
     }
+
+    componentDidMount() {
+        if (localStorage.hasOwnProperty('locale')){
+            this.setState({"locale": localStorage["locale"]});
+        }
+    }
+
     changeLanguage = ({ currentTarget: { id } }) => {
+        localStorage["locale"] = id;
         this.setState({
-            preferredLocale: id
+            locale: id
         });
     };
+
     render() {
         return (
-            <LocaleContext.Provider value={this.state.preferredLocale}>
+            <LocaleContext.Provider value={this.state.locale}>
                 <Header changeLanguage={this.changeLanguage} />
             </LocaleContext.Provider>
         );
