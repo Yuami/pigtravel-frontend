@@ -36,40 +36,88 @@ nav {
   }
 }
 
-nav {
-  font-family: "Segoe UI";
+body#landingBody {
+  position: relative;
+  background-size: cover;
+  max-height: 600px;
 }
 
-.header-title {
-  font-size: 35px;
-  font-weight: bold;
-  color: orangered;
+.jumbotron_cont {
+  position: relative;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 78vh;
 }
 
-.header-logo {
-  margin-left: 100px;
-  height: 60px;
+.buscador {
+  background-color: white;
+  padding: 0px;
+  margin: auto;
 }
 
-.header-content {
-  padding-right: 50px;
-  font-size: 15px;
+.boton {
+  border-radius: 0px;
+  width: 100%;
+  background-color: #FA6839;
 }
 
-@media (max-width: 768px) {
-  .header-logo {
-    margin-left: 5px;
-  }
-
-  .header-title {
-    font-size: 25px;
-  }
+.HeadLine {
+  text-align: center;
+  color: white;
 }
 
-@media (max-width: 1000px) {
-  .header-content {
-    padding-right: 0px;
-  }
+.filtros {
+  padding: 0px;
+  color: white;
+}
+
+::-webkit-input-placeholder {
+  color: black !important;
+}
+
+:-ms-input-placeholder {
+  color: black !important;
+}
+
+::-ms-input-placeholder {
+  color: black !important;
+}
+
+::placeholder {
+  color: black !important;
+}
+
+.inputContainer label {
+  float: left;
+  margin-right: 5px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.inputContainer div {
+  overflow: hidden;
+}
+
+.inputContainer input,
+select {
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  height: 70px;
+  font-size: 14pt;
+  border: none;
+}
+
+.inputContainer button {
+  height: 70px;
+  border: none;
+  color: white;
+  width: 100%;
+  font-size: 14pt;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 /*!
