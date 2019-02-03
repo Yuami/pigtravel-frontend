@@ -1,28 +1,29 @@
-
-nav{
-  font-family: "Segoe UI";
-}
-.header-title{
+.header-title {
   font-size: 35px;
   font-weight: bold;
   color: orangered;
 }
 
-.header-logo{
+.header-logo {
   margin-left: 100px;
   height: 60px;
 }
 
-.header-content{
+.header-content {
   padding-right: 50px;
   font-size: 15px;
+}
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 @media (max-width: 768px) {
   .header-logo {
     margin-left: 5px;
   }
-  .header-title{
+  .header-title {
     font-size: 25px;
   }
 }
