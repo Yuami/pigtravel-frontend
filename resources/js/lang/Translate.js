@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { LocaleContext } from "../LocaleContext.js";
+import PropTypes from 'prop-types';
 
 import en from "./en.json";
 import es from "./es.json";
@@ -31,5 +32,10 @@ class Translate extends Component {
     }
 
 }
+
+Translate.propTypes = {
+    type: PropTypes.string.isRequired,
+    string: PropTypes.string.isRequired,
+};
 
 export default Translate;

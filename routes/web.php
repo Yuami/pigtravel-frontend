@@ -10,12 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-//Route::get('/test', 'TestController@index');
 Route::get('/reservas', 'ReservasController@index');
 Route::get('/reservas/{reserva}', 'ReservasController@show');
 
@@ -24,3 +18,7 @@ Route::get('/gentoken/{email}/{type}', 'TokenController@generate');
 
 
 Route::post('/receivemail', 'MailController@receive');
+
+Route::get('/{any}', function () {
+    return view('welcome');
+})->where('any', '.*');

@@ -5,14 +5,17 @@
     "register": "Registrar"
   },
   "footer" : {
-    "about-us": "SOBRE PIG TRAVEL",
+    "about-us": "Sobre Pig Travel",
     "about-us.who": "Quienes somos?",
     "about-us.terms": "Politicas de privacidad",
-    "support": "ATENCIÓN AL CLIENTE",
+    "support": "Atención al cliente",
     "support.contact": "Contacto",
-    "follow": "SIGUENOS"
+    "follow": "Siguenos"
   },
   "general": {
-    "email": "contact@pigtravel.top"
+    "email": "contact@pigtravel.top",
+    "about-us": "Sobre nosotros",
+    "support": "Atención al cliente",
+    "home": "Inicio"
   }
 }

@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import Translate from "../../lang/Translate";
 import Row from "reactstrap/es/Row";
-import Col from "reactstrap/es/Col";
 import Container from "reactstrap/es/Container";
 import FooterCol from "./FooterCol";
 
@@ -11,11 +9,11 @@ class Footer extends Component {
         const aboutUs = [
             {
                 value: "about-us.who",
-                link: ""
+                link: "about-us"
             },
             {
                 value: "about-us.terms",
-                link: ""
+                link: "about-us#terms"
             },
         ];
         const support = [
@@ -34,14 +32,16 @@ class Footer extends Component {
         ];
 
         return (
-            <footer className="bg-secondary text-light ">
-                <Container fluid>
+            <footer className="bg-secondary text-light pt-4">
+                <Container fluid className="text-center">
                     <Row>
                         <FooterCol xs="12" md="4" title="about-us" list={aboutUs}/>
                         <FooterCol xs="12" md="4" title="support" list={support}/>
-                        <FooterCol xs="12" md="4" title="follow" list={follow}/>
+                        <FooterCol xs="12" md="4" title="follow" list={follow} media/>
                     </Row>
                 </Container>
+                <div className="text-center py-3">© 2018 Copyright: <a href="http://pigtravel.top" className="footer-link">PigTravel.top</a>
+                </div>
             </footer>
         );
     }

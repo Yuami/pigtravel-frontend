@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 
 import PropTypes from 'prop-types';
@@ -33,7 +34,7 @@ class Header extends Component {
                 <Collapse className="navbar-collapse w-100" id="collapsingNavbar3">
                     <Nav className="navbar-nav w-100 justify-content-center">
                         <NavItem className="active">
-                            <h1 className="header-title">Pig Travel</h1>
+                            <h1 className="header-title"><Link to={'/'}>Pig Travel</Link></h1>
                         </NavItem>
                     </Nav>
                     <Nav className="navbar-nav ml-auto w-100 justify-content-end">

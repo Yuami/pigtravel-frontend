@@ -13,6 +13,9 @@
     "follow": "STALK US"
   },
   "general": {
-    "email": "contact@pigtravel.top"
+    "email": "contact@pigtravel.top",
+    "about-us": "About us",
+    "support": "Support",
+    "home": "Home"
   }
 }
