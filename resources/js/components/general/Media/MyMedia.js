@@ -10,7 +10,7 @@ class MyMedia extends Component {
                 <div>
                     <InstagramIcon to={'https://www.instagram.com/pigtravelbookings'} size={size}
                                    className="mx-3 footer-link"/>
-                    <FacebookIcon to={'https://www.facebook.com/PigTravel-1034963623342489'} size={size}
+                    <FacebookIcon to={'https://www.facebook.com/PigTravelBookings'} size={size}
                                   className="mx-3 footer-link"/>
                 </div>
         );
