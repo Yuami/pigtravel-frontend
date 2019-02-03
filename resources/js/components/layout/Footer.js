@@ -40,7 +40,8 @@ class Footer extends Component {
                         <FooterCol xs="12" md="4" title="follow" list={follow} media/>
                     </Row>
                 </Container>
-                <div className="text-center py-3">© 2018 Copyright: <a href="http://pigtravel.top" className="footer-link">PigTravel.top</a>
+                <div className="text-center py-3 footer-darker">
+                    © 2018 Copyright: <a href="http://pigtravel.top" className="footer-link">PigTravel.top</a>
                 </div>
             </footer>
         );
