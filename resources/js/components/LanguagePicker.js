@@ -8,16 +8,16 @@ class LanguagePicker extends Component {
         const {changeLanguage} = this.props;
         return (
             <>
-                <DropdownItem>
-                    <a id="es" onClick={changeLanguage}>
+                <a id="es" onClick={changeLanguage}>
+                    <DropdownItem>
                         <img src="img/spain-flag.png" height="20"></img> Español
-                    </a>
-                </DropdownItem>
-                <DropdownItem>
-                    <a id="en" onClick={changeLanguage}>
+                    </DropdownItem>
+                </a>
+                <a id="en" onClick={changeLanguage}>
+                    <DropdownItem>
                         <img src="img/united-kingdom-flag.png" height="20"></img> English
-                    </a>
-                </DropdownItem>
+                    </DropdownItem>
+                </a>
             </>
         )
     }
