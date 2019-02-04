@@ -2,44 +2,50 @@
 
 .buscador {
   background-color: white;
-  padding: 0px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
   margin: auto;
-  margin-top: 150px;
-}
-
-.HeadLine {
-  text-align: center;
-  color: white;
-}
-
-.filtros {
-  padding: 0px;
-  color: white;
 }
 
 ::placeholder{
   color:black !important;
-
+  text-align: center;
 }
 .hidden { display:none; }
-.inputContainer{
+
+.input-group{
   padding-left: 0px !important;
   padding-right: 0px !important;
   width: 100%;
+  height: 100%;
 }
 
 .DateRangePicker__Month {
   margin: 0px !important;
 }
 
-.inputContainer label {
+.input-group label {
   float: left;
   margin-right: 5px;
-  margin-top: 20px;
+  margin-top: 25px;
   text-align: center;
 
 }
-.inputContainer input {
+
+
+.popover { max-width: 100% !important;
+min-width: 200px}
+
+#calendario,#huespedes{
+  width: 90%;
+  text-align: center;
+}
+#fechas{
+  width: 100%;
+  text-align: center;
+}
+
+.input-group input {
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -49,13 +55,17 @@
   font-size: 14pt;
   border: none;
 }
-
-
-.inputContainer h5 {
+.filtro{
+  min-height: 70px;
+}
+.input-group h5{
   padding-top: 20px;
 }
+ #calendario h5{
+   padding-top: 25px;
+  }
 
-.inputContainer .SearcherIcon {
+.input-group .SearcherIcon {
   height: 70px;
   border: none;
   color: white;
@@ -65,11 +75,11 @@
   background-color: #FA6839;
 }
 
-.inputContainer .SearcherIcon:hover {
+.input-group .SearcherIcon:hover {
   color: white;
 }
 
-.inputContainer .incrementIcon {
+.incrementIcon {
   height: 70px;
   border: none;
   color: #FA6839;

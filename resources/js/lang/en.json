@@ -19,7 +19,10 @@
     "home": "Home"
   },
   "searcher": {
-    "ciudad": "¿Donde quieres ir",
+    "ciudad": "Where do you want to go?",
     "huespedes": "guests"
+  },
+  "index": {
+    "titleIndex": "BOOK APARTMENTS ALL OVER THE WORLD"
   }
 }

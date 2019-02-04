@@ -8,6 +8,7 @@ import Home from "../Views/Home";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
 import Searcher from "./Searcher";
+import TitleInicio from "./specific/TitleInicio";
 
 
 export default class Main extends Component {
@@ -36,12 +37,16 @@ export default class Main extends Component {
         return (
             <LocaleContext.Provider value={this.state.locale}>
                 <Header changeLanguage={this.changeLanguage} />
+                <div className="jumbotron_cont">
+                <TitleInicio/>
                 <Searcher/>
+                </div>
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/about-us" component={AboutUs} />
                 </Switch>
                 <Footer/>
+
             </LocaleContext.Provider>
         );
     }
