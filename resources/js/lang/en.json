@@ -1,5 +1,21 @@
 {
-  "login": "Log In",
-  "logout": "Log Out",
-  "register": "Register"
+  "header": {
+    "login": "Log In",
+    "logout": "Log Out",
+    "register": "Register"
+  },
+  "footer" : {
+    "about-us": "ABOUT PIG TRAVEL",
+    "about-us.who": "About us",
+    "about-us.terms": "Terms and conditions",
+    "support": "SUPPORT",
+    "support.contact": "Contact",
+    "follow": "STALK US"
+  },
+  "general": {
+    "email": "contact@pigtravel.top",
+    "about-us": "About us",
+    "support": "Support",
+    "home": "Home"
+  }
 }

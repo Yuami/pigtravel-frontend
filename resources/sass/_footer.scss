@@ -1,0 +1,33 @@
+.footer-link-white {
+  color: white;
+  text-decoration: none;
+
+  &:active, &:link, &:visited {
+    color: white;
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    color: white;
+  }
+}
+
+.footer-link {
+  color: $primary;
+  text-decoration: none;
+
+  &:active {
+    color: $primary;
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: #e13b06;
+  }
+}
+
+.footer-darker {
+  background-color: #1d2d40;
+}

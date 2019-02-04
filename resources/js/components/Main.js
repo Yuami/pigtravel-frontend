@@ -1,62 +1,54 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import {
-    Navbar,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    NavbarToggler,
-    Collapse,
-    UncontrolledDropdown,
-    DropdownMenu,
-    DropdownToggle,
-    DropdownItem
-} from 'reactstrap';
+import React, { Component } from "react";
+import { LocaleContext } from "../LocaleContext.js";
+import Header from "./layout/Header";
+import {BrowserRouter, Switch, Route} from "react-router-dom"
+import axios from 'axios';
+import Footer from "./layout/Footer";
+import Home from "../Views/Home";
+import AboutUs from "../Views/AboutUs";
+import * as ReactDOM from "react-dom";
+
 
 export default class Main extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            preferredLocale: "es",
+            locale: "es"
+        };
+    }
+
+    componentDidMount() {
+        if (localStorage.hasOwnProperty('locale')){
+            this.setState({"locale": localStorage["locale"]});
+        }
+    }
+
+    changeLanguage = ({ currentTarget: { id } }) => {
+        localStorage["locale"] = id;
+        this.setState({
+            locale: id
+        });
+    };
+
     render() {
         return (
-            <Navbar className="navbar-light navbar-expand-md bg-white justify-content-center">
-                <NavbarBrand href="/" className="navbar-brand d-flex w-50 mr-auto">
-                    <img src="img/clipboard.png" alt="logo" className="header-logo"></img>
-                </NavbarBrand>
-                <NavbarToggler  data-toggle="collapse" data-target="#collapsingNavbar3">
-                    <span className="navbar-toggler-icon"></span>
-                </NavbarToggler>
-                <Collapse className="navbar-collapse w-100" id="collapsingNavbar3">
-                    <Nav className="navbar-nav w-100 justify-content-center">
-                        <NavItem className="active">
-                            <h1 className="header-title">Pig Travel</h1>
-                        </NavItem>
-                    </Nav>
-                    <Nav className="navbar-nav ml-auto w-100 justify-content-end">
-                        <NavItem className="header-content">
-                            <NavLink href="#">Inicia Sesion</NavLink>
-                        </NavItem>
-                        <NavItem className="header-content">
-                            <NavLink href="#">Registrate</NavLink>
-                        </NavItem>
-                        <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                <img src="img/spain-flag.png" height="20"></img>
-                            </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem>
-                                    <img src="img/spain-flag.png" height="20"></img> Español
-                                </DropdownItem>
-                                <DropdownItem>
-                                    <img src="img/united-kingdom-flag.png" height="20"></img> English
-                                </DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledDropdown>
-                    </Nav>
-                </Collapse>
-            </Navbar>
+            <LocaleContext.Provider value={this.state.locale}>
+                <Header changeLanguage={this.changeLanguage} />
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/about-us" component={AboutUs} />
+                </Switch>
+                <Footer/>
+            </LocaleContext.Provider>
         );
     }
 }
 
-if (document.getElementById("header")) {
-    ReactDOM.render(<Main/>, document.getElementById("header"));
+if (document.getElementById('app')) {
+    ReactDOM.render(
+        <BrowserRouter>
+        <Main/>
+        </BrowserRouter>,
+        document.getElementById('app'));
 }
