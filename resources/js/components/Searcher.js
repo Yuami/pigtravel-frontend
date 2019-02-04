@@ -43,13 +43,17 @@ class Searcher extends Component {
 
     IncrementItem = () => {
         this.setState({clicks: this.state.clicks + 1});
-    }
+    };
+
     DecreaseItem = () => {
-        this.setState({clicks: this.state.clicks - 1});
-    }
+        const clicks = this.state.clicks - 1 < 0 ? 0 : this.state.clicks - 1;
+        this.setState({clicks});
+    };
+
     ToggleDiv = () => {
         this.setState({show: !this.state.show});
-    }
+    };
+
     onToggle = () => {
         this.setState({isOpen: !this.state.isOpen});
     };
@@ -57,7 +61,6 @@ class Searcher extends Component {
 
     render() {
         return (
-
                 <div className="jumbotron_cont" id="searcher">
                     <div className="buscador col-lg-8">
                         <div className=" col-lg-4">

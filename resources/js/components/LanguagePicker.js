@@ -1,23 +1,51 @@
 import React, {Component} from 'react'
-import {DropdownItem, DropdownMenu} from "reactstrap";
+import PropTypes from 'prop-types';
+import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from "reactstrap";
+import DropListLangs from "./DropListLangs";
 
 class LanguagePicker extends Component {
 
+    constructor(props) {
+        super(props);
+
+        const languages = [
+            {
+                id: 'es',
+                img: 'img/spain-flag.png',
+                name: 'Español',
+            },
+            {
+                id: 'en',
+                img: 'img/united-kingdom-flag.png',
+                name: 'English',
+            }
+        ];
+
+        const language = languages[0];
+        this.state = {
+            languages,
+            language
+        }
+    }
+
+    handleImg() {
+        let language = 'en';
+        language = this.state.languages.find(lang => lang.id == language);
+    }
+
+    componentWillMount() {
+        this.handleImg();
+    }
 
     render() {
-        const {changeLanguage} = this.props;
         return (
             <>
-                <a id="es" onClick={changeLanguage}>
-                    <DropdownItem>
-                        <img src="img/spain-flag.png" height="20"></img> Español
-                    </DropdownItem>
-                </a>
-                <a id="en" onClick={changeLanguage}>
-                    <DropdownItem>
-                        <img src="img/united-kingdom-flag.png" height="20"></img> English
-                    </DropdownItem>
-                </a>
+                <DropdownToggle nav caret>
+                    <img src={this.state.language.img} height="20"></img>
+                </DropdownToggle>
+                <DropdownMenu right>
+                    <DropListLangs data={this.state.languages} changeLanguage={this.changeLanguage}/>
+                </DropdownMenu>
             </>
         )
     }

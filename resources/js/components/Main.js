@@ -36,7 +36,6 @@ export default class Main extends Component {
         return (
             <LocaleContext.Provider value={this.state.locale}>
                 <Header changeLanguage={this.changeLanguage} />
-                <Searcher/>
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/about-us" component={AboutUs} />

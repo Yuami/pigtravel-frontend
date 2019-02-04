@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
-
+import {LocaleContext} from "../../LocaleContext";
 import PropTypes from 'prop-types';
 import {
     Navbar,
@@ -45,12 +45,7 @@ class Header extends Component {
                             <NavLink href="#"><Translate string={'register'} type={'header'}/></NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                <img src="img/spain-flag.png" height="20"></img>
-                            </DropdownToggle>
-                            <DropdownMenu right>
-                                <LanguagePicker changeLanguage={this.props.changeLanguage} />
-                            </DropdownMenu>
+                                <LanguagePicker changeLanguage={this.props.changeLanguage}/>
                         </UncontrolledDropdown>
                     </Nav>
                 </Collapse>
