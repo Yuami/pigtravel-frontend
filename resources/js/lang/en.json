@@ -17,5 +17,9 @@
     "about-us": "About us",
     "support": "Support",
     "home": "Home"
+  },
+  "searcher": {
+    "ciudad": "¿Donde quieres ir",
+    "huespedes": "guests"
   }
 }

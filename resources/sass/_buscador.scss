@@ -1,0 +1,80 @@
+
+
+.buscador {
+  background-color: white;
+  padding: 0px;
+  margin: auto;
+  margin-top: 150px;
+}
+
+.HeadLine {
+  text-align: center;
+  color: white;
+}
+
+.filtros {
+  padding: 0px;
+  color: white;
+}
+
+::placeholder{
+  color:black !important;
+
+}
+.hidden { display:none; }
+.inputContainer{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  width: 100%;
+}
+
+.DateRangePicker__Month {
+  margin: 0px !important;
+}
+
+.inputContainer label {
+  float: left;
+  margin-right: 5px;
+  margin-top: 20px;
+  text-align: center;
+
+}
+.inputContainer input {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  height: 70px;
+  font-size: 14pt;
+  border: none;
+}
+
+
+.inputContainer h5 {
+  padding-top: 20px;
+}
+
+.inputContainer .SearcherIcon {
+  height: 70px;
+  border: none;
+  color: white;
+  width: 100%;
+  font-size: 14pt;
+  border-radius: 0px;
+  background-color: #FA6839;
+}
+
+.inputContainer .SearcherIcon:hover {
+  color: white;
+}
+
+.inputContainer .incrementIcon {
+  height: 70px;
+  border: none;
+  color: #FA6839;
+  width: 50%;
+  font-size: 14pt;
+  border-radius: 0px;
+  background-color: white;
+}
