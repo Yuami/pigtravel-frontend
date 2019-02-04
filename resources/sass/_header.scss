@@ -3,10 +3,13 @@
   font-weight: bold;
   color: orangered;
 }
-
+.navbar{
+  margin-bottom: 0px !important;
+}
 .header-logo {
   margin-left: 100px;
-  height: 60px;
+  height: 40px;
+  margin-top: 5px;
 }
 
 .header-content {
@@ -25,7 +28,10 @@
   }
   .header-title {
     font-size: 25px;
+    margin-left: 25px;
+    margin-top: 10px;
   }
+
 }
 @media (max-width: 1000px) {
  .header-content{

@@ -21,5 +21,8 @@
   "searcher": {
     "ciudad": "¿Donde quieres ir",
     "huespedes": "huespedes"
+  },
+  "index": {
+    "titleIndex": "RESERVA APARTAMENTOS EN TODO EL MUNDO"
   }
 }
