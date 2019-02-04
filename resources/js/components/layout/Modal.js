@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-class MyModal extends Component {
+class MainModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,5 +40,5 @@ class MyModal extends Component {
             console.log(this.props);
 
 if (document.getElementById('modal')) {
-    ReactDOM.render(<MyModal buttonLabel="Sample button" />, document.getElementById('modal'));
+    ReactDOM.render(<MainModal buttonLabel="Sample button" />, document.getElementById('modal'));
 }

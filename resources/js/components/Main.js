@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { LocaleContext } from "../LocaleContext.js";
+import React, {Component} from "react";
+import {LocaleContext} from "../LocaleContext.js";
 import Header from "./layout/Header";
 import {BrowserRouter, Switch, Route} from "react-router-dom"
 import axios from 'axios';
@@ -7,6 +7,7 @@ import Footer from "./layout/Footer";
 import Home from "../Views/Home";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
+import Modal from "./layout/Modal";
 
 
 export default class Main extends Component {
@@ -19,12 +20,12 @@ export default class Main extends Component {
     }
 
     componentDidMount() {
-        if (localStorage.hasOwnProperty('locale')){
+        if (localStorage.hasOwnProperty('locale')) {
             this.setState({"locale": localStorage["locale"]});
         }
     }
 
-    changeLanguage = ({ currentTarget: { id } }) => {
+    changeLanguage = ({currentTarget: {id}}) => {
         localStorage["locale"] = id;
         this.setState({
             locale: id
@@ -34,10 +35,11 @@ export default class Main extends Component {
     render() {
         return (
             <LocaleContext.Provider value={this.state.locale}>
-                <Header changeLanguage={this.changeLanguage} />
+                <Header changeLanguage={this.changeLanguage}/>
                 <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/about-us" component={AboutUs} />
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/about-us" component={AboutUs}/>
+                    <Route exact path="/modal" component={MainModal}/>
                 </Switch>
                 <Footer/>
             </LocaleContext.Provider>
@@ -48,7 +50,7 @@ export default class Main extends Component {
 if (document.getElementById('app')) {
     ReactDOM.render(
         <BrowserRouter>
-        <Main/>
+            <Main/>
         </BrowserRouter>,
         document.getElementById('app'));
 }

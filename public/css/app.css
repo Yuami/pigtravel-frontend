@@ -120,6 +120,10 @@ body {
   color: #e13b06;
 }
 
+.footer-darker {
+  background-color: #1d2d40;
+}
+
 .header-title {
   font-size: 35px;
   font-weight: bold;
@@ -264,8 +268,7 @@ abbr[data-original-title] {
           text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
-  -webkit-text-decoration-skip-ink: none;
-          text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
 }
 
 address {
