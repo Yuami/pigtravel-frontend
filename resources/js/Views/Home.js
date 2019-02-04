@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import Translate from "../lang/Translate";
+import Searcher from "../components/Searcher";
 
 class Home extends Component {
     render() {
         return (
             <div>
-                <h1><Translate type="general" string="home"/></h1>
+                <Searcher/>
             </div>
         );
     }

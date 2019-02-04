@@ -84,8 +84,28 @@ select {
   padding-right: 0px;
 }
 
+html,
+body {
+  height: 100%;
+  position: relative;
+}
+
 body {
   font-family: Roboto, "Roboto", sans-serif;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.main-container {
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 150px;
 }
 
 .footer-link-white {
@@ -118,6 +138,10 @@ body {
 .footer-link:hover {
   text-decoration: none;
   color: #e13b06;
+}
+
+.footer-darker {
+  background-color: #1d2d40;
 }
 
 .header-title {
@@ -155,6 +179,97 @@ body {
   .header-content {
     padding-right: 0px;
   }
+}
+
+.buscador {
+  background-color: white;
+  padding: 0px;
+  margin: auto;
+  margin-top: 150px;
+}
+
+.HeadLine {
+  text-align: center;
+  color: white;
+}
+
+.filtros {
+  padding: 0px;
+  color: white;
+}
+
+::-webkit-input-placeholder {
+  color: black !important;
+}
+
+:-ms-input-placeholder {
+  color: black !important;
+}
+
+::-ms-input-placeholder {
+  color: black !important;
+}
+
+::placeholder {
+  color: black !important;
+}
+
+.hidden {
+  display: none;
+}
+
+.inputContainer {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  width: 100%;
+}
+
+.DateRangePicker__Month {
+  margin: 0px !important;
+}
+
+.inputContainer label {
+  float: left;
+  margin-right: 5px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.inputContainer input {
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  height: 70px;
+  font-size: 14pt;
+  border: none;
+}
+
+.inputContainer h5 {
+  padding-top: 20px;
+}
+
+.inputContainer .SearcherIcon {
+  height: 70px;
+  border: none;
+  color: white;
+  width: 100%;
+  font-size: 14pt;
+  border-radius: 0px;
+  background-color: #FA6839;
+}
+
+.inputContainer .SearcherIcon:hover {
+  color: white;
+}
+
+.inputContainer .incrementIcon {
+  height: 70px;
+  border: none;
+  color: #FA6839;
+  width: 50%;
+  font-size: 14pt;
+  border-radius: 0px;
+  background-color: white;
 }
 
 /*!
@@ -264,8 +379,7 @@ abbr[data-original-title] {
           text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
-  -webkit-text-decoration-skip-ink: none;
-          text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
 }
 
 address {

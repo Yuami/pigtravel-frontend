@@ -1,5 +1,24 @@
+html, body {
+  height: 100%;
+  position: relative;
+}
+
 body {
   font-family: Roboto, "Roboto", sans-serif;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.main-container {
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 150px;
 }
 
 // Theme colors
