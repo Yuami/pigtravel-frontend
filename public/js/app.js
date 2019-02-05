@@ -103992,6 +103992,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 /* harmony import */ var _DropListLangs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DropListLangs */ "./resources/js/components/DropListLangs.js");
+/* harmony import */ var _LocaleContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../LocaleContext */ "./resources/js/LocaleContext.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -104009,6 +104010,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -104045,31 +104047,30 @@ function (_Component) {
 
   _createClass(LanguagePicker, [{
     key: "handleImg",
-    value: function handleImg() {
-      var language = 'en';
+    value: function handleImg(language) {
       language = this.state.languages.find(function (lang) {
         return lang.id == language;
       });
-    }
-  }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      this.handleImg();
+      return language.img;
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["DropdownToggle"], {
         nav: true,
         caret: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.language.img,
-        height: "20"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_4__["LocaleContext"].Consumer, null, function (locale) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: _this2.handleImg(locale),
+          height: "20px"
+        });
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["DropdownMenu"], {
         right: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DropListLangs__WEBPACK_IMPORTED_MODULE_3__["default"], {
         data: this.state.languages,
-        changeLanguage: this.changeLanguage
+        changeLanguage: this.props.changeLanguage
       })));
     }
   }]);
@@ -104213,19 +104214,20 @@ if (document.getElementById('app')) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_date_range__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-date-range */ "./node_modules/react-date-range/lib/index.js");
-/* harmony import */ var react_date_range__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_date_range__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_daterange_picker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-daterange-picker */ "./node_modules/react-daterange-picker/dist/DateRangePicker.js");
-/* harmony import */ var react_daterange_picker__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_daterange_picker__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_daterange_picker_dist_css_react_calendar_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-daterange-picker/dist/css/react-calendar.css */ "./node_modules/react-daterange-picker/dist/css/react-calendar.css");
-/* harmony import */ var react_daterange_picker_dist_css_react_calendar_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_daterange_picker_dist_css_react_calendar_css__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment-range */ "./node_modules/moment-range/dist/moment-range.js");
-/* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment_range__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../lang/Translate */ "./resources/js/lang/Translate.js");
+/* harmony import */ var react_date_range__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-date-range */ "./node_modules/react-date-range/lib/index.js");
+/* harmony import */ var react_date_range__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_date_range__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_daterange_picker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-daterange-picker */ "./node_modules/react-daterange-picker/dist/DateRangePicker.js");
+/* harmony import */ var react_daterange_picker__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_daterange_picker__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_daterange_picker_dist_css_react_calendar_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-daterange-picker/dist/css/react-calendar.css */ "./node_modules/react-daterange-picker/dist/css/react-calendar.css");
+/* harmony import */ var react_daterange_picker_dist_css_react_calendar_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_daterange_picker_dist_css_react_calendar_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment-range */ "./node_modules/moment-range/dist/moment-range.js");
+/* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment_range__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../lang/Translate */ "./resources/js/lang/Translate.js");
+/* harmony import */ var _general_FaIcon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./general/FaIcon */ "./resources/js/components/general/FaIcon.js");
+/* harmony import */ var _LocaleContext_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../LocaleContext.js */ "./resources/js/LocaleContext.js");
+/* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../helpers.js */ "./resources/js/helpers.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -104254,19 +104256,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var moment = Object(moment_range__WEBPACK_IMPORTED_MODULE_6__["extendMoment"])(moment__WEBPACK_IMPORTED_MODULE_5___default.a);
+
+
+var moment = Object(moment_range__WEBPACK_IMPORTED_MODULE_5__["extendMoment"])(moment__WEBPACK_IMPORTED_MODULE_4___default.a);
 
 var Searcher =
 /*#__PURE__*/
 function (_Component) {
   _inherits(Searcher, _Component);
 
-  function Searcher(props, context) {
+  function Searcher(props) {
     var _this;
 
     _classCallCheck(this, Searcher);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Searcher).call(this, props, context));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Searcher).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSelect", function (value, states) {
       _this.setState({
@@ -104282,22 +104286,28 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "renderSelectionValue", function () {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, _this.state.value.start.format("DD-MM"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-long-arrow-alt-right"
-      }), " ", _this.state.value.end.format("DD-MM"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        type: 'searcher',
+        string: 'checkin'
+      }), _this.state.value.start.format("DD-MM"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        icon: 'fa fa-long-arrow-alt-right'
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        type: 'searcher',
+        string: 'checkout'
+      }), _this.state.value.end.format("DD-MM"));
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "IncrementItem", function () {
       _this.setState({
-        clicks: _this.state.clicks + 1
+        guests: _this.state.guests + 1
       });
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "DecreaseItem", function () {
-      var clicks = _this.state.clicks - 1 < 0 ? 0 : _this.state.clicks - 1;
+      var guests = _this.state.guests - 1 < 1 ? 1 : _this.state.guests - 1;
 
       _this.setState({
-        clicks: clicks
+        guests: guests
       });
     });
 
@@ -104317,7 +104327,7 @@ function (_Component) {
     _this.state = {
       isOpen: false,
       value: moment.range(today.clone().subtract(7, "days"), today.clone()),
-      clicks: 0,
+      guests: 1,
       show: false
     };
     return _this;
@@ -104335,22 +104345,24 @@ function (_Component) {
         className: " col-lg-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "inputContainer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-globe"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control",
-        id: "autocomplete",
-        type: "text",
-        placeholder: "\xBFDonde quieres ir?",
-        name: "location"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        icon: 'fa fa-globe'
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext_js__WEBPACK_IMPORTED_MODULE_8__["LocaleContext"].Consumer, null, function (locale) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "form-control",
+          id: "autocomplete",
+          type: "text",
+          placeholder: Object(_helpers_js__WEBPACK_IMPORTED_MODULE_9__["translate"])(locale, 'city', 'searcher'),
+          name: "location"
+        });
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn inputContainer",
         onClick: this.onToggle
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-calendar"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, this.renderSelectionValue())), this.state.isOpen && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_daterange_picker__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        icon: 'fa fa-calendar'
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, this.renderSelectionValue())), this.state.isOpen && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_daterange_picker__WEBPACK_IMPORTED_MODULE_2___default.a, {
         value: this.state.value,
         onSelect: this.onSelect,
         singleDateRange: true
@@ -104358,12 +104370,12 @@ function (_Component) {
         className: "col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn inputContainer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        icon: 'fa fa-user'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         onClick: this.ToggleDiv
-      }, " ", this.state.clicks, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        string: 'huespedes',
+      }, " ", this.state.guests, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        string: 'guests',
         type: 'searcher'
       })), this.state.show ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "incrementIcon",
@@ -104375,8 +104387,9 @@ function (_Component) {
         className: "inputContainer col-lg-1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn SearcherIcon"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-search fa-2x "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        icon: 'fa fa-search',
+        size: 'fa-2x'
       })))));
     }
   }]);
@@ -105067,6 +105080,33 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/helpers.js":
+/*!*********************************!*\
+  !*** ./resources/js/helpers.js ***!
+  \*********************************/
+/*! exports provided: translate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "translate", function() { return translate; });
+/* harmony import */ var _lang_es__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lang/es */ "./resources/js/lang/es.json");
+var _lang_es__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./lang/es */ "./resources/js/lang/es.json", 1);
+/* harmony import */ var _lang_en__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lang/en */ "./resources/js/lang/en.json");
+var _lang_en__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./lang/en */ "./resources/js/lang/en.json", 1);
+
+
+function translate(locale, string, type) {
+  var langs = {
+    es: _lang_es__WEBPACK_IMPORTED_MODULE_0__,
+    en: _lang_en__WEBPACK_IMPORTED_MODULE_1__
+  };
+  type = type || 'general';
+  return langs[locale][type][string];
+}
+
+/***/ }),
+
 /***/ "./resources/js/lang/Translate.js":
 /*!****************************************!*\
   !*** ./resources/js/lang/Translate.js ***!
@@ -105161,7 +105201,7 @@ Translate.propTypes = {
 /*! exports provided: header, footer, general, searcher, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home"},"searcher":{"ciudad":"¿Donde quieres ir","huespedes":"guests"}};
+module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"In ","checkout":"Out "}};
 
 /***/ }),
 
@@ -105172,7 +105212,7 @@ module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Regi
 /*! exports provided: header, footer, general, searcher, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Iniciar Session","logout":"Cerrar Session","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quienes somos?","about-us.terms":"Politicas de privacidad","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio"},"searcher":{"ciudad":"¿Donde quieres ir","huespedes":"huespedes"}};
+module.exports = {"header":{"login":"Iniciar Session","logout":"Cerrar Session","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quienes somos?","about-us.terms":"Politicas de privacidad","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","checkin":"Entrada ","checkout":"Salida "}};
 
 /***/ }),
 

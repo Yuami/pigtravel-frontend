@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from "reactstrap";
 import DropListLangs from "./DropListLangs";
+import {LocaleContext} from "../LocaleContext";
 
 class LanguagePicker extends Component {
 
@@ -28,23 +29,21 @@ class LanguagePicker extends Component {
         }
     }
 
-    handleImg() {
-        let language = 'en';
+    handleImg(language) {
         language = this.state.languages.find(lang => lang.id == language);
-    }
-
-    componentWillMount() {
-        this.handleImg();
+        return language.img;
     }
 
     render() {
         return (
             <>
                 <DropdownToggle nav caret>
-                    <img src={this.state.language.img} height="20"></img>
+                    <LocaleContext.Consumer>
+                        {locale => <img src={this.handleImg(locale)} height='20px'></img>}
+                    </LocaleContext.Consumer>
                 </DropdownToggle>
                 <DropdownMenu right>
-                    <DropListLangs data={this.state.languages} changeLanguage={this.changeLanguage}/>
+                    <DropListLangs data={this.state.languages} changeLanguage={this.props.changeLanguage}/>
                 </DropdownMenu>
             </>
         )
