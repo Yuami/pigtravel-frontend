@@ -11,6 +11,7 @@ import TitleInicio from "./specific/TitleInicio";
 import Searcher from "./layout/Searcher";
 import MainModal from "./layout/MainModal";
 import Terms from "./layout/Terms";
+import BookingDetail from "../Views/BookingDetail";
 
 
 export default class Main extends Component {
@@ -39,12 +40,9 @@ export default class Main extends Component {
         return (
             <LocaleContext.Provider value={this.state.locale}>
                 <Header changeLanguage={this.changeLanguage} />
-                <div className="jumbotron_cont">
-                <TitleInicio/>
-                <Searcher/>
-                </div>
                 <Switch>
                     <Route exact path="/" component={Home}/>
+                    <Route exact path="/bookings" component={BookingDetail}/>
                     <Route exact path="/about-us" component={AboutUs}/>
                     <Route exact path="/modal">
                         <MainModal buttonLabel="Reservate" />
@@ -60,7 +58,7 @@ export default class Main extends Component {
 if (document.getElementById('app')) {
     ReactDOM.render(
         <BrowserRouter>
-        <Main/>
+            <Main/>
         </BrowserRouter>,
         document.getElementById('app'));
 }

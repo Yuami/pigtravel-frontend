@@ -1,0 +1,16 @@
+.bookingCont {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 78vh;
+  padding: 10px;
+}
+.is-disabled{
+  color: gray;
+}
+.is-active{
+  color: #ffb250 !important;
+}
+.react-rater{
+  display: inline-block;
+}

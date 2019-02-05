@@ -231,6 +231,26 @@ body {
   background-color: white;
 }
 
+.bookingCont {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 78vh;
+  padding: 10px;
+}
+
+.is-disabled {
+  color: gray;
+}
+
+.is-active {
+  color: #ffb250 !important;
+}
+
+.react-rater {
+  display: inline-block;
+}
+
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
