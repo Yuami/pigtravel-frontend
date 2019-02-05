@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import TitleInicio from "../components/specific/TitleInicio";
-import Searcher from "../components/Searcher";
+import Searcher from "../components/layout/Searcher";
 
 
 class Home extends Component {
