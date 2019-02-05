@@ -42,7 +42,7 @@ export default class Main extends Component {
                     <Route exact path="/bookings" component={BookingDetail}/>
                     <Route exact path="/about-us" component={AboutUs}/>
                     <Route exact path="/modal">
-                        <MainModal buttonLabel="Reservate" />
+                        <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"} primaryButton={"lol"}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                 </Switch>
