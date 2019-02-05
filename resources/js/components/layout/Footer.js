@@ -13,7 +13,7 @@ class Footer extends Component {
             },
             {
                 value: "about-us.terms",
-                link: "about-us#terms"
+                link: "terms"
             },
         ];
         const support = [

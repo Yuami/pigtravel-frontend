@@ -10,7 +10,7 @@ import * as ReactDOM from "react-dom";
 import TitleInicio from "./specific/TitleInicio";
 import Searcher from "./layout/Searcher";
 import MainModal from "./layout/MainModal";
-import Terms from "./layout/Terms";
+import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
 
 
