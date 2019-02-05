@@ -31,5 +31,8 @@
     "gr": "Germany",
     "es": "Spain",
     "mv": "Maldives"
+  },
+  "detalleReserva": {
+    "detalleReserva": "Booking details"
   }
 }

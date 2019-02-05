@@ -38,7 +38,7 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, "Roboto", sans-serif;
 }
 
 .footer-link-white {
@@ -81,15 +81,6 @@ body {
   font-size: 35px;
   font-weight: bold;
   color: orangered;
-}
-
-.header-title :link,
-.header-title :visited,
-.header-title :hover,
-.header-title :focus,
-.header-title :active {
-  color: inherit;
-  text-decoration: none;
 }
 
 .navbar {
@@ -240,9 +231,24 @@ body {
   background-color: white;
 }
 
-.btn-primary.focus,
-.btn-primary:focus {
-  background-color: #FA6839;
+.bookingCont {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 78vh;
+  padding: 10px;
+}
+
+.is-disabled {
+  color: gray;
+}
+
+.is-active {
+  color: #ffb250 !important;
+}
+
+.react-rater {
+  display: inline-block;
 }
 
 /*!
