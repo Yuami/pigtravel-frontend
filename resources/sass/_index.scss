@@ -17,7 +17,13 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+#recomendacionCiudades {
+  margin: 50px;
+  text-align: center;
+}
+#textoRecomendacion {
+  display: inline-block;
+}
 
 @media (max-width: 768px) {
   .HeadLine {
