@@ -7,7 +7,7 @@ import CarouselInicio from "../components/layout/CarouselInicio";
 class Home extends Component {
     render() {
         return (
-            <div>
+            <div className="mb-5">
                 <div className="jumbotron_cont">
                     <TitleInicio/>
                     <Searcher/>

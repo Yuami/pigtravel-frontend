@@ -21,8 +21,8 @@
   "searcher": {
     "city": "Where do you wanna go?",
     "guests": "guests",
-    "checkin": "In ",
-    "checkout": "Out "
+    "checkin": "Check In ",
+    "checkout": "Check Out "
   },
   "index": {
     "titleIndex": "BOOK APARTMENTS ALL OVER THE WORLD"

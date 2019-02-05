@@ -5,6 +5,7 @@ import originalMoment from "moment";
 import {extendMoment} from "moment-range";
 const moment = extendMoment(originalMoment);
 import {Label, Button, Popover, PopoverBody, InputGroup} from 'reactstrap';
+import Translate from "../../lang/Translate";
 
 class DatePickerInicio extends Component {
     constructor(props, context) {
@@ -28,8 +29,10 @@ class DatePickerInicio extends Component {
     renderSelectionValue = () => {
         return (
             <div id="fechas">
+                <Translate type={'searcher'} string={'checkin'}/>
                 {this.state.value.start.format("DD-MM")}
                 {" "}<i className="fa fa-long-arrow-alt-right"></i>{" "}
+                <Translate type={'searcher'} string={'checkout'}/>
                 {this.state.value.end.format("DD-MM")}
             </div>
         );
