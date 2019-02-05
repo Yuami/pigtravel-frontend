@@ -17,16 +17,14 @@ import {
 class FormLogin extends Component {
     render() {
         return (
-            <Container>
+            <Container className="my-4">
                 <Row>
                     <Col md="6" sm="12">
                         <img src="img/clipboard.png" alt="logo" height="100%" width="100%"/>
                     </Col>
                     <Col md="6" sm="12">
-                        <Card>
-                            <CardHeader className="text-center">
-                                <CardTitle><h3>INICIA SESION</h3></CardTitle>
-                            </CardHeader>
+                        <Card className="shadow bg-light">
+                            <CardTitle className="text-center mt-5 mb-3"><h3>REGISTRATE</h3></CardTitle>
                             <CardBody>
                                 <Form>
                                     <Col className="my-2" md="6">
@@ -80,10 +78,10 @@ class FormLogin extends Component {
                                     <Col className="my-2" md="12">
                                         <Row>
                                             <Col md="6">
-                                                <Button block color="danger">Cancelar</Button>
+                                                <Button block className="bg-primary">Cancelar</Button>
                                             </Col>
                                             <Col md="6">
-                                                <Button block color="success">Confirmar</Button>
+                                                <Button block className="bg-primary">Confirmar</Button>
                                             </Col>
                                         </Row>
                                     </Col>

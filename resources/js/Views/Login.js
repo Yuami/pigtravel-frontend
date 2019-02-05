@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
-import Translate from "../lang/Translate";
+import FormLogin from "../components/layout/FormLogin";
+import Container from "reactstrap/es/Container";
+import Row from "reactstrap/es/Row";
 
 class Login extends Component {
     render() {
         return (
-            <div>
-                <h1><Translate type="general" string="v"/></h1>
-            </div>
+            <Container>
+                <Row>
+                    <FormLogin/>
+                </Row>
+            </Container>
         );
     }
 }
