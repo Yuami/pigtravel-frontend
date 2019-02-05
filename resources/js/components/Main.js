@@ -7,6 +7,10 @@ import Footer from "./layout/Footer";
 import Home from "../Views/Home";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
+import TitleInicio from "./specific/TitleInicio";
+import Searcher from "./Searcher";
+import MainModal from "./layout/MainModal";
+import Terms from "./layout/Terms";
 
 
 export default class Main extends Component {
