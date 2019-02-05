@@ -4,7 +4,7 @@
     "logout": "Log Out",
     "register": "Register"
   },
-  "footer" : {
+  "footer": {
     "about-us": "ABOUT PIG TRAVEL",
     "about-us.who": "About us",
     "about-us.terms": "Terms and conditions",
@@ -19,7 +19,9 @@
     "home": "Home"
   },
   "searcher": {
-    "ciudad": "¿Donde quieres ir",
-    "huespedes": "guests"
+    "city": "Where do you wanna go?",
+    "guests": "guests",
+    "checkin": "In ",
+    "checkout": "Out "
   }
 }

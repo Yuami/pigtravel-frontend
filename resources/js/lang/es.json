@@ -19,7 +19,9 @@
     "home": "Inicio"
   },
   "searcher": {
-    "ciudad": "¿Donde quieres ir",
-    "huespedes": "huespedes"
+    "city": "¿Donde quieres ir?",
+    "guests": "huespedes",
+    "checkin": "Entrada ",
+    "checkout": "Salida "
   }
 }
