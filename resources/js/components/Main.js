@@ -39,15 +39,13 @@ export default class Main extends Component {
         return (
             <LocaleContext.Provider value={this.state.locale}>
                 <Header changeLanguage={this.changeLanguage} />
-                <div className="jumbotron_cont">
-                <TitleInicio/>
-                <Searcher/>
-                </div>
+
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/about-us" component={AboutUs}/>
                     <Route exact path="/modal">
-                        <MainModal buttonLabel="Reservate" />
+                        <MainModal buttonLabel={'Test Button'} modalHeader={'Modal'} modalBody={'Body'}
+                                   primaryButton={'1'} secondaryButton={'2'} primaryButtonLink={'/modal'}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                 </Switch>
