@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Translate from "../lang/Translate";
+import Translate from "../../lang/Translate";
 import {Col, Label, Button, Popover, PopoverBody, InputGroup} from 'reactstrap';
-import DatePickerInicio from "./specific/DatePickerInicio"
+import DatePickerInicio from "../specific/DatePickerInicio"
 
 class Searcher extends Component {
     constructor(props, context) {

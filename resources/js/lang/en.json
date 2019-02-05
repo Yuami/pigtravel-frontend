@@ -24,5 +24,12 @@
   },
   "index": {
     "titleIndex": "BOOK APARTMENTS ALL OVER THE WORLD"
+  },
+  "carrousel": {
+    "recomendacion": "We recommend you",
+    "fr": "France",
+    "gr": "Germany",
+    "es": "Spain",
+    "mv": "Maldives"
   }
 }
