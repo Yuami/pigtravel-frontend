@@ -7,10 +7,10 @@ import Footer from "./layout/Footer";
 import Home from "../Views/Home";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
-import Searcher from "./layout/Searcher";
 import TitleInicio from "./specific/TitleInicio";
-import CarouselInicio from "./layout/CarouselInicio";
-import Translate from "../lang/Translate";
+import Searcher from "./Searcher";
+import MainModal from "./layout/MainModal";
+import Terms from "./layout/Terms";
 
 
 export default class Main extends Component {
@@ -43,17 +43,15 @@ export default class Main extends Component {
                 <TitleInicio/>
                 <Searcher/>
                 </div>
-                <div id="recomendacionCiudades">
-                    <div id="yourdiv"><h2 className="recomendacion"><Translate type={"carrousel"} string={"recomendacion"}/></h2></div>
-                </div>
-
-                <CarouselInicio/>
                 <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/about-us" component={AboutUs} />
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/about-us" component={AboutUs}/>
+                    <Route exact path="/modal">
+                        <MainModal buttonLabel="Reservate" />
+                    </Route>
+                    <Route exact path="/terms" component={Terms}/>
                 </Switch>
                 <Footer/>
-
             </LocaleContext.Provider>
         );
     }
