@@ -7,8 +7,6 @@ import Footer from "./layout/Footer";
 import Home from "../Views/Home";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
-import Searcher from "./Searcher";
-import TitleInicio from "./specific/TitleInicio";
 
 
 export default class Main extends Component {
@@ -42,11 +40,14 @@ export default class Main extends Component {
                 <Searcher/>
                 </div>
                 <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/about-us" component={AboutUs} />
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/about-us" component={AboutUs}/>
+                    <Route exact path="/modal">
+                        <MainModal buttonLabel="Reservate" />
+                    </Route>
+                    <Route exact path="/terms" component={Terms}/>
                 </Switch>
                 <Footer/>
-
             </LocaleContext.Provider>
         );
     }
