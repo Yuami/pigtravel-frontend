@@ -7,22 +7,15 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-.main-container {
-  min-height: 100vh;
-  overflow: hidden;
-  display: block;
-  position: relative;
-  padding-bottom: 150px;
-}
-
 // Theme colors
 $primary: #FA6839;
 $secondary: #314D68;
 $light: #F6F7FC;
 $info: #22CDF3;
+
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "light": $light,
+        "info": $info
+);

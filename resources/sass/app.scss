@@ -3,6 +3,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 // Variables
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
 @import 'variables';
 @import 'index';
 
@@ -12,6 +16,7 @@
 @import "header";
 @import "buscador";
 @import "bookingDetails";
+@import "maincontainer";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

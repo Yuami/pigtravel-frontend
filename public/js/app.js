@@ -103556,16 +103556,19 @@ function (_Component) {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_1__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FooterCol__WEBPACK_IMPORTED_MODULE_3__["default"], {
         xs: "12",
+        sm: "6",
         md: "4",
         title: "about-us",
         list: aboutUs
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FooterCol__WEBPACK_IMPORTED_MODULE_3__["default"], {
         xs: "12",
+        sm: "6",
         md: "4",
         title: "support",
         list: support
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FooterCol__WEBPACK_IMPORTED_MODULE_3__["default"], {
         xs: "12",
+        sm: "12",
         md: "4",
         title: "follow",
         list: follow,
@@ -103643,12 +103646,20 @@ function (_Component) {
     key: "render",
     value: function render() {
       var type = "footer";
-      var title = this.props.title;
+      var _this$props = this.props,
+          title = _this$props.title,
+          xs = _this$props.xs,
+          sm = _this$props.sm,
+          md = _this$props.md;
       var media = this.props.media !== undefined;
+      var headerClass = media ? "d-none d-md-block" : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        xs: this.props.xs,
-        md: this.props.md
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        xs: xs,
+        sm: sm,
+        md: md
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: headerClass
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
         type: type,
         string: title
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -103675,6 +103686,7 @@ function (_Component) {
 
 FooterCol.propTypes = {
   xs: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string.isRequired,
+  sm: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string.isRequired,
   md: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string.isRequired,
   title: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string.isRequired,
   media: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool,
@@ -104451,7 +104463,7 @@ Translate.propTypes = {
 /*! exports provided: header, footer, general, searcher, index, carrousel, detalleReserva, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"Check In ","checkout":"Check Out "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"detalleReserva":{"detalleReserva":"Booking details"}};
+module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"From ","checkout":"To "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"detalleReserva":{"detalleReserva":"Booking details"}};
 
 /***/ }),
 
