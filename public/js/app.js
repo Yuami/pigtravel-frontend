@@ -102556,7 +102556,9 @@ function (_Component) {
   _createClass(Home, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "jumbotron_cont"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_specific_TitleInicio__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Searcher__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "recomendacionCiudades"
@@ -102658,10 +102660,10 @@ if (token) {
 
 /***/ }),
 
-/***/ "./resources/js/components/LanguagePicker.js":
-/*!***************************************************!*\
-  !*** ./resources/js/components/LanguagePicker.js ***!
-  \***************************************************/
+/***/ "./resources/js/components/DropListLangs.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/DropListLangs.js ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -102669,7 +102671,9 @@ if (token) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102691,34 +102695,141 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+var DropListLangs =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(DropListLangs, _Component);
+
+  function DropListLangs() {
+    _classCallCheck(this, DropListLangs);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(DropListLangs).apply(this, arguments));
+  }
+
+  _createClass(DropListLangs, [{
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      return this.props.data.map(function (lang) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          key: lang.id,
+          id: lang.id,
+          onClick: _this.props.changeLanguage
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: lang.img,
+          height: "20"
+        }), " ", lang.name));
+      });
+    }
+  }]);
+
+  return DropListLangs;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+DropListLangs.propTypes = {
+  data: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.array.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (DropListLangs);
+
+/***/ }),
+
+/***/ "./resources/js/components/LanguagePicker.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/LanguagePicker.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var _DropListLangs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DropListLangs */ "./resources/js/components/DropListLangs.js");
+/* harmony import */ var _LocaleContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../LocaleContext */ "./resources/js/LocaleContext.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
 var LanguagePicker =
 /*#__PURE__*/
 function (_Component) {
   _inherits(LanguagePicker, _Component);
 
-  function LanguagePicker() {
+  function LanguagePicker(props) {
+    var _this;
+
     _classCallCheck(this, LanguagePicker);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(LanguagePicker).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(LanguagePicker).call(this, props));
+    var languages = [{
+      id: 'es',
+      img: 'img/spain-flag.png',
+      name: 'Español'
+    }, {
+      id: 'en',
+      img: 'img/united-kingdom-flag.png',
+      name: 'English'
+    }];
+    var language = languages[0];
+    _this.state = {
+      languages: languages,
+      language: language
+    };
+    return _this;
   }
 
   _createClass(LanguagePicker, [{
+    key: "handleImg",
+    value: function handleImg(language) {
+      language = this.state.languages.find(function (lang) {
+        return lang.id == language;
+      });
+      return language.img;
+    }
+  }, {
     key: "render",
     value: function render() {
-      var changeLanguage = this.props.changeLanguage;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        id: "es",
-        onClick: changeLanguage
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "img/spain-flag.png",
-        height: "20"
-      }), " Espa\xF1ol")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        id: "en",
-        onClick: changeLanguage
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["DropdownItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "img/united-kingdom-flag.png",
-        height: "20"
-      }), " English")));
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["DropdownToggle"], {
+        nav: true,
+        caret: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_4__["LocaleContext"].Consumer, null, function (locale) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: _this2.handleImg(locale),
+          height: "20px"
+        });
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["DropdownMenu"], {
+        right: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DropListLangs__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        data: this.state.languages,
+        changeLanguage: this.props.changeLanguage
+      })));
     }
   }]);
 
@@ -103587,12 +103698,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-/* harmony import */ var reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap/es/Col */ "./node_modules/reactstrap/es/Col.js");
-/* harmony import */ var _LanguagePicker__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../LanguagePicker */ "./resources/js/components/LanguagePicker.js");
-/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../lang/Translate */ "./resources/js/lang/Translate.js");
+/* harmony import */ var _LocaleContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../LocaleContext */ "./resources/js/LocaleContext.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap/es/Col */ "./node_modules/reactstrap/es/Col.js");
+/* harmony import */ var _LanguagePicker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../LanguagePicker */ "./resources/js/components/LanguagePicker.js");
+/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../lang/Translate */ "./resources/js/lang/Translate.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -103610,6 +103722,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -103634,61 +103747,53 @@ function (_Component) {
   _createClass(Header, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Navbar"], {
-        className: "navbar-light navbar-expand-md bg-white justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavbarBrand"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Navbar"], {
+        className: "navbar-light navbar-expand-md bg-white justify-content-center sticky-top"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavbarBrand"], {
         href: "/",
         className: "navbar-brand d-flex w-50 mr-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "img/clipboard.png",
         alt: "logo",
         className: "header-logo"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavbarToggler"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavbarToggler"], {
         "data-toggle": "collapse",
         "data-target": "#collapsingNavbar3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "navbar-toggler-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Collapse"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Collapse"], {
         className: "navbar-collapse w-100",
         id: "collapsingNavbar3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Nav"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Nav"], {
         className: "navbar-nav w-100 justify-content-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
         className: "active"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "header-title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: '/'
-      }, "Pig Travel")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Nav"], {
+      }, "Pig Travel")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Nav"], {
         className: "navbar-nav ml-auto w-100 justify-content-end"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
         className: "header-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], {
         href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_8__["default"], {
         string: 'login',
         type: 'header'
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
         className: "header-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], {
         href: "#"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_8__["default"], {
         string: 'register',
         type: 'header'
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["UncontrolledDropdown"], {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["UncontrolledDropdown"], {
         nav: true,
         inNavbar: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["DropdownToggle"], {
-        nav: true,
-        caret: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "img/spain-flag.png",
-        height: "20"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["DropdownMenu"], {
-        right: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LanguagePicker__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LanguagePicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
         changeLanguage: this.props.changeLanguage
-      }))))));
+      })))));
     }
   }]);
 
@@ -103711,6 +103816,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -103728,6 +103835,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -103760,8 +103868,12 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var secondary = this.props.secondaryButton ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        color: "secondary",
+        onClick: this.toggle
+      }, this.props.secondaryButton) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        color: "danger",
+        color: "primary",
         onClick: this.toggle
       }, this.props.buttonLabel), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
         isOpen: this.state.modal,
@@ -103770,19 +103882,26 @@ function (_React$Component) {
         className: this.props.className
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalHeader"], {
         toggle: this.toggle
-      }, "Modal title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, this.props.modalHeader), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], null, this.props.modalBody), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: this.props.primaryButtonLink
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         color: "primary",
         onClick: this.toggle
-      }, "Do Something"), ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        color: "secondary",
-        onClick: this.toggle
-      }, "Cancel"))));
+      }, this.props.primaryButton), secondary))));
     }
   }]);
 
   return MainModal;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
+MainModal.propTypes = {
+  buttonLabel: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
+  modalHeader: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
+  modalBody: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
+  primaryButton: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
+  secondaryButton: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
+  primaryButtonLink: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string
+};
 /* harmony default export */ __webpack_exports__["default"] = (MainModal);
 
 /***/ }),
@@ -103801,6 +103920,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../lang/Translate */ "./resources/js/lang/Translate.js");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 /* harmony import */ var _specific_DatePickerInicio__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../specific/DatePickerInicio */ "./resources/js/components/specific/DatePickerInicio.js");
+/* harmony import */ var _general_FaIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../general/FaIcon */ "./resources/js/components/general/FaIcon.js");
+/* harmony import */ var _LocaleContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../LocaleContext */ "./resources/js/LocaleContext.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -103826,6 +103948,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
+
 var Searcher =
 /*#__PURE__*/
 function (_Component) {
@@ -103845,8 +103970,10 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "DecreaseItem", function () {
+      var clicks = _this.state.clicks - 1 < 1 ? 1 : _this.state.clicks - 1;
+
       _this.setState({
-        clicks: _this.state.clicks - 1
+        clicks: clicks
       });
     });
 
@@ -103857,7 +103984,7 @@ function (_Component) {
     });
 
     _this.state = {
-      clicks: 0,
+      clicks: 1,
       show: false
     };
     return _this;
@@ -103866,6 +103993,20 @@ function (_Component) {
   _createClass(Searcher, [{
     key: "render",
     value: function render() {
+      var decreaseBtn = this.state.clicks === 1 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        color: "",
+        className: "incrementIcon",
+        onClick: this.DecreaseItem,
+        disabled: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        icon: 'fa fa-minus'
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        color: "",
+        className: "incrementIcon",
+        onClick: this.DecreaseItem
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        icon: 'fa fa-minus'
+      }));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
         lg: "8",
         sm: "8",
@@ -103876,14 +104017,16 @@ function (_Component) {
         sm: "12",
         xs: "12",
         className: "filtro"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-globe"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control",
-        id: "autocomplete",
-        type: "text",
-        placeholder: "\xBFDonde quieres ir?",
-        name: "location"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        icon: 'fa fa-globe'
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_5__["LocaleContext"].Consumer, null, function (locale) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          className: "form-control",
+          id: "autocomplete",
+          type: "text",
+          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["translate"])(locale, 'city', 'searcher'),
+          name: "location"
+        });
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
         lg: "4",
         sm: "5",
@@ -103894,32 +104037,26 @@ function (_Component) {
         sm: "5",
         xs: "12",
         className: "filtro"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        icon: 'fa fa-user'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        id: "huespedes",
+        id: "guests",
         color: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, this.state.clicks, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        string: 'huespedes',
+        string: 'guests',
         type: 'searcher'
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Popover"], {
         placement: "bottom",
         isOpen: this.state.show,
-        target: "huespedes",
+        target: "guests",
         toggle: this.ToggleDiv,
         trigger: "legacy"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["PopoverBody"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        color: "",
-        className: "incrementIcon",
-        onClick: this.DecreaseItem
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-minus"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["PopoverBody"], null, decreaseBtn, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         color: "",
         className: "incrementIcon",
         onClick: this.IncrementItem
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-plus"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        icon: 'fa fa-plus'
       })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
         lg: "1",
         sm: "2",
@@ -103928,8 +104065,9 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         color: "primary",
         className: "SearcherIcon"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-search fa-2x "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        icon: 'fa fa-search',
+        size: 'fa-2x'
       }))));
     }
   }]);
@@ -104023,6 +104161,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment-range */ "./node_modules/moment-range/dist/moment-range.js");
 /* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment_range__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../lang/Translate */ "./resources/js/lang/Translate.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -104049,6 +104188,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var moment = Object(moment_range__WEBPACK_IMPORTED_MODULE_4__["extendMoment"])(moment__WEBPACK_IMPORTED_MODULE_3___default.a);
+
 
 
 var DatePickerInicio =
@@ -104079,9 +104219,15 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "renderSelectionValue", function () {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "fechas"
-      }, _this.state.value.start.format("DD-MM"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        type: 'searcher',
+        string: 'checkin'
+      }), _this.state.value.start.format("DD-MM"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-long-arrow-alt-right"
-      }), " ", _this.state.value.end.format("DD-MM"));
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        type: 'searcher',
+        string: 'checkout'
+      }), _this.state.value.end.format("DD-MM"));
     });
 
     var today = moment();
@@ -104184,6 +104330,33 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/helpers.js":
+/*!*********************************!*\
+  !*** ./resources/js/helpers.js ***!
+  \*********************************/
+/*! exports provided: translate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "translate", function() { return translate; });
+/* harmony import */ var _lang_es__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lang/es */ "./resources/js/lang/es.json");
+var _lang_es__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./lang/es */ "./resources/js/lang/es.json", 1);
+/* harmony import */ var _lang_en__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lang/en */ "./resources/js/lang/en.json");
+var _lang_en__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./lang/en */ "./resources/js/lang/en.json", 1);
+
+
+function translate(locale, string, type) {
+  var langs = {
+    es: _lang_es__WEBPACK_IMPORTED_MODULE_0__,
+    en: _lang_en__WEBPACK_IMPORTED_MODULE_1__
+  };
+  type = type || 'general';
+  return langs[locale][type][string];
+}
+
+/***/ }),
+
 /***/ "./resources/js/lang/Translate.js":
 /*!****************************************!*\
   !*** ./resources/js/lang/Translate.js ***!
@@ -104278,7 +104451,7 @@ Translate.propTypes = {
 /*! exports provided: header, footer, general, searcher, index, carrousel, detalleReserva, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home"},"searcher":{"ciudad":"Where do you want to go?","huespedes":"guests"},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"detalleReserva":{"detalleReserva":"Booking details"}};
+module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"Check In ","checkout":"Check Out "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"detalleReserva":{"detalleReserva":"Booking details"}};
 
 /***/ }),
 
@@ -104289,7 +104462,7 @@ module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Regi
 /*! exports provided: header, footer, general, searcher, index, carrousel, detalleReserva, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Iniciar Session","logout":"Cerrar Session","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quienes somos?","about-us.terms":"Politicas de privacidad","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio"},"searcher":{"ciudad":"¿Donde quieres ir","huespedes":"huespedes"},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"detalleReserva":{"detalleReserva":"Detalles reserva"}};
+module.exports = {"header":{"login":"Iniciar Session","logout":"Cerrar Session","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quienes somos?","about-us.terms":"Politicas de privacidad","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","checkin":"Entrada ","checkout":"Salida "},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"detalleReserva":{"detalleReserva":"Detalles reserva"}};
 
 /***/ }),
 
@@ -104311,8 +104484,8 @@ module.exports = {"header":{"login":"Iniciar Session","logout":"Cerrar Session",
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\vacacional-inici\front-lloguer-vacacional\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\vacacional-inici\front-lloguer-vacacional\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/vacacional/front/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/vacacional/front/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

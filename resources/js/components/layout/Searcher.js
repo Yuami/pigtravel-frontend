@@ -31,6 +31,10 @@ class Searcher extends Component {
 
 
     render() {
+        const decreaseBtn = this.state.clicks === 1 ?
+            <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon icon={'fa fa-minus'}/></Button> :
+            <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon icon={'fa fa-minus'}/></Button>;
+
         return (
             <Col lg="8" sm="8" xs="10" className="buscador shadow">
                 <Col lg="4" sm="12" xs="12" className="filtro">
@@ -52,15 +56,15 @@ class Searcher extends Component {
                 </Col>
                 <Col lg="3" sm="5" xs="12" className="filtro">
                     <InputGroup>
-                        <Label><i className="fa fa-user"></i></Label>
-                        <Button id="huespedes" color="">
+                        <Label><FaIcon icon={'fa fa-user'}/></Label>
+                        <Button id="guests" color="">
                             <h5>{this.state.clicks} <Translate string={'guests'} type={'searcher'}/></h5>
                         </Button>
                         
-                        <Popover placement="bottom" isOpen={this.state.show} target="huespedes"
+                        <Popover placement="bottom" isOpen={this.state.show} target="guests"
                                  toggle={this.ToggleDiv} trigger="legacy">
                             <PopoverBody>
-                                <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon icon={'fa fa-minus'}/></Button>
+                                {decreaseBtn}
                                 <Button color="" className="incrementIcon" onClick={this.IncrementItem}><FaIcon icon={'fa fa-plus'}/></Button>
                             </PopoverBody>
                         </Popover>
