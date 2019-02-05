@@ -18,6 +18,9 @@
     "support": "Atención al cliente",
     "home": "Inicio"
   },
+  "reservation": {
+    "house-rules": "Normas de la casa"
+  },
   "searcher": {
     "city": "¿Donde quieres ir?",
     "guests": "huespedes",
