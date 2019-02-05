@@ -102167,7 +102167,8 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lang/Translate */ "./resources/js/lang/Translate.js");
+/* harmony import */ var _components_specific_TitleInicio__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/specific/TitleInicio */ "./resources/js/components/specific/TitleInicio.js");
+/* harmony import */ var _components_Searcher__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Searcher */ "./resources/js/components/Searcher.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102189,6 +102190,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Home =
 /*#__PURE__*/
 function (_Component) {
@@ -102203,10 +102205,9 @@ function (_Component) {
   _createClass(Home, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        type: "general",
-        string: "home"
-      })));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "jumbotron_cont"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_specific_TitleInicio__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Searcher__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
     }
   }]);
 
@@ -102474,9 +102475,7 @@ function (_Component) {
         value: this.state.locale
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         changeLanguage: this.changeLanguage
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "jumbotron_cont"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_specific_TitleInicio__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Searcher__WEBPACK_IMPORTED_MODULE_10__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/",
         component: _Views_Home__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -102488,7 +102487,12 @@ function (_Component) {
         exact: true,
         path: "/modal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_MainModal__WEBPACK_IMPORTED_MODULE_11__["default"], {
-        buttonLabel: "Reservate"
+        buttonLabel: 'Test Button',
+        modalHeader: 'Modal',
+        modalBody: 'Body',
+        primaryButton: '1',
+        secondaryButton: '2',
+        primaryButtonLink: '/modal'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/terms",
@@ -103283,7 +103287,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Navbar"], {
-        className: "navbar-light navbar-expand-md bg-white justify-content-center"
+        className: "navbar-light navbar-expand-md bg-white justify-content-center sticky-top"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavbarBrand"], {
         href: "/",
         className: "navbar-brand d-flex w-50 mr-auto"
@@ -103359,6 +103363,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -103376,6 +103382,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -103408,8 +103415,12 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var secondary = this.props.secondaryButton ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        color: "secondary",
+        onClick: this.toggle
+      }, this.props.secondaryButton) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        color: "danger",
+        color: "primary",
         onClick: this.toggle
       }, this.props.buttonLabel), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
         isOpen: this.state.modal,
@@ -103418,19 +103429,26 @@ function (_React$Component) {
         className: this.props.className
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalHeader"], {
         toggle: this.toggle
-      }, "Modal title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, this.props.modalHeader), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], null, this.props.modalBody), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: this.props.primaryButtonLink
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         color: "primary",
         onClick: this.toggle
-      }, "Do Something"), ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        color: "secondary",
-        onClick: this.toggle
-      }, "Cancel"))));
+      }, this.props.primaryButton), secondary))));
     }
   }]);
 
   return MainModal;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
+MainModal.propTypes = {
+  buttonLabel: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
+  modalHeader: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
+  modalBody: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
+  primaryButton: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
+  secondaryButton: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
+  primaryButtonLink: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string
+};
 /* harmony default export */ __webpack_exports__["default"] = (MainModal);
 
 /***/ }),
