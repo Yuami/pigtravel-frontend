@@ -43,6 +43,9 @@
     "checkIn": "Entrada",
     "checkOut": "Salida",
     "guests": "Huespedes",
-    "pricePerNight": "Precio por noche"
+    "pricePerNight": "Precio por noche",
+    "priceBreakdown": "Desglose precio",
+    "serviceFee": "Tarifa de servicio",
+    "total": "Total"
   }
 }

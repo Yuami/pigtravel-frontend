@@ -43,6 +43,9 @@
     "checkIn": "Check In",
     "checkOut": "Check Out",
     "guests": "Guests",
-    "pricePerNight": "Price per night"
+    "pricePerNight": "Price per night",
+    "priceBreakdown": "Price breakdown",
+    "serviceFee": "Service fee",
+    "total": "Total"
   }
 }
