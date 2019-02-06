@@ -102578,6 +102578,171 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/Views/Login.js":
+/*!*************************************!*\
+  !*** ./resources/js/Views/Login.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_layout_FormLogin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/layout/FormLogin */ "./resources/js/components/layout/FormLogin.js");
+/* harmony import */ var reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap/es/Container */ "./node_modules/reactstrap/es/Container.js");
+/* harmony import */ var reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap/es/Row */ "./node_modules/reactstrap/es/Row.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var Login =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Login, _Component);
+
+  function Login() {
+    _classCallCheck(this, Login);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Login).apply(this, arguments));
+  }
+
+  _createClass(Login, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_FormLogin__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+    }
+  }]);
+
+  return Login;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Login);
+
+/***/ }),
+
+/***/ "./resources/js/Views/Terms.js":
+/*!*************************************!*\
+  !*** ./resources/js/Views/Terms.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_general_Accordion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/general/Accordion */ "./resources/js/components/general/Accordion.js");
+/* harmony import */ var _lang_terms_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lang/terms.json */ "./resources/js/lang/terms.json");
+var _lang_terms_json__WEBPACK_IMPORTED_MODULE_3___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../lang/terms.json */ "./resources/js/lang/terms.json", 1);
+/* harmony import */ var _LocaleContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../LocaleContext */ "./resources/js/LocaleContext.js");
+/* harmony import */ var _components_general_AccordionItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/general/AccordionItem */ "./resources/js/components/general/AccordionItem.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+var Terms =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Terms, _Component);
+
+  function Terms() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Terms);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Terms)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      terms: _lang_terms_json__WEBPACK_IMPORTED_MODULE_3__
+    });
+
+    return _this;
+  }
+
+  _createClass(Terms, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var id = 'accordion';
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container my-5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Terms and Conditions")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Welcome to PigTravel!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "These terms and conditions outline the rules and regulations for the use of PigTravel's Website, located at https://pigtravel.top."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "By accessing this website we assume you accept these terms and conditions. Do not continue to use PigTravel if you do not agree to take all of the terms and conditions stated on this page."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: \"Client\", \"You\" and \"Your\" refers to you, the person log on this website and compliant to the Company\u2019s terms and conditions. \"The Company\", \"Ourselves\", \"We\", \"Our\" and \"Us\", refers to our Company. \"Party\", \"Parties\", or \"Us\", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client\u2019s needs in respect of provision of the Company\u2019s stated services, in accordance with and subject to, prevailing law of Spain. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_Accordion__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        id: id
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_4__["LocaleContext"].Consumer, null, function (locale) {
+        return _this2.state.terms[locale].map(function (item, index) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_AccordionItem__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            key: index,
+            id: index,
+            title: item.title,
+            body: item.body,
+            idParent: id,
+            expanded: index === 0
+          });
+        });
+      })));
+    }
+  }]);
+
+  return Terms;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+Terms.propTypes = {};
+/* harmony default export */ __webpack_exports__["default"] = (Terms);
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -102857,12 +103022,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _layout_Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./layout/Footer */ "./resources/js/components/layout/Footer.js");
 /* harmony import */ var _Views_Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Views/Home */ "./resources/js/Views/Home.js");
-/* harmony import */ var _Views_AboutUs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Views/AboutUs */ "./resources/js/Views/AboutUs.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _layout_MainModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./layout/MainModal */ "./resources/js/components/layout/MainModal.js");
-/* harmony import */ var _layout_Terms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./layout/Terms */ "./resources/js/components/layout/Terms.js");
-/* harmony import */ var _Views_BookingDetail__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Views/BookingDetail */ "./resources/js/Views/BookingDetail.js");
+/* harmony import */ var _Views_Login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Views/Login */ "./resources/js/Views/Login.js");
+/* harmony import */ var _Views_AboutUs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Views/AboutUs */ "./resources/js/Views/AboutUs.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _layout_MainModal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./layout/MainModal */ "./resources/js/components/layout/MainModal.js");
+/* harmony import */ var _Views_Terms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Views/Terms */ "./resources/js/Views/Terms.js");
+/* harmony import */ var _Views_BookingDetail__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Views/BookingDetail */ "./resources/js/Views/BookingDetail.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102882,6 +103048,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -102946,15 +103113,19 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/bookings",
-        component: _Views_BookingDetail__WEBPACK_IMPORTED_MODULE_10__["default"]
+        component: _Views_BookingDetail__WEBPACK_IMPORTED_MODULE_11__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/about-us",
-        component: _Views_AboutUs__WEBPACK_IMPORTED_MODULE_6__["default"]
+        component: _Views_AboutUs__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+        exact: true,
+        path: "/login",
+        component: _Views_Login__WEBPACK_IMPORTED_MODULE_6__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/modal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_MainModal__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_MainModal__WEBPACK_IMPORTED_MODULE_9__["default"], {
         buttonLabel: "Reservate",
         modalBody: "body",
         modalHeader: "header",
@@ -102962,7 +103133,7 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/terms",
-        component: _layout_Terms__WEBPACK_IMPORTED_MODULE_9__["default"]
+        component: _Views_Terms__WEBPACK_IMPORTED_MODULE_10__["default"]
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
     }
   }]);
@@ -102973,8 +103144,191 @@ function (_Component) {
 
 
 if (document.getElementById('app')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_7__["render"](react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Main, null)), document.getElementById('app'));
+  react_dom__WEBPACK_IMPORTED_MODULE_8__["render"](react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Main, null)), document.getElementById('app'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/general/Accordion.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/general/Accordion.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var Accordion =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Accordion, _Component);
+
+  function Accordion() {
+    _classCallCheck(this, Accordion);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Accordion).apply(this, arguments));
+  }
+
+  _createClass(Accordion, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          children = _this$props.children,
+          id = _this$props.id;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "accordion",
+        id: id
+      }, children);
+    }
+  }]);
+
+  return Accordion;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+_defineProperty(Accordion, "propTypes", {
+  id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
+});
+
+/* harmony default export */ __webpack_exports__["default"] = (Accordion);
+
+/***/ }),
+
+/***/ "./resources/js/components/general/AccordionItem.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/general/AccordionItem.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var AccordionItem =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(AccordionItem, _Component);
+
+  function AccordionItem() {
+    _classCallCheck(this, AccordionItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(AccordionItem).apply(this, arguments));
+  }
+
+  _createClass(AccordionItem, [{
+    key: "toHtml",
+    value: function toHtml(text) {
+      return {
+        __html: text
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          id = _this$props.id,
+          title = _this$props.title,
+          body = _this$props.body,
+          idParent = _this$props.idParent,
+          expanded = _this$props.expanded;
+      var heading = "heading".concat(id);
+      var collapse = "collapse".concat(id);
+      var show = expanded ? "collapse show" : "collapse";
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header",
+        id: heading
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "mb-0"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-link text-primary",
+        type: "button",
+        "data-toggle": "collapse",
+        "data-target": "#".concat(collapse),
+        "aria-expanded": expanded,
+        "aria-controls": collapse,
+        dangerouslySetInnerHTML: this.toHtml(title)
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: collapse,
+        className: show,
+        "aria-labelledby": heading,
+        "data-parent": "#".concat(idParent)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body",
+        dangerouslySetInnerHTML: this.toHtml(body)
+      })));
+    }
+  }]);
+
+  return AccordionItem;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+_defineProperty(AccordionItem, "defaultProps", {
+  expanded: false
+});
+
+_defineProperty(AccordionItem, "propTypes", {
+  id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.any.isRequired,
+  title: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+  body: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+  idParent: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+  expanded: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
+});
+
+/* harmony default export */ __webpack_exports__["default"] = (AccordionItem);
 
 /***/ }),
 
@@ -103534,7 +103888,7 @@ function (_Component) {
         link: "about-us"
       }, {
         value: "about-us.terms",
-        link: "about-us#terms"
+        link: "terms"
       }];
       var support = [{
         value: "support.contact",
@@ -103552,16 +103906,19 @@ function (_Component) {
         className: "text-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_1__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FooterCol__WEBPACK_IMPORTED_MODULE_3__["default"], {
         xs: "12",
+        sm: "6",
         md: "4",
         title: "about-us",
         list: aboutUs
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FooterCol__WEBPACK_IMPORTED_MODULE_3__["default"], {
         xs: "12",
+        sm: "6",
         md: "4",
         title: "support",
         list: support
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FooterCol__WEBPACK_IMPORTED_MODULE_3__["default"], {
         xs: "12",
+        sm: "12",
         md: "4",
         title: "follow",
         list: follow,
@@ -103639,12 +103996,20 @@ function (_Component) {
     key: "render",
     value: function render() {
       var type = "footer";
-      var title = this.props.title;
+      var _this$props = this.props,
+          title = _this$props.title,
+          xs = _this$props.xs,
+          sm = _this$props.sm,
+          md = _this$props.md;
       var media = this.props.media !== undefined;
+      var headerClass = media ? "d-none d-md-block" : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        xs: this.props.xs,
-        md: this.props.md
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        xs: xs,
+        sm: sm,
+        md: md
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: headerClass
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
         type: type,
         string: title
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -103671,12 +104036,188 @@ function (_Component) {
 
 FooterCol.propTypes = {
   xs: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string.isRequired,
+  sm: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string.isRequired,
   md: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string.isRequired,
   title: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string.isRequired,
   media: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool,
   list: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.object)
 };
 /* harmony default export */ __webpack_exports__["default"] = (FooterCol);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/FormLogin.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/layout/FormLogin.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var FormLogin =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(FormLogin, _Component);
+
+  function FormLogin() {
+    _classCallCheck(this, FormLogin);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(FormLogin).apply(this, arguments));
+  }
+
+  _createClass(FormLogin, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], {
+        className: "my-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        className: "d-none d-lg-block",
+        md: "6",
+        style: {
+          padding: 7 + '%'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "img/clipboard.png",
+        alt: "logo",
+        height: "100%",
+        width: "100%"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        lg: "6",
+        sm: "12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
+        className: "shadow bg-light"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardTitle"], {
+        className: "text-center mt-5 mb-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "REGISTRATE")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        className: "my-2",
+        sm: "5",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["FormGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], {
+        for: "nombre"
+      }, "Nombre"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+        type: "text",
+        name: "nombre",
+        id: "nombre",
+        placeholder: "hello"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        className: "my-2",
+        sm: "5",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["FormGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], {
+        for: "apellido1"
+      }, "Primer Apellido"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+        type: "text",
+        name: "apellido1",
+        id: "apellido1",
+        placeholder: "hello"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        className: "my-2",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["FormGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], {
+        for: "apellido2"
+      }, "Segundo Apellido"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+        type: "text",
+        name: "apellido2",
+        id: "apellido2",
+        placeholder: "hello"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        className: "my-2",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["FormGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], {
+        for: "dni"
+      }, "DNI"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+        type: "text",
+        name: "dni",
+        id: "dni",
+        placeholder: "hello"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        className: "my-2",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["FormGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], {
+        for: "fechaN"
+      }, "Fecha de Nacimiento"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+        type: "text",
+        name: "fechaN",
+        id: "fechaN",
+        placeholder: "hello"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        className: "my-2",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["FormGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], {
+        for: "email"
+      }, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+        type: "text",
+        name: "email",
+        id: "email",
+        placeholder: "hello"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        className: "my-2",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["FormGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], {
+        for: "pass"
+      }, "Contrase\xF1a"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+        type: "text",
+        name: "pass",
+        id: "pass",
+        placeholder: "hello"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        className: "my-2",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["FormGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], {
+        for: "passC"
+      }, "Confirmar Contrase\xF1a"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+        type: "text",
+        name: "passC",
+        id: "passC",
+        placeholder: "hello"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        className: "my-2",
+        md: "12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "btn btn-block bg-primary btn-cancelar",
+        to: "/"
+      }, "Cancelar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        block: true,
+        color: "primary"
+      }, "Confirmar"))))))))));
+    }
+  }]);
+
+  return FormLogin;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (FormLogin);
 
 /***/ }),
 
@@ -103772,19 +104313,19 @@ function (_Component) {
         className: "navbar-nav ml-auto w-100 justify-content-end"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
         className: "header-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], {
-        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "#"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_8__["default"], {
         string: 'login',
         type: 'header'
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
         className: "header-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], {
-        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/login"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_8__["default"], {
         string: 'register',
         type: 'header'
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["UncontrolledDropdown"], {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["UncontrolledDropdown"], {
         nav: true,
         inNavbar: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LanguagePicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -104072,68 +104613,6 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Searcher);
-
-/***/ }),
-
-/***/ "./resources/js/components/layout/Terms.js":
-/*!*************************************************!*\
-  !*** ./resources/js/components/layout/Terms.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-var Terms =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Terms, _Component);
-
-  function Terms() {
-    _classCallCheck(this, Terms);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Terms).apply(this, arguments));
-  }
-
-  _createClass(Terms, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Terms and Conditions")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Welcome to PigTravel!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "These terms and conditions outline the rules and regulations for the use of PigTravel's Website, located at https://pigtravel.top."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "By accessing this website we assume you accept these terms and conditions. Do not continue to use PigTravel if you do not agree to take all of the terms and conditions stated on this page."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: \"Client\", \"You\" and \"Your\" refers to you, the person log on this website and compliant to the Company\u2019s terms and conditions. \"The Company\", \"Ourselves\", \"We\", \"Our\" and \"Us\", refers to our Company. \"Party\", \"Parties\", or \"Us\", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client\u2019s needs in respect of provision of the Company\u2019s stated services, in accordance with and subject to, prevailing law of Spain. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Cookies")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We employ the use of cookies. By accessing PigTravel, you agreed to use cookies in agreement with the PigTravel's Privacy Policy."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Most interactive websites use cookies to let us retrieve the user\u2019s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "License")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Unless otherwise stated, PigTravel and/or its licensors own the intellectual property rights for all material on PigTravel. All intellectual property rights are reserved. You may access this from PigTravel for your own personal use subjected to restrictions set in these terms and conditions."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "You must not:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Republish material from PigTravel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sell, rent or sub-license material from PigTravel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Reproduce, duplicate or copy material from PigTravel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Redistribute content from PigTravel")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "This Agreement shall begin on the date hereof."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. PigTravel does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of PigTravel,its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, PigTravel shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "PigTravel reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "You warrant and represent that:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Comments do not invade any intellectual property right, including without limitation copyright, patent or trademark of any third party;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material which is an invasion of privacy"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "You hereby grant PigTravel a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Hyperlinking to our Content")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The following organizations may link to our Website without prior written approval:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Government agencies;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Search engines;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "News organizations;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses; and"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party\u2019s site."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We may consider and approve other link requests from the following types of organizations:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "commonly-known consumer and/or business information sources;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "dot.com community sites;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "associations or other groups representing charities;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "online directory distributors;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "internet portals;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "accounting, law and consulting firms; and"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "educational institutions and trade associations.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of PigTravel; and (d) the link is in the context of general resource information."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party\u2019s site."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to PigTravel. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Approved organizations may hyperlink to our Website as follows:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "By use of our corporate name; or"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "By use of the uniform resource locator being linked to; or"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party\u2019s site.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "No use of PigTravel's logo or other artwork will be allowed for linking absent a trademark license agreement."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "iFrames")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Content Liability")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Your Privacy")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please read Privacy Policy"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Reservation of Rights")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it\u2019s linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Removal of links from our website")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Disclaimer")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "limit or exclude our or your liability for death or personal injury;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "limit or exclude our or your liability for fraud or fraudulent misrepresentation;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "limit any of our or your liabilities in any way that is not permitted under applicable law; or"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "exclude any of our or your liabilities that may not be excluded under applicable law.")));
-    }
-  }]);
-
-  return Terms;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-Terms.propTypes = {};
-/* harmony default export */ __webpack_exports__["default"] = (Terms);
 
 /***/ }),
 
@@ -104447,7 +104926,7 @@ Translate.propTypes = {
 /*! exports provided: header, footer, reservation, general, searcher, index, carrousel, detalleReserva, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"reservation":{"house-rules":"Rules of the house"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"Check In ","checkout":"Check Out "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"detalleReserva":{"detalleReserva":"Booking details"}};
+module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"reservation":{"house-rules":"Rules of the house"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"From ","checkout":"To "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"detalleReserva":{"detalleReserva":"Booking details"}};
 
 /***/ }),
 
@@ -104459,6 +104938,17 @@ module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Regi
 /***/ (function(module) {
 
 module.exports = {"header":{"login":"Iniciar Session","logout":"Cerrar Session","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quienes somos?","about-us.terms":"Politicas de privacidad","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio"},"reservation":{"house-rules":"Normas de la casa"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","checkin":"Entrada ","checkout":"Salida "},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"detalleReserva":{"detalleReserva":"Detalles reserva"}};
+
+/***/ }),
+
+/***/ "./resources/js/lang/terms.json":
+/*!**************************************!*\
+  !*** ./resources/js/lang/terms.json ***!
+  \**************************************/
+/*! exports provided: es, en, default */
+/***/ (function(module) {
+
+module.exports = {"es":[{"title":"<h3><strong>Cookies</strong></h3>","body":"<p>We employ the use of cookies. By accessing PigTravel, you agreed to use cookies in agreement with the                    PigTravel's Privacy Policy.</p>                <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies                    are used by our website to enable the functionality of certain areas to make it easier for people                    visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>"},{"title":"<h3><strong>License</strong></h3>","body":"<p>Unless otherwise stated, PigTravel and/or its licensors own the intellectual property rights for all                    material on PigTravel. All intellectual property rights are reserved. You may access this from                    PigTravel for your own personal use subjected to restrictions set in these terms and conditions.</p>                <p>You must not:</p>                <ul>                    <li>Republish material from PigTravel</li>                    <li>Sell, rent or sub-license material from PigTravel</li>                    <li>Reproduce, duplicate or copy material from PigTravel</li>                    <li>Redistribute content from PigTravel</li>                </ul>                <p>This Agreement shall begin on the date hereof.</p>                <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in                    certain areas of the website. PigTravel does not filter, edit, publish or review Comments prior to                    their presence on the website. Comments do not reflect the views and opinions of PigTravel,its                    agents and/or affiliates. Comments reflect the views and opinions of the person who post their views                    and opinions. To the extent permitted by applicable laws, PigTravel shall not be liable for the                    Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of                    and/or posting of and/or appearance of the Comments on this website.</p>                <p>PigTravel reserves the right to monitor all Comments and to remove any Comments which can be                    considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>                <p>You warrant and represent that:</p>                <ul>                    <li>You are entitled to post the Comments on our website and have all necessary licenses and                        consents to do so;                    </li>                    <li>The Comments do not invade any intellectual property right, including without limitation                        copyright, patent or trademark of any third party;                    </li>                    <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful                        material which is an invasion of privacy                    </li>                    <li>The Comments will not be used to solicit or promote business or custom or present commercial                        activities or unlawful activity.                    </li>                </ul>                <p>You hereby grant PigTravel a non-exclusive license to use, reproduce, edit and authorize others to                    use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>"},{"title":"<h3><strong>Hyperlinking to our Content</strong></h3>","body":"<p>The following organizations may link to our Website without prior written approval:</p>                <ul>                    <li>Government agencies;</li>                    <li>Search engines;</li>                    <li>News organizations;</li>                    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to                        the Websites of other listed businesses; and                    </li>                    <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping                        malls, and charity fundraising groups which may not hyperlink to our Web site.                    </li>                </ul>                <p>These organizations may link to our home page, to publications or to other Website information so                    long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship,                    endorsement or approval of the linking party and its products and/or services; and (c) fits within                    the context of the linking party’s site.</p>                <p>We may consider and approve other link requests from the following types of organizations:</p>                <ul>                    <li>commonly-known consumer and/or business information sources;</li>                    <li>dot.com community sites;</li>                    <li>associations or other groups representing charities;</li>                    <li>online directory distributors;</li>                    <li>internet portals;</li>                    <li>accounting, law and consulting firms; and</li>                    <li>educational institutions and trade associations.</li>                </ul>                <p>We will approve link requests from these organizations if we decide that: (a) the link would not make                    us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have                    any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates                    the absence of PigTravel; and (d) the link is in the context of general resource information.</p>                <p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive;                    (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its                    products or services; and (c) fits within the context of the linking party’s site.</p>                <p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our                    website, you must inform us by sending an e-mail to PigTravel. Please include your name, your                    organization name, contact information as well as the URL of your site, a list of any URLs from                    which you intend to link to our Website, and a list of the URLs on our site to which you would like                    to link. Wait 2-3 weeks for a response.</p>                <p>Approved organizations may hyperlink to our Website as follows:</p>                <ul>                    <li>By use of our corporate name; or</li>                    <li>By use of the uniform resource locator being linked to; or</li>                    <li>By use of any other description of our Website being linked to that makes sense within the                        context and format of content on the linking party’s site.                    </li>                </ul>                <p>No use of PigTravel's logo or other artwork will be allowed for linking absent a trademark license                    agreement.</p>"},{"title":"<h3><strong>iFrames</strong></h3>","body":"<p>Without prior approval and written permission, you may not create frames around our Webpages that                    alter in any way the visual presentation or appearance of our Website.</p>"},{"title":"<h3><strong>Content Liability</strong></h3>","body":"<p>We shall not be hold responsible for any content that appears on your Website. You agree to protect                    and defend us against all claims that is rising on your Website. No link(s) should appear on any                    Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise                    violates, or advocates the infringement or other violation of, any third party rights.</p>"},{"title":"<h3><strong>Your Privacy</strong></h3>","body":"<p><a href=\"#\"Please read Privacy Policy</p>"},{"title":"<h3><strong>Reservation of Rights</strong></h3>","body":"<p>We reserve the right to request that you remove all links or any particular link to our Website. You                    approve to immediately remove all links to our Website upon request. We also reserve the right to                    amen these terms and conditions and it’s linking policy at any time. By continuously linking to our                    Website, you agree to be bound to and follow these linking terms and conditions.</p>"},{"title":"<h3><strong>Removal of links from our website</strong></h3>","body":"<p>If you find any link on our Website that is offensive for any reason, you are free to contact and                    inform us any moment. We will consider requests to remove links but we are not obligated to or so or                    to respond to you directly.</p>                <p>We do not ensure that the information on this website is correct, we do not warrant its completeness                    or accuracy; nor do we promise to ensure that the website remains available or that the material on                    the website is kept up to date.</p>"},{"title":"<h3><strong>Disclaimer</strong></h3>","body":"<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and                    conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>                <ul>                    <li>limit or exclude our or your liability for death or personal injury;</li>                    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>                    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or                    </li>                    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>                </ul>"}],"en":[{"title":"<h3><strong>Cookies</strong></h3>","body":"<p>We employ the use of cookies. By accessing PigTravel, you agreed to use cookies in agreement with the                    PigTravel's Privacy Policy.</p>                <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies                    are used by our website to enable the functionality of certain areas to make it easier for people                    visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>"},{"title":"<h3><strong>License</strong></h3>","body":"<p>Unless otherwise stated, PigTravel and/or its licensors own the intellectual property rights for all                    material on PigTravel. All intellectual property rights are reserved. You may access this from                    PigTravel for your own personal use subjected to restrictions set in these terms and conditions.</p>                <p>You must not:</p>                <ul>                    <li>Republish material from PigTravel</li>                    <li>Sell, rent or sub-license material from PigTravel</li>                    <li>Reproduce, duplicate or copy material from PigTravel</li>                    <li>Redistribute content from PigTravel</li>                </ul>                <p>This Agreement shall begin on the date hereof.</p>                <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in                    certain areas of the website. PigTravel does not filter, edit, publish or review Comments prior to                    their presence on the website. Comments do not reflect the views and opinions of PigTravel,its                    agents and/or affiliates. Comments reflect the views and opinions of the person who post their views                    and opinions. To the extent permitted by applicable laws, PigTravel shall not be liable for the                    Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of                    and/or posting of and/or appearance of the Comments on this website.</p>                <p>PigTravel reserves the right to monitor all Comments and to remove any Comments which can be                    considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>                <p>You warrant and represent that:</p>                <ul>                    <li>You are entitled to post the Comments on our website and have all necessary licenses and                        consents to do so;                    </li>                    <li>The Comments do not invade any intellectual property right, including without limitation                        copyright, patent or trademark of any third party;                    </li>                    <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful                        material which is an invasion of privacy                    </li>                    <li>The Comments will not be used to solicit or promote business or custom or present commercial                        activities or unlawful activity.                    </li>                </ul>                <p>You hereby grant PigTravel a non-exclusive license to use, reproduce, edit and authorize others to                    use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>"},{"title":"<h3><strong>Hyperlinking to our Content</strong></h3>","body":"<p>The following organizations may link to our Website without prior written approval:</p>                <ul>                    <li>Government agencies;</li>                    <li>Search engines;</li>                    <li>News organizations;</li>                    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to                        the Websites of other listed businesses; and                    </li>                    <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping                        malls, and charity fundraising groups which may not hyperlink to our Web site.                    </li>                </ul>                <p>These organizations may link to our home page, to publications or to other Website information so                    long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship,                    endorsement or approval of the linking party and its products and/or services; and (c) fits within                    the context of the linking party’s site.</p>                <p>We may consider and approve other link requests from the following types of organizations:</p>                <ul>                    <li>commonly-known consumer and/or business information sources;</li>                    <li>dot.com community sites;</li>                    <li>associations or other groups representing charities;</li>                    <li>online directory distributors;</li>                    <li>internet portals;</li>                    <li>accounting, law and consulting firms; and</li>                    <li>educational institutions and trade associations.</li>                </ul>                <p>We will approve link requests from these organizations if we decide that: (a) the link would not make                    us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have                    any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates                    the absence of PigTravel; and (d) the link is in the context of general resource information.</p>                <p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive;                    (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its                    products or services; and (c) fits within the context of the linking party’s site.</p>                <p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our                    website, you must inform us by sending an e-mail to PigTravel. Please include your name, your                    organization name, contact information as well as the URL of your site, a list of any URLs from                    which you intend to link to our Website, and a list of the URLs on our site to which you would like                    to link. Wait 2-3 weeks for a response.</p>                <p>Approved organizations may hyperlink to our Website as follows:</p>                <ul>                    <li>By use of our corporate name; or</li>                    <li>By use of the uniform resource locator being linked to; or</li>                    <li>By use of any other description of our Website being linked to that makes sense within the                        context and format of content on the linking party’s site.                    </li>                </ul>                <p>No use of PigTravel's logo or other artwork will be allowed for linking absent a trademark license                    agreement.</p>"},{"title":"<h3><strong>iFrames</strong></h3>","body":"<p>Without prior approval and written permission, you may not create frames around our Webpages that                    alter in any way the visual presentation or appearance of our Website.</p>"},{"title":"<h3><strong>Content Liability</strong></h3>","body":"<p>We shall not be hold responsible for any content that appears on your Website. You agree to protect                    and defend us against all claims that is rising on your Website. No link(s) should appear on any                    Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise                    violates, or advocates the infringement or other violation of, any third party rights.</p>"},{"title":"<h3><strong>Your Privacy</strong></h3>","body":"<p><a href=\"#\"Please read Privacy Policy</p>"},{"title":"<h3><strong>Reservation of Rights</strong></h3>","body":"<p>We reserve the right to request that you remove all links or any particular link to our Website. You                    approve to immediately remove all links to our Website upon request. We also reserve the right to                    amen these terms and conditions and it’s linking policy at any time. By continuously linking to our                    Website, you agree to be bound to and follow these linking terms and conditions.</p>"},{"title":"<h3><strong>Removal of links from our website</strong></h3>","body":"<p>If you find any link on our Website that is offensive for any reason, you are free to contact and                    inform us any moment. We will consider requests to remove links but we are not obligated to or so or                    to respond to you directly.</p>                <p>We do not ensure that the information on this website is correct, we do not warrant its completeness                    or accuracy; nor do we promise to ensure that the website remains available or that the material on                    the website is kept up to date.</p>"},{"title":"<h3><strong>Disclaimer</strong></h3>","body":"<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and                    conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>                <ul>                    <li>limit or exclude our or your liability for death or personal injury;</li>                    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>                    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or                    </li>                    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>                </ul>"}]};
 
 /***/ }),
 

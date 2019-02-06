@@ -1,3 +1,9 @@
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 .footer-link-white {
   color: white;
   text-decoration: none;
@@ -24,10 +30,10 @@
 
   &:hover {
     text-decoration: none;
-    color: #e13b06;
+    color: darken($primary, 15%);
   }
 }
 
 .footer-darker {
-  background-color: #1d2d40;
+  background-color: darken($secondary, 15%);
 }

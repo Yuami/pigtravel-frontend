@@ -1,3 +1,16 @@
+// Theme colors
+$primary: #FA6839;
+$secondary: #314D68;
+$light: #F6F7FC;
+$info: #22CDF3;
+
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "light": $light,
+        "info": $info
+);
+
 html, body {
   height: 100%;
   position: relative;
@@ -7,22 +20,20 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+.form-control {
+  border: 0 !important;
 }
 
-.main-container {
-  min-height: 100vh;
-  overflow: hidden;
-  display: block;
-  position: relative;
-  padding-bottom: 150px;
+.btn {
+  border: 0 !important;
+  background: $primary !important;
 }
 
-// Theme colors
-$primary: #FA6839;
-$secondary: #314D68;
-$light: #F6F7FC;
-$info: #22CDF3;
+.btn-cancelar {
+  color: white;
+}
+
+.card {
+  border: 0px !important;
+}
+

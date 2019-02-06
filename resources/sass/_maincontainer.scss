@@ -1,0 +1,25 @@
+@import "~bootstrap/scss/mixins/breakpoints";
+
+.main-container {
+  min-height: 100vh;
+  display: block;
+  position: relative;
+}
+
+@include media-breakpoint-up(xs) {
+  .main-container{
+    padding-bottom: 255px;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .main-container{
+    padding-bottom: 205px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .main-container{
+    padding-bottom: 150px;
+  }
+}
