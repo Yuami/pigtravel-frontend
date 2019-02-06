@@ -6,11 +6,7 @@ import Row from "reactstrap/es/Row";
 class Login extends Component {
     render() {
         return (
-            <Container>
-                <Row>
-                    <FormLogin/>
-                </Row>
-            </Container>
+            <FormLogin/>
         );
     }
 }

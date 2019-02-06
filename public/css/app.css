@@ -1,9 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);@charset "UTF-8";
 
-body#landingBody {
-  position: relative;
-  background-size: cover;
-  max-height: 600px;
+.HeadLine {
+  text-align: center;
+  color: white;
+  padding-top: 75px;
 }
 
 .jumbotron_cont {
@@ -13,79 +13,48 @@ body#landingBody {
   justify-content: center;
   flex-direction: column;
   min-height: 78vh;
+  background-image: url(/images/casa.png?43fccf2c0227742cc214abfda0ef5fa6);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.buscador {
-  background-color: white;
-  padding: 0px;
-  margin: auto;
-}
-
-.boton {
-  border-radius: 0px;
-  width: 100%;
-  background-color: #FA6839;
-}
-
-.HeadLine {
-  text-align: center;
-  color: white;
-}
-
-.filtros {
-  padding: 0px;
-  color: white;
-}
-
-::-webkit-input-placeholder {
-  color: black !important;
-}
-
-:-ms-input-placeholder {
-  color: black !important;
-}
-
-::-ms-input-placeholder {
-  color: black !important;
-}
-
-::placeholder {
-  color: black !important;
-}
-
-.inputContainer label {
-  float: left;
-  margin-right: 5px;
-  margin-top: 25px;
+#recomendacionCiudades {
+  margin: 50px;
   text-align: center;
 }
 
-.inputContainer div {
-  overflow: hidden;
+#textoRecomendacion {
+  display: inline-block;
 }
 
-.inputContainer input,
-select {
-  width: 100%;
-  box-sizing: border-box;
-  display: block;
-  height: 70px;
-  font-size: 14pt;
-  border: none;
-}
-
-.inputContainer button {
-  height: 70px;
-  border: none;
-  color: white;
-  width: 100%;
-  font-size: 14pt;
-  padding-left: 0px;
-  padding-right: 0px;
+@media (max-width: 768px) {
+  .HeadLine {
+    padding-top: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 }
 
 body {
-  font-family: Roboto, "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+.form-control {
+  border: 0px !important;
+}
+
+.btn {
+  border: 0px !important;
+}
+
+.btn-cancelar {
+  color: white;
+}
+
+.card {
+  border: 0px !important;
 }
 
 .footer-link-white {
@@ -130,9 +99,23 @@ body {
   color: orangered;
 }
 
+.header-title :link,
+.header-title :visited,
+.header-title :hover,
+.header-title :focus,
+.header-title :active {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navbar {
+  margin-bottom: 0px !important;
+}
+
 .header-logo {
   margin-left: 100px;
-  height: 60px;
+  height: 40px;
+  margin-top: 5px;
 }
 
 .header-content {
@@ -152,6 +135,8 @@ body {
 
   .header-title {
     font-size: 25px;
+    margin-left: 25px;
+    margin-top: 10px;
   }
 }
 
@@ -159,6 +144,121 @@ body {
   .header-content {
     padding-right: 0px;
   }
+}
+
+.buscador {
+  background-color: white;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  margin: auto;
+}
+
+::-webkit-input-placeholder {
+  color: black !important;
+  text-align: center;
+}
+
+:-ms-input-placeholder {
+  color: black !important;
+  text-align: center;
+}
+
+::-ms-input-placeholder {
+  color: black !important;
+  text-align: center;
+}
+
+::placeholder {
+  color: black !important;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.input-group {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  width: 100%;
+  height: 100%;
+}
+
+.DateRangePicker__Month {
+  margin: 0px !important;
+}
+
+.input-group label {
+  float: left;
+  margin-right: 5px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.popover {
+  max-width: 100% !important;
+  min-width: 200px;
+}
+
+#calendario,
+#huespedes {
+  width: 90%;
+  text-align: center;
+}
+
+#fechas {
+  width: 100%;
+  text-align: center;
+}
+
+.input-group input {
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  height: 70px;
+  font-size: 14pt;
+  border: none;
+}
+
+.filtro {
+  min-height: 70px;
+}
+
+.input-group h5 {
+  padding-top: 20px;
+}
+
+#calendario h5 {
+  padding-top: 25px;
+}
+
+.input-group .SearcherIcon {
+  height: 70px;
+  border: none;
+  color: white;
+  width: 100%;
+  font-size: 14pt;
+  border-radius: 0px;
+  background-color: #FA6839;
+}
+
+.input-group .SearcherIcon:hover {
+  color: white;
+}
+
+.incrementIcon {
+  height: 70px;
+  border: none;
+  color: #FA6839;
+  width: 50%;
+  font-size: 14pt;
+  border-radius: 0px;
+  background-color: white;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+  background-color: #FA6839;
 }
 
 /*!

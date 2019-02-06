@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import {
     CardTitle,
     CardHeader,
@@ -19,21 +20,21 @@ class FormLogin extends Component {
         return (
             <Container className="my-4">
                 <Row>
-                    <Col md="6" sm="12">
+                    <Col className="d-none d-lg-block" md="6" style={{padding: 7 + '%'}}>
                         <img src="img/clipboard.png" alt="logo" height="100%" width="100%"/>
                     </Col>
-                    <Col md="6" sm="12">
+                    <Col lg="6" sm="12">
                         <Card className="shadow bg-light">
                             <CardTitle className="text-center mt-5 mb-3"><h3>REGISTRATE</h3></CardTitle>
                             <CardBody>
                                 <Form>
-                                    <Col className="my-2" md="6">
+                                    <Col className="my-2" sm="5" md="6">
                                         <FormGroup>
                                             <Label for='nombre'>Nombre</Label>
                                             <Input type="text" name='nombre' id='nombre' placeholder="hello"/>
                                         </FormGroup>
                                     </Col>
-                                    <Col className="my-2" md="6">
+                                    <Col className="my-2" sm="5" md="6">
                                         <FormGroup>
                                             <Label for='apellido1'>Primer Apellido</Label>
                                             <Input type="text" name='apellido1' id='apellido1' placeholder="hello"/>
@@ -78,10 +79,10 @@ class FormLogin extends Component {
                                     <Col className="my-2" md="12">
                                         <Row>
                                             <Col md="6">
-                                                <Button block className="bg-primary">Cancelar</Button>
+                                                <Link className="btn btn-block bg-primary btn-cancelar" to="/">Cancelar</Link>
                                             </Col>
                                             <Col md="6">
-                                                <Button block className="bg-primary">Confirmar</Button>
+                                                <Button block color="primary">Confirmar</Button>
                                             </Col>
                                         </Row>
                                     </Col>

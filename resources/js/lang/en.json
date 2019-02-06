@@ -17,5 +17,19 @@
     "about-us": "About us",
     "support": "Support",
     "home": "Home"
+  },
+  "searcher": {
+    "ciudad": "Where do you want to go?",
+    "huespedes": "guests"
+  },
+  "index": {
+    "titleIndex": "BOOK APARTMENTS ALL OVER THE WORLD"
+  },
+  "carrousel": {
+    "recomendacion": "We recommend you",
+    "fr": "France",
+    "gr": "Germany",
+    "es": "Spain",
+    "mv": "Maldives"
   }
 }

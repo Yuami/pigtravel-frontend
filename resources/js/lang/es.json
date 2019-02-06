@@ -17,5 +17,19 @@
     "about-us": "Sobre nosotros",
     "support": "Atención al cliente",
     "home": "Inicio"
+  },
+  "searcher": {
+    "ciudad": "¿Donde quieres ir",
+    "huespedes": "huespedes"
+  },
+  "index": {
+    "titleIndex": "RESERVA APARTAMENTOS EN TODO EL MUNDO"
+  },
+  "carrousel": {
+    "recomendacion": "Te recomendamos",
+    "fr": "Francia",
+    "gr": "Alemania",
+    "es": "España",
+    "mv": "Maldivas"
   }
 }

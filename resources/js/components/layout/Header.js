@@ -24,7 +24,7 @@ import Translate from "../../lang/Translate";
 class Header extends Component {
     render() {
         return (
-            <Navbar className="navbar-light navbar-expand-md bg-faded justify-content-center">
+            <Navbar className="navbar-light navbar-expand-md bg-white justify-content-center sticky-top">
                 <NavbarBrand href="/" className="navbar-brand d-flex w-50 mr-auto">
                     <img src="img/clipboard.png" alt="logo" className="header-logo"></img>
                 </NavbarBrand>
@@ -39,10 +39,10 @@ class Header extends Component {
                     </Nav>
                     <Nav className="navbar-nav ml-auto w-100 justify-content-end">
                         <NavItem className="header-content">
-                            <NavLink><Link to="/login"><Translate string={'login'} type={'header'}/></Link></NavLink>
+                            <NavLink><Link to="#"><Translate string={'login'} type={'header'}/></Link></NavLink>
                         </NavItem>
                         <NavItem className="header-content">
-                            <NavLink href="#"><Translate string={'register'} type={'header'}/></NavLink>
+                            <NavLink><Link to="/login"><Translate string={'register'} type={'header'}/></Link></NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
