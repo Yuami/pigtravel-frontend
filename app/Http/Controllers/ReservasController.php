@@ -14,7 +14,8 @@ class ReservasController extends Controller
     }
 
     public function show(Reserva $reserva) {
-        return Reserva::findOrFail($reserva->id);
+        return view('bookingDetails');
+
     }
 
     public function destroy(Reserva $reserva) {

@@ -1,5 +1,10 @@
+html, body {
+  height: 100%;
+  position: relative;
+}
+
 body {
-  font-family: Roboto, "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 // Theme colors
@@ -7,3 +12,10 @@ $primary: #FA6839;
 $secondary: #314D68;
 $light: #F6F7FC;
 $info: #22CDF3;
+
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "light": $light,
+        "info": $info
+);

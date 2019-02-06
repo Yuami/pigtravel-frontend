@@ -8,15 +8,13 @@ import PropTypes from "prop-types"
 class FooterCol extends Component {
     render() {
         const type = "footer";
-        const {title} = this.props;
+        const {title, xs, sm, md} = this.props;
         const media = this.props.media !== undefined;
-
+        const headerClass = media ? "d-none d-md-block" : null;
         return (
-            <Col xs={this.props.xs} md={this.props.md}>
-                <h4><Translate type={type} string={title}/></h4>
-                <ul className="list-unstyled" style={{
-                    fontSize: "14px"
-                }}>
+            <Col xs={xs} sm={sm} md={md}>
+                <h4 className={headerClass}><Translate type={type} string={title}/></h4>
+                <ul className="list-unstyled" style={{fontSize: "14px"}}>
                     {media ? (<MyMedia/>) : null}
                     {
                         this.props.list
@@ -36,6 +34,7 @@ class FooterCol extends Component {
 
 FooterCol.propTypes = {
     xs: PropTypes.string.isRequired,
+    sm: PropTypes.string.isRequired,
     md: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     media: PropTypes.bool,

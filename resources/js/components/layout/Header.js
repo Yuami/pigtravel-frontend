@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
-
+import {LocaleContext} from "../../LocaleContext";
 import PropTypes from 'prop-types';
 import {
     Navbar,
@@ -24,7 +24,7 @@ import Translate from "../../lang/Translate";
 class Header extends Component {
     render() {
         return (
-            <Navbar className="navbar-light navbar-expand-md bg-white justify-content-center">
+            <Navbar className="navbar-light navbar-expand-md bg-white justify-content-center sticky-top">
                 <NavbarBrand href="/" className="navbar-brand d-flex w-50 mr-auto">
                     <img src="img/clipboard.png" alt="logo" className="header-logo"></img>
                 </NavbarBrand>
@@ -45,12 +45,7 @@ class Header extends Component {
                             <NavLink href="#"><Translate string={'register'} type={'header'}/></NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                <img src="img/spain-flag.png" height="20"></img>
-                            </DropdownToggle>
-                            <DropdownMenu right>
-                                <LanguagePicker changeLanguage={this.props.changeLanguage} />
-                            </DropdownMenu>
+                                <LanguagePicker changeLanguage={this.props.changeLanguage}/>
                         </UncontrolledDropdown>
                     </Nav>
                 </Collapse>

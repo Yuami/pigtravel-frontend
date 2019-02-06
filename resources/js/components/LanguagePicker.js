@@ -1,23 +1,50 @@
 import React, {Component} from 'react'
-import {DropdownItem, DropdownMenu} from "reactstrap";
+import PropTypes from 'prop-types';
+import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from "reactstrap";
+import DropListLangs from "./DropListLangs";
+import {LocaleContext} from "../LocaleContext";
 
 class LanguagePicker extends Component {
 
+    constructor(props) {
+        super(props);
+
+        const languages = [
+            {
+                id: 'es',
+                img: 'img/spain-flag.png',
+                name: 'Español',
+            },
+            {
+                id: 'en',
+                img: 'img/united-kingdom-flag.png',
+                name: 'English',
+            }
+        ];
+
+        const language = languages[0];
+        this.state = {
+            languages,
+            language
+        }
+    }
+
+    handleImg(language) {
+        language = this.state.languages.find(lang => lang.id == language);
+        return language.img;
+    }
 
     render() {
-        const {changeLanguage} = this.props;
         return (
             <>
-                <a id="es" onClick={changeLanguage}>
-                    <DropdownItem>
-                        <img src="img/spain-flag.png" height="20"></img> Español
-                    </DropdownItem>
-                </a>
-                <a id="en" onClick={changeLanguage}>
-                    <DropdownItem>
-                        <img src="img/united-kingdom-flag.png" height="20"></img> English
-                    </DropdownItem>
-                </a>
+                <DropdownToggle nav caret>
+                    <LocaleContext.Consumer>
+                        {locale => <img src={this.handleImg(locale)} height='20px'></img>}
+                    </LocaleContext.Consumer>
+                </DropdownToggle>
+                <DropdownMenu right>
+                    <DropListLangs data={this.state.languages} changeLanguage={this.props.changeLanguage}/>
+                </DropdownMenu>
             </>
         )
     }

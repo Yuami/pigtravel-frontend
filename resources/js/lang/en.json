@@ -4,7 +4,7 @@
     "logout": "Log Out",
     "register": "Register"
   },
-  "footer" : {
+  "footer": {
     "about-us": "ABOUT PIG TRAVEL",
     "about-us.who": "About us",
     "about-us.terms": "Terms and conditions",
@@ -19,10 +19,22 @@
     "home": "Home"
   },
   "searcher": {
-    "ciudad": "Where do you want to go?",
-    "huespedes": "guests"
+    "city": "Where do you wanna go?",
+    "guests": "guests",
+    "checkin": "From ",
+    "checkout": "To "
   },
   "index": {
     "titleIndex": "BOOK APARTMENTS ALL OVER THE WORLD"
+  },
+  "carrousel": {
+    "recomendacion": "We recommend you",
+    "fr": "France",
+    "gr": "Germany",
+    "es": "Spain",
+    "mv": "Maldives"
+  },
+  "detalleReserva": {
+    "detalleReserva": "Booking details"
   }
 }
