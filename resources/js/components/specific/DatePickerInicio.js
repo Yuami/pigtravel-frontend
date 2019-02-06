@@ -28,7 +28,7 @@ class DatePickerInicio extends Component {
 
     renderSelectionValue = () => {
         return (
-            <div id="fechas">
+            <div className="inputSearcher">
                 <Translate type={'searcher'} string={'checkin'}/>
                 {this.state.value.start.format("DD-MM")}
                 {" "}<i className="fa fa-long-arrow-alt-right"></i>{" "}
@@ -44,8 +44,8 @@ class DatePickerInicio extends Component {
 
             <InputGroup>
                 <Label><i className="fa fa-calendar"></i></Label>
-                <div id="calendario" color="">
-                    <h5>{this.renderSelectionValue()}</h5>
+                <div id="calendario">
+                    {this.renderSelectionValue()}
                 </div>
                 <Popover placement="bottom" isOpen={this.state.show} target="calendario"
                          toggle={this.ToggleDiv} trigger="legacy">
