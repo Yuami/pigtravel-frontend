@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import { LocaleContext } from "../LocaleContext.js";
 import Header from "./layout/Header";
 import {BrowserRouter, Switch, Route} from "react-router-dom"
-import axios from 'axios';
 import Footer from "./layout/Footer";
 import Home from "../Views/Home";
+import Login from "../Views/Login";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
-import TitleInicio from "./specific/TitleInicio";
-import Searcher from "./layout/Searcher";
 import MainModal from "./layout/MainModal";
 import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
@@ -44,8 +42,9 @@ export default class Main extends Component {
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/bookings" component={BookingDetail}/>
                     <Route exact path="/about-us" component={AboutUs}/>
+                    <Route exact path="/login" component={Login}/>
                     <Route exact path="/modal">
-                        <MainModal buttonLabel="Reservate" />
+                        <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"} primaryButton={"lol"}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                 </Switch>
