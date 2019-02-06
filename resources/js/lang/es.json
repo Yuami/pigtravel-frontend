@@ -34,7 +34,12 @@
     "es": "España",
     "mv": "Maldivas"
   },
-  "detalleReserva": {
-    "detalleReserva": "Detalles reserva"
+  "bookingDetails": {
+    "bookingDetails": "Detalles reserva",
+    "owner": "Propietario",
+    "checkIn": "Entrada",
+    "checkOut": "Salida",
+    "guests": "Huespedes",
+    "pricePerNight": "Precio por noche"
   }
 }

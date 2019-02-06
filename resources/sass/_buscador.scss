@@ -17,7 +17,7 @@
   padding-left: 0px !important;
   padding-right: 0px !important;
   width: 100%;
-  height: 100%;
+  min-height: 70px;
 }
 
 .DateRangePicker__Month {
@@ -26,23 +26,29 @@
 
 .input-group label {
   float: left;
-  margin-right: 5px;
-  margin-top: 25px;
+  margin-top: 22px;
   text-align: center;
-
+  overflow: hidden;
+  font-size: 12pt;
 }
 
 
 .popover { max-width: 100% !important;
 min-width: 200px}
 
-#calendario,#huespedes{
-  width: 90%;
+#calendario,#guests, #location{
+  width: 85%;
   text-align: center;
 }
-#fechas{
+
+.inputSearcher{
   width: 100%;
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px !important;
 }
 
 .input-group input {
@@ -70,7 +76,7 @@ min-width: 200px}
   border: none;
   color: white;
   width: 100%;
-  font-size: 14pt;
+  font-size: 9pt;
   border-radius: 0px;
   background-color: #FA6839;
 }
