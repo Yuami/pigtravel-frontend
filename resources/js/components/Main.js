@@ -5,6 +5,7 @@ import {BrowserRouter, Switch, Route} from "react-router-dom"
 import axios from 'axios';
 import Footer from "./layout/Footer";
 import Home from "../Views/Home";
+import Login from "../Views/Login";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
 import TitleInicio from "./specific/TitleInicio";
@@ -44,6 +45,7 @@ export default class Main extends Component {
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/bookings" component={BookingDetail}/>
                     <Route exact path="/about-us" component={AboutUs}/>
+                    <Route exact path="/login" component={Login}/>
                     <Route exact path="/modal">
                         <MainModal buttonLabel="Reservate" />
                     </Route>

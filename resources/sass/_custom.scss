@@ -7,6 +7,23 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.form-control {
+  border: 0 !important;
+}
+
+.btn {
+  border: 0 !important;
+  background: $primary !important;
+}
+
+.btn-cancelar {
+  color: white;
+}
+
+.card {
+  border: 0px !important;
+}
+
 // Theme colors
 $primary: #FA6839;
 $secondary: #314D68;
