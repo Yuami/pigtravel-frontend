@@ -10,7 +10,10 @@ import * as ReactDOM from "react-dom";
 import MainModal from "./layout/MainModal";
 import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
+import Panel from "./layout/Panel";
+import ReservationForm from "./layout/ReservationForm";
 import Register from "../Views/Register";
+
 
 
 export default class Main extends Component {
@@ -39,14 +42,15 @@ export default class Main extends Component {
         return (
             <LocaleContext.Provider value={this.state.locale}>
                 <Header changeLanguage={this.changeLanguage} />
+                <userRouter />
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/bookings" component={BookingDetail}/>
                     <Route exact path="/about-us" component={AboutUs}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>
-                    <Route exact path="/modal">
-                        <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"} primaryButton={"lol"}/>
+                    <Route exact path="/phil">
+                        <ReservationForm idVivienda={49}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                 </Switch>

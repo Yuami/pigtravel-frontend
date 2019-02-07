@@ -5,6 +5,7 @@ import DatePickerInicio from "../specific/DatePickerInicio"
 import FaIcon from "../general/FaIcon";
 import {LocaleContext} from "../../LocaleContext";
 import {translate} from "../../helpers";
+import AutocompleteCity from "../specific/AutocompleteCity";
 
 class Searcher extends Component {
     constructor(props, context) {
@@ -43,11 +44,7 @@ class Searcher extends Component {
                             <FaIcon icon={'fa fa-globe'}/>
                         </Label>
                         <div id="location">
-                            <LocaleContext.Consumer>
-                                {locale => <input className="form-control inputSearcher" id="autocomplete" type="text"
-                                                  placeholder={translate(locale,'city','searcher')}
-                                                  name="location"></input>}
-                            </LocaleContext.Consumer>
+                            <AutocompleteCity/>
                         </div>
                     </InputGroup>
                 </Col>
@@ -63,7 +60,7 @@ class Searcher extends Component {
                         </Button>
                         </div>
                         <Popover placement="bottom" isOpen={this.state.show} target="guests"
-                                 toggle={this.ToggleDiv} trigger="legacy">
+                                 toggle={this.ToggleDiv} >
                             <PopoverBody>
                                 {decreaseBtn}
                                 <Button color="" className="incrementIcon" onClick={this.IncrementItem}><FaIcon icon={'fa fa-plus'}/></Button>

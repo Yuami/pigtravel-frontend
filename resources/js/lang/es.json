@@ -16,10 +16,13 @@
     "email": "contact@pigtravel.top",
     "about-us": "Sobre nosotros",
     "support": "Atención al cliente",
-    "home": "Inicio"
+    "home": "Inicio",
+    "more-information": "Más información"
   },
   "reservation": {
-    "house-rules": "Normas de la casa"
+    "house-rules": "Normas de la casa",
+    "allowed": "En esta casa puedes",
+    "disallowed": "En la casa no tienes permiso para"
   },
   "searcher": {
     "city": "¿Donde quieres ir?",
@@ -47,5 +50,12 @@
     "priceBreakdown": "Desglose precio",
     "serviceFee": "Tarifa de servicio",
     "total": "Total"
+  },
+  "pagesTitles": {
+    "messages": "Mensajes",
+    "contact" : "Contacto",
+    "home": "Inicio",
+    "bookings": "Reservas",
+    "booking": "Reserva"
   }
 }

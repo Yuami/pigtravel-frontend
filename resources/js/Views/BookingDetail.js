@@ -3,15 +3,28 @@ import Translate from "../lang/Translate";
 import Container from "reactstrap/es/Container";
 import Row from "reactstrap/es/Row";
 import Col from "reactstrap/es/Col";
-import Rater from "react-rater";
+import UserRouter from "../components/layout/UserRouter";
+import PropTypes from "prop-types";
 
 class BookingDetail extends Component {
     render() {
+        const bookingDetails = [
+            {
+                type: 'bookings',
+                link: '/bookings'
+            },
+            {
+                type: 'booking',
+                link: '/bookings/booking'
+            },
+        ];
+
         return (
-            <Container className="bookingCont mt-5">
-                <h2><Translate type="bookingDetails" string="bookingDetails"/></h2>
-                <Row className="mb-2 mt-5">
-                        <Col lg="12" className="shadow ">
+            <div>
+                <UserRouter title={'booking'} list={bookingDetails}/>
+            <Container className="bookingCont shadow">
+                <Row className="mb-2">
+                        <Col lg="12">
                             <Row>
                                 <Col lg="2" className="image">
                                     <img src="img/casa.png" class="img img-responsive full-width"></img>
@@ -19,7 +32,7 @@ class BookingDetail extends Component {
                                 <Col lg="7" sm="12" xs="12" >
                                     <Row>
                                         <Col>
-                                            <h1>Sweet home alabama</h1>
+                                            <h1>houseName</h1>
                                         </Col>
                                     </Row>
                                     <Row>
@@ -28,9 +41,9 @@ class BookingDetail extends Component {
                                         </Col>
                                     </Row>
                                 </Col>
-                                <Col lg="2" sm="4" xs="11" className="float-right">
+                                <Col lg="2" sm="11" xs="11" className="float-right">
                                     <Row className="precio">
-                                            <h1><strong>635€</strong></h1>
+                                            <h1><strong>Pagada</strong></h1>
                                     </Row>
                                 </Col>
                             </Row>
@@ -39,9 +52,9 @@ class BookingDetail extends Component {
 
 
                 <Row className="mb-2">
-                    <Col lg="5">
+                    <Col lg="6">
                         <Row>
-                        <Col lg="12" sm="12" xs="12" className="shadow detalle" >
+                        <Col lg="12" sm="12" xs="12" className="detalle" >
                             <Row>
                                 <h4><strong><Translate type="bookingDetails" string="owner"/></strong></h4>
                             </Row>
@@ -56,7 +69,7 @@ class BookingDetail extends Component {
                         </Col>
                         </Row>
                         <Row>
-                            <Col lg="12" className="shadow detalle">
+                            <Col lg="12" className="detalle">
                                 <Row>
                                     <h4><strong><Translate type="bookingDetails" string="checkIn"/></strong></h4>
                                 </Row>
@@ -84,7 +97,7 @@ class BookingDetail extends Component {
                                 </Row>
                                 <Row>
                                     <Col lg="6" xs="6" className="text-center">
-                                        <h4>2 huespedes</h4>
+                                        <h4>2</h4>
                                     </Col>
                                 </Row>
                                 <Row>
@@ -102,7 +115,7 @@ class BookingDetail extends Component {
                     </Col>
                     <Col lg="5" className="ml-auto">
                         <Row>
-                            <Col lg="12" className="shadow detalle">
+                            <Col lg="12" className="detalle">
                                 <Row>
                                     <h4><strong><Translate type="bookingDetails" string="priceBreakdown"/></strong></h4>
                                 </Row>
@@ -136,8 +149,13 @@ class BookingDetail extends Component {
                 </Row>
 
             </Container>
+                </div>
         );
     }
 }
 
+BookingDetail.propTypes = {
+    houseName: PropTypes.string,
+
+};
 export default BookingDetail;

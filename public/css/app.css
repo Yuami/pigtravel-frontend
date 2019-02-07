@@ -193,7 +193,13 @@ footer {
   padding-left: 0px !important;
   padding-right: 0px !important;
   width: 100%;
-  min-height: 70px;
+  height: 70px;
+}
+
+.css-vj8t7z,
+.css-2o5izw {
+  max-height: 65px;
+  box-shadow: black;
 }
 
 .DateRangePicker__Month {
@@ -276,24 +282,18 @@ footer {
   background-color: white;
 }
 
+.btn-primary.focus,
+.btn-primary:focus {
+  background-color: #FA6839;
+}
+
 .bookingCont {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 78vh;
-  padding: 10px;
-}
-
-.is-disabled {
-  color: gray;
-}
-
-.is-active {
-  color: #ffb250 !important;
-}
-
-.react-rater {
-  display: inline-block;
+  padding-left: 50px !important;
+  padding-right: 50px !important;
+  margin-top: 20px;
 }
 
 .userImg {
@@ -312,11 +312,6 @@ footer {
 .detalle {
   padding-left: 30px !important;
   padding-top: 15px;
-}
-
-.btn-primary.focus,
-.btn-primary:focus {
-  background-color: #FA6839;
 }
 
 .main-container {
@@ -339,6 +334,11 @@ footer {
   .main-container {
     padding-bottom: 150px;
   }
+}
+
+#reservationForm ul,
+#reservationForm li {
+  list-style-type: none;
 }
 
 /*!

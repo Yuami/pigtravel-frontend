@@ -45,6 +45,7 @@
     "react-leaf-carousel": "^1.2.2",
     "react-rater": "^5.0.5",
     "react-router-dom": "^4.3.1",
+    "react-select": "^2.3.0",
     "react-slick": "^0.23.2",
     "reactstrap": "^7.1.0"
   }

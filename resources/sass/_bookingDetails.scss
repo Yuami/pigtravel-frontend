@@ -2,18 +2,11 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 78vh;
-  padding: 10px;
+  padding-left: 50px !important;
+  padding-right: 50px !important;
+  margin-top:20px;
 }
-.is-disabled{
-  color: gray;
-}
-.is-active{
-  color: #ffb250 !important;
-}
-.react-rater{
-  display: inline-block;
-}
+
 .userImg{
   padding: 10px;
 }
@@ -24,7 +17,6 @@
   display: flex;
   justify-content: flex-end
 }
-
 .detalle{
   padding-left: 30px !important;
   padding-top: 15px;

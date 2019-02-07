@@ -13,13 +13,16 @@
     "follow": "STALK US"
   },
   "reservation": {
-    "house-rules": "Rules of the house"
+    "house-rules": "Rules of the house",
+    "allowed": "You're allowed to",
+    "disallowed": "In the house you're not permitted to"
   },
   "general": {
     "email": "contact@pigtravel.top",
     "about-us": "About us",
     "support": "Support",
-    "home": "Home"
+    "home": "Home",
+    "more-information": "More information"
   },
   "searcher": {
     "city": "Where do you wanna go?",
@@ -47,5 +50,12 @@
     "priceBreakdown": "Price breakdown",
     "serviceFee": "Service fee",
     "total": "Total"
+  },
+  "pagesTitles": {
+    "messages": "Messages",
+    "contact" : "Contact",
+    "home": "Home",
+    "bookings": "Bookings",
+    "booking": "Booking"
   }
 }

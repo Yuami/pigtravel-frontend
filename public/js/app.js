@@ -86379,257 +86379,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/react-rater/lib/index.js":
-/*!***********************************************!*\
-  !*** ./node_modules/react-rater/lib/index.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Star = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _star = __webpack_require__(/*! ./star */ "./node_modules/react-rater/lib/star.js");
-
-var _star2 = _interopRequireDefault(_star);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-exports.Star = _star2.default;
-
-var Rater = function (_Component) {
-  _inherits(Rater, _Component);
-
-  function Rater(props) {
-    _classCallCheck(this, Rater);
-
-    var _this = _possibleConstructorReturn(this, (Rater.__proto__ || Object.getPrototypeOf(Rater)).call(this, props));
-
-    _this.state = {
-      rating: props.rating,
-      lastRating: props.rating,
-      isRating: false
-    };
-    return _this;
-  }
-
-  _createClass(Rater, [{
-    key: 'willRate',
-    value: function willRate(rating, e) {
-      this.setState({
-        rating: rating,
-        isRating: true
-      });
-      var callback = this.props.onRating;
-
-      callback && callback(_extends({}, e, { rating: rating }));
-    }
-  }, {
-    key: 'onRate',
-    value: function onRate(rating, e) {
-      this.setState({
-        rating: rating,
-        lastRating: rating,
-        isRating: false
-      });
-      var callback = this.props.onRate;
-
-      callback && callback(_extends({}, e, { rating: rating }));
-    }
-  }, {
-    key: 'onCancelRate',
-    value: function onCancelRate() {
-      var rating = this.state.lastRating;
-
-      this.setState({
-        rating: rating,
-        isRating: false
-      });
-      var callback = this.props.onCancelRate;
-
-      callback && callback({ rating: rating });
-    }
-  }, {
-    key: 'UNSAFE_componentWillReceiveProps',
-    value: function UNSAFE_componentWillReceiveProps(nextProps, props) {
-      var rating = nextProps.rating;
-
-      if (rating !== props.rating) {
-        this.setState({
-          rating: rating,
-          lastRating: rating
-        });
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var _props = this.props,
-          total = _props.total,
-          interactive = _props.interactive,
-          children = _props.children,
-          restProps = _objectWithoutProperties(_props, ['total', 'interactive', 'children']);
-
-      var _state = this.state,
-          rating = _state.rating,
-          isRating = _state.isRating;
-
-      children = _react.Children.toArray(children);
-      delete restProps.rating;
-      delete restProps.onRate;
-      delete restProps.onRating;
-      delete restProps.onCancelRate;
-      var nodes = Array.apply(null, Array(total)).map(function (_, i) {
-        var starProps = {
-          isActive: !isRating && rating - i >= 1,
-          willBeActive: isRating && i < rating,
-          isActiveHalf: !isRating && rating - i >= 0.5 && rating - i < 1,
-          isDisabled: !interactive
-        };
-        return _react2.default.createElement(
-          'div',
-          {
-            key: 'star-' + i,
-            onClick: interactive ? _this2.onRate.bind(_this2, i + 1) : null,
-            onMouseOver: interactive ? _this2.willRate.bind(_this2, i + 1) : null
-          },
-          children.length ? _react2.default.cloneElement(children[i % children.length], starProps) : _react2.default.createElement(_star2.default, starProps)
-        );
-      });
-      if (interactive) {
-        return _react2.default.createElement(
-          'div',
-          _extends({
-            className: 'react-rater',
-            onMouseOut: this.onCancelRate.bind(this)
-          }, restProps),
-          nodes
-        );
-      } else {
-        return _react2.default.createElement(
-          'div',
-          _extends({ className: 'react-rater' }, restProps),
-          nodes
-        );
-      }
-    }
-  }]);
-
-  return Rater;
-}(_react.Component);
-
-exports.default = Rater;
-
-
-Rater.propTypes = {
-  total: _propTypes2.default.number,
-  rating: _propTypes2.default.number,
-  interactive: _propTypes2.default.bool,
-  children: _propTypes2.default.any,
-  onRate: _propTypes2.default.func,
-  onRating: _propTypes2.default.func,
-  onCancelRate: _propTypes2.default.func
-};
-
-Rater.defaultProps = {
-  total: 5,
-  rating: 0,
-  interactive: true
-};
-
-/***/ }),
-
-/***/ "./node_modules/react-rater/lib/star.js":
-/*!**********************************************!*\
-  !*** ./node_modules/react-rater/lib/star.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Star = function Star(props) {
-  var starProps = Object.assign({}, props);
-  var nameMap = {
-    isDisabled: 'is-disabled',
-    isActive: 'is-active',
-    isActiveHalf: 'is-active-half',
-    willBeActive: 'will-be-active'
-  };
-  var className = Object.keys(nameMap).filter(function (prop) {
-    return delete starProps[prop], props[prop];
-  }).map(function (prop) {
-    return nameMap[prop];
-  }).join(' ');
-  return _react2.default.createElement(
-    'div',
-    _extends({ className: 'react-rater-star ' + className }, starProps),
-    '\u2605'
-  );
-};
-
-Star.defaultProps = {
-  willBeActive: false,
-  isActive: false,
-  isActiveHalf: false,
-  isDisabled: false
-};
-
-Star.propTypes = {
-  isActive: _propTypes2.default.bool,
-  isActiveHalf: _propTypes2.default.bool,
-  willBeActive: _propTypes2.default.bool,
-  isDisabled: _propTypes2.default.bool
-};
-
-exports.default = Star;
-
-/***/ }),
-
 /***/ "./node_modules/react-router-dom/es/BrowserRouter.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-router-dom/es/BrowserRouter.js ***!
@@ -102455,8 +102204,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap/es/Container */ "./node_modules/reactstrap/es/Container.js");
 /* harmony import */ var reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap/es/Row */ "./node_modules/reactstrap/es/Row.js");
 /* harmony import */ var reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap/es/Col */ "./node_modules/reactstrap/es/Col.js");
-/* harmony import */ var react_rater__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-rater */ "./node_modules/react-rater/lib/index.js");
-/* harmony import */ var react_rater__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_rater__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_layout_UserRouter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/layout/UserRouter */ "./resources/js/components/layout/UserRouter.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102482,6 +102232,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var BookingDetail =
 /*#__PURE__*/
 function (_Component) {
@@ -102496,16 +102247,22 @@ function (_Component) {
   _createClass(BookingDetail, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        className: "bookingCont mt-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        type: "bookingDetails",
-        string: "bookingDetails"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        className: "mb-2 mt-5"
+      var bookingDetails = [{
+        type: 'bookings',
+        link: '/bookings'
+      }, {
+        type: 'booking',
+        link: '/bookings/booking'
+      }];
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_UserRouter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        title: 'booking',
+        list: bookingDetails
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        className: "bookingCont shadow"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        className: "mb-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        lg: "12",
-        className: "shadow "
+        lg: "12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
         lg: "2",
         className: "image"
@@ -102516,22 +102273,22 @@ function (_Component) {
         lg: "7",
         sm: "12",
         xs: "12"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Sweet home alabama"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Palma de Mallorca, Espa\xF1a")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "houseName"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Palma de Mallorca, Espa\xF1a")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
         lg: "2",
-        sm: "4",
+        sm: "11",
         xs: "11",
         className: "float-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], {
         className: "precio"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "635\u20AC"))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Pagada"))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], {
         className: "mb-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        lg: "5"
+        lg: "6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
         lg: "12",
         sm: "12",
         xs: "12",
-        className: "shadow detalle"
+        className: "detalle"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_1__["default"], {
         type: "bookingDetails",
         string: "owner"
@@ -102549,7 +102306,7 @@ function (_Component) {
         className: "my-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Philipp Vujic"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
         lg: "12",
-        className: "shadow detalle"
+        className: "detalle"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_1__["default"], {
         type: "bookingDetails",
         string: "checkIn"
@@ -102579,7 +102336,7 @@ function (_Component) {
         lg: "6",
         xs: "6",
         className: "text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "2 huespedes"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "2"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_1__["default"], {
         type: "bookingDetails",
         string: "pricePerNight"
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -102591,7 +102348,7 @@ function (_Component) {
         className: "ml-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
         lg: "12",
-        className: "shadow detalle"
+        className: "detalle"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_1__["default"], {
         type: "bookingDetails",
         string: "priceBreakdown"
@@ -102633,13 +102390,16 @@ function (_Component) {
         sm: "6",
         xs: "6",
         className: "text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "635\u20AC"))))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "635\u20AC")))))))));
     }
   }]);
 
   return BookingDetail;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
+BookingDetail.propTypes = {
+  houseName: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string
+};
 /* harmony default export */ __webpack_exports__["default"] = (BookingDetail);
 
 /***/ }),
@@ -103270,7 +103030,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layout_MainModal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./layout/MainModal */ "./resources/js/components/layout/MainModal.js");
 /* harmony import */ var _Views_Terms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Views/Terms */ "./resources/js/Views/Terms.js");
 /* harmony import */ var _Views_BookingDetail__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Views/BookingDetail */ "./resources/js/Views/BookingDetail.js");
-/* harmony import */ var _Views_Register__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Views/Register */ "./resources/js/Views/Register.js");
+/* harmony import */ var _layout_Panel__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./layout/Panel */ "./resources/js/components/layout/Panel.js");
+/* harmony import */ var _layout_ReservationForm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./layout/ReservationForm */ "./resources/js/components/layout/ReservationForm.js");
+/* harmony import */ var _Views_Register__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Views/Register */ "./resources/js/Views/Register.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -103290,6 +103052,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -103349,7 +103113,7 @@ function (_Component) {
         value: this.state.locale
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         changeLanguage: this.changeLanguage
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("userRouter", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/",
         component: _Views_Home__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -103368,15 +103132,12 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/register",
-        component: _Views_Register__WEBPACK_IMPORTED_MODULE_12__["default"]
+        component: _Views_Register__WEBPACK_IMPORTED_MODULE_14__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
-        path: "/modal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_MainModal__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        buttonLabel: "Reservate",
-        modalBody: "body",
-        modalHeader: "header",
-        primaryButton: "lol"
+        path: "/phil"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_ReservationForm__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        idVivienda: 49
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/terms",
@@ -105231,6 +104992,201 @@ MainModal.propTypes = {
 
 /***/ }),
 
+/***/ "./resources/js/components/layout/Panel.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/layout/Panel.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Panel =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Panel, _Component);
+
+  function Panel(props) {
+    _classCallCheck(this, Panel);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Panel).call(this, props));
+  }
+
+  _createClass(Panel, [{
+    key: "render",
+    value: function render() {
+      var header = this.props.header ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "panel-heading"
+      }, this.props.header) : null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: this.props.id,
+        className: "panel panel-default shadow"
+      }, header, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "panel-body"
+      }, this.props.children)));
+    }
+  }]);
+
+  return Panel;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+Panel.propTypes = {
+  id: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  header: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  body: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (Panel);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/ReservationForm.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/layout/ReservationForm.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../lang/Translate */ "./resources/js/lang/Translate.js");
+/* harmony import */ var _Panel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Panel */ "./resources/js/components/layout/Panel.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _MainModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MainModal */ "./resources/js/components/layout/MainModal.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+
+var ReservationForm =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ReservationForm, _Component);
+
+  function ReservationForm(props) {
+    var _this;
+
+    _classCallCheck(this, ReservationForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ReservationForm).call(this, props));
+    _this.state = {
+      servicios: []
+    };
+    return _this;
+  }
+
+  _createClass(ReservationForm, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      var url = '/api/servicio/' + this.props.idVivienda;
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(url).then(function (res) {
+        _this2.setState({
+          servicios: res.data
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var renderServicios = this.state.servicios.map(function (value, index, array) {
+        if ([4, 13, 18].includes(value.idServicio)) {
+          if (value.activo) {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              type: "reservation",
+              string: "allowed"
+            }), " ", value.nombre.toLowerCase());
+          } else {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              type: "reservation",
+              string: "disallowed"
+            }), " ", value.nombre.toLowerCase());
+          }
+        }
+      });
+      var renderInformacion = [];
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Panel__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        id: "reservationForm",
+        body: "Body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        type: 'reservation',
+        string: 'house-rules'
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, renderServicios), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        type: 'general',
+        string: 'more-information'
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MainModal__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        buttonLabel: "lol",
+        modalHeader: "ja",
+        modalBody: "lol",
+        primaryButton: "ey"
+      }));
+    }
+  }]);
+
+  return ReservationForm;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+ReservationForm.propTypes = {
+  idVivienda: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
+  xs: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number,
+  md: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number
+};
+/* harmony default export */ __webpack_exports__["default"] = (ReservationForm);
+
+/***/ }),
+
 /***/ "./resources/js/components/layout/Searcher.js":
 /*!****************************************************!*\
   !*** ./resources/js/components/layout/Searcher.js ***!
@@ -105248,6 +105204,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _general_FaIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../general/FaIcon */ "./resources/js/components/general/FaIcon.js");
 /* harmony import */ var _LocaleContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../LocaleContext */ "./resources/js/LocaleContext.js");
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers.js");
+/* harmony import */ var _specific_AutocompleteCity__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../specific/AutocompleteCity */ "./resources/js/components/specific/AutocompleteCity.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -105267,6 +105224,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -105348,15 +105306,7 @@ function (_Component) {
         icon: 'fa fa-globe'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "location"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_5__["LocaleContext"].Consumer, null, function (locale) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          className: "form-control inputSearcher",
-          id: "autocomplete",
-          type: "text",
-          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_6__["translate"])(locale, 'city', 'searcher'),
-          name: "location"
-        });
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_specific_AutocompleteCity__WEBPACK_IMPORTED_MODULE_7__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
         md: "6",
         lg: "4",
         sm: "12",
@@ -105383,8 +105333,7 @@ function (_Component) {
         placement: "bottom",
         isOpen: this.state.show,
         target: "guests",
-        toggle: this.ToggleDiv,
-        trigger: "legacy"
+        toggle: this.ToggleDiv
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["PopoverBody"], null, decreaseBtn, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         color: "",
         className: "incrementIcon",
@@ -105411,6 +105360,223 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Searcher);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/UserRouter.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/layout/UserRouter.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap/es/Container */ "./node_modules/reactstrap/es/Container.js");
+/* harmony import */ var reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap/es/Row */ "./node_modules/reactstrap/es/Row.js");
+/* harmony import */ var reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap/es/Col */ "./node_modules/reactstrap/es/Col.js");
+/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../lang/Translate */ "./resources/js/lang/Translate.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+
+var UserRouter =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(UserRouter, _Component);
+
+  function UserRouter() {
+    _classCallCheck(this, UserRouter);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(UserRouter).apply(this, arguments));
+  }
+
+  _createClass(UserRouter, [{
+    key: "render",
+    value: function render() {
+      var title = this.props.title;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        fluid: true,
+        className: "p-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        lg: "8",
+        xs: "8",
+        className: "mx-auto"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+        to: "/"
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        type: "pagesTitles",
+        string: "home"
+      })), this.props.list.map(function (obj) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " /", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+          to: obj.link
+        }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          type: "pagesTitles",
+          string: obj.type
+        })));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        type: "pagesTitles",
+        string: title
+      }))))));
+    }
+  }]);
+
+  return UserRouter;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+UserRouter.propTypes = {
+  title: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+  list: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object)
+};
+/* harmony default export */ __webpack_exports__["default"] = (UserRouter);
+
+/***/ }),
+
+/***/ "./resources/js/components/specific/AutocompleteCity.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/specific/AutocompleteCity.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'react-select'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../lang/Translate */ "./resources/js/lang/Translate.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+var AutocompleteCity =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(AutocompleteCity, _Component);
+
+  function AutocompleteCity(props) {
+    var _this;
+
+    _classCallCheck(this, AutocompleteCity);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AutocompleteCity).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleChange", function (selectedOption) {
+      _this.setState({
+        selectedOption: selectedOption
+      });
+    });
+
+    _this.state = {
+      options: [],
+      value: undefined,
+      label: undefined,
+      selectedOption: null
+    };
+    _this.getOptions = _this.getOptions.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(AutocompleteCity, [{
+    key: "getOptions",
+    value: function getOptions() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default()({
+        url: '/api/cities',
+        method: 'get'
+      }).then(function (response) {
+        _this2.setState({
+          options: response.data
+        });
+      }).catch(function (error) {
+        console.log(error, 'error cities');
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getOptions();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state = this.state,
+          selectedOption = _this$state.selectedOption,
+          options = _this$state.options;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(!(function webpackMissingModule() { var e = new Error("Cannot find module 'react-select'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+        value: selectedOption,
+        onChange: this.handleChange,
+        isSearchable: true,
+        options: options.map(function (v, k) {
+          return {
+            value: v.id,
+            label: v.name
+          };
+        }),
+        className: "inputSearcher",
+        placeholder: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          type: "searcher",
+          string: "city"
+        })
+      });
+    }
+  }]);
+
+  return AutocompleteCity;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AutocompleteCity);
 
 /***/ }),
 
@@ -105720,10 +105886,10 @@ Translate.propTypes = {
 /*!***********************************!*\
   !*** ./resources/js/lang/en.json ***!
   \***********************************/
-/*! exports provided: header, footer, reservation, general, searcher, index, carrousel, bookingDetails, default */
+/*! exports provided: header, footer, reservation, general, searcher, index, carrousel, bookingDetails, pagesTitles, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"reservation":{"house-rules":"Rules of the house"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"From ","checkout":"To "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"bookingDetails":{"bookingDetails":"Booking details","owner":"Owner","checkIn":"Check In","checkOut":"Check Out","guests":"Guests","pricePerNight":"Price per night","priceBreakdown":"Price breakdown","serviceFee":"Service fee","total":"Total"}};
+module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"reservation":{"house-rules":"Rules of the house","allowed":"You're allowed to","disallowed":"In the house you're not permitted to"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home","more-information":"More information"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"From ","checkout":"To "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"bookingDetails":{"bookingDetails":"Booking details","owner":"Owner","checkIn":"Check In","checkOut":"Check Out","guests":"Guests","pricePerNight":"Price per night","priceBreakdown":"Price breakdown","serviceFee":"Service fee","total":"Total"},"pagesTitles":{"messages":"Messages","contact":"Contact","home":"Home","bookings":"Bookings","booking":"Booking"}};
 
 /***/ }),
 
@@ -105731,10 +105897,10 @@ module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Regi
 /*!***********************************!*\
   !*** ./resources/js/lang/es.json ***!
   \***********************************/
-/*! exports provided: header, footer, general, reservation, searcher, index, carrousel, bookingDetails, default */
+/*! exports provided: header, footer, general, reservation, searcher, index, carrousel, bookingDetails, pagesTitles, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Iniciar Sesion","logout":"Cerrar Sesion","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quiénes somos?","about-us.terms":"Politicas de privacidad","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio"},"reservation":{"house-rules":"Normas de la casa"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","checkin":"Entrada ","checkout":"Salida "},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"bookingDetails":{"bookingDetails":"Detalles reserva","owner":"Propietario","checkIn":"Entrada","checkOut":"Salida","guests":"Huespedes","pricePerNight":"Precio por noche","priceBreakdown":"Desglose precio","serviceFee":"Tarifa de servicio","total":"Total"}};
+module.exports = {"header":{"login":"Iniciar Sesion","logout":"Cerrar Sesion","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quiénes somos?","about-us.terms":"Politicas de privacidad","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio","more-information":"Más información"},"reservation":{"house-rules":"Normas de la casa","allowed":"En esta casa puedes","disallowed":"En la casa no tienes permiso para"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","checkin":"Entrada ","checkout":"Salida "},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"bookingDetails":{"bookingDetails":"Detalles reserva","owner":"Propietario","checkIn":"Entrada","checkOut":"Salida","guests":"Huespedes","pricePerNight":"Precio por noche","priceBreakdown":"Desglose precio","serviceFee":"Tarifa de servicio","total":"Total"},"pagesTitles":{"messages":"Mensajes","contact":"Contacto","home":"Inicio","bookings":"Reservas","booking":"Reserva"}};
 
 /***/ }),
 
