@@ -12,7 +12,6 @@ import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
 import Panel from "./layout/Panel";
 import ReservationForm from "./layout/ReservationForm";
-import UserRouter from "./layout/UserRouter";
 
 
 
@@ -48,8 +47,9 @@ export default class Main extends Component {
                     <Route exact path="/bookings" component={BookingDetail}/>
                     <Route exact path="/about-us" component={AboutUs}/>
                     <Route exact path="/login" component={Login}/>
+                    <Route exact path="/register" component={Register}/>
                     <Route exact path="/phil">
-                        <ReservationForm idVivienda={50}/>
+                        <ReservationForm idVivienda={49}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                 </Switch>
