@@ -36,31 +36,32 @@ class Searcher extends Component {
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon icon={'fa fa-minus'}/></Button>;
 
         return (
-            <Col lg="8" sm="8" xs="10" className="buscador shadow">
-                <Col lg="4" sm="12" xs="12" className="filtro">
+            <Col md="10" lg="8" sm="8" xs="10"  className="buscador shadow">
+                <Col md="6" lg="4" sm="12"  xs="12" className="filtro">
                     <InputGroup>
                         <Label>
                             <FaIcon icon={'fa fa-globe'}/>
                         </Label>
-                        <div>
+                        <div id="location">
                             <LocaleContext.Consumer>
-                                {locale => <input className="form-control" id="autocomplete" type="text"
+                                {locale => <input className="form-control inputSearcher" id="autocomplete" type="text"
                                                   placeholder={translate(locale,'city','searcher')}
                                                   name="location"></input>}
                             </LocaleContext.Consumer>
                         </div>
                     </InputGroup>
                 </Col>
-                <Col lg="4" sm="5" xs="12" className="filtro">
+                <Col md="6" lg="4" sm="12" xs="12"  className="filtro">
                     <DatePickerInicio/>
                 </Col>
-                <Col lg="3" sm="5" xs="12" className="filtro">
+                <Col md="6" lg="3" sm="12" xs="12" className="filtro">
                     <InputGroup>
                         <Label><FaIcon icon={'fa fa-user'}/></Label>
-                        <Button id="guests" color="">
-                            <h5>{this.state.clicks} <Translate string={'guests'} type={'searcher'}/></h5>
+                        <div id="calendario">
+                        <Button id="guests" color="" className="inputSearcher">
+                            {this.state.clicks} <Translate string={'guests'} type={'searcher'}/>
                         </Button>
-                        
+                        </div>
                         <Popover placement="bottom" isOpen={this.state.show} target="guests"
                                  toggle={this.ToggleDiv} trigger="legacy">
                             <PopoverBody>
@@ -71,7 +72,7 @@ class Searcher extends Component {
 
                     </InputGroup>
                 </Col>
-                <Col lg="1" sm="2" xs="12" className="input-group">
+                <Col md="6" lg="1" sm="12" xs="12" className="input-group">
                     <Button color="primary" className="SearcherIcon"><FaIcon icon={'fa fa-search'} size={'fa-2x'}/></Button>
                 </Col>
             </Col>

@@ -18,6 +18,9 @@
     "support": "Atención al cliente",
     "home": "Inicio"
   },
+  "reservation": {
+    "house-rules": "Normas de la casa"
+  },
   "searcher": {
     "city": "¿Donde quieres ir?",
     "guests": "huespedes",
@@ -34,7 +37,15 @@
     "es": "España",
     "mv": "Maldivas"
   },
-  "detalleReserva": {
-    "detalleReserva": "Detalles reserva"
+  "bookingDetails": {
+    "bookingDetails": "Detalles reserva",
+    "owner": "Propietario",
+    "checkIn": "Entrada",
+    "checkOut": "Salida",
+    "guests": "Huespedes",
+    "pricePerNight": "Precio por noche",
+    "priceBreakdown": "Desglose precio",
+    "serviceFee": "Tarifa de servicio",
+    "total": "Total"
   }
 }

@@ -12,6 +12,9 @@
     "support.contact": "Contact",
     "follow": "STALK US"
   },
+  "reservation": {
+    "house-rules": "Rules of the house"
+  },
   "general": {
     "email": "contact@pigtravel.top",
     "about-us": "About us",
@@ -34,7 +37,15 @@
     "es": "Spain",
     "mv": "Maldives"
   },
-  "detalleReserva": {
-    "detalleReserva": "Booking details"
+  "bookingDetails": {
+    "bookingDetails": "Booking details",
+    "owner": "Owner",
+    "checkIn": "Check In",
+    "checkOut": "Check Out",
+    "guests": "Guests",
+    "pricePerNight": "Price per night",
+    "priceBreakdown": "Price breakdown",
+    "serviceFee": "Service fee",
+    "total": "Total"
   }
 }
