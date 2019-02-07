@@ -10,6 +10,8 @@ import * as ReactDOM from "react-dom";
 import MainModal from "./layout/MainModal";
 import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
+import Panel from "./layout/Panel";
+import ReservationForm from "./layout/ReservationForm";
 
 
 export default class Main extends Component {
@@ -43,8 +45,8 @@ export default class Main extends Component {
                     <Route exact path="/bookings" component={BookingDetail}/>
                     <Route exact path="/about-us" component={AboutUs}/>
                     <Route exact path="/login" component={Login}/>
-                    <Route exact path="/modal">
-                        <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"} primaryButton={"lol"}/>
+                    <Route exact path="/phil">
+                        <ReservationForm idVivienda={49}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                 </Switch>

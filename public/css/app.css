@@ -269,6 +269,11 @@ footer {
   background-color: white;
 }
 
+.btn-primary.focus,
+.btn-primary:focus {
+  background-color: #FA6839;
+}
+
 .bookingCont {
   position: relative;
   display: flex;
@@ -287,11 +292,6 @@ footer {
 
 .react-rater {
   display: inline-block;
-}
-
-.btn-primary.focus,
-.btn-primary:focus {
-  background-color: #FA6839;
 }
 
 .main-container {
@@ -314,6 +314,11 @@ footer {
   .main-container {
     padding-bottom: 150px;
   }
+}
+
+#reservationForm ul,
+#reservationForm li {
+  list-style-type: none;
 }
 
 /*!

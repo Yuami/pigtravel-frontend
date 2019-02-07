@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/idiomas', function () {
     return \App\Idioma::all();
 });
+
+Route::get('/servicio/{id}', function ($id) {
+    return \App\ViviendasHasServicio::getByVivienda($id);
+});
