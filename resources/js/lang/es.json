@@ -1,12 +1,12 @@
 {
   "header": {
-    "login": "Iniciar Session",
-    "logout": "Cerrar Session",
+    "login": "Iniciar Sesion",
+    "logout": "Cerrar Sesion",
     "register": "Registrar"
   },
   "footer" : {
     "about-us": "Sobre Pig Travel",
-    "about-us.who": "Quienes somos?",
+    "about-us.who": "Quiénes somos?",
     "about-us.terms": "Politicas de privacidad",
     "support": "Atención al cliente",
     "support.contact": "Contacto",

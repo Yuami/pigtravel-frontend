@@ -53,7 +53,6 @@ body {
 
 .btn {
   border: 0 !important;
-  background: #FA6839 !important;
 }
 
 .btn-cancelar {
@@ -61,7 +60,7 @@ body {
 }
 
 .card {
-  border: 0px !important;
+  border: 0 !important;
 }
 
 footer {
