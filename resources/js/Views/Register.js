@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import FormRegister from "../components/layout/FormRegister";
 import {
-CardTitle,
-CardBody,
-Card,
-Col,
-Container,
-Row
+    CardTitle,
+    CardBody,
+    Card,
+    Col,
+    Container,
+    Row
 } from "reactstrap";
 
 class Register extends Component {
