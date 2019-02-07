@@ -54,5 +54,12 @@
     "home": "Inicio",
     "bookings": "Reservas",
     "booking": "Reserva"
+  },
+  "contact": {
+    "email": "Email",
+    "title": "Titulo",
+    "message": "Mensaje",
+    "checkPolicy": "He leído y acepto la Política de Privacidad",
+    "send": "ENVIAR"
   }
 }

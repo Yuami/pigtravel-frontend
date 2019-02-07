@@ -1,9 +1,16 @@
 import React, {Component} from 'react';
-import Translate from "../lang/Translate";
+import {LocaleContext} from "../LocaleContext";
+import {translate} from "../helpers";
+import Form from "reactstrap/es/Form";
 import Container from "reactstrap/es/Container";
-import Row from "reactstrap/es/Row";
-import Col from "reactstrap/es/Col";
 import UserRouter from "../components/layout/UserRouter";
+import Input from "reactstrap/es/Input";
+import Translate from "../lang/Translate";
+import Label from "reactstrap/es/Label";
+import FormGroup from "reactstrap/es/FormGroup";
+import Button from "reactstrap/es/Button";
+import FormGroupButton from "../components/general/Forms/FormGroupButton";
+import FormButton from "../components/general/Forms/FormButton";
 
 class Contact extends Component {
     render() {
@@ -15,37 +22,40 @@ class Contact extends Component {
         ];
 
         return (
-            <div>
-                <UserRouter title={'booking'} list={contact}/>
-                <Container className="bookingCont shadow">
-                    <Row className="mb-2">
-                        <Col lg="12">
-                            <Row>
-                                <Col lg="2" className="image">
-                                    <img src="img/casa.png" class="img img-responsive full-width"></img>
-                                </Col>
-                                <Col lg="7" sm="12" xs="12" >
-                                    <Row>
-                                        <Col>
-                                            <h1>Sweet home alabama</h1>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <h4>Palma de Mallorca, España</h4>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                                <Col lg="2" sm="11" xs="11" className="float-right">
-                                    <Row className="precio">
-                                        <h1><strong>635€</strong></h1>
-                                    </Row>
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
+            <>
+                <UserRouter title={'contact'} list={contact}/>
+                <Container className="contact shadow">
+                    <div className="App">
+                        <Form> <FormGroup>
+                            <LocaleContext.Consumer>
+                                {locale => <input type="text" name="email"
+                                                  placeholder={translate(locale, 'email', 'contact')}/>}
+                            </LocaleContext.Consumer>
+                        </FormGroup>
+                            <FormGroup>
+                                <LocaleContext.Consumer>
+                                    {locale => <input type="text" name="title"
+                                                      placeholder={translate(locale, 'title', 'contact')}/>}
+                                </LocaleContext.Consumer>
+                            </FormGroup>
+                            <FormGroup>
+                                <LocaleContext.Consumer>
+                                    {locale => <textarea rows="10" name="message"
+                                                         placeholder={translate(locale, 'message', 'contact')}/>}
+                                </LocaleContext.Consumer></FormGroup>
+                            <FormGroup check>
+                                <Label check>
+                                    <Input type="checkbox"/>{' '}
+                                    <Translate type={'contact'} string={'checkPolicy'}/>
+                                </Label>
+                            </FormGroup>
+                            <LocaleContext.Consumer>
+                                {locale => <FormButton text={translate(locale, 'send', 'contact')}/>}
+                            </LocaleContext.Consumer>
+                        </Form>
+                    </div>
                 </Container>
-            </div>
+            </>
         );
     }
 }

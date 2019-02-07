@@ -1,0 +1,23 @@
+.App {
+  max-width: 420px;
+  margin: 0 auto;
+}
+.App input[type=text],input[type=email],textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 0px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+.App .btn{
+  font-size: 20px;
+}
+.contact {
+  padding: 20px;
+  max-width: 540px !important;
+}
+.form-check-input {
+  position: relative !important;
+}

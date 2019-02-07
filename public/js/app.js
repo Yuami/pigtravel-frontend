@@ -108911,6 +108911,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_UserRouter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/layout/UserRouter */ "./resources/js/components/layout/UserRouter.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -108921,13 +108923,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -108942,13 +108945,41 @@ var BookingDetail =
 function (_Component) {
   _inherits(BookingDetail, _Component);
 
-  function BookingDetail() {
+  function BookingDetail(props) {
+    var _this;
+
     _classCallCheck(this, BookingDetail);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(BookingDetail).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BookingDetail).call(this, props));
+    _this.state = {
+      values: []
+    };
+    _this.getOptions = _this.getOptions.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(BookingDetail, [{
+    key: "getOptions",
+    value: function getOptions() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_7___default()({
+        url: '/api/bookings/1',
+        method: 'get'
+      }).then(function (response) {
+        _this2.setState({
+          values: response.data
+        });
+      }).catch(function (error) {
+        console.log(error, 'error booking');
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getOptions();
+    }
+  }, {
     key: "render",
     value: function render() {
       var bookingDetails = [{
@@ -108977,7 +109008,7 @@ function (_Component) {
         lg: "7",
         sm: "12",
         xs: "12"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "houseName"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Palma de Mallorca, Espa\xF1a")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "values"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Palma de Mallorca, Espa\xF1a")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
         lg: "2",
         sm: "11",
         xs: "11",
@@ -109102,9 +109133,131 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 BookingDetail.propTypes = {
-  houseName: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string
+  bookingID: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string
 };
 /* harmony default export */ __webpack_exports__["default"] = (BookingDetail);
+
+/***/ }),
+
+/***/ "./resources/js/Views/Contact.js":
+/*!***************************************!*\
+  !*** ./resources/js/Views/Contact.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _LocaleContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../LocaleContext */ "./resources/js/LocaleContext.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../helpers */ "./resources/js/helpers.js");
+/* harmony import */ var reactstrap_es_Form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap/es/Form */ "./node_modules/reactstrap/es/Form.js");
+/* harmony import */ var reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap/es/Container */ "./node_modules/reactstrap/es/Container.js");
+/* harmony import */ var _components_layout_UserRouter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/layout/UserRouter */ "./resources/js/components/layout/UserRouter.js");
+/* harmony import */ var reactstrap_es_Input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap/es/Input */ "./node_modules/reactstrap/es/Input.js");
+/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../lang/Translate */ "./resources/js/lang/Translate.js");
+/* harmony import */ var reactstrap_es_Label__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap/es/Label */ "./node_modules/reactstrap/es/Label.js");
+/* harmony import */ var reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap/es/FormGroup */ "./node_modules/reactstrap/es/FormGroup.js");
+/* harmony import */ var reactstrap_es_Button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! reactstrap/es/Button */ "./node_modules/reactstrap/es/Button.js");
+/* harmony import */ var _components_general_Forms_FormGroupButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/general/Forms/FormGroupButton */ "./resources/js/components/general/Forms/FormGroupButton.js");
+/* harmony import */ var _components_general_Forms_FormButton__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/general/Forms/FormButton */ "./resources/js/components/general/Forms/FormButton.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var Contact =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Contact, _Component);
+
+  function Contact() {
+    _classCallCheck(this, Contact);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Contact).apply(this, arguments));
+  }
+
+  _createClass(Contact, [{
+    key: "render",
+    value: function render() {
+      var contact = [{
+        type: 'contact',
+        link: '/contact'
+      }];
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_UserRouter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        title: 'contact',
+        list: contact
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        className: "contact shadow"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "App"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Form__WEBPACK_IMPORTED_MODULE_3__["default"], null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Consumer, null, function (locale) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          name: "email",
+          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["translate"])(locale, 'email', 'contact')
+        });
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Consumer, null, function (locale) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          name: "title",
+          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["translate"])(locale, 'title', 'contact')
+        });
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Consumer, null, function (locale) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+          rows: "10",
+          name: "message",
+          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["translate"])(locale, 'message', 'contact')
+        });
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        check: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Label__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        check: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        type: "checkbox"
+      }), ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        type: 'contact',
+        string: 'checkPolicy'
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Consumer, null, function (locale) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_Forms_FormButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          text: Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["translate"])(locale, 'send', 'contact')
+        });
+      })))));
+    }
+  }]);
+
+  return Contact;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Contact);
 
 /***/ }),
 
@@ -109653,6 +109806,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layout_MainModal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./layout/MainModal */ "./resources/js/components/layout/MainModal.js");
 /* harmony import */ var _Views_Terms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Views/Terms */ "./resources/js/Views/Terms.js");
 /* harmony import */ var _Views_BookingDetail__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Views/BookingDetail */ "./resources/js/Views/BookingDetail.js");
+/* harmony import */ var _Views_Contact__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Views/Contact */ "./resources/js/Views/Contact.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -109672,6 +109826,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -109746,6 +109901,10 @@ function (_Component) {
         exact: true,
         path: "/login",
         component: _Views_Login__WEBPACK_IMPORTED_MODULE_6__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+        exact: true,
+        path: "/contact",
+        component: _Views_Contact__WEBPACK_IMPORTED_MODULE_12__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/modal"
@@ -110944,7 +111103,7 @@ function (_Component) {
       }];
       var support = [{
         value: "support.contact",
-        link: "support"
+        link: "contact"
       }];
       var follow = [{
         type: 'general',
@@ -112107,29 +112266,31 @@ Translate.propTypes = {
 /*!***********************************!*\
   !*** ./resources/js/lang/en.json ***!
   \***********************************/
-/*! exports provided: header, footer, reservation, general, searcher, index, carrousel, bookingDetails, pagesTitles, default */
+/*! exports provided: header, footer, reservation, general, searcher, index, carrousel, bookingDetails, pagesTitles, contact, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"reservation":{"house-rules":"Rules of the house"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"From ","checkout":"To "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"bookingDetails":{"bookingDetails":"Booking details","owner":"Owner","checkIn":"Check In","checkOut":"Check Out","guests":"Guests","pricePerNight":"Price per night","priceBreakdown":"Price breakdown","serviceFee":"Service fee","total":"Total"},"pagesTitles":{"messages":"Messages","contact":"Contact","home":"Home","bookings":"Bookings","booking":"Booking"}};
-        /***/ }),
+module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"reservation":{"house-rules":"Rules of the house"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"From ","checkout":"To "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"bookingDetails":{"bookingDetails":"Booking details","owner":"Owner","checkIn":"Check In","checkOut":"Check Out","guests":"Guests","pricePerNight":"Price per night","priceBreakdown":"Price breakdown","serviceFee":"Service fee","total":"Total"},"pagesTitles":{"messages":"Messages","contact":"Contact","home":"Home","bookings":"Bookings","booking":"Booking"},"contact":{"email":"Email","title":"Title","message":"Message","checkPolicy":"I have read and accept the privacy policy","send":"SEND"}};
 
-    /***/ "./resources/js/lang/es.json":
-    /*!***********************************!*\
-      !*** ./resources/js/lang/es.json ***!
-      \***********************************/
-    /*! exports provided: header, footer, general, reservation, searcher, index, carrousel, bookingDetails, default */
-    /***/ (function(module) {
+/***/ }),
 
-        module.exports = {"header":{"login":"Iniciar Sesion","logout":"Cerrar Sesion","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quiénes somos?","about-us.terms":"Politicas de privacidad","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio"},"reservation":{"house-rules":"Normas de la casa"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","checkin":"Entrada ","checkout":"Salida "},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"bookingDetails":{"bookingDetails":"Detalles reserva","owner":"Propietario","checkIn":"Entrada","checkOut":"Salida","guests":"Huespedes","pricePerNight":"Precio por noche","priceBreakdown":"Desglose precio","serviceFee":"Tarifa de servicio","total":"Total"}};
+/***/ "./resources/js/lang/es.json":
+/*!***********************************!*\
+  !*** ./resources/js/lang/es.json ***!
+  \***********************************/
+/*! exports provided: header, footer, general, reservation, searcher, index, carrousel, bookingDetails, pagesTitles, contact, default */
+/***/ (function(module) {
 
-        /***/ }),
+module.exports = {"header":{"login":"Iniciar Sesion","logout":"Cerrar Sesion","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quiénes somos?","about-us.terms":"Politicas de privacidad","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio"},"reservation":{"house-rules":"Normas de la casa"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","checkin":"Entrada ","checkout":"Salida "},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"bookingDetails":{"bookingDetails":"Detalles reserva","owner":"Propietario","checkIn":"Entrada","checkOut":"Salida","guests":"Huespedes","pricePerNight":"Precio por noche","priceBreakdown":"Desglose precio","serviceFee":"Tarifa de servicio","total":"Total"},"pagesTitles":{"messages":"Mensajes","contact":"Contacto","home":"Inicio","bookings":"Reservas","booking":"Reserva"},"contact":{"email":"Email","title":"Titulo","message":"Mensaje","checkPolicy":"He leído y acepto la Política de Privacidad","send":"ENVIAR"}};
 
-    /***/ "./resources/js/lang/terms.json":
-    /*!**************************************!*\
-      !*** ./resources/js/lang/terms.json ***!
-      \**************************************/
-    /*! exports provided: es, en, default */
-    /***/ (function(module) {
+/***/ }),
+
+/***/ "./resources/js/lang/terms.json":
+/*!**************************************!*\
+  !*** ./resources/js/lang/terms.json ***!
+  \**************************************/
+/*! exports provided: es, en, default */
+/***/ (function(module) {
+
 module.exports = {"es":[{"title":"<h3><strong>Cookies</strong></h3>","body":"<p>We employ the use of cookies. By accessing PigTravel, you agreed to use cookies in agreement with the                    PigTravel's Privacy Policy.</p>                <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies                    are used by our website to enable the functionality of certain areas to make it easier for people                    visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>"},{"title":"<h3><strong>License</strong></h3>","body":"<p>Unless otherwise stated, PigTravel and/or its licensors own the intellectual property rights for all                    material on PigTravel. All intellectual property rights are reserved. You may access this from                    PigTravel for your own personal use subjected to restrictions set in these terms and conditions.</p>                <p>You must not:</p>                <ul>                    <li>Republish material from PigTravel</li>                    <li>Sell, rent or sub-license material from PigTravel</li>                    <li>Reproduce, duplicate or copy material from PigTravel</li>                    <li>Redistribute content from PigTravel</li>                </ul>                <p>This Agreement shall begin on the date hereof.</p>                <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in                    certain areas of the website. PigTravel does not filter, edit, publish or review Comments prior to                    their presence on the website. Comments do not reflect the views and opinions of PigTravel,its                    agents and/or affiliates. Comments reflect the views and opinions of the person who post their views                    and opinions. To the extent permitted by applicable laws, PigTravel shall not be liable for the                    Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of                    and/or posting of and/or appearance of the Comments on this website.</p>                <p>PigTravel reserves the right to monitor all Comments and to remove any Comments which can be                    considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>                <p>You warrant and represent that:</p>                <ul>                    <li>You are entitled to post the Comments on our website and have all necessary licenses and                        consents to do so;                    </li>                    <li>The Comments do not invade any intellectual property right, including without limitation                        copyright, patent or trademark of any third party;                    </li>                    <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful                        material which is an invasion of privacy                    </li>                    <li>The Comments will not be used to solicit or promote business or custom or present commercial                        activities or unlawful activity.                    </li>                </ul>                <p>You hereby grant PigTravel a non-exclusive license to use, reproduce, edit and authorize others to                    use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>"},{"title":"<h3><strong>Hyperlinking to our Content</strong></h3>","body":"<p>The following organizations may link to our Website without prior written approval:</p>                <ul>                    <li>Government agencies;</li>                    <li>Search engines;</li>                    <li>News organizations;</li>                    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to                        the Websites of other listed businesses; and                    </li>                    <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping                        malls, and charity fundraising groups which may not hyperlink to our Web site.                    </li>                </ul>                <p>These organizations may link to our home page, to publications or to other Website information so                    long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship,                    endorsement or approval of the linking party and its products and/or services; and (c) fits within                    the context of the linking party’s site.</p>                <p>We may consider and approve other link requests from the following types of organizations:</p>                <ul>                    <li>commonly-known consumer and/or business information sources;</li>                    <li>dot.com community sites;</li>                    <li>associations or other groups representing charities;</li>                    <li>online directory distributors;</li>                    <li>internet portals;</li>                    <li>accounting, law and consulting firms; and</li>                    <li>educational institutions and trade associations.</li>                </ul>                <p>We will approve link requests from these organizations if we decide that: (a) the link would not make                    us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have                    any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates                    the absence of PigTravel; and (d) the link is in the context of general resource information.</p>                <p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive;                    (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its                    products or services; and (c) fits within the context of the linking party’s site.</p>                <p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our                    website, you must inform us by sending an e-mail to PigTravel. Please include your name, your                    organization name, contact information as well as the URL of your site, a list of any URLs from                    which you intend to link to our Website, and a list of the URLs on our site to which you would like                    to link. Wait 2-3 weeks for a response.</p>                <p>Approved organizations may hyperlink to our Website as follows:</p>                <ul>                    <li>By use of our corporate name; or</li>                    <li>By use of the uniform resource locator being linked to; or</li>                    <li>By use of any other description of our Website being linked to that makes sense within the                        context and format of content on the linking party’s site.                    </li>                </ul>                <p>No use of PigTravel's logo or other artwork will be allowed for linking absent a trademark license                    agreement.</p>"},{"title":"<h3><strong>iFrames</strong></h3>","body":"<p>Without prior approval and written permission, you may not create frames around our Webpages that                    alter in any way the visual presentation or appearance of our Website.</p>"},{"title":"<h3><strong>Content Liability</strong></h3>","body":"<p>We shall not be hold responsible for any content that appears on your Website. You agree to protect                    and defend us against all claims that is rising on your Website. No link(s) should appear on any                    Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise                    violates, or advocates the infringement or other violation of, any third party rights.</p>"},{"title":"<h3><strong>Your Privacy</strong></h3>","body":"<p><a href=\"#\"Please read Privacy Policy</p>"},{"title":"<h3><strong>Reservation of Rights</strong></h3>","body":"<p>We reserve the right to request that you remove all links or any particular link to our Website. You                    approve to immediately remove all links to our Website upon request. We also reserve the right to                    amen these terms and conditions and it’s linking policy at any time. By continuously linking to our                    Website, you agree to be bound to and follow these linking terms and conditions.</p>"},{"title":"<h3><strong>Removal of links from our website</strong></h3>","body":"<p>If you find any link on our Website that is offensive for any reason, you are free to contact and                    inform us any moment. We will consider requests to remove links but we are not obligated to or so or                    to respond to you directly.</p>                <p>We do not ensure that the information on this website is correct, we do not warrant its completeness                    or accuracy; nor do we promise to ensure that the website remains available or that the material on                    the website is kept up to date.</p>"},{"title":"<h3><strong>Disclaimer</strong></h3>","body":"<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and                    conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>                <ul>                    <li>limit or exclude our or your liability for death or personal injury;</li>                    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>                    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or                    </li>                    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>                </ul>"}],"en":[{"title":"<h3><strong>Cookies</strong></h3>","body":"<p>We employ the use of cookies. By accessing PigTravel, you agreed to use cookies in agreement with the                    PigTravel's Privacy Policy.</p>                <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies                    are used by our website to enable the functionality of certain areas to make it easier for people                    visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>"},{"title":"<h3><strong>License</strong></h3>","body":"<p>Unless otherwise stated, PigTravel and/or its licensors own the intellectual property rights for all                    material on PigTravel. All intellectual property rights are reserved. You may access this from                    PigTravel for your own personal use subjected to restrictions set in these terms and conditions.</p>                <p>You must not:</p>                <ul>                    <li>Republish material from PigTravel</li>                    <li>Sell, rent or sub-license material from PigTravel</li>                    <li>Reproduce, duplicate or copy material from PigTravel</li>                    <li>Redistribute content from PigTravel</li>                </ul>                <p>This Agreement shall begin on the date hereof.</p>                <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in                    certain areas of the website. PigTravel does not filter, edit, publish or review Comments prior to                    their presence on the website. Comments do not reflect the views and opinions of PigTravel,its                    agents and/or affiliates. Comments reflect the views and opinions of the person who post their views                    and opinions. To the extent permitted by applicable laws, PigTravel shall not be liable for the                    Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of                    and/or posting of and/or appearance of the Comments on this website.</p>                <p>PigTravel reserves the right to monitor all Comments and to remove any Comments which can be                    considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>                <p>You warrant and represent that:</p>                <ul>                    <li>You are entitled to post the Comments on our website and have all necessary licenses and                        consents to do so;                    </li>                    <li>The Comments do not invade any intellectual property right, including without limitation                        copyright, patent or trademark of any third party;                    </li>                    <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful                        material which is an invasion of privacy                    </li>                    <li>The Comments will not be used to solicit or promote business or custom or present commercial                        activities or unlawful activity.                    </li>                </ul>                <p>You hereby grant PigTravel a non-exclusive license to use, reproduce, edit and authorize others to                    use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>"},{"title":"<h3><strong>Hyperlinking to our Content</strong></h3>","body":"<p>The following organizations may link to our Website without prior written approval:</p>                <ul>                    <li>Government agencies;</li>                    <li>Search engines;</li>                    <li>News organizations;</li>                    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to                        the Websites of other listed businesses; and                    </li>                    <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping                        malls, and charity fundraising groups which may not hyperlink to our Web site.                    </li>                </ul>                <p>These organizations may link to our home page, to publications or to other Website information so                    long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship,                    endorsement or approval of the linking party and its products and/or services; and (c) fits within                    the context of the linking party’s site.</p>                <p>We may consider and approve other link requests from the following types of organizations:</p>                <ul>                    <li>commonly-known consumer and/or business information sources;</li>                    <li>dot.com community sites;</li>                    <li>associations or other groups representing charities;</li>                    <li>online directory distributors;</li>                    <li>internet portals;</li>                    <li>accounting, law and consulting firms; and</li>                    <li>educational institutions and trade associations.</li>                </ul>                <p>We will approve link requests from these organizations if we decide that: (a) the link would not make                    us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have                    any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates                    the absence of PigTravel; and (d) the link is in the context of general resource information.</p>                <p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive;                    (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its                    products or services; and (c) fits within the context of the linking party’s site.</p>                <p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our                    website, you must inform us by sending an e-mail to PigTravel. Please include your name, your                    organization name, contact information as well as the URL of your site, a list of any URLs from                    which you intend to link to our Website, and a list of the URLs on our site to which you would like                    to link. Wait 2-3 weeks for a response.</p>                <p>Approved organizations may hyperlink to our Website as follows:</p>                <ul>                    <li>By use of our corporate name; or</li>                    <li>By use of the uniform resource locator being linked to; or</li>                    <li>By use of any other description of our Website being linked to that makes sense within the                        context and format of content on the linking party’s site.                    </li>                </ul>                <p>No use of PigTravel's logo or other artwork will be allowed for linking absent a trademark license                    agreement.</p>"},{"title":"<h3><strong>iFrames</strong></h3>","body":"<p>Without prior approval and written permission, you may not create frames around our Webpages that                    alter in any way the visual presentation or appearance of our Website.</p>"},{"title":"<h3><strong>Content Liability</strong></h3>","body":"<p>We shall not be hold responsible for any content that appears on your Website. You agree to protect                    and defend us against all claims that is rising on your Website. No link(s) should appear on any                    Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise                    violates, or advocates the infringement or other violation of, any third party rights.</p>"},{"title":"<h3><strong>Your Privacy</strong></h3>","body":"<p><a href=\"#\"Please read Privacy Policy</p>"},{"title":"<h3><strong>Reservation of Rights</strong></h3>","body":"<p>We reserve the right to request that you remove all links or any particular link to our Website. You                    approve to immediately remove all links to our Website upon request. We also reserve the right to                    amen these terms and conditions and it’s linking policy at any time. By continuously linking to our                    Website, you agree to be bound to and follow these linking terms and conditions.</p>"},{"title":"<h3><strong>Removal of links from our website</strong></h3>","body":"<p>If you find any link on our Website that is offensive for any reason, you are free to contact and                    inform us any moment. We will consider requests to remove links but we are not obligated to or so or                    to respond to you directly.</p>                <p>We do not ensure that the information on this website is correct, we do not warrant its completeness                    or accuracy; nor do we promise to ensure that the website remains available or that the material on                    the website is kept up to date.</p>"},{"title":"<h3><strong>Disclaimer</strong></h3>","body":"<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and                    conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>                <ul>                    <li>limit or exclude our or your liability for death or personal injury;</li>                    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>                    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or                    </li>                    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>                </ul>"}]};
 
 /***/ }),
@@ -112152,8 +112313,8 @@ module.exports = {"es":[{"title":"<h3><strong>Cookies</strong></h3>","body":"<p>
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\ruben\Dropbox\Proyecto Front\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\ruben\Dropbox\Proyecto Front\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\vacacional-inici\front-lloguer-vacacional\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\vacacional-inici\front-lloguer-vacacional\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

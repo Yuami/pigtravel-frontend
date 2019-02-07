@@ -7,10 +7,6 @@
   margin: auto;
 }
 
-::placeholder{
-  color:black !important;
-  text-align: center;
-}
 .hidden { display:none; }
 
 .input-group{
@@ -22,9 +18,8 @@
 }
 .css-vj8t7z, .css-2o5izw{
   max-height: 65px;
-  box-shadow: black;
+  border-width: 0px !important;
 }
-
 .DateRangePicker__Month {
   margin: 0px !important;
 }
@@ -42,7 +37,7 @@
 min-width: 200px}
 
 #calendario,#guests, #location{
-  width: 85%;
+  width: 90%;
   text-align: center;
 }
 

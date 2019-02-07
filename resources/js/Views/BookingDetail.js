@@ -5,8 +5,33 @@ import Row from "reactstrap/es/Row";
 import Col from "reactstrap/es/Col";
 import UserRouter from "../components/layout/UserRouter";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 class BookingDetail extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            values: []
+        };
+        this.getOptions = this.getOptions.bind(this)
+    }
+
+    getOptions() {
+        axios({
+            url: '/api/bookings/1',
+            method: 'get'
+        }).then((response) => {
+            this.setState({
+                values: response.data
+            });
+        }).catch((error) => {
+            console.log(error, 'error booking')
+        });
+    }
+
+    componentDidMount() {
+        this.getOptions()
+    }
     render() {
         const bookingDetails = [
             {
@@ -32,7 +57,7 @@ class BookingDetail extends Component {
                                 <Col lg="7" sm="12" xs="12" >
                                     <Row>
                                         <Col>
-                                            <h1>houseName</h1>
+                                            <h1>values</h1>
                                         </Col>
                                     </Row>
                                     <Row>
@@ -155,7 +180,7 @@ class BookingDetail extends Component {
 }
 
 BookingDetail.propTypes = {
-    houseName: PropTypes.string,
+    bookingID: PropTypes.string,
 
 };
 export default BookingDetail;

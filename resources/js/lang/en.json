@@ -54,5 +54,12 @@
     "home": "Home",
     "bookings": "Bookings",
     "booking": "Booking"
+  },
+  "contact": {
+    "email": "Email",
+    "title": "Title",
+    "message": "Message",
+    "checkPolicy": "I have read and accept the privacy policy",
+    "send": "SEND"
   }
 }
