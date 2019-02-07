@@ -12,6 +12,7 @@ import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
 import Panel from "./layout/Panel";
 import ReservationForm from "./layout/ReservationForm";
+import Register from "../Views/Register";
 
 
 
