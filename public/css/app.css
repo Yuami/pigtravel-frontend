@@ -47,6 +47,22 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.form-control {
+  border: 0 !important;
+}
+
+.btn {
+  border: 0 !important;
+}
+
+.btn-cancelar {
+  color: white;
+}
+
+.card {
+  border: 0 !important;
+}
+
 footer {
   position: absolute;
   bottom: 0;

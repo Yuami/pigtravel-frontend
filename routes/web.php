@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 Route::get('/reservas', 'ReservasController@index');
 Route::get('/reservas/{reserva}', 'ReservasController@show');
 

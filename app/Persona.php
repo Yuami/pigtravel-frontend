@@ -2,17 +2,27 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Persona extends Model
+
+class Persona extends Authenticatable
 {
+    use Notifiable;
+
     protected $table = 'persona';
 
     protected $guarded = ['id'];
+    protected $fillable = [
+        'nombre', 'apellido1', 'apellido2', 'dni', 'tlf',
+        'correo', 'fechaNacimiento', 'descripcion', 'password', 'idCiudad', 'idFoto'
+    ];
 
     public $timestamps = false;
 
-    public static function getByCorreo($correo) {
+    public static function getByCorreo($correo)
+    {
         return Persona::where('correo', $correo)->first();
     }
 
@@ -21,7 +31,8 @@ class Persona extends Model
         return $this->nombre;
     }
 
-    public function verify(){
-        $this->update(['verified' =>  1]);
+    public function verify()
+    {
+        $this->update(['verified' => 1]);
     }
 }

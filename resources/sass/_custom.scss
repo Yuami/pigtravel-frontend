@@ -1,3 +1,15 @@
+// Theme colors
+$primary: #FA6839;
+$secondary: #314D68;
+$light: #F6F7FC;
+$info: #22CDF3;
+
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "light": $light,
+        "info": $info
+);
 html, body {
   height: 100%;
   position: relative;
@@ -13,7 +25,6 @@ body {
 
 .btn {
   border: 0 !important;
-  background: $primary !important;
 }
 
 .btn-cancelar {
@@ -21,18 +32,5 @@ body {
 }
 
 .card {
-  border: 0px !important;
+  border: 0 !important;
 }
-
-// Theme colors
-$primary: #FA6839;
-$secondary: #314D68;
-$light: #F6F7FC;
-$info: #22CDF3;
-
-$theme-colors: (
-        "primary": $primary,
-        "secondary": $secondary,
-        "light": $light,
-        "info": $info
-);
