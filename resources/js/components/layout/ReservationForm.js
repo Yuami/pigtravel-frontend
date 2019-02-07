@@ -26,14 +26,15 @@ class ReservationForm extends Component {
 
     render() {
         var renderServicios = this.state.servicios.map(function (value, index, array) {
-            if ([4,13,18].includes(value.idServicio)) {
+            console.log(value);
+            if ([9,15,34].includes(value.idServicio)) {
                 if(value.activo) {
                     return (
-                        <li><Translate type={"reservation"} string={"allowed"}/> {value.nombre.toLowerCase()}</li>
+                        <li><Translate type={"reservation"} string={"allowed"}/> {value.servicio.toLowerCase()}</li>
                     );
                 } else {
                    return (
-                       <li><Translate type={"reservation"} string={"disallowed"}/> {value.nombre.toLowerCase()}</li>
+                       <li><Translate type={"reservation"} string={"disallowed"}/> {value.servicio.toLowerCase()}</li>
                    )
                 }
             }

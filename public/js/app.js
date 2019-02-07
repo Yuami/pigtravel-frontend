@@ -109655,6 +109655,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Views_BookingDetail__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Views/BookingDetail */ "./resources/js/Views/BookingDetail.js");
 /* harmony import */ var _layout_Panel__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./layout/Panel */ "./resources/js/components/layout/Panel.js");
 /* harmony import */ var _layout_ReservationForm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./layout/ReservationForm */ "./resources/js/components/layout/ReservationForm.js");
+/* harmony import */ var _layout_UserRouter__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./layout/UserRouter */ "./resources/js/components/layout/UserRouter.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -109674,6 +109675,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -109734,7 +109736,7 @@ function (_Component) {
         value: this.state.locale
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         changeLanguage: this.changeLanguage
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("userRouter", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/",
         component: _Views_Home__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -109754,7 +109756,7 @@ function (_Component) {
         exact: true,
         path: "/phil"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_ReservationForm__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        idVivienda: 49
+        idVivienda: 50
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/terms",
@@ -111279,19 +111281,19 @@ function (_Component) {
         className: "navbar-nav ml-auto w-100 justify-content-end"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
         className: "header-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/login"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], {
+        href: "/login"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_8__["default"], {
         string: 'login',
         type: 'header'
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
         className: "header-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/register"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], {
+        href: "/register"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_8__["default"], {
         string: 'register',
         type: 'header'
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["UncontrolledDropdown"], {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["UncontrolledDropdown"], {
         nav: true,
         inNavbar: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LanguagePicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -111559,17 +111561,19 @@ function (_Component) {
     key: "render",
     value: function render() {
       var renderServicios = this.state.servicios.map(function (value, index, array) {
-        if ([4, 13, 18].includes(value.idServicio)) {
+        console.log(value);
+
+        if ([9, 15, 34].includes(value.idServicio)) {
           if (value.activo) {
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
               type: "reservation",
               string: "allowed"
-            }), " ", value.nombre.toLowerCase());
+            }), " ", value.servicio.toLowerCase());
           } else {
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
               type: "reservation",
               string: "disallowed"
-            }), " ", value.nombre.toLowerCase());
+            }), " ", value.servicio.toLowerCase());
           }
         }
       });

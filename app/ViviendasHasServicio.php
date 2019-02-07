@@ -17,10 +17,10 @@ class ViviendasHasServicio extends Model
             ->get(); */
 
        return DB::table('vivienda_has_servicio')
-           ->select('servicio_has_idioma.idServicio', 'idioma.nombre', 'servicio_has_idioma.nombre')
+           ->select('servicio_has_idioma.idServicio', 'idioma.nombre as idioma', 'servicio_has_idioma.nombre as servicio')
            ->selectRaw('ifnull(vivienda_has_servicio.activo, 0) activo')
-           ->join('idioma', 'servicio_has_idioma.idIdioma', '=', 'idioma.id')
            ->rightJoin('servicio_has_idioma', 'vivienda_has_servicio.idServicio', '=', 'servicio_has_idioma.idServicio')
+           ->join('idioma', 'servicio_has_idioma.idIdioma', '=', 'idioma.id')
            ->where('idVivienda', '=', $id)
            ->orWhereNull('vivienda_has_servicio.idServicio')
            ->get();

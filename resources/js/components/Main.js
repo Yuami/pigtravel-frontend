@@ -12,6 +12,7 @@ import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
 import Panel from "./layout/Panel";
 import ReservationForm from "./layout/ReservationForm";
+import UserRouter from "./layout/UserRouter";
 
 
 
@@ -41,14 +42,14 @@ export default class Main extends Component {
         return (
             <LocaleContext.Provider value={this.state.locale}>
                 <Header changeLanguage={this.changeLanguage} />
-                <userRouter />
+                {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter*/}
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/bookings" component={BookingDetail}/>
                     <Route exact path="/about-us" component={AboutUs}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/phil">
-                        <ReservationForm idVivienda={49}/>
+                        <ReservationForm idVivienda={50}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                 </Switch>
