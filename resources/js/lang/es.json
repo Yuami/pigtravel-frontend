@@ -47,5 +47,12 @@
     "priceBreakdown": "Desglose precio",
     "serviceFee": "Tarifa de servicio",
     "total": "Total"
+  },
+  "pagesTitles": {
+    "messages": "Mensajes",
+    "contact" : "Contacto",
+    "home": "Inicio",
+    "bookings": "Reservas",
+    "booking": "Reserva"
   }
 }

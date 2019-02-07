@@ -12,6 +12,7 @@ import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
 
 
+
 export default class Main extends Component {
     constructor(props) {
         super(props);
@@ -38,6 +39,7 @@ export default class Main extends Component {
         return (
             <LocaleContext.Provider value={this.state.locale}>
                 <Header changeLanguage={this.changeLanguage} />
+                <userRouter />
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/bookings" component={BookingDetail}/>

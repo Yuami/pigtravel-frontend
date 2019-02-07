@@ -47,5 +47,12 @@
     "priceBreakdown": "Price breakdown",
     "serviceFee": "Service fee",
     "total": "Total"
+  },
+  "pagesTitles": {
+    "messages": "Messages",
+    "contact" : "Contact",
+    "home": "Home",
+    "bookings": "Bookings",
+    "booking": "Booking"
   }
 }

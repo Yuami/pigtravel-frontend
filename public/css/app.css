@@ -194,7 +194,13 @@ footer {
   padding-left: 0px !important;
   padding-right: 0px !important;
   width: 100%;
-  min-height: 70px;
+  height: 70px;
+}
+
+.css-vj8t7z,
+.css-2o5izw {
+  max-height: 65px;
+  box-shadow: black;
 }
 
 .DateRangePicker__Month {
@@ -281,20 +287,9 @@ footer {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 78vh;
-  padding: 10px;
-}
-
-.is-disabled {
-  color: gray;
-}
-
-.is-active {
-  color: #ffb250 !important;
-}
-
-.react-rater {
-  display: inline-block;
+  padding-left: 50px !important;
+  padding-right: 50px !important;
+  margin-top: 20px;
 }
 
 .userImg {
