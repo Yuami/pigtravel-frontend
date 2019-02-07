@@ -16,12 +16,20 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::get("/cities",function (){
-   $cities=\App\Cities::getIfHave();
-   return $cities;
+    $cities=\App\Cities::getIfHave();
+    return $cities;
 } );
 Route::get('/bookings/{id}', function ($id) {
     $booking=\App\Reserva::all()->where('id','=',$id);
     return $booking;
 });
 
+Route::get('/idiomas', function () {
+    return \App\Idioma::all();
+});
+
+Route::get('/servicio/{id}', function ($id) {
+    return \App\ViviendasHasServicio::getByVivienda($id);
+});

@@ -8,8 +8,6 @@ import Input from "reactstrap/es/Input";
 import Translate from "../lang/Translate";
 import Label from "reactstrap/es/Label";
 import FormGroup from "reactstrap/es/FormGroup";
-import Button from "reactstrap/es/Button";
-import FormGroupButton from "../components/general/Forms/FormGroupButton";
 import FormButton from "../components/general/Forms/FormButton";
 
 class Contact extends Component {

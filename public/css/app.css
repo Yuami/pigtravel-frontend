@@ -262,6 +262,11 @@ footer {
   background-color: white;
 }
 
+.btn-primary.focus,
+.btn-primary:focus {
+  background-color: #FA6839;
+}
+
 .bookingCont {
   position: relative;
   display: flex;
@@ -289,11 +294,6 @@ footer {
   padding-top: 15px;
 }
 
-.btn-primary.focus,
-.btn-primary:focus {
-  background-color: #FA6839;
-}
-
 .main-container {
   min-height: 100vh;
   display: block;
@@ -316,6 +316,7 @@ footer {
   }
 }
 
+<<<<<<< HEAD
 .App {
   max-width: 420px;
   margin: 0 auto;
@@ -344,6 +345,11 @@ textarea {
 
 .form-check-input {
   position: relative !important;
+=======
+#reservationForm ul,
+#reservationForm li {
+  list-style-type: none;
+>>>>>>> 8e3c27bd8f370c39fe8721b928b9d8a7be348ad0
 }
 
 /*!
