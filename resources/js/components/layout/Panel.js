@@ -15,7 +15,7 @@ class Panel extends Component {
             <div>
                 <div id={this.props.id} className="panel panel-default shadow">
                     {header}
-                    <div className="panel-body">{this.props.body}</div>
+                    <div className="panel-body">{this.props.children}</div>
                 </div>
             </div>
         );
