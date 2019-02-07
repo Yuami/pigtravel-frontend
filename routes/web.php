@@ -11,16 +11,11 @@
 |
 */
 
-<<<<<<< HEAD
 Auth::routes();
 Route::get('/reservas', 'ReservasController@index');
-
-=======
 
 Route::get('/reservas', 'ReservasController@show');
-Auth::routes();
-Route::get('/reservas', 'ReservasController@index');
->>>>>>> 8e3c27bd8f370c39fe8721b928b9d8a7be348ad0
+
 Route::get('/reservas/{reserva}', 'ReservasController@show');
 
 Route::get('/verify', 'TokenController@index');
