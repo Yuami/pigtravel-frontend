@@ -1,7 +1,7 @@
 {
   "es": [
     {
-      "title": "<h3><strong>Cookies</strong></h3>",
+      "title": "<h3><strong>Galletas</strong></h3>",
       "body": "<p>We employ the use of cookies. By accessing PigTravel, you agreed to use cookies in agreement with the                    PigTravel's Privacy Policy.</p>                <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies                    are used by our website to enable the functionality of certain areas to make it easier for people                    visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>"
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "title": "<h3><strong>Your Privacy</strong></h3>",
-      "body": "<p><a href=\"#\"Please read Privacy Policy</p>"
+      "body": "<p><a href='/policy'>Please read Privacy Policy</p>"
     },
     {
       "title": "<h3><strong>Reservation of Rights</strong></h3>",
@@ -60,7 +60,7 @@
     },
     {
       "title": "<h3><strong>Your Privacy</strong></h3>",
-      "body": "<p><a href=\"#\"Please read Privacy Policy</p>"
+      "body": "<p><a href='/policy'>Please read Privacy Policy</p>"
     },
     {
       "title": "<h3><strong>Reservation of Rights</strong></h3>",

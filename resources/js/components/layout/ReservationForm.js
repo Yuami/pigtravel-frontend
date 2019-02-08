@@ -25,28 +25,36 @@ class ReservationForm extends Component {
 
 
     render() {
-        var renderServicios = this.state.servicios.map(function (value, index, array) {
-            console.log(value);
-            if ([9,15,34].includes(value.idServicio)) {
-                if(value.activo) {
+        const rules = [13, 14, 22];
+
+        const renderRules = this.state.servicios.map(function (value, index, array) {
+            if (rules.includes(value.idServicio)) {
+                if (value.activo) {
                     return (
-                        <li><Translate type={"reservation"} string={"allowed"}/> {value.servicio.toLowerCase()}</li>
+                        <li><Translate type={"reservation"} string={"allowed"}/> {value.nombre.toLowerCase()}</li>
                     );
                 } else {
-                   return (
-                       <li><Translate type={"reservation"} string={"disallowed"}/> {value.servicio.toLowerCase()}</li>
-                   )
+                    return (
+                        <li><Translate type={"reservation"} string={"disallowed"}/> {value.nombre.toLowerCase()}</li>
+                    )
                 }
             }
         });
 
-        var renderInformacion = [];
+        const renderInformacion = this.state.servicios.map(function (value, index, array) {
+            if (!rules.includes(value.idServicio) && value.activo) {
+                return (
+                    <li>{value.nombre}</li>
+                )
+            }
+        });
         return (
             <Panel id={"reservationForm"} body={"Body"}>
                 <ul>
                     <li><h3><Translate type={'reservation'} string={'house-rules'}/></h3></li>
-                    <ul>{renderServicios}</ul>
-                    <li><h3><Translate type={'general'} string={'more-information'}/></h3></li>
+                    <ul>{renderRules}</ul>
+                    <li><h3><Translate type={'reservation'} string={'includes'}/></h3></li>
+                    <ul>{renderInformacion}</ul>
                 </ul>
                 <MainModal buttonLabel={"lol"} modalHeader={"ja"} modalBody={"lol"} primaryButton={"ey"}/>
             </Panel>

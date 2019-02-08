@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import { LocaleContext } from "../LocaleContext.js";
 import Header from "./layout/Header";
 import {BrowserRouter, Switch, Route} from "react-router-dom"
+import axios from 'axios';
 import Footer from "./layout/Footer";
 import Home from "../Views/Home";
 import Login from "../Views/Login";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
+import TitleInicio from "./specific/TitleInicio";
+import Searcher from "./layout/Searcher";
 import MainModal from "./layout/MainModal";
 import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
@@ -14,6 +17,7 @@ import Panel from "./layout/Panel";
 import ReservationForm from "./layout/ReservationForm";
 import Register from "../Views/Register";
 import Contact from "../Views/Contact";
+import HouseList from "../Views/HouseList";
 
 
 export default class Main extends Component {
@@ -54,9 +58,10 @@ export default class Main extends Component {
                     </Route>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/phil">
-                        <ReservationForm idVivienda={49}/>
+                        <ReservationForm idVivienda={50}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
+                    <Route exact path="/house-list" component={HouseList}/>
                 </Switch>
                 <Footer/>
             </LocaleContext.Provider>
