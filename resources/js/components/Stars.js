@@ -27,7 +27,6 @@ class Stars extends Component {
         },
         rating: this.props.rating,
         name: this.props.name || 'name',
-        starIcon: '\\2605',
         editing: this.props.editing,
         hoverRating: this.props.rating,
         isHovering: false
