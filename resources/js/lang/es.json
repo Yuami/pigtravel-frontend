@@ -28,6 +28,7 @@
   "searcher": {
     "city": "¿Donde quieres ir?",
     "guests": "huespedes",
+    "guest": "huesped",
     "checkin": "Entrada ",
     "checkout": "Salida "
   },
@@ -65,5 +66,9 @@
     "message": "Mensaje",
     "checkPolicy": "He leído y acepto la Política de Privacidad",
     "send": "ENVIAR"
+  },
+  "autocomplete": {
+    "region": "Region",
+    "city": "Ciudad"
   }
 }

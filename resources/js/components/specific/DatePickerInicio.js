@@ -6,6 +6,7 @@ import {extendMoment} from "moment-range";
 const moment = extendMoment(originalMoment);
 import {Label, Button, Popover, PopoverBody, InputGroup} from 'reactstrap';
 import Translate from "../../lang/Translate";
+import FormGroup from "reactstrap/es/FormGroup";
 
 class DatePickerInicio extends Component {
     constructor(props, context) {
@@ -41,12 +42,9 @@ class DatePickerInicio extends Component {
 
     render() {
         return (
-
-            <InputGroup>
+            <FormGroup id="calendario">
                 <Label><i className="fa fa-calendar"></i></Label>
-                <div id="calendario">
-                    {this.renderSelectionValue()}
-                </div>
+                {this.renderSelectionValue()}
                 <Popover placement="bottom" isOpen={this.state.show} target="calendario"
                          toggle={this.ToggleDiv} trigger="legacy">
                     <PopoverBody>
@@ -54,11 +52,12 @@ class DatePickerInicio extends Component {
                             value={this.state.value}
                             onSelect={this.onSelect}
                             singleDateRange={true}
+                            name="date"
                         />
                     </PopoverBody>
                 </Popover>
 
-            </InputGroup>
+            </FormGroup>
         );
     }
 }

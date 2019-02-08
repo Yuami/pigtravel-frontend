@@ -21,6 +21,10 @@ Route::get("/cities",function (){
     $cities=\App\Cities::getIfHave();
     return $cities;
 } );
+Route::get("/regions",function (){
+    $regions=\App\Region::getIfHave();
+    return $regions;
+} );
 Route::get('/bookings/{id}', function ($id) {
     $booking=\App\Reserva::all()->where('id','=',$id);
     return $booking;

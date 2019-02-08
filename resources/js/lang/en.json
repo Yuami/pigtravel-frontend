@@ -28,6 +28,7 @@
   "searcher": {
     "city": "Where do you wanna go?",
     "guests": "guests",
+    "guest": "guest",
     "checkin": "From ",
     "checkout": "To "
   },
@@ -65,5 +66,9 @@
     "message": "Message",
     "checkPolicy": "I have read and accept the privacy policy",
     "send": "SEND"
+  },
+  "autocomplete": {
+    "region": "Region",
+    "city": "City"
   }
 }
