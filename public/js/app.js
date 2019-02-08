@@ -102899,8 +102899,8 @@ function (_Component) {
         className: "my-5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Stars__WEBPACK_IMPORTED_MODULE_2__["default"], {
         size: '1em',
-        color: 'secondary',
-        rating: 3,
+        color: 'primary',
+        rating: 3.5,
         editing: true
       }));
     }
@@ -103441,6 +103441,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_star_rating_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-star-rating-component */ "./node_modules/react-star-rating-component/index.js");
 /* harmony import */ var react_star_rating_component__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_star_rating_component__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _general_FaIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./general/FaIcon */ "./resources/js/components/general/FaIcon.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
@@ -103467,6 +103468,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var Stars =
 /*#__PURE__*/
 function (_Component) {
@@ -103479,6 +103481,11 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Stars).call(this, props));
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "style", _objectSpread({}, _this.props.style, {
+      fontSize: _this.props.size,
+      fontStyle: 'normal'
+    }));
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       colors: {
         primary: "rgb(250,104,57)",
@@ -103486,17 +103493,18 @@ function (_Component) {
       },
       rating: _this.props.rating,
       name: _this.props.name || 'name',
-      starIcon: '★'
+      starIcon: '\\2605'
     });
 
     _this.changeRating = _this.changeRating.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.renderStars = _this.renderStars.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.renderHalfStar = _this.renderHalfStar.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(Stars, [{
     key: "changeRating",
-    value: function changeRating(newRating, name) {
+    value: function changeRating(newRating) {
       this.setState({
         rating: newRating
       });
@@ -103509,20 +103517,18 @@ function (_Component) {
       } || this.state.colors.primary);
     }
   }, {
-    key: "handleHover",
-    value: function handleHover() {}
+    key: "renderHalfStar",
+    value: function renderHalfStar() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        icon: 'fas fa-star-half'
+      });
+    }
   }, {
     key: "renderStars",
     value: function renderStars() {
-      var style = _objectSpread({}, this.props.style, {
-        fontSize: this.props.size,
-        fontStyle: 'normal'
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        icon: 'fas fa-star'
       });
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: this.props.className,
-        style: style
-      }, this.state.starIcon);
     }
   }, {
     key: "render",
@@ -103533,7 +103539,8 @@ function (_Component) {
         onStarClick: this.changeRating,
         starColor: this.state.color,
         editing: this.props.editing,
-        renderStarIcon: this.renderStars
+        renderStarIcon: this.renderStars,
+        renderStarIconHalf: this.renderHalfStar
       };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_rating_component__WEBPACK_IMPORTED_MODULE_2___default.a, props);
     }
@@ -103802,7 +103809,7 @@ function (_Component) {
 
 FaIcon.propTypes = {
   icon: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
-  size: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  size: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['', 'fa-xs', 'fa-sm', 'fa-lg', 'fa-2x', 'fa-3x', 'fa-5x', 'fa-7x', 'fa-10x']),
   className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   primary: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
 };

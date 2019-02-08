@@ -13,7 +13,7 @@ class FaIcon extends Component {
 
 FaIcon.propTypes = {
     icon: PropTypes.string.isRequired,
-    size: PropTypes.string,
+    size: PropTypes.oneOf(['', 'fa-xs', 'fa-sm', 'fa-lg', 'fa-2x', 'fa-3x', 'fa-5x', 'fa-7x', 'fa-10x']),
     className: PropTypes.string,
     primary: PropTypes.bool,
 };
