@@ -6,14 +6,16 @@ class FaIcon extends Component {
         let className = this.props.icon;
         className += this.props.size ? ' ' + this.props.size : '';
         className += ' ' + this.props.className;
-        return (<i className={className}></i>);
+        className += this.props.primary ? ' text-primary' : '';
+        return (<i className={className}/>);
     }
 }
 
 FaIcon.propTypes = {
     icon: PropTypes.string.isRequired,
     size: PropTypes.string,
-    className: PropTypes.string
+    className: PropTypes.string,
+    primary: PropTypes.bool,
 };
 
 export default FaIcon;

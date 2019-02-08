@@ -88742,6 +88742,274 @@ function pathToRegexp (path, keys, options) {
 
 /***/ }),
 
+/***/ "./node_modules/react-star-rating-component/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-star-rating-component/index.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var StarRatingComponent = function (_Component) {
+  _inherits(StarRatingComponent, _Component);
+
+  function StarRatingComponent(props) {
+    _classCallCheck(this, StarRatingComponent);
+
+    var _this = _possibleConstructorReturn(this, (StarRatingComponent.__proto__ || Object.getPrototypeOf(StarRatingComponent)).call(this));
+
+    _this.state = {
+      value: props.value
+    };
+    return _this;
+  }
+
+  _createClass(StarRatingComponent, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      var value = nextProps.value;
+
+
+      if (value != null && value !== this.state.value) {
+        this.setState({ value: value });
+      }
+    }
+  }, {
+    key: 'onChange',
+    value: function onChange(inputValue) {
+      var _props = this.props,
+          editing = _props.editing,
+          value = _props.value;
+
+
+      if (!editing) {
+        return;
+      }
+
+      // do not update internal state based on input value if prop passed
+      if (value != null) {
+        return;
+      }
+
+      this.setState({ value: inputValue });
+    }
+  }, {
+    key: 'onStarClick',
+    value: function onStarClick(index, value, name, e) {
+      e.stopPropagation();
+
+      var _props2 = this.props,
+          onStarClick = _props2.onStarClick,
+          editing = _props2.editing;
+
+
+      if (!editing) {
+        return;
+      }
+
+      onStarClick && onStarClick(index, value, name, e);
+    }
+  }, {
+    key: 'onStarHover',
+    value: function onStarHover(index, value, name, e) {
+      e.stopPropagation();
+
+      var _props3 = this.props,
+          onStarHover = _props3.onStarHover,
+          editing = _props3.editing;
+
+
+      if (!editing) {
+        return;
+      }
+
+      onStarHover && onStarHover(index, value, name, e);
+    }
+  }, {
+    key: 'onStarHoverOut',
+    value: function onStarHoverOut(index, value, name, e) {
+      e.stopPropagation();
+
+      var _props4 = this.props,
+          onStarHoverOut = _props4.onStarHoverOut,
+          editing = _props4.editing;
+
+
+      if (!editing) {
+        return;
+      }
+
+      onStarHoverOut && onStarHoverOut(index, value, name, e);
+    }
+  }, {
+    key: 'renderStars',
+    value: function renderStars() {
+      var _this2 = this;
+
+      var _props5 = this.props,
+          name = _props5.name,
+          starCount = _props5.starCount,
+          starColor = _props5.starColor,
+          emptyStarColor = _props5.emptyStarColor,
+          editing = _props5.editing;
+      var value = this.state.value;
+
+
+      var starStyles = function starStyles(i, value) {
+        return {
+          float: 'right',
+          cursor: editing ? 'pointer' : 'default',
+          color: value >= i ? starColor : emptyStarColor
+        };
+      };
+      var radioStyles = {
+        display: 'none',
+        position: 'absolute',
+        marginLeft: -9999
+      };
+
+      // populate stars
+      var starNodes = [];
+
+      var _loop = function _loop(i) {
+        var id = name + '_' + i;
+        var starNodeInput = _react2.default.createElement('input', {
+          key: 'input_' + id,
+          style: radioStyles,
+          className: 'dv-star-rating-input',
+          type: 'radio',
+          name: name,
+          id: id,
+          value: i,
+          checked: value === i,
+          onChange: _this2.onChange.bind(_this2, i, name)
+        });
+        var starNodeLabel = _react2.default.createElement(
+          'label',
+          {
+            key: 'label_' + id,
+            style: starStyles(i, value),
+            className: 'dv-star-rating-star ' + (value >= i ? 'dv-star-rating-full-star' : 'dv-star-rating-empty-star'),
+            htmlFor: id,
+            onClick: function onClick(e) {
+              return _this2.onStarClick(i, value, name, e);
+            },
+            onMouseOver: function onMouseOver(e) {
+              return _this2.onStarHover(i, value, name, e);
+            },
+            onMouseLeave: function onMouseLeave(e) {
+              return _this2.onStarHoverOut(i, value, name, e);
+            }
+          },
+          _this2.renderIcon(i, value, name, id)
+        );
+
+        starNodes.push(starNodeInput);
+        starNodes.push(starNodeLabel);
+      };
+
+      for (var i = starCount; i > 0; i--) {
+        _loop(i);
+      }
+
+      return starNodes.length ? starNodes : null;
+    }
+  }, {
+    key: 'renderIcon',
+    value: function renderIcon(index, value, name, id) {
+      var _props6 = this.props,
+          renderStarIcon = _props6.renderStarIcon,
+          renderStarIconHalf = _props6.renderStarIconHalf;
+
+
+      if (typeof renderStarIconHalf === 'function' && Math.ceil(value) === index && value % 1 !== 0) {
+        return renderStarIconHalf(index, value, name, id);
+      }
+
+      if (typeof renderStarIcon === 'function') {
+        return renderStarIcon(index, value, name, id);
+      }
+
+      return _react2.default.createElement(
+        'i',
+        { key: 'icon_' + id, style: { fontStyle: 'normal' } },
+        '\u2605'
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props7 = this.props,
+          editing = _props7.editing,
+          className = _props7.className;
+
+      var classes = (0, _classnames2.default)('dv-star-rating', {
+        'dv-star-rating-non-editable': !editing
+      }, className);
+
+      return _react2.default.createElement(
+        'div',
+        { style: { display: 'inline-block', position: 'relative' }, className: classes },
+        this.renderStars()
+      );
+    }
+  }]);
+
+  return StarRatingComponent;
+}(_react.Component);
+
+StarRatingComponent.propTypes = {
+  name: _propTypes2.default.string.isRequired,
+  value: _propTypes2.default.number,
+  editing: _propTypes2.default.bool,
+  starCount: _propTypes2.default.number,
+  starColor: _propTypes2.default.string,
+  onStarClick: _propTypes2.default.func,
+  onStarHover: _propTypes2.default.func,
+  onStarHoverOut: _propTypes2.default.func,
+  renderStarIcon: _propTypes2.default.func,
+  renderStarIconHalf: _propTypes2.default.func
+};
+StarRatingComponent.defaultProps = {
+  starCount: 5,
+  editing: true,
+  starColor: '#ffb400',
+  emptyStarColor: '#333'
+};
+exports.default = StarRatingComponent;
+module.exports = exports['default'];
+
+
+/***/ }),
+
 /***/ "./node_modules/react-transition-group/CSSTransition.js":
 /*!**************************************************************!*\
   !*** ./node_modules/react-transition-group/CSSTransition.js ***!
@@ -102578,6 +102846,73 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/Views/HouseList.js":
+/*!*****************************************!*\
+  !*** ./resources/js/Views/HouseList.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap/es/Container */ "./node_modules/reactstrap/es/Container.js");
+/* harmony import */ var _components_Stars__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Stars */ "./resources/js/components/Stars.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var HouseList =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(HouseList, _Component);
+
+  function HouseList() {
+    _classCallCheck(this, HouseList);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(HouseList).apply(this, arguments));
+  }
+
+  _createClass(HouseList, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        className: "my-5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Stars__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        size: '1em',
+        color: 'secondary',
+        rating: 3,
+        editing: true
+      }));
+    }
+  }]);
+
+  return HouseList;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (HouseList);
+
+/***/ }),
+
 /***/ "./resources/js/Views/Terms.js":
 /*!*************************************!*\
   !*** ./resources/js/Views/Terms.js ***!
@@ -102970,6 +103305,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layout_MainModal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./layout/MainModal */ "./resources/js/components/layout/MainModal.js");
 /* harmony import */ var _Views_Terms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Views/Terms */ "./resources/js/Views/Terms.js");
 /* harmony import */ var _Views_BookingDetail__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../Views/BookingDetail */ "./resources/js/Views/BookingDetail.js");
+/* harmony import */ var _Views_HouseList__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Views/HouseList */ "./resources/js/Views/HouseList.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102989,6 +103325,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -103070,6 +103407,10 @@ function (_Component) {
         exact: true,
         path: "/terms",
         component: _Views_Terms__WEBPACK_IMPORTED_MODULE_12__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+        exact: true,
+        path: "/house-list",
+        component: _Views_HouseList__WEBPACK_IMPORTED_MODULE_14__["default"]
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null));
     }
   }]);
@@ -103082,6 +103423,136 @@ function (_Component) {
 if (document.getElementById('app')) {
   react_dom__WEBPACK_IMPORTED_MODULE_8__["render"](react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Main, null)), document.getElementById('app'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/Stars.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Stars.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_star_rating_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-star-rating-component */ "./node_modules/react-star-rating-component/index.js");
+/* harmony import */ var react_star_rating_component__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_star_rating_component__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+var Stars =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Stars, _Component);
+
+  function Stars(props) {
+    var _this;
+
+    _classCallCheck(this, Stars);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Stars).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      colors: {
+        primary: "rgb(250,104,57)",
+        secondary: "rgb(49,77,104)"
+      },
+      rating: _this.props.rating,
+      name: _this.props.name || 'name',
+      starIcon: '★'
+    });
+
+    _this.changeRating = _this.changeRating.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.renderStars = _this.renderStars.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(Stars, [{
+    key: "changeRating",
+    value: function changeRating(newRating, name) {
+      this.setState({
+        rating: newRating
+      });
+    }
+  }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.setState({
+        color: this.state.colors[this.props.color]
+      } || this.state.colors.primary);
+    }
+  }, {
+    key: "handleHover",
+    value: function handleHover() {}
+  }, {
+    key: "renderStars",
+    value: function renderStars() {
+      var style = _objectSpread({}, this.props.style, {
+        fontSize: this.props.size,
+        fontStyle: 'normal'
+      });
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: this.props.className,
+        style: style
+      }, this.state.starIcon);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var props = {
+        name: this.state.name,
+        value: this.state.rating,
+        onStarClick: this.changeRating,
+        starColor: this.state.color,
+        editing: this.props.editing,
+        renderStarIcon: this.renderStars
+      };
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_rating_component__WEBPACK_IMPORTED_MODULE_2___default.a, props);
+    }
+  }]);
+
+  return Stars;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+_defineProperty(Stars, "defaultProps", {
+  editing: false
+});
+
+_defineProperty(Stars, "propTypes", {
+  editing: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+  rating: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
+  color: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(["primary", "secondary"])
+});
+
+/* harmony default export */ __webpack_exports__["default"] = (Stars);
 
 /***/ }),
 
@@ -103319,6 +103790,7 @@ function (_Component) {
       var className = this.props.icon;
       className += this.props.size ? ' ' + this.props.size : '';
       className += ' ' + this.props.className;
+      className += this.props.primary ? ' text-primary' : '';
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: className
       });
@@ -103331,7 +103803,8 @@ function (_Component) {
 FaIcon.propTypes = {
   icon: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
   size: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
-  className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
+  className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  primary: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
 };
 /* harmony default export */ __webpack_exports__["default"] = (FaIcon);
 
@@ -104570,12 +105043,13 @@ function (_Component) {
 /*!*********************************!*\
   !*** ./resources/js/helpers.js ***!
   \*********************************/
-/*! exports provided: translate */
+/*! exports provided: translate, title */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "translate", function() { return translate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "title", function() { return title; });
 /* harmony import */ var _lang_es__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lang/es */ "./resources/js/lang/es.json");
 var _lang_es__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./lang/es */ "./resources/js/lang/es.json", 1);
 /* harmony import */ var _lang_en__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lang/en */ "./resources/js/lang/en.json");
@@ -104589,6 +105063,9 @@ function translate(locale, string, type) {
   };
   type = type || 'general';
   return langs[locale][type][string];
+}
+function title(title) {
+  document.title = title + ' - Pig Travel';
 }
 
 /***/ }),
@@ -104709,7 +105186,7 @@ module.exports = {"header":{"login":"Iniciar Session","logout":"Cerrar Session",
 /*! exports provided: es, en, default */
 /***/ (function(module) {
 
-module.exports = {"es":[{"title":"<h3><strong>Cookies</strong></h3>","body":"<p>We employ the use of cookies. By accessing PigTravel, you agreed to use cookies in agreement with the                    PigTravel's Privacy Policy.</p>                <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies                    are used by our website to enable the functionality of certain areas to make it easier for people                    visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>"},{"title":"<h3><strong>License</strong></h3>","body":"<p>Unless otherwise stated, PigTravel and/or its licensors own the intellectual property rights for all                    material on PigTravel. All intellectual property rights are reserved. You may access this from                    PigTravel for your own personal use subjected to restrictions set in these terms and conditions.</p>                <p>You must not:</p>                <ul>                    <li>Republish material from PigTravel</li>                    <li>Sell, rent or sub-license material from PigTravel</li>                    <li>Reproduce, duplicate or copy material from PigTravel</li>                    <li>Redistribute content from PigTravel</li>                </ul>                <p>This Agreement shall begin on the date hereof.</p>                <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in                    certain areas of the website. PigTravel does not filter, edit, publish or review Comments prior to                    their presence on the website. Comments do not reflect the views and opinions of PigTravel,its                    agents and/or affiliates. Comments reflect the views and opinions of the person who post their views                    and opinions. To the extent permitted by applicable laws, PigTravel shall not be liable for the                    Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of                    and/or posting of and/or appearance of the Comments on this website.</p>                <p>PigTravel reserves the right to monitor all Comments and to remove any Comments which can be                    considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>                <p>You warrant and represent that:</p>                <ul>                    <li>You are entitled to post the Comments on our website and have all necessary licenses and                        consents to do so;                    </li>                    <li>The Comments do not invade any intellectual property right, including without limitation                        copyright, patent or trademark of any third party;                    </li>                    <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful                        material which is an invasion of privacy                    </li>                    <li>The Comments will not be used to solicit or promote business or custom or present commercial                        activities or unlawful activity.                    </li>                </ul>                <p>You hereby grant PigTravel a non-exclusive license to use, reproduce, edit and authorize others to                    use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>"},{"title":"<h3><strong>Hyperlinking to our Content</strong></h3>","body":"<p>The following organizations may link to our Website without prior written approval:</p>                <ul>                    <li>Government agencies;</li>                    <li>Search engines;</li>                    <li>News organizations;</li>                    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to                        the Websites of other listed businesses; and                    </li>                    <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping                        malls, and charity fundraising groups which may not hyperlink to our Web site.                    </li>                </ul>                <p>These organizations may link to our home page, to publications or to other Website information so                    long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship,                    endorsement or approval of the linking party and its products and/or services; and (c) fits within                    the context of the linking party’s site.</p>                <p>We may consider and approve other link requests from the following types of organizations:</p>                <ul>                    <li>commonly-known consumer and/or business information sources;</li>                    <li>dot.com community sites;</li>                    <li>associations or other groups representing charities;</li>                    <li>online directory distributors;</li>                    <li>internet portals;</li>                    <li>accounting, law and consulting firms; and</li>                    <li>educational institutions and trade associations.</li>                </ul>                <p>We will approve link requests from these organizations if we decide that: (a) the link would not make                    us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have                    any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates                    the absence of PigTravel; and (d) the link is in the context of general resource information.</p>                <p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive;                    (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its                    products or services; and (c) fits within the context of the linking party’s site.</p>                <p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our                    website, you must inform us by sending an e-mail to PigTravel. Please include your name, your                    organization name, contact information as well as the URL of your site, a list of any URLs from                    which you intend to link to our Website, and a list of the URLs on our site to which you would like                    to link. Wait 2-3 weeks for a response.</p>                <p>Approved organizations may hyperlink to our Website as follows:</p>                <ul>                    <li>By use of our corporate name; or</li>                    <li>By use of the uniform resource locator being linked to; or</li>                    <li>By use of any other description of our Website being linked to that makes sense within the                        context and format of content on the linking party’s site.                    </li>                </ul>                <p>No use of PigTravel's logo or other artwork will be allowed for linking absent a trademark license                    agreement.</p>"},{"title":"<h3><strong>iFrames</strong></h3>","body":"<p>Without prior approval and written permission, you may not create frames around our Webpages that                    alter in any way the visual presentation or appearance of our Website.</p>"},{"title":"<h3><strong>Content Liability</strong></h3>","body":"<p>We shall not be hold responsible for any content that appears on your Website. You agree to protect                    and defend us against all claims that is rising on your Website. No link(s) should appear on any                    Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise                    violates, or advocates the infringement or other violation of, any third party rights.</p>"},{"title":"<h3><strong>Your Privacy</strong></h3>","body":"<p><a href=\"#\"Please read Privacy Policy</p>"},{"title":"<h3><strong>Reservation of Rights</strong></h3>","body":"<p>We reserve the right to request that you remove all links or any particular link to our Website. You                    approve to immediately remove all links to our Website upon request. We also reserve the right to                    amen these terms and conditions and it’s linking policy at any time. By continuously linking to our                    Website, you agree to be bound to and follow these linking terms and conditions.</p>"},{"title":"<h3><strong>Removal of links from our website</strong></h3>","body":"<p>If you find any link on our Website that is offensive for any reason, you are free to contact and                    inform us any moment. We will consider requests to remove links but we are not obligated to or so or                    to respond to you directly.</p>                <p>We do not ensure that the information on this website is correct, we do not warrant its completeness                    or accuracy; nor do we promise to ensure that the website remains available or that the material on                    the website is kept up to date.</p>"},{"title":"<h3><strong>Disclaimer</strong></h3>","body":"<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and                    conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>                <ul>                    <li>limit or exclude our or your liability for death or personal injury;</li>                    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>                    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or                    </li>                    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>                </ul>"}],"en":[{"title":"<h3><strong>Cookies</strong></h3>","body":"<p>We employ the use of cookies. By accessing PigTravel, you agreed to use cookies in agreement with the                    PigTravel's Privacy Policy.</p>                <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies                    are used by our website to enable the functionality of certain areas to make it easier for people                    visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>"},{"title":"<h3><strong>License</strong></h3>","body":"<p>Unless otherwise stated, PigTravel and/or its licensors own the intellectual property rights for all                    material on PigTravel. All intellectual property rights are reserved. You may access this from                    PigTravel for your own personal use subjected to restrictions set in these terms and conditions.</p>                <p>You must not:</p>                <ul>                    <li>Republish material from PigTravel</li>                    <li>Sell, rent or sub-license material from PigTravel</li>                    <li>Reproduce, duplicate or copy material from PigTravel</li>                    <li>Redistribute content from PigTravel</li>                </ul>                <p>This Agreement shall begin on the date hereof.</p>                <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in                    certain areas of the website. PigTravel does not filter, edit, publish or review Comments prior to                    their presence on the website. Comments do not reflect the views and opinions of PigTravel,its                    agents and/or affiliates. Comments reflect the views and opinions of the person who post their views                    and opinions. To the extent permitted by applicable laws, PigTravel shall not be liable for the                    Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of                    and/or posting of and/or appearance of the Comments on this website.</p>                <p>PigTravel reserves the right to monitor all Comments and to remove any Comments which can be                    considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>                <p>You warrant and represent that:</p>                <ul>                    <li>You are entitled to post the Comments on our website and have all necessary licenses and                        consents to do so;                    </li>                    <li>The Comments do not invade any intellectual property right, including without limitation                        copyright, patent or trademark of any third party;                    </li>                    <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful                        material which is an invasion of privacy                    </li>                    <li>The Comments will not be used to solicit or promote business or custom or present commercial                        activities or unlawful activity.                    </li>                </ul>                <p>You hereby grant PigTravel a non-exclusive license to use, reproduce, edit and authorize others to                    use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>"},{"title":"<h3><strong>Hyperlinking to our Content</strong></h3>","body":"<p>The following organizations may link to our Website without prior written approval:</p>                <ul>                    <li>Government agencies;</li>                    <li>Search engines;</li>                    <li>News organizations;</li>                    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to                        the Websites of other listed businesses; and                    </li>                    <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping                        malls, and charity fundraising groups which may not hyperlink to our Web site.                    </li>                </ul>                <p>These organizations may link to our home page, to publications or to other Website information so                    long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship,                    endorsement or approval of the linking party and its products and/or services; and (c) fits within                    the context of the linking party’s site.</p>                <p>We may consider and approve other link requests from the following types of organizations:</p>                <ul>                    <li>commonly-known consumer and/or business information sources;</li>                    <li>dot.com community sites;</li>                    <li>associations or other groups representing charities;</li>                    <li>online directory distributors;</li>                    <li>internet portals;</li>                    <li>accounting, law and consulting firms; and</li>                    <li>educational institutions and trade associations.</li>                </ul>                <p>We will approve link requests from these organizations if we decide that: (a) the link would not make                    us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have                    any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates                    the absence of PigTravel; and (d) the link is in the context of general resource information.</p>                <p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive;                    (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its                    products or services; and (c) fits within the context of the linking party’s site.</p>                <p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our                    website, you must inform us by sending an e-mail to PigTravel. Please include your name, your                    organization name, contact information as well as the URL of your site, a list of any URLs from                    which you intend to link to our Website, and a list of the URLs on our site to which you would like                    to link. Wait 2-3 weeks for a response.</p>                <p>Approved organizations may hyperlink to our Website as follows:</p>                <ul>                    <li>By use of our corporate name; or</li>                    <li>By use of the uniform resource locator being linked to; or</li>                    <li>By use of any other description of our Website being linked to that makes sense within the                        context and format of content on the linking party’s site.                    </li>                </ul>                <p>No use of PigTravel's logo or other artwork will be allowed for linking absent a trademark license                    agreement.</p>"},{"title":"<h3><strong>iFrames</strong></h3>","body":"<p>Without prior approval and written permission, you may not create frames around our Webpages that                    alter in any way the visual presentation or appearance of our Website.</p>"},{"title":"<h3><strong>Content Liability</strong></h3>","body":"<p>We shall not be hold responsible for any content that appears on your Website. You agree to protect                    and defend us against all claims that is rising on your Website. No link(s) should appear on any                    Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise                    violates, or advocates the infringement or other violation of, any third party rights.</p>"},{"title":"<h3><strong>Your Privacy</strong></h3>","body":"<p><a href=\"#\"Please read Privacy Policy</p>"},{"title":"<h3><strong>Reservation of Rights</strong></h3>","body":"<p>We reserve the right to request that you remove all links or any particular link to our Website. You                    approve to immediately remove all links to our Website upon request. We also reserve the right to                    amen these terms and conditions and it’s linking policy at any time. By continuously linking to our                    Website, you agree to be bound to and follow these linking terms and conditions.</p>"},{"title":"<h3><strong>Removal of links from our website</strong></h3>","body":"<p>If you find any link on our Website that is offensive for any reason, you are free to contact and                    inform us any moment. We will consider requests to remove links but we are not obligated to or so or                    to respond to you directly.</p>                <p>We do not ensure that the information on this website is correct, we do not warrant its completeness                    or accuracy; nor do we promise to ensure that the website remains available or that the material on                    the website is kept up to date.</p>"},{"title":"<h3><strong>Disclaimer</strong></h3>","body":"<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and                    conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>                <ul>                    <li>limit or exclude our or your liability for death or personal injury;</li>                    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>                    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or                    </li>                    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>                </ul>"}]};
+module.exports = {"es":[{"title":"<h3><strong>Galletas</strong></h3>","body":"<p>We employ the use of cookies. By accessing PigTravel, you agreed to use cookies in agreement with the                    PigTravel's Privacy Policy.</p>                <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies                    are used by our website to enable the functionality of certain areas to make it easier for people                    visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>"},{"title":"<h3><strong>License</strong></h3>","body":"<p>Unless otherwise stated, PigTravel and/or its licensors own the intellectual property rights for all                    material on PigTravel. All intellectual property rights are reserved. You may access this from                    PigTravel for your own personal use subjected to restrictions set in these terms and conditions.</p>                <p>You must not:</p>                <ul>                    <li>Republish material from PigTravel</li>                    <li>Sell, rent or sub-license material from PigTravel</li>                    <li>Reproduce, duplicate or copy material from PigTravel</li>                    <li>Redistribute content from PigTravel</li>                </ul>                <p>This Agreement shall begin on the date hereof.</p>                <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in                    certain areas of the website. PigTravel does not filter, edit, publish or review Comments prior to                    their presence on the website. Comments do not reflect the views and opinions of PigTravel,its                    agents and/or affiliates. Comments reflect the views and opinions of the person who post their views                    and opinions. To the extent permitted by applicable laws, PigTravel shall not be liable for the                    Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of                    and/or posting of and/or appearance of the Comments on this website.</p>                <p>PigTravel reserves the right to monitor all Comments and to remove any Comments which can be                    considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>                <p>You warrant and represent that:</p>                <ul>                    <li>You are entitled to post the Comments on our website and have all necessary licenses and                        consents to do so;                    </li>                    <li>The Comments do not invade any intellectual property right, including without limitation                        copyright, patent or trademark of any third party;                    </li>                    <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful                        material which is an invasion of privacy                    </li>                    <li>The Comments will not be used to solicit or promote business or custom or present commercial                        activities or unlawful activity.                    </li>                </ul>                <p>You hereby grant PigTravel a non-exclusive license to use, reproduce, edit and authorize others to                    use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>"},{"title":"<h3><strong>Hyperlinking to our Content</strong></h3>","body":"<p>The following organizations may link to our Website without prior written approval:</p>                <ul>                    <li>Government agencies;</li>                    <li>Search engines;</li>                    <li>News organizations;</li>                    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to                        the Websites of other listed businesses; and                    </li>                    <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping                        malls, and charity fundraising groups which may not hyperlink to our Web site.                    </li>                </ul>                <p>These organizations may link to our home page, to publications or to other Website information so                    long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship,                    endorsement or approval of the linking party and its products and/or services; and (c) fits within                    the context of the linking party’s site.</p>                <p>We may consider and approve other link requests from the following types of organizations:</p>                <ul>                    <li>commonly-known consumer and/or business information sources;</li>                    <li>dot.com community sites;</li>                    <li>associations or other groups representing charities;</li>                    <li>online directory distributors;</li>                    <li>internet portals;</li>                    <li>accounting, law and consulting firms; and</li>                    <li>educational institutions and trade associations.</li>                </ul>                <p>We will approve link requests from these organizations if we decide that: (a) the link would not make                    us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have                    any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates                    the absence of PigTravel; and (d) the link is in the context of general resource information.</p>                <p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive;                    (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its                    products or services; and (c) fits within the context of the linking party’s site.</p>                <p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our                    website, you must inform us by sending an e-mail to PigTravel. Please include your name, your                    organization name, contact information as well as the URL of your site, a list of any URLs from                    which you intend to link to our Website, and a list of the URLs on our site to which you would like                    to link. Wait 2-3 weeks for a response.</p>                <p>Approved organizations may hyperlink to our Website as follows:</p>                <ul>                    <li>By use of our corporate name; or</li>                    <li>By use of the uniform resource locator being linked to; or</li>                    <li>By use of any other description of our Website being linked to that makes sense within the                        context and format of content on the linking party’s site.                    </li>                </ul>                <p>No use of PigTravel's logo or other artwork will be allowed for linking absent a trademark license                    agreement.</p>"},{"title":"<h3><strong>iFrames</strong></h3>","body":"<p>Without prior approval and written permission, you may not create frames around our Webpages that                    alter in any way the visual presentation or appearance of our Website.</p>"},{"title":"<h3><strong>Content Liability</strong></h3>","body":"<p>We shall not be hold responsible for any content that appears on your Website. You agree to protect                    and defend us against all claims that is rising on your Website. No link(s) should appear on any                    Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise                    violates, or advocates the infringement or other violation of, any third party rights.</p>"},{"title":"<h3><strong>Your Privacy</strong></h3>","body":"<p><a href='/policy'>Please read Privacy Policy</p>"},{"title":"<h3><strong>Reservation of Rights</strong></h3>","body":"<p>We reserve the right to request that you remove all links or any particular link to our Website. You                    approve to immediately remove all links to our Website upon request. We also reserve the right to                    amen these terms and conditions and it’s linking policy at any time. By continuously linking to our                    Website, you agree to be bound to and follow these linking terms and conditions.</p>"},{"title":"<h3><strong>Removal of links from our website</strong></h3>","body":"<p>If you find any link on our Website that is offensive for any reason, you are free to contact and                    inform us any moment. We will consider requests to remove links but we are not obligated to or so or                    to respond to you directly.</p>                <p>We do not ensure that the information on this website is correct, we do not warrant its completeness                    or accuracy; nor do we promise to ensure that the website remains available or that the material on                    the website is kept up to date.</p>"},{"title":"<h3><strong>Disclaimer</strong></h3>","body":"<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and                    conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>                <ul>                    <li>limit or exclude our or your liability for death or personal injury;</li>                    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>                    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or                    </li>                    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>                </ul>"}],"en":[{"title":"<h3><strong>Cookies</strong></h3>","body":"<p>We employ the use of cookies. By accessing PigTravel, you agreed to use cookies in agreement with the                    PigTravel's Privacy Policy.</p>                <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies                    are used by our website to enable the functionality of certain areas to make it easier for people                    visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>"},{"title":"<h3><strong>License</strong></h3>","body":"<p>Unless otherwise stated, PigTravel and/or its licensors own the intellectual property rights for all                    material on PigTravel. All intellectual property rights are reserved. You may access this from                    PigTravel for your own personal use subjected to restrictions set in these terms and conditions.</p>                <p>You must not:</p>                <ul>                    <li>Republish material from PigTravel</li>                    <li>Sell, rent or sub-license material from PigTravel</li>                    <li>Reproduce, duplicate or copy material from PigTravel</li>                    <li>Redistribute content from PigTravel</li>                </ul>                <p>This Agreement shall begin on the date hereof.</p>                <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in                    certain areas of the website. PigTravel does not filter, edit, publish or review Comments prior to                    their presence on the website. Comments do not reflect the views and opinions of PigTravel,its                    agents and/or affiliates. Comments reflect the views and opinions of the person who post their views                    and opinions. To the extent permitted by applicable laws, PigTravel shall not be liable for the                    Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of                    and/or posting of and/or appearance of the Comments on this website.</p>                <p>PigTravel reserves the right to monitor all Comments and to remove any Comments which can be                    considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>                <p>You warrant and represent that:</p>                <ul>                    <li>You are entitled to post the Comments on our website and have all necessary licenses and                        consents to do so;                    </li>                    <li>The Comments do not invade any intellectual property right, including without limitation                        copyright, patent or trademark of any third party;                    </li>                    <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful                        material which is an invasion of privacy                    </li>                    <li>The Comments will not be used to solicit or promote business or custom or present commercial                        activities or unlawful activity.                    </li>                </ul>                <p>You hereby grant PigTravel a non-exclusive license to use, reproduce, edit and authorize others to                    use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>"},{"title":"<h3><strong>Hyperlinking to our Content</strong></h3>","body":"<p>The following organizations may link to our Website without prior written approval:</p>                <ul>                    <li>Government agencies;</li>                    <li>Search engines;</li>                    <li>News organizations;</li>                    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to                        the Websites of other listed businesses; and                    </li>                    <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping                        malls, and charity fundraising groups which may not hyperlink to our Web site.                    </li>                </ul>                <p>These organizations may link to our home page, to publications or to other Website information so                    long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship,                    endorsement or approval of the linking party and its products and/or services; and (c) fits within                    the context of the linking party’s site.</p>                <p>We may consider and approve other link requests from the following types of organizations:</p>                <ul>                    <li>commonly-known consumer and/or business information sources;</li>                    <li>dot.com community sites;</li>                    <li>associations or other groups representing charities;</li>                    <li>online directory distributors;</li>                    <li>internet portals;</li>                    <li>accounting, law and consulting firms; and</li>                    <li>educational institutions and trade associations.</li>                </ul>                <p>We will approve link requests from these organizations if we decide that: (a) the link would not make                    us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have                    any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates                    the absence of PigTravel; and (d) the link is in the context of general resource information.</p>                <p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive;                    (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its                    products or services; and (c) fits within the context of the linking party’s site.</p>                <p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our                    website, you must inform us by sending an e-mail to PigTravel. Please include your name, your                    organization name, contact information as well as the URL of your site, a list of any URLs from                    which you intend to link to our Website, and a list of the URLs on our site to which you would like                    to link. Wait 2-3 weeks for a response.</p>                <p>Approved organizations may hyperlink to our Website as follows:</p>                <ul>                    <li>By use of our corporate name; or</li>                    <li>By use of the uniform resource locator being linked to; or</li>                    <li>By use of any other description of our Website being linked to that makes sense within the                        context and format of content on the linking party’s site.                    </li>                </ul>                <p>No use of PigTravel's logo or other artwork will be allowed for linking absent a trademark license                    agreement.</p>"},{"title":"<h3><strong>iFrames</strong></h3>","body":"<p>Without prior approval and written permission, you may not create frames around our Webpages that                    alter in any way the visual presentation or appearance of our Website.</p>"},{"title":"<h3><strong>Content Liability</strong></h3>","body":"<p>We shall not be hold responsible for any content that appears on your Website. You agree to protect                    and defend us against all claims that is rising on your Website. No link(s) should appear on any                    Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise                    violates, or advocates the infringement or other violation of, any third party rights.</p>"},{"title":"<h3><strong>Your Privacy</strong></h3>","body":"<p><a href='/policy'>Please read Privacy Policy</p>"},{"title":"<h3><strong>Reservation of Rights</strong></h3>","body":"<p>We reserve the right to request that you remove all links or any particular link to our Website. You                    approve to immediately remove all links to our Website upon request. We also reserve the right to                    amen these terms and conditions and it’s linking policy at any time. By continuously linking to our                    Website, you agree to be bound to and follow these linking terms and conditions.</p>"},{"title":"<h3><strong>Removal of links from our website</strong></h3>","body":"<p>If you find any link on our Website that is offensive for any reason, you are free to contact and                    inform us any moment. We will consider requests to remove links but we are not obligated to or so or                    to respond to you directly.</p>                <p>We do not ensure that the information on this website is correct, we do not warrant its completeness                    or accuracy; nor do we promise to ensure that the website remains available or that the material on                    the website is kept up to date.</p>"},{"title":"<h3><strong>Disclaimer</strong></h3>","body":"<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and                    conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>                <ul>                    <li>limit or exclude our or your liability for death or personal injury;</li>                    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>                    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or                    </li>                    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>                </ul>"}]};
 
 /***/ }),
 
@@ -104731,8 +105208,8 @@ module.exports = {"es":[{"title":"<h3><strong>Cookies</strong></h3>","body":"<p>
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/vacacional/front/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/vacacional/front/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\j_for\Desktop\DAW\Proyecto\WEB\front-lloguer-vacacional\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\j_for\Desktop\DAW\Proyecto\WEB\front-lloguer-vacacional\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
