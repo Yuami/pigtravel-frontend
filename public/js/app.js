@@ -109612,10 +109612,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap/es/Container */ "./node_modules/reactstrap/es/Container.js");
-/* harmony import */ var _components_Stars__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Stars */ "./resources/js/components/Stars.js");
-/* harmony import */ var _components_general_HouseCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/general/HouseCard */ "./resources/js/components/general/HouseCard.js");
-/* harmony import */ var reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap/es/Col */ "./node_modules/reactstrap/es/Col.js");
-/* harmony import */ var reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap/es/Row */ "./node_modules/reactstrap/es/Row.js");
+/* harmony import */ var _components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/general/HouseCard */ "./resources/js/components/general/HouseCard.js");
+/* harmony import */ var reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap/es/Col */ "./node_modules/reactstrap/es/Col.js");
+/* harmony import */ var reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap/es/Row */ "./node_modules/reactstrap/es/Row.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -109626,14 +109625,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -109647,9 +109647,29 @@ function (_Component) {
   _inherits(HouseList, _Component);
 
   function HouseList() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, HouseList);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(HouseList).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(HouseList)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      house: {
+        name: "Mi casa to chuli",
+        img: "http://back.pig.test/assets/uploads/img/casas/default-image.jpg",
+        price: "95",
+        type: "Chalet",
+        rating: "4.8"
+      }
+    });
+
+    return _this;
   }
 
   _createClass(HouseList, [{
@@ -109658,15 +109678,156 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_1__["default"], {
         className: "my-5",
         fluid: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_5__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
         xs: "12",
         sm: "6",
         md: "4",
         lg: "3",
         xl: "3",
         className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        shadow: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        xs: "12",
+        sm: "6",
+        md: "4",
+        lg: "3",
+        xl: "3",
+        className: "my-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        house: this.state.house,
+        clickable: true
       }))));
     }
   }]);
@@ -110526,7 +110687,7 @@ function (_Component) {
     value: function render() {
       var props = {
         name: this.state.name,
-        value: this.state.isHovering ? this.state.hoverRating : this.state.rating,
+        value: parseFloat(this.state.isHovering ? this.state.hoverRating : this.state.rating),
         onStarClick: this.changeRating,
         starColor: this.state.color,
         editing: this.props.editing,
@@ -110549,7 +110710,7 @@ _defineProperty(Stars, "defaultProps", {
 _defineProperty(Stars, "propTypes", {
   size: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['', 'fa-xs', 'fa-sm', 'fa-lg', 'fa-2x', 'fa-3x', 'fa-5x', 'fa-7x', 'fa-10x']),
   editing: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
-  rating: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
+  rating: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
   color: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(["primary", "secondary"])
 });
 
@@ -111337,7 +111498,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap_es_CardTitle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap/es/CardTitle */ "./node_modules/reactstrap/es/CardTitle.js");
 /* harmony import */ var reactstrap_es_CardImg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap/es/CardImg */ "./node_modules/reactstrap/es/CardImg.js");
 /* harmony import */ var reactstrap_es_CardSubtitle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap/es/CardSubtitle */ "./node_modules/reactstrap/es/CardSubtitle.js");
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers.js");
+/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../lang/Translate */ "./resources/js/lang/Translate.js");
+/* harmony import */ var reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap/es/Container */ "./node_modules/reactstrap/es/Container.js");
+/* harmony import */ var _Stars__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Stars */ "./resources/js/components/Stars.js");
+/* harmony import */ var reactstrap_es_CardBody__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap/es/CardBody */ "./node_modules/reactstrap/es/CardBody.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -111357,6 +111521,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
 
 
 
@@ -111393,12 +111560,32 @@ function (_Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          shadow = _this$props.shadow,
-          houseName = _this$props.houseName,
-          price = _this$props.price;
+          clickable = _this$props.clickable,
+          house = _this$props.house;
+      var img = house.img,
+          name = house.name,
+          type = house.type,
+          price = house.price,
+          rating = house.rating;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MainCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        shadow: shadow
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_CardTitle__WEBPACK_IMPORTED_MODULE_3__["default"], null, "Esto es una prueba"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_CardSubtitle__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+        clickable: clickable
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "house-card-img"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: img,
+        alt: name,
+        width: "100%"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, type))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        fluid: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_CardTitle__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_CardSubtitle__WEBPACK_IMPORTED_MODULE_5__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "mt-5"
+      }, house.price + ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        type: "houselist",
+        string: "night"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Stars__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        rating: rating,
+        color: "primary"
+      }))));
     }
   }]);
 
@@ -111406,7 +111593,13 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 _defineProperty(HouseCard, "propTypes", {
-  shadow: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
+  clickable: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+  house: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.shape({
+    name: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+    img: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+    price: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired,
+    type: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
+  }).isRequired
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (HouseCard);
@@ -111471,13 +111664,16 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       hover: false,
-      shadowClass: 'shadow-sm'
+      shadowClass: 'shadow-sm',
+      style: {
+        cursor: _this.props.clickable ? 'pointer' : 'inherit'
+      }
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleHover", function () {
       var hover = !_this.state.hover;
       var shadowClass = hover ? 'shadow' : 'shadow-sm';
-      shadowClass = _this.props.shadow ? shadowClass : 'shadow-sm';
+      shadowClass = _this.props.clickable ? shadowClass : 'shadow-sm';
 
       _this.setState({
         hover: hover,
@@ -111491,13 +111687,18 @@ function (_Component) {
   _createClass(MainCard, [{
     key: "render",
     value: function render() {
+      var _this$state = this.state,
+          shadowClass = _this$state.shadowClass,
+          style = _this$state.style;
       var _this$props = this.props,
           children = _this$props.children,
-          className = _this$props.className;
-      var shadowClass = className + ' ' + this.state.shadowClass;
+          className = _this$props.className,
+          id = _this$props.id;
+      var shadow = className + ' ' + shadowClass;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        className: shadowClass,
-        id: this.props.id
+        className: shadow,
+        id: id,
+        style: style
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onMouseEnter: this.handleHover,
         onMouseLeave: this.handleHover
@@ -111514,7 +111715,7 @@ _defineProperty(MainCard, "defaultProps", {
 });
 
 _defineProperty(MainCard, "propTypes", {
-  shadow: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
+  clickable: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (MainCard);
@@ -112404,13 +112605,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -112427,17 +112630,37 @@ var Header =
 function (_Component) {
   _inherits(Header, _Component);
 
-  function Header() {
+  function Header(props) {
+    var _this;
+
     _classCallCheck(this, Header);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Header).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      isOpen: false
+    });
+
+    _this.toggle = _this.toggle.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(Header, [{
+    key: "toggle",
+    value: function toggle() {
+      this.setState({
+        isOpen: !this.state.isOpen
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Navbar"], {
-        className: "sticky-top navbar-light navbar-expand-md bg-white justify-content-center"
+        className: "justify-content-center shadow-lg",
+        sticky: "top",
+        expand: "md",
+        color: "white",
+        light: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavbarBrand"], {
         href: "/",
         className: "navbar-brand d-flex w-50 mr-auto"
@@ -112446,23 +112669,22 @@ function (_Component) {
         alt: "logo",
         className: "header-logo"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavbarToggler"], {
-        "data-toggle": "collapse",
-        "data-target": "#collapsingNavbar3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "navbar-toggler-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Collapse"], {
-        className: "navbar-collapse w-100",
-        id: "collapsingNavbar3"
+        onClick: this.toggle
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Collapse"], {
+        isOpen: this.state.isOpen,
+        className: "w-100",
+        navbar: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Nav"], {
-        className: "navbar-nav w-100 justify-content-center"
+        className: "w-100 justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
-        className: "active"
+        active: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "header-title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: '/'
       }, "Pig Travel")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Nav"], {
-        className: "navbar-nav ml-auto w-100 justify-content-end"
+        className: "ml-auto w-100 justify-content-end",
+        navbar: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
         className: "header-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], {
@@ -113498,10 +113720,10 @@ Translate.propTypes = {
 /*!***********************************!*\
   !*** ./resources/js/lang/en.json ***!
   \***********************************/
-/*! exports provided: header, footer, reservation, general, searcher, index, carrousel, bookingDetails, pagesTitles, contact, default */
+/*! exports provided: header, footer, reservation, general, searcher, index, carrousel, bookingDetails, pagesTitles, contact, houselist, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"reservation":{"house-rules":"Rules of the house","allowed":"You're allowed to","disallowed":"In the house you're not permitted to","includes":"This reservation includes"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home","more-information":"More information"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"From ","checkout":"To "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"bookingDetails":{"bookingDetails":"Booking details","owner":"Owner","checkIn":"Check In","checkOut":"Check Out","guests":"Guests","pricePerNight":"Price per night","priceBreakdown":"Price breakdown","serviceFee":"Service fee","total":"Total"},"pagesTitles":{"messages":"Messages","contact":"Contact","home":"Home","bookings":"Bookings","booking":"Booking"},"contact":{"email":"Email","title":"Title","message":"Message","checkPolicy":"I have read and accept the privacy policy","send":"SEND"}};
+module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"reservation":{"house-rules":"Rules of the house","allowed":"You're allowed to","disallowed":"In the house you're not permitted to","includes":"This reservation includes"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home","more-information":"More information"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"From ","checkout":"To "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"bookingDetails":{"bookingDetails":"Booking details","owner":"Owner","checkIn":"Check In","checkOut":"Check Out","guests":"Guests","pricePerNight":"Price per night","priceBreakdown":"Price breakdown","serviceFee":"Service fee","total":"Total"},"pagesTitles":{"messages":"Messages","contact":"Contact","home":"Home","bookings":"Bookings","booking":"Booking"},"contact":{"email":"Email","title":"Title","message":"Message","checkPolicy":"I have read and accept the privacy policy","send":"SEND"},"houselist":{"night":"per night"}};
 
 /***/ }),
 
@@ -113509,10 +113731,10 @@ module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Regi
 /*!***********************************!*\
   !*** ./resources/js/lang/es.json ***!
   \***********************************/
-/*! exports provided: header, footer, general, reservation, searcher, index, carrousel, bookingDetails, pagesTitles, contact, default */
+/*! exports provided: header, footer, general, reservation, searcher, index, carrousel, bookingDetails, pagesTitles, contact, houselist, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Iniciar Sesion","logout":"Cerrar Sesion","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quiénes somos?","about-us.terms":"Terminos y condiciones","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio","more-information":"Más información"},"reservation":{"house-rules":"Normas de la casa","allowed":"En esta casa puedes","disallowed":"En la casa no tienes permiso para","includes":"La reserva incluye"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","checkin":"Entrada ","checkout":"Salida "},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"bookingDetails":{"bookingDetails":"Detalles reserva","owner":"Propietario","checkIn":"Entrada","checkOut":"Salida","guests":"Huespedes","pricePerNight":"Precio por noche","priceBreakdown":"Desglose precio","serviceFee":"Tarifa de servicio","total":"Total"},"pagesTitles":{"messages":"Mensajes","contact":"Contacto","home":"Inicio","bookings":"Reservas","booking":"Reserva"},"contact":{"email":"Email","title":"Titulo","message":"Mensaje","checkPolicy":"He leído y acepto la Política de Privacidad","send":"ENVIAR"}};
+module.exports = {"header":{"login":"Iniciar Sesion","logout":"Cerrar Sesion","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quiénes somos?","about-us.terms":"Terminos y condiciones","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio","more-information":"Más información"},"reservation":{"house-rules":"Normas de la casa","allowed":"En esta casa puedes","disallowed":"En la casa no tienes permiso para","includes":"La reserva incluye"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","checkin":"Entrada ","checkout":"Salida "},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"bookingDetails":{"bookingDetails":"Detalles reserva","owner":"Propietario","checkIn":"Entrada","checkOut":"Salida","guests":"Huespedes","pricePerNight":"Precio por noche","priceBreakdown":"Desglose precio","serviceFee":"Tarifa de servicio","total":"Total"},"pagesTitles":{"messages":"Mensajes","contact":"Contacto","home":"Inicio","bookings":"Reservas","booking":"Reserva"},"contact":{"email":"Email","title":"Titulo","message":"Mensaje","checkPolicy":"He leído y acepto la Política de Privacidad","send":"ENVIAR"},"houselist":{"night":"por noche"}};
 
 /***/ }),
 

@@ -351,6 +351,41 @@ textarea {
   list-style-type: none;
 }
 
+.house-card-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  z-index: 1;
+}
+
+.house-card-img img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 230px;
+  display: block;
+}
+
+.house-card-img span {
+  position: absolute;
+  top: 15%;
+  left: 12%;
+  padding: 6px;
+  font-size: 12px;
+  border-radius: 4px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #FA6839;
+  color: white;
+}
+
+.house-card-img span h4 {
+  font-size: 12px;
+  margin: 0;
+  padding: 10px 5px;
+  line-height: 0;
+}
+
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
