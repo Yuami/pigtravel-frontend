@@ -9,9 +9,9 @@ class HouseList extends Component {
         return (
             <Container className="my-5">
                 <Stars
-                    size={'1em'}
-                    color={'secondary'}
-                    rating={3}
+                    size={'fa-lg'}
+                    color={'primary'}
+                    rating={3.5}
                     editing
                 />
             </Container>

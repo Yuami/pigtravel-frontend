@@ -102898,7 +102898,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_1__["default"], {
         className: "my-5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Stars__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        size: '1em',
+        size: 'fa-lg',
         color: 'primary',
         rating: 3.5,
         editing: true
@@ -103488,17 +103488,22 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       colors: {
-        primary: "rgb(250,104,57)",
-        secondary: "rgb(49,77,104)"
+        primary: "#FA6839",
+        secondary: "#314D68"
       },
       rating: _this.props.rating,
       name: _this.props.name || 'name',
-      starIcon: '\\2605'
+      starIcon: '\\2605',
+      editing: _this.props.editing,
+      hoverRating: _this.props.rating,
+      isHovering: false
     });
 
     _this.changeRating = _this.changeRating.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.renderStars = _this.renderStars.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.renderHalfStar = _this.renderHalfStar.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.onHoverStart = _this.onHoverStart.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.onHoverEnd = _this.onHoverEnd.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -103506,7 +103511,8 @@ function (_Component) {
     key: "changeRating",
     value: function changeRating(newRating) {
       this.setState({
-        rating: newRating
+        rating: newRating,
+        hoverRating: newRating
       });
     }
   }, {
@@ -103517,17 +103523,46 @@ function (_Component) {
       } || this.state.colors.primary);
     }
   }, {
+    key: "onHoverStart",
+    value: function onHoverStart(next) {
+      var _this$state = this.state,
+          editing = _this$state.editing,
+          rating = _this$state.rating;
+      if (!editing) return;
+      if (rating == null) return;
+      this.setState({
+        hoverRating: next,
+        isHovering: true
+      });
+    }
+  }, {
+    key: "onHoverEnd",
+    value: function onHoverEnd(next) {
+      var _this$state2 = this.state,
+          editing = _this$state2.editing,
+          rating = _this$state2.rating;
+      if (!editing) return;
+      if (rating == null) return;
+      this.setState({
+        hoverRating: next,
+        isHovering: false
+      });
+    }
+  }, {
     key: "renderHalfStar",
     value: function renderHalfStar() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        icon: 'fas fa-star-half'
+        icon: 'fas fa-star-half-alt',
+        size: this.props.size,
+        className: 'text-primary'
       });
     }
   }, {
     key: "renderStars",
-    value: function renderStars() {
+    value: function renderStars(index, value) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        icon: 'fas fa-star'
+        icon: index <= value ? 'fas fa-star' : 'far fa-star',
+        size: this.props.size
       });
     }
   }, {
@@ -103535,12 +103570,14 @@ function (_Component) {
     value: function render() {
       var props = {
         name: this.state.name,
-        value: this.state.rating,
+        value: this.state.isHovering ? this.state.hoverRating : this.state.rating,
         onStarClick: this.changeRating,
         starColor: this.state.color,
         editing: this.props.editing,
         renderStarIcon: this.renderStars,
-        renderStarIconHalf: this.renderHalfStar
+        renderStarIconHalf: this.renderHalfStar,
+        onStarHover: this.onHoverStart,
+        onStarHoverOut: this.onHoverEnd
       };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_star_rating_component__WEBPACK_IMPORTED_MODULE_2___default.a, props);
     }
@@ -103554,6 +103591,7 @@ _defineProperty(Stars, "defaultProps", {
 });
 
 _defineProperty(Stars, "propTypes", {
+  size: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(['', 'fa-xs', 'fa-sm', 'fa-lg', 'fa-2x', 'fa-3x', 'fa-5x', 'fa-7x', 'fa-10x']),
   editing: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   rating: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
   color: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.oneOf(["primary", "secondary"])
