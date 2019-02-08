@@ -54,7 +54,7 @@ export default class Main extends Component {
                     </Route>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/phil">
-                        <ReservationForm idVivienda={49}/>
+                        <ReservationForm idVivienda={50}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                 </Switch>
