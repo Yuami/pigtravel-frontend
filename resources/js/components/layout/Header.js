@@ -11,10 +11,7 @@ import {
     NavLink,
     NavbarToggler,
     Collapse,
-    UncontrolledDropdown,
-    DropdownMenu,
-    DropdownToggle,
-    DropdownItem
+    UncontrolledDropdown
 } from 'reactstrap';
 import Col from "reactstrap/es/Col";
 import LanguagePicker from "../LanguagePicker";
@@ -22,22 +19,36 @@ import Translate from "../../lang/Translate";
 
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.toggle = this.toggle.bind(this);
+    }
+
+
+    state= {
+        isOpen: false
+    };
+
+    toggle(){
+        this.setState({isOpen: !this.state.isOpen});
+    }
+
     render() {
         return (
-            <Navbar className="sticky-top navbar-light navbar-expand-md bg-white justify-content-center">
+            <Navbar className="justify-content-center shadow-sm" sticky="top" expand="md" color="white" light>
                 <NavbarBrand href="/" className="navbar-brand d-flex w-50 mr-auto">
-                    <img src="img/clipboard.png" alt="logo" className="header-logo"></img>
+                    <img src="img/clipboard.png" alt="logo" className="header-logo"/>
                 </NavbarBrand>
-                <NavbarToggler data-toggle="collapse" data-target="#collapsingNavbar3">
-                    <span className="navbar-toggler-icon"></span>
-                </NavbarToggler>
-                <Collapse className="navbar-collapse w-100" id="collapsingNavbar3">
-                    <Nav className="navbar-nav w-100 justify-content-center">
-                        <NavItem className="active">
+
+                <NavbarToggler onClick={this.toggle}/>
+
+                <Collapse isOpen={this.state.isOpen} className="w-100" navbar>
+                    <Nav className="w-100 justify-content-center">
+                        <NavItem active>
                             <h1 className="header-title"><Link to={'/'}>Pig Travel</Link></h1>
                         </NavItem>
                     </Nav>
-                    <Nav className="navbar-nav ml-auto w-100 justify-content-end">
+                    <Nav className="ml-auto w-100 justify-content-end" navbar>
                         <NavItem className="header-content">
                             <NavLink href="/login"><Translate string={'login'} type={'header'}/></NavLink>
                         </NavItem>

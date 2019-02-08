@@ -70,5 +70,8 @@
   "autocomplete": {
     "region": "Region",
     "city": "City"
+  },
+  "houselist": {
+    "night": "per night"
   }
 }
