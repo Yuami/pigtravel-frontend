@@ -65,5 +65,8 @@
     "message": "Mensaje",
     "checkPolicy": "He leído y acepto la Política de Privacidad",
     "send": "ENVIAR"
+  },
+  "houselist": {
+    "night": "por noche"
   }
 }

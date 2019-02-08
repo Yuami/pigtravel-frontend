@@ -6,13 +6,16 @@ class MainCard extends Component {
 
     state = {
         hover: false,
-        shadowClass: 'shadow-sm'
+        shadowClass: 'shadow-sm',
+        style: {
+            cursor: this.props.clickable ? 'pointer' : 'inherit'
+        }
     };
 
     handleHover = () => {
         const hover = !this.state.hover;
         let shadowClass = hover ? 'shadow' : 'shadow-sm';
-        shadowClass = this.props.shadow ? shadowClass : 'shadow-sm';
+        shadowClass = this.props.clickable ? shadowClass : 'shadow-sm';
 
         this.setState({
             hover,
@@ -21,11 +24,12 @@ class MainCard extends Component {
     };
 
     render() {
-        const {children, className} = this.props;
-        const shadowClass = className + ' ' + this.state.shadowClass;
+        const {shadowClass, style} = this.state;
+        const {children, className, id} = this.props;
+        const shadow = className + ' ' + shadowClass;
 
         return (
-                <Card className={shadowClass} id={this.props.id}>
+                <Card className={shadow} id={id} style={style}>
                     <div onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
                     {children}
                     </div>
@@ -39,7 +43,7 @@ class MainCard extends Component {
     };
 
     static propTypes = {
-        shadow: PropTypes.bool,
+        clickable: PropTypes.bool,
     };
 }
 

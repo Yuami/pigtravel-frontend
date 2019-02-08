@@ -109087,16 +109087,18 @@ var FormContext = react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext();
 /*!***************************************!*\
   !*** ./resources/js/LocaleContext.js ***!
   \***************************************/
-/*! exports provided: LocaleContext */
+/*! exports provided: LocaleContext, coin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LocaleContext", function() { return LocaleContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coin", function() { return coin; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 var LocaleContext = react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext();
+var coin = "€";
 
 /***/ }),
 
@@ -109615,6 +109617,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/general/HouseCard */ "./resources/js/components/general/HouseCard.js");
 /* harmony import */ var reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap/es/Col */ "./node_modules/reactstrap/es/Col.js");
 /* harmony import */ var reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap/es/Row */ "./node_modules/reactstrap/es/Row.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -109641,6 +109645,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var HouseList =
 /*#__PURE__*/
 function (_Component) {
@@ -109660,13 +109665,28 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(HouseList)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      house: {
+      houses: [{
+        id: "1",
         name: "Mi casa to chuli",
-        img: "http://back.pig.test/assets/uploads/img/casas/default-image.jpg",
+        img: "https://picsum.photos/200/300",
         price: "95",
         type: "Chalet",
-        rating: "4.8"
-      }
+        rating: "2"
+      }, {
+        id: "2",
+        name: "Mi casa to chuli",
+        img: "https://picsum.photos/200/300",
+        price: "95",
+        type: "Chalet",
+        rating: "5"
+      }, {
+        id: "3",
+        name: "Mi casa to chuli",
+        img: "https://picsum.photos/200/300",
+        price: "95",
+        type: "Chalet",
+        rating: "1"
+      }]
     });
 
     return _this;
@@ -109675,160 +109695,24 @@ function (_Component) {
   _createClass(HouseList, [{
     key: "render",
     value: function render() {
+      var houses = this.state.houses;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_1__["default"], {
         className: "my-5",
         fluid: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        xs: "12",
-        sm: "6",
-        md: "4",
-        lg: "3",
-        xl: "3",
-        className: "my-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        house: this.state.house,
-        clickable: true
-      }))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Row__WEBPACK_IMPORTED_MODULE_4__["default"], null, houses.map(function (house) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Col__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          key: house.id,
+          xs: "12",
+          sm: "6",
+          md: "4",
+          lg: "3",
+          xl: "3",
+          className: "my-3"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_general_HouseCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          house: house,
+          clickable: true
+        }));
+      })));
     }
   }]);
 
@@ -111496,12 +111380,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _MainCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MainCard */ "./resources/js/components/general/MainCard.js");
 /* harmony import */ var reactstrap_es_CardTitle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap/es/CardTitle */ "./node_modules/reactstrap/es/CardTitle.js");
-/* harmony import */ var reactstrap_es_CardImg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap/es/CardImg */ "./node_modules/reactstrap/es/CardImg.js");
-/* harmony import */ var reactstrap_es_CardSubtitle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap/es/CardSubtitle */ "./node_modules/reactstrap/es/CardSubtitle.js");
-/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../lang/Translate */ "./resources/js/lang/Translate.js");
-/* harmony import */ var reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap/es/Container */ "./node_modules/reactstrap/es/Container.js");
-/* harmony import */ var _Stars__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Stars */ "./resources/js/components/Stars.js");
-/* harmony import */ var reactstrap_es_CardBody__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap/es/CardBody */ "./node_modules/reactstrap/es/CardBody.js");
+/* harmony import */ var reactstrap_es_CardSubtitle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap/es/CardSubtitle */ "./node_modules/reactstrap/es/CardSubtitle.js");
+/* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../lang/Translate */ "./resources/js/lang/Translate.js");
+/* harmony import */ var reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap/es/Container */ "./node_modules/reactstrap/es/Container.js");
+/* harmony import */ var _Stars__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Stars */ "./resources/js/components/Stars.js");
+/* harmony import */ var _LocaleContext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../LocaleContext */ "./resources/js/LocaleContext.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -111521,7 +111404,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -111575,14 +111457,15 @@ function (_Component) {
         src: img,
         alt: name,
         width: "100%"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, type))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        fluid: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_CardTitle__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_CardSubtitle__WEBPACK_IMPORTED_MODULE_5__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "mt-5"
-      }, house.price + ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, type))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Container__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        fluid: true,
+        className: "mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_CardTitle__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_CardSubtitle__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "mt-3"
+      }, price + _LocaleContext__WEBPACK_IMPORTED_MODULE_8__["coin"] + ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_5__["default"], {
         type: "houselist",
         string: "night"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Stars__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Stars__WEBPACK_IMPORTED_MODULE_7__["default"], {
         rating: rating,
         color: "primary"
       }))));
