@@ -47,6 +47,22 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.form-control {
+  border: 0 !important;
+}
+
+.btn {
+  border: 0 !important;
+}
+
+.btn-cancelar {
+  color: white;
+}
+
+.card {
+  border: 0 !important;
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -149,26 +165,6 @@ footer {
   margin: auto;
 }
 
-::-webkit-input-placeholder {
-  color: black !important;
-  text-align: center;
-}
-
-:-ms-input-placeholder {
-  color: black !important;
-  text-align: center;
-}
-
-::-ms-input-placeholder {
-  color: black !important;
-  text-align: center;
-}
-
-::placeholder {
-  color: black !important;
-  text-align: center;
-}
-
 .hidden {
   display: none;
 }
@@ -177,7 +173,13 @@ footer {
   padding-left: 0px !important;
   padding-right: 0px !important;
   width: 100%;
-  height: 100%;
+  height: 70px;
+}
+
+.css-vj8t7z,
+.css-2o5izw {
+  max-height: 65px;
+  border-width: 0px !important;
 }
 
 .DateRangePicker__Month {
@@ -186,9 +188,10 @@ footer {
 
 .input-group label {
   float: left;
-  margin-right: 5px;
-  margin-top: 25px;
+  margin-top: 22px;
   text-align: center;
+  overflow: hidden;
+  font-size: 12pt;
 }
 
 .popover {
@@ -197,14 +200,21 @@ footer {
 }
 
 #calendario,
-#huespedes {
+#guests,
+#location {
   width: 90%;
   text-align: center;
 }
 
-#fechas {
+.inputSearcher {
   width: 100%;
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 18px !important;
 }
 
 .input-group input {
@@ -233,7 +243,7 @@ footer {
   border: none;
   color: white;
   width: 100%;
-  font-size: 14pt;
+  font-size: 9pt;
   border-radius: 0px;
   background-color: #FA6839;
 }
@@ -252,24 +262,36 @@ footer {
   background-color: white;
 }
 
+.btn-primary.focus,
+.btn-primary:focus {
+  background-color: #FA6839;
+}
+
 .bookingCont {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 78vh;
+  padding-left: 50px !important;
+  padding-right: 50px !important;
+  margin-top: 20px;
+}
+
+.userImg {
   padding: 10px;
 }
 
-.is-disabled {
-  color: gray;
+.right {
+  float: right;
 }
 
-.is-active {
-  color: #ffb250 !important;
+.precio {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.react-rater {
-  display: inline-block;
+.detalle {
+  padding-left: 30px !important;
+  padding-top: 15px;
 }
 
 .main-container {
@@ -292,6 +314,41 @@ footer {
   .main-container {
     padding-bottom: 150px;
   }
+}
+
+.App {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.App input[type=text],
+input[type=email],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 0px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+.App .btn {
+  font-size: 20px;
+}
+
+.contact {
+  padding: 20px;
+  max-width: 540px !important;
+}
+
+.form-check-input {
+  position: relative !important;
+}
+
+#reservationForm ul,
+#reservationForm li {
+  list-style-type: none;
 }
 
 /*!

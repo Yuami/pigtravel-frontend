@@ -14,7 +14,7 @@ class Translate extends Component {
         this.state = {
             langs: {
                 en,
-                es
+                es,
             }
         };
     }

@@ -10,13 +10,18 @@
 @import 'variables';
 @import 'index';
 
-// Custom
+// small Components
 @import "custom";
 @import "footer";
 @import "header";
 @import "buscador";
+@import "boton";
+
+// big Components
 @import "bookingDetails";
 @import "maincontainer";
+@import "FormContact";
+@import "reservationForm";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

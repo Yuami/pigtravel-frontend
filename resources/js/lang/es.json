@@ -1,12 +1,12 @@
 {
   "header": {
-    "login": "Iniciar Session",
-    "logout": "Cerrar Session",
+    "login": "Iniciar Sesion",
+    "logout": "Cerrar Sesion",
     "register": "Registrar"
   },
   "footer" : {
     "about-us": "Sobre Pig Travel",
-    "about-us.who": "Quienes somos?",
+    "about-us.who": "Quiénes somos?",
     "about-us.terms": "Politicas de privacidad",
     "support": "Atención al cliente",
     "support.contact": "Contacto",
@@ -16,7 +16,14 @@
     "email": "contact@pigtravel.top",
     "about-us": "Sobre nosotros",
     "support": "Atención al cliente",
-    "home": "Inicio"
+    "home": "Inicio",
+    "more-information": "Más información"
+  },
+  "reservation": {
+    "house-rules": "Normas de la casa",
+    "allowed": "En esta casa puedes",
+    "disallowed": "En la casa no tienes permiso para",
+    "includes": "La reserva incluye"
   },
   "searcher": {
     "city": "¿Donde quieres ir?",
@@ -34,7 +41,29 @@
     "es": "España",
     "mv": "Maldivas"
   },
-  "detalleReserva": {
-    "detalleReserva": "Detalles reserva"
+  "bookingDetails": {
+    "bookingDetails": "Detalles reserva",
+    "owner": "Propietario",
+    "checkIn": "Entrada",
+    "checkOut": "Salida",
+    "guests": "Huespedes",
+    "pricePerNight": "Precio por noche",
+    "priceBreakdown": "Desglose precio",
+    "serviceFee": "Tarifa de servicio",
+    "total": "Total"
+  },
+  "pagesTitles": {
+    "messages": "Mensajes",
+    "contact" : "Contacto",
+    "home": "Inicio",
+    "bookings": "Reservas",
+    "booking": "Reserva"
+  },
+  "contact": {
+    "email": "Email",
+    "title": "Titulo",
+    "message": "Mensaje",
+    "checkPolicy": "He leído y acepto la Política de Privacidad",
+    "send": "ENVIAR"
   }
 }

@@ -19,7 +19,7 @@ class Footer extends Component {
         const support = [
             {
                 value: "support.contact",
-                link: "support"
+                link: "contact"
             }
         ];
 

@@ -2,15 +2,22 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 78vh;
+  padding-left: 50px !important;
+  padding-right: 50px !important;
+  margin-top:20px;
+}
+
+.userImg{
   padding: 10px;
 }
-.is-disabled{
-  color: gray;
+.right{
+  float: right;
 }
-.is-active{
-  color: #ffb250 !important;
+.precio{
+  display: flex;
+  justify-content: flex-end
 }
-.react-rater{
-  display: inline-block;
+.detalle{
+  padding-left: 30px !important;
+  padding-top: 15px;
 }

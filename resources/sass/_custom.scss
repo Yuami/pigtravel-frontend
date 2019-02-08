@@ -1,12 +1,3 @@
-html, body {
-  height: 100%;
-  position: relative;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-}
-
 // Theme colors
 $primary: #FA6839;
 $secondary: #314D68;
@@ -19,3 +10,29 @@ $theme-colors: (
         "light": $light,
         "info": $info
 );
+
+html, body {
+  height: 100%;
+  position: relative;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.form-control {
+  border: 0 !important;
+}
+
+.btn {
+  border: 0 !important;
+}
+
+.btn-cancelar {
+  color: white;
+}
+
+.card {
+  border: 0 !important;
+}
+

@@ -12,11 +12,18 @@
     "support.contact": "Contact",
     "follow": "STALK US"
   },
+  "reservation": {
+    "house-rules": "Rules of the house",
+    "allowed": "You're allowed to",
+    "disallowed": "In the house you're not permitted to",
+    "includes": "This reservation includes"
+  },
   "general": {
     "email": "contact@pigtravel.top",
     "about-us": "About us",
     "support": "Support",
-    "home": "Home"
+    "home": "Home",
+    "more-information": "More information"
   },
   "searcher": {
     "city": "Where do you wanna go?",
@@ -34,7 +41,29 @@
     "es": "Spain",
     "mv": "Maldives"
   },
-  "detalleReserva": {
-    "detalleReserva": "Booking details"
+  "bookingDetails": {
+    "bookingDetails": "Booking details",
+    "owner": "Owner",
+    "checkIn": "Check In",
+    "checkOut": "Check Out",
+    "guests": "Guests",
+    "pricePerNight": "Price per night",
+    "priceBreakdown": "Price breakdown",
+    "serviceFee": "Service fee",
+    "total": "Total"
+  },
+  "pagesTitles": {
+    "messages": "Messages",
+    "contact" : "Contact",
+    "home": "Home",
+    "bookings": "Bookings",
+    "booking": "Booking"
+  },
+  "contact": {
+    "email": "Email",
+    "title": "Title",
+    "message": "Message",
+    "checkPolicy": "I have read and accept the privacy policy",
+    "send": "SEND"
   }
 }
