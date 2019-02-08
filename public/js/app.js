@@ -109215,17 +109215,17 @@ function (_Component) {
         className: "contact shadow"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "App"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Form__WEBPACK_IMPORTED_MODULE_3__["default"], null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Consumer, null, function (locale) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Form__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Consumer, null, function (locale) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
-          name: "email",
-          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["translate"])(locale, 'email', 'contact')
+          name: "name",
+          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["translate"])(locale, 'name', 'contact')
         });
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Consumer, null, function (locale) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
-          name: "title",
-          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["translate"])(locale, 'title', 'contact')
+          name: "email",
+          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["translate"])(locale, 'email', 'contact')
         });
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Consumer, null, function (locale) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
@@ -109235,10 +109235,9 @@ function (_Component) {
         });
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], {
         check: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Label__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        check: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        type: "checkbox"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Label__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        type: "checkbox",
+        required: true
       }), ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_7__["default"], {
         type: 'contact',
         string: 'checkPolicy'
@@ -112426,14 +112425,13 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_1__["default"], {
         value: selectedOption,
         onChange: this.handleChange,
-        isSearchable: true,
         options: options.map(function (v, k) {
           return {
             value: v.id,
-            label: v.name
+            label: v.name + "," + v.province
           };
         }),
-        className: "inputSearcher",
+        blurInputOnSelect: false,
         placeholder: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
           type: "searcher",
           string: "city"
@@ -112758,7 +112756,7 @@ Translate.propTypes = {
 /*! exports provided: header, footer, reservation, general, searcher, index, carrousel, bookingDetails, pagesTitles, contact, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"reservation":{"house-rules":"Rules of the house","allowed":"You're allowed to","disallowed":"In the house you're not permitted to"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home","more-information":"More information"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"From ","checkout":"To "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"bookingDetails":{"bookingDetails":"Booking details","owner":"Owner","checkIn":"Check In","checkOut":"Check Out","guests":"Guests","pricePerNight":"Price per night","priceBreakdown":"Price breakdown","serviceFee":"Service fee","total":"Total"},"pagesTitles":{"messages":"Messages","contact":"Contact","home":"Home","bookings":"Bookings","booking":"Booking"},"contact":{"email":"Email","title":"Title","message":"Message","checkPolicy":"I have read and accept the privacy policy","send":"SEND"}};
+module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"reservation":{"house-rules":"Rules of the house","allowed":"You're allowed to","disallowed":"In the house you're not permitted to"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home","more-information":"More information"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"From ","checkout":"To "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"bookingDetails":{"bookingDetails":"Booking details","owner":"Owner","checkIn":"Check In","checkOut":"Check Out","guests":"Guests","pricePerNight":"Price per night","priceBreakdown":"Price breakdown","serviceFee":"Service fee","total":"Total"},"pagesTitles":{"messages":"Messages","contact":"Contact","home":"Home","bookings":"Bookings","booking":"Booking"},"contact":{"email":"Email","name":"Name","message":"Message","checkPolicy":"I have read and accept the privacy policy","send":"SEND"}};
 
 /***/ }),
 
@@ -112769,7 +112767,7 @@ module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Regi
 /*! exports provided: header, footer, general, reservation, searcher, index, carrousel, bookingDetails, pagesTitles, contact, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Iniciar Sesion","logout":"Cerrar Sesion","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quiénes somos?","about-us.terms":"Politicas de privacidad","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio","more-information":"Más información"},"reservation":{"house-rules":"Normas de la casa","allowed":"En esta casa puedes","disallowed":"En la casa no tienes permiso para"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","checkin":"Entrada ","checkout":"Salida "},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"bookingDetails":{"bookingDetails":"Detalles reserva","owner":"Propietario","checkIn":"Entrada","checkOut":"Salida","guests":"Huespedes","pricePerNight":"Precio por noche","priceBreakdown":"Desglose precio","serviceFee":"Tarifa de servicio","total":"Total"},"pagesTitles":{"messages":"Mensajes","contact":"Contacto","home":"Inicio","bookings":"Reservas","booking":"Reserva"},"contact":{"email":"Email","title":"Titulo","message":"Mensaje","checkPolicy":"He leído y acepto la Política de Privacidad","send":"ENVIAR"}};
+module.exports = {"header":{"login":"Iniciar Sesion","logout":"Cerrar Sesion","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quiénes somos?","about-us.terms":"Politicas de privacidad","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio","more-information":"Más información"},"reservation":{"house-rules":"Normas de la casa","allowed":"En esta casa puedes","disallowed":"En la casa no tienes permiso para"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","checkin":"Entrada ","checkout":"Salida "},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"bookingDetails":{"bookingDetails":"Detalles reserva","owner":"Propietario","checkIn":"Entrada","checkOut":"Salida","guests":"Huespedes","pricePerNight":"Precio por noche","priceBreakdown":"Desglose precio","serviceFee":"Tarifa de servicio","total":"Total"},"pagesTitles":{"messages":"Mensajes","contact":"Contacto","home":"Inicio","bookings":"Reservas","booking":"Reserva"},"contact":{"email":"Email","name":"Nombre","message":"Mensaje","checkPolicy":"He leído y acepto la Política de Privacidad","send":"ENVIAR"}};
 
 /***/ }),
 

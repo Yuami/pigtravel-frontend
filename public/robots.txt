@@ -1,2 +1,14 @@
 User-agent: *
-Disallow:
+
+Disallow: /css/
+Disallow: /images/
+Disallow: /img/
+Disallow: /js/
+Disallow: /svg/
+Disallow: /vendor/
+Disallow: /favicon.ico
+Disallow: /web.config
+Disallow: /index.php
+Disallow: /mix-manifest.json
+
+Sitemap: https://wwww.pigtravel.top/sitemap.xml

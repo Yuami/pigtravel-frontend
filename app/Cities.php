@@ -11,9 +11,10 @@ class Cities extends Model
 
     static function getIfHave(){
         $cities = DB::table('cities')
-            ->select('name')
+            ->select('cities.id','cities.name','regions.name as province')
             ->distinct()
             ->join('vivienda', 'cities.id', '=', 'vivienda.idCiudad')
+            ->join('regions','regions.id','=','cities.region_id')
             ->get();
       return $cities;
     }

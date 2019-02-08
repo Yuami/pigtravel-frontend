@@ -46,12 +46,11 @@ class AutocompleteCity extends Component {
             <Select
                 value={selectedOption}
                 onChange={this.handleChange}
-                isSearchable={true}
                 options={options.map((v, k) => {
-                    return {value: v.id, label: v.name}
+                    return {value: v.id, label: v.name+","+v.province}
                 })
                 }
-                className="inputSearcher"
+                blurInputOnSelect={false}
                 placeholder={<Translate type="searcher" string="city"/>}
             />
         );

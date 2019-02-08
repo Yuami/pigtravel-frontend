@@ -60,7 +60,7 @@
   },
   "contact": {
     "email": "Email",
-    "title": "Title",
+    "name": "Name",
     "message": "Message",
     "checkPolicy": "I have read and accept the privacy policy",
     "send": "SEND"

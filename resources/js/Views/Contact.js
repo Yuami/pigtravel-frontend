@@ -24,16 +24,17 @@ class Contact extends Component {
                 <UserRouter title={'contact'} list={contact}/>
                 <Container className="contact shadow">
                     <div className="App">
-                        <Form> <FormGroup>
-                            <LocaleContext.Consumer>
-                                {locale => <input type="text" name="email"
-                                                  placeholder={translate(locale, 'email', 'contact')}/>}
-                            </LocaleContext.Consumer>
-                        </FormGroup>
+                        <Form>
                             <FormGroup>
                                 <LocaleContext.Consumer>
-                                    {locale => <input type="text" name="title"
-                                                      placeholder={translate(locale, 'title', 'contact')}/>}
+                                    {locale => <input type="text" name="name"
+                                                      placeholder={translate(locale, 'name', 'contact')}/>}
+                                </LocaleContext.Consumer>
+                            </FormGroup>
+                            <FormGroup>
+                                <LocaleContext.Consumer>
+                                    {locale => <input type="text" name="email"
+                                                      placeholder={translate(locale, 'email', 'contact')}/>}
                                 </LocaleContext.Consumer>
                             </FormGroup>
                             <FormGroup>
@@ -42,8 +43,8 @@ class Contact extends Component {
                                                          placeholder={translate(locale, 'message', 'contact')}/>}
                                 </LocaleContext.Consumer></FormGroup>
                             <FormGroup check>
-                                <Label check>
-                                    <Input type="checkbox"/>{' '}
+                                <Label>
+                                    <Input type="checkbox" required/>{' '}
                                     <Translate type={'contact'} string={'checkPolicy'}/>
                                 </Label>
                             </FormGroup>
