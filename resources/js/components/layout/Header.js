@@ -35,7 +35,7 @@ class Header extends Component {
 
     render() {
         return (
-            <Navbar className="justify-content-center shadow-lg" sticky="top" expand="md" color="white" light>
+            <Navbar className="justify-content-center shadow-sm" sticky="top" expand="md" color="white" light>
                 <NavbarBrand href="/" className="navbar-brand d-flex w-50 mr-auto">
                     <img src="img/clipboard.png" alt="logo" className="header-logo"/>
                 </NavbarBrand>
