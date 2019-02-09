@@ -5,28 +5,24 @@ import Card from "reactstrap/es/Card";
 class MainCard extends Component {
 
     state = {
-        hover: false,
-        shadowClass: 'shadow-sm',
+        isHovering: false,
         style: {
             cursor: this.props.clickable ? 'pointer' : 'inherit'
         }
     };
 
     handleHover = () => {
-        const hover = !this.state.hover;
-        let shadowClass = hover ? 'shadow' : 'shadow-sm';
-        shadowClass = this.props.clickable ? shadowClass : 'shadow-sm';
+        const isHovering = !this.state.isHovering;
 
         this.setState({
-            hover,
-            shadowClass
+            isHovering,
         });
     };
 
     render() {
-        const {shadowClass, style} = this.state;
-        const {children, className, id} = this.props;
-        const shadow = className + ' ' + shadowClass;
+        const {style, isHovering} = this.state;
+        const {children, className, id, clickable} = this.props;
+        const shadow = className + ' ' + clickable && isHovering ? 'shadow' : 'shadow-sm';
 
         return (
                 <Card className={shadow} id={id} style={style}>
