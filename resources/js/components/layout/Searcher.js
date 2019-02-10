@@ -43,7 +43,7 @@ class Searcher extends Component {
         return (
 
             <Col md="10" lg="8" sm="8" xs="10"  className="buscador shadow">
-                <Form>
+                <Form action="/search">
                 <Col md="6" lg="4" sm="12"  xs="12" className="filtro">
                     <FormGroup>
                         <Label>

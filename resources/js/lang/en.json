@@ -65,6 +65,9 @@
     "name": "Name",
     "message": "Message",
     "checkPolicy": "I have read and accept the privacy policy",
+    "invalidEmail": "Invalid email",
+    "invalidName": "Enter your name",
+    "invalidMessage": "Mensaje too short",
     "send": "SEND"
   },
   "autocomplete": {

@@ -7,6 +7,7 @@ const moment = extendMoment(originalMoment);
 import {Label, Button, Popover, PopoverBody, InputGroup} from 'reactstrap';
 import Translate from "../../lang/Translate";
 import FormGroup from "reactstrap/es/FormGroup";
+import Input from "reactstrap/es/Input";
 
 class DatePickerInicio extends Component {
     constructor(props, context) {
@@ -35,6 +36,8 @@ class DatePickerInicio extends Component {
                 {" "}<i className="fa fa-long-arrow-alt-right"></i>{" "}
                 <Translate type={'searcher'} string={'checkout'}/>
                 {this.state.value.end.format("DD-MM")}
+                <input type="hidden" name="start" value={this.state.value.start.format("DD-MM")}/>
+                <input type="hidden" name="end" value={this.state.value.end.format("DD-MM")}/>
             </div>
         );
     };
@@ -52,7 +55,6 @@ class DatePickerInicio extends Component {
                             value={this.state.value}
                             onSelect={this.onSelect}
                             singleDateRange={true}
-                            name="date"
                         />
                     </PopoverBody>
                 </Popover>

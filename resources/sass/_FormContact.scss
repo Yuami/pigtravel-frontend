@@ -10,6 +10,7 @@
   margin-top: 6px;
   margin-bottom: 16px;
   resize: vertical;
+  font-size: 14pt !important;
 }
 .App .btn{
   font-size: 20px;
@@ -20,4 +21,13 @@
 }
 .form-check-input {
   position: relative !important;
+}
+.demoForm {
+  width: 400px;
+  max-width: 80%;
+  margin: auto;
+}
+.formErrors {
+  margin: 2em 0;
+  color: #d9534f;
 }

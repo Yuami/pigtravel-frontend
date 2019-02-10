@@ -61,10 +61,13 @@
     "booking": "Reserva"
   },
   "contact": {
-    "email": "Email",
+    "email": "Correo",
     "name": "Nombre",
     "message": "Mensaje",
     "checkPolicy": "He leído y acepto la Política de Privacidad",
+    "invalidEmail": "Correo invalido",
+    "invalidName": "Introduce un nombre",
+    "invalidMessage": "Mensaje muy corto",
     "send": "ENVIAR"
   },
   "autocomplete": {

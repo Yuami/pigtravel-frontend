@@ -9,7 +9,7 @@
 
 .hidden { display:none; }
 
-.form-group{
+.buscador .form-group{
   padding-left: 0px !important;
   padding-right: 0px !important;
   margin-bottom: 0px !important;
@@ -64,14 +64,19 @@ min-width: 200px}
   display: block;
   height: 70px;
   font-size: 14pt;
+}
+
+.buscador .form-group input {
   border: none;
 }
+
 .filtro{
   min-height: 70px;
 }
 .form-group h5{
   padding-top: 20px;
 }
+
 .form-group .SearcherIcon {
   height: 70px;
   border: none;
