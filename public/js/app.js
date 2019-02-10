@@ -109485,17 +109485,17 @@ function (_Component) {
         className: "contact shadow"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "App"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Form__WEBPACK_IMPORTED_MODULE_3__["default"], null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Consumer, null, function (locale) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Form__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Consumer, null, function (locale) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
-          name: "email",
-          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["translate"])(locale, 'email', 'contact')
+          name: "name",
+          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["translate"])(locale, 'name', 'contact')
         });
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Consumer, null, function (locale) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
-          name: "title",
-          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["translate"])(locale, 'title', 'contact')
+          name: "email",
+          placeholder: Object(_helpers__WEBPACK_IMPORTED_MODULE_2__["translate"])(locale, 'email', 'contact')
         });
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_1__["LocaleContext"].Consumer, null, function (locale) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
@@ -109505,10 +109505,9 @@ function (_Component) {
         });
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_9__["default"], {
         check: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Label__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        check: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        type: "checkbox"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Label__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        type: "checkbox",
+        required: true
       }), ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_7__["default"], {
         type: 'contact',
         string: 'checkPolicy'
@@ -109668,21 +109667,21 @@ function (_Component) {
       houses: [{
         id: "1",
         name: "Mi casa to chuli",
-        img: "https://picsum.photos/200/300",
+        img: "https://images.dwell.com/photos/6328431439726800896/6445880622670512128/large.jpg",
         price: "95",
         type: "Chalet",
         rating: "2"
       }, {
         id: "2",
         name: "Mi casa to chuli",
-        img: "https://picsum.photos/200/300",
+        img: "https://img1.southernliving.timeinc.net/sites/default/files/styles/medium_2x/public/image/2018/04/main/6401_rusty_ridge_dr_austin_tx-print-001-16-exterior_front-2700x1802-300dpi.jpg?itok=mMCNje_M",
         price: "95",
         type: "Chalet",
         rating: "5"
       }, {
         id: "3",
         name: "Mi casa to chuli",
-        img: "https://picsum.photos/200/300",
+        img: "https://www.porterdavis.com.au/~/media/homes/verona/22/facades/verona-island-facade-classic.jpg?w=582&amp;h=320&amp;crop=1",
         price: "95",
         type: "Chalet",
         rating: "1"
@@ -111546,21 +111545,17 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(MainCard)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      hover: false,
-      shadowClass: 'shadow-sm',
+      isHovering: false,
       style: {
         cursor: _this.props.clickable ? 'pointer' : 'inherit'
       }
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleHover", function () {
-      var hover = !_this.state.hover;
-      var shadowClass = hover ? 'shadow' : 'shadow-sm';
-      shadowClass = _this.props.clickable ? shadowClass : 'shadow-sm';
+      var isHovering = !_this.state.isHovering;
 
       _this.setState({
-        hover: hover,
-        shadowClass: shadowClass
+        isHovering: isHovering
       });
     });
 
@@ -111571,13 +111566,14 @@ function (_Component) {
     key: "render",
     value: function render() {
       var _this$state = this.state,
-          shadowClass = _this$state.shadowClass,
-          style = _this$state.style;
+          style = _this$state.style,
+          isHovering = _this$state.isHovering;
       var _this$props = this.props,
           children = _this$props.children,
           className = _this$props.className,
-          id = _this$props.id;
-      var shadow = className + ' ' + shadowClass;
+          id = _this$props.id,
+          clickable = _this$props.clickable;
+      var shadow = className + ' ' + clickable && isHovering ? 'shadow' : 'shadow-sm';
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
         className: shadow,
         id: id,
@@ -112539,7 +112535,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Navbar"], {
-        className: "justify-content-center shadow-lg",
+        className: "justify-content-center shadow-sm",
         sticky: "top",
         expand: "md",
         color: "white",
@@ -112918,6 +112914,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LocaleContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../LocaleContext */ "./resources/js/LocaleContext.js");
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers.js");
 /* harmony import */ var _specific_AutocompleteCity__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../specific/AutocompleteCity */ "./resources/js/components/specific/AutocompleteCity.js");
+/* harmony import */ var _general_Forms_FormButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../general/Forms/FormButton */ "./resources/js/components/general/Forms/FormButton.js");
+/* harmony import */ var reactstrap_es_Form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap/es/Form */ "./node_modules/reactstrap/es/Form.js");
+/* harmony import */ var reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! reactstrap/es/FormGroup */ "./node_modules/reactstrap/es/FormGroup.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -112937,6 +112936,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
 
 
 
@@ -113009,13 +113011,13 @@ function (_Component) {
         sm: "8",
         xs: "10",
         className: "buscador shadow"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_Form__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
         md: "6",
         lg: "4",
         sm: "12",
         xs: "12",
         className: "filtro"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_10__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
         icon: 'fa fa-globe'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "location"
@@ -113031,22 +113033,25 @@ function (_Component) {
         sm: "12",
         xs: "12",
         className: "filtro"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        id: "guests"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Label"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
         icon: 'fa fa-user'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "calendario"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        id: "guests",
-        color: "",
         className: "inputSearcher"
-      }, this.state.clicks, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        string: 'guests',
+      }, this.state.clicks, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "guests",
+        value: this.state.clicks
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        string: 'guest',
         type: 'searcher'
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Popover"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Popover"], {
         placement: "bottom",
         isOpen: this.state.show,
         target: "guests",
-        toggle: this.ToggleDiv
+        toggle: this.ToggleDiv,
+        trigger: "legacy"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["PopoverBody"], null, decreaseBtn, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         color: "",
         className: "incrementIcon",
@@ -113058,14 +113063,14 @@ function (_Component) {
         lg: "1",
         sm: "12",
         xs: "12",
-        className: "input-group"
+        className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         color: "primary",
         className: "SearcherIcon"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_FaIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
         icon: 'fa fa-search',
         size: 'fa-2x'
-      }))));
+      })))));
     }
   }]);
 
@@ -113231,18 +113236,19 @@ function (_Component) {
     });
 
     _this.state = {
-      options: [],
+      optionsCities: [],
+      optionsRegions: [],
       value: undefined,
       label: undefined,
       selectedOption: null
     };
-    _this.getOptions = _this.getOptions.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.getOptionsCities = _this.getOptionsCities.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(AutocompleteCity, [{
-    key: "getOptions",
-    value: function getOptions() {
+    key: "getOptionsCities",
+    value: function getOptionsCities() {
       var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_3___default()({
@@ -113250,34 +113256,70 @@ function (_Component) {
         method: 'get'
       }).then(function (response) {
         _this2.setState({
-          options: response.data
+          optionsCities: response.data
         });
       }).catch(function (error) {
         console.log(error, 'error cities');
       });
     }
   }, {
+    key: "getOptionsRegions",
+    value: function getOptionsRegions() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default()({
+        url: '/api/regions',
+        method: 'get'
+      }).then(function (response) {
+        _this3.setState({
+          optionsRegions: response.data
+        });
+      }).catch(function (error) {
+        console.log(error, 'error regions');
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.getOptions();
+      this.getOptionsCities();
+      this.getOptionsRegions();
     }
   }, {
     key: "render",
     value: function render() {
       var _this$state = this.state,
           selectedOption = _this$state.selectedOption,
-          options = _this$state.options;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        value: selectedOption,
-        onChange: this.handleChange,
-        isSearchable: true,
-        options: options.map(function (v, k) {
+          optionsCities = _this$state.optionsCities,
+          optionsRegions = _this$state.optionsRegions;
+      var groupedOptions = [{
+        label: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          type: 'autocomplete',
+          string: 'city'
+        }),
+        options: optionsCities.map(function (v, k) {
           return {
             value: v.id,
-            label: v.name
+            label: v.name + "," + v.province
           };
+        })
+      }, {
+        label: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          type: 'autocomplete',
+          string: 'region'
         }),
-        className: "inputSearcher",
+        options: optionsRegions.map(function (v, k) {
+          return {
+            value: v.id,
+            label: v.province
+          };
+        })
+      }];
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        value: selectedOption,
+        name: "city",
+        onChange: this.handleChange,
+        options: groupedOptions,
+        blurInputOnSelect: false,
         placeholder: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
           type: "searcher",
           string: "city"
@@ -113314,6 +113356,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment_range__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 /* harmony import */ var _lang_Translate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../lang/Translate */ "./resources/js/lang/Translate.js");
+/* harmony import */ var reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap/es/FormGroup */ "./node_modules/reactstrap/es/FormGroup.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -113340,6 +113383,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var moment = Object(moment_range__WEBPACK_IMPORTED_MODULE_4__["extendMoment"])(moment__WEBPACK_IMPORTED_MODULE_3___default.a);
+
 
 
 
@@ -113393,11 +113437,11 @@ function (_Component) {
   _createClass(DatePickerInicio, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroup"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-calendar"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap_es_FormGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
         id: "calendario"
-      }, this.renderSelectionValue()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Popover"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-calendar"
+      })), this.renderSelectionValue(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Popover"], {
         placement: "bottom",
         isOpen: this.state.show,
         target: "calendario",
@@ -113406,7 +113450,8 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["PopoverBody"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_daterange_picker__WEBPACK_IMPORTED_MODULE_1___default.a, {
         value: this.state.value,
         onSelect: this.onSelect,
-        singleDateRange: true
+        singleDateRange: true,
+        name: "date"
       }))));
     }
   }]);
@@ -113603,10 +113648,10 @@ Translate.propTypes = {
 /*!***********************************!*\
   !*** ./resources/js/lang/en.json ***!
   \***********************************/
-/*! exports provided: header, footer, reservation, general, searcher, index, carrousel, bookingDetails, pagesTitles, contact, houselist, default */
+/*! exports provided: header, footer, reservation, general, searcher, index, carrousel, bookingDetails, pagesTitles, contact, autocomplete, houselist, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"reservation":{"house-rules":"Rules of the house","allowed":"You're allowed to","disallowed":"In the house you're not permitted to","includes":"This reservation includes"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home","more-information":"More information"},"searcher":{"city":"Where do you wanna go?","guests":"guests","checkin":"From ","checkout":"To "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"bookingDetails":{"bookingDetails":"Booking details","owner":"Owner","checkIn":"Check In","checkOut":"Check Out","guests":"Guests","pricePerNight":"Price per night","priceBreakdown":"Price breakdown","serviceFee":"Service fee","total":"Total"},"pagesTitles":{"messages":"Messages","contact":"Contact","home":"Home","bookings":"Bookings","booking":"Booking"},"contact":{"email":"Email","title":"Title","message":"Message","checkPolicy":"I have read and accept the privacy policy","send":"SEND"},"houselist":{"night":"per night"}};
+module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Register"},"footer":{"about-us":"ABOUT PIG TRAVEL","about-us.who":"About us","about-us.terms":"Terms and conditions","support":"SUPPORT","support.contact":"Contact","follow":"STALK US"},"reservation":{"house-rules":"Rules of the house","allowed":"You're allowed to","disallowed":"In the house you're not permitted to","includes":"This reservation includes"},"general":{"email":"contact@pigtravel.top","about-us":"About us","support":"Support","home":"Home","more-information":"More information"},"searcher":{"city":"Where do you wanna go?","guests":"guests","guest":"guest","checkin":"From ","checkout":"To "},"index":{"titleIndex":"BOOK APARTMENTS ALL OVER THE WORLD"},"carrousel":{"recomendacion":"We recommend you","fr":"France","gr":"Germany","es":"Spain","mv":"Maldives"},"bookingDetails":{"bookingDetails":"Booking details","owner":"Owner","checkIn":"Check In","checkOut":"Check Out","guests":"Guests","pricePerNight":"Price per night","priceBreakdown":"Price breakdown","serviceFee":"Service fee","total":"Total"},"pagesTitles":{"messages":"Messages","contact":"Contact","home":"Home","bookings":"Bookings","booking":"Booking"},"contact":{"email":"Email","name":"Name","message":"Message","checkPolicy":"I have read and accept the privacy policy","send":"SEND"},"autocomplete":{"region":"Region","city":"City"},"houselist":{"night":"per night"}};
 
 /***/ }),
 
@@ -113614,10 +113659,10 @@ module.exports = {"header":{"login":"Log In","logout":"Log Out","register":"Regi
 /*!***********************************!*\
   !*** ./resources/js/lang/es.json ***!
   \***********************************/
-/*! exports provided: header, footer, general, reservation, searcher, index, carrousel, bookingDetails, pagesTitles, contact, houselist, default */
+/*! exports provided: header, footer, general, reservation, searcher, index, carrousel, bookingDetails, pagesTitles, contact, autocomplete, houselist, default */
 /***/ (function(module) {
 
-module.exports = {"header":{"login":"Iniciar Sesion","logout":"Cerrar Sesion","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quiénes somos?","about-us.terms":"Terminos y condiciones","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio","more-information":"Más información"},"reservation":{"house-rules":"Normas de la casa","allowed":"En esta casa puedes","disallowed":"En la casa no tienes permiso para","includes":"La reserva incluye"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","checkin":"Entrada ","checkout":"Salida "},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"bookingDetails":{"bookingDetails":"Detalles reserva","owner":"Propietario","checkIn":"Entrada","checkOut":"Salida","guests":"Huespedes","pricePerNight":"Precio por noche","priceBreakdown":"Desglose precio","serviceFee":"Tarifa de servicio","total":"Total"},"pagesTitles":{"messages":"Mensajes","contact":"Contacto","home":"Inicio","bookings":"Reservas","booking":"Reserva"},"contact":{"email":"Email","title":"Titulo","message":"Mensaje","checkPolicy":"He leído y acepto la Política de Privacidad","send":"ENVIAR"},"houselist":{"night":"por noche"}};
+module.exports = {"header":{"login":"Iniciar Sesion","logout":"Cerrar Sesion","register":"Registrar"},"footer":{"about-us":"Sobre Pig Travel","about-us.who":"Quiénes somos?","about-us.terms":"Terminos y condiciones","support":"Atención al cliente","support.contact":"Contacto","follow":"Siguenos"},"general":{"email":"contact@pigtravel.top","about-us":"Sobre nosotros","support":"Atención al cliente","home":"Inicio","more-information":"Más información"},"reservation":{"house-rules":"Normas de la casa","allowed":"En esta casa puedes","disallowed":"En la casa no tienes permiso para","includes":"La reserva incluye"},"searcher":{"city":"¿Donde quieres ir?","guests":"huespedes","guest":"huesped","checkin":"Entrada ","checkout":"Salida "},"index":{"titleIndex":"RESERVA APARTAMENTOS EN TODO EL MUNDO"},"carrousel":{"recomendacion":"Te recomendamos","fr":"Francia","gr":"Alemania","es":"España","mv":"Maldivas"},"bookingDetails":{"bookingDetails":"Detalles reserva","owner":"Propietario","checkIn":"Entrada","checkOut":"Salida","guests":"Huespedes","pricePerNight":"Precio por noche","priceBreakdown":"Desglose precio","serviceFee":"Tarifa de servicio","total":"Total"},"pagesTitles":{"messages":"Mensajes","contact":"Contacto","home":"Inicio","bookings":"Reservas","booking":"Reserva"},"contact":{"email":"Email","name":"Nombre","message":"Mensaje","checkPolicy":"He leído y acepto la Política de Privacidad","send":"ENVIAR"},"autocomplete":{"region":"Region","city":"Ciudad"},"houselist":{"night":"por noche"}};
 
 /***/ }),
 
@@ -113650,8 +113695,8 @@ module.exports = {"es":[{"title":"<h3><strong>Galletas</strong></h3>","body":"<p
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\j_for\Desktop\DAW\Proyecto\WEB\front-lloguer-vacacional\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\j_for\Desktop\DAW\Proyecto\WEB\front-lloguer-vacacional\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\code\vacacional\front\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\code\vacacional\front\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

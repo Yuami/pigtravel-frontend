@@ -35,4 +35,13 @@ class Persona extends Authenticatable
     {
         $this->update(['verified' => 1]);
     }
+
+    public function viviendas()
+    {
+        return $this->hasManyThrough(Vivienda::class, Vendedor::class, 'idPersona','idVendedor');
+    }
+
+    public function getFotoAttribute()
+    {
+    }
 }
