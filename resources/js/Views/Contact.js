@@ -61,7 +61,7 @@ class Contact extends Component {
                 break;
             case 'message':
                 messageValid = value.length >= 5;
-                fieldValidationErrors.message = messageValid ? '' : ' is too short';
+                fieldValidationErrors.message = messageValid ? '' : <Translate type={'contact'} string={'invalidMessage'}/>;
                 break;
             case 'contactName':
                 nameValid = value.length >= 1;
@@ -101,15 +101,15 @@ class Contact extends Component {
                         <form>
                             <FormGroup className={`${this.errorClass(this.state.formErrors.contactName)}`}>
                                 <label htmlFor="nameContact"><Translate type={'contact'} string={'name'}/></label>
-                                <LocaleContext.Consumer>
-                                    {locale => <input className="form-control"
-                                                      type="text"
-                                                      name="contactName"
-                                                      value={this.state.contactName}
-                                                      onChange={this.handleUserInput}
-                                                      placeholder={translate(locale, 'name', 'contact')}/>}
-                                </LocaleContext.Consumer>
-                            </FormGroup>
+                            <LocaleContext.Consumer>
+                                {locale => <input className="form-control"
+                                                  type="text"
+                                                  name="contactName"
+                                                  value={this.state.contactName}
+                                                  onChange={this.handleUserInput}
+                                                  placeholder={translate(locale, 'name', 'contact')}/>}
+                            </LocaleContext.Consumer>
+                        </FormGroup>
                             <FormGroup className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
                                 <label htmlFor="email"><Translate type={'contact'} string={'email'}/></label>
                                 <LocaleContext.Consumer>
@@ -125,7 +125,7 @@ class Contact extends Component {
                             </FormGroup>
 
                             <FormGroup className={`form-group ${this.errorClass(this.state.formErrors.message)}`}>
-                                <label htmlFor="message"><Translate type={'contact'} string={'message'}/></label>
+                                <Label htmlFor="message"><Translate type={'contact'} string={'message'}/></Label>
                                 <LocaleContext.Consumer>
                                     {locale => <textarea
                                         rows="10"
@@ -140,11 +140,7 @@ class Contact extends Component {
                             <div>
                                 <FormErrors formErrors={this.state.formErrors}/>
                             </div>
-                            <LocaleContext.Consumer>
-                                {locale => <FormButton text={translate(locale, 'send', 'contact')}
-                                                       disabled={!this.state.formValid}/>}
-                            </LocaleContext.Consumer>
-
+                            <button type="submit" className="btn btn-primary btn-block" disabled={!this.state.formValid}><Translate type={'contact'} string={'send'}/></button>
                         </form>
                     </div>
                 </Container>
