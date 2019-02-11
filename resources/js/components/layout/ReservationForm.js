@@ -7,6 +7,8 @@ import {Route} from "react-router-dom";
 import MainModal from "./MainModal";
 import TextAreaForm from "../general/Forms/TextAreaForm";
 import FormButton from "../general/Forms/FormButton";
+import {LocaleContext} from "../../LocaleContext";
+import {translate} from "../../helpers";
 
 class ReservationForm extends Component {
 
@@ -34,11 +36,12 @@ class ReservationForm extends Component {
         return (localStorage["locale"] === idioma);
     };
 
-    convertDate(date){
+    convertDate(date) {
         var month = dateObj.getUTCMonth() + 1; //months from 1-12
         var day = dateObj.getUTCDate();
         var year = dateObj.getUTCFullYear();
     }
+
     renderRules() {
         const rules = this.rules;
 
@@ -51,7 +54,8 @@ class ReservationForm extends Component {
                     );
                 } else {
                     return (
-                        <li key={value.idServicio}>{value.nombre} <Translate type={"reservation"}  string={"disallowed"}/></li>
+                        <li key={value.idServicio}>{value.nombre} <Translate type={"reservation"}
+                                                                             string={"disallowed"}/></li>
                     )
                 }
             }
@@ -78,17 +82,21 @@ class ReservationForm extends Component {
         return (
             <div className={'container-fluid'}>
                 <div className={'col-md-8'}>
-                <Panel id={"reservationForm"}>
-                    <ul>
-                        <li><h3><Translate type={'reservation'} string={'house-rules'}/></h3></li>
-                        <ul className={'mb-4'}>{renderRules}</ul>
-                        <li><h3><Translate type={'reservation'} string={'includes'}/></h3></li>
-                        <ul className={'mb-4'}>{renderInformacion}</ul>
-                        <li><h3><Translate type={'reservation'} string={'message'}/></h3></li>
-                        <TextAreaForm classname={'customTextarea'} name={'message'}/>
-                    </ul>
-                    <FormButton text={<Translate type={'reservation'} string={'accept'}/>}/>
-                </Panel>
+                    <Panel id={"reservationForm"}>
+                        <ul>
+                            <li><h3><Translate type={'reservation'} string={'house-rules'}/></h3></li>
+                            <ul className={'mb-4'}>{renderRules}</ul>
+                            <li><h3><Translate type={'reservation'} string={'includes'}/></h3></li>
+                            <ul className={'mb-4'}>{renderInformacion}</ul>
+                            <li><h3><Translate type={'reservation'} string={'message'}/></h3></li>
+                            <TextAreaForm classname={'customTextarea'} name={'message'}/>
+                        </ul>
+                        <LocaleContext.Consumer>
+                            {locale =>
+                                <FormButton text={translate(locale, 'accept', 'reservation')}/>
+                            }
+                        </LocaleContext.Consumer>
+                    </Panel>
                 </div>
                 <div className={'col-md-4'}>
                     <Panel id={'reservationInfo'}>

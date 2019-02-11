@@ -111873,6 +111873,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MainModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MainModal */ "./resources/js/components/layout/MainModal.js");
 /* harmony import */ var _general_Forms_TextAreaForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../general/Forms/TextAreaForm */ "./resources/js/components/general/Forms/TextAreaForm.js");
 /* harmony import */ var _general_Forms_FormButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../general/Forms/FormButton */ "./resources/js/components/general/Forms/FormButton.js");
+/* harmony import */ var _LocaleContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../LocaleContext */ "./resources/js/LocaleContext.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -111892,6 +111894,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -112011,11 +112015,10 @@ function (_Component) {
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_Forms_TextAreaForm__WEBPACK_IMPORTED_MODULE_7__["default"], {
         classname: 'customTextarea',
         name: 'message'
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_Forms_FormButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        text: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          type: 'reservation',
-          string: 'accept'
-        })
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LocaleContext__WEBPACK_IMPORTED_MODULE_9__["LocaleContext"].Consumer, null, function (locale) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_general_Forms_FormButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          text: Object(_helpers__WEBPACK_IMPORTED_MODULE_10__["translate"])(locale, 'accept', 'reservation')
+        });
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: 'col-md-4'
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Panel__WEBPACK_IMPORTED_MODULE_3__["default"], {
