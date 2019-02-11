@@ -18,6 +18,7 @@ import ReservationForm from "./layout/ReservationForm";
 import Register from "../Views/Register";
 import Contact from "../Views/Contact";
 import HouseList from "../Views/HouseList";
+import moment from "react-daterange-picker/example/moment-range";
 
 
 export default class Main extends Component {
@@ -44,6 +45,9 @@ export default class Main extends Component {
     };
 
     render() {
+        var checkIn = moment('2012-01-01');
+        var checkOut = moment('2012-01-01');
+
         return (
             <LocaleContext.Provider value={this.state.locale}>
                 <Header changeLanguage={this.changeLanguage}/>
@@ -59,7 +63,7 @@ export default class Main extends Component {
                     </Route>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/phil">
-                        <ReservationForm idVivienda={49} pax={2} price={300}/>
+                        <ReservationForm idVivienda={49} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                     <Route exact path="/house-list" component={HouseList}/>

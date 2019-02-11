@@ -9,6 +9,7 @@ import TextAreaForm from "../general/Forms/TextAreaForm";
 import FormButton from "../general/Forms/FormButton";
 import {LocaleContext} from "../../LocaleContext";
 import {translate} from "../../helpers";
+import moment from "react-daterange-picker/example/moment-range";
 
 class ReservationForm extends Component {
 
@@ -100,7 +101,9 @@ class ReservationForm extends Component {
                 </div>
                 <div className={'col-md-4'}>
                     <Panel id={'reservationInfo'}>
-
+                        <h3></h3>
+                        {console.log(this.props.checkIn.format('DD/MM/YYYY'))}
+                        {console.log(this.props.checkOut.format('DD/MM/YYYY'))}
                     </Panel>
                 </div>
             </div>
@@ -110,6 +113,8 @@ class ReservationForm extends Component {
 
 ReservationForm.propTypes = {
     idVivienda: PropTypes.number.isRequired,
+    checkIn: PropTypes.instanceOf(moment).isRequired,
+    checkOut: PropTypes.instanceOf(moment).isRequired,
     pax: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
 };
