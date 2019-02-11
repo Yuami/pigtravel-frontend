@@ -9,10 +9,10 @@ class FormGroupReg extends Component {
             <Col className="my-2" xs="12">
                 <Row>
                     <Col>
-                        <FormButton page={this.props.page} text={'Cancelar'}/>
+                        <FormButton block={'true'} page={this.props.page} text={'Cancelar'}/>
                     </Col>
                     <Col>
-                        <FormButton text={'Confimar'}/>
+                        <FormButton block={'true'} text={'Confimar'}/>
                     </Col>
                 </Row>
             </Col>
