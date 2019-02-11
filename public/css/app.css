@@ -192,7 +192,7 @@ footer {
   margin: 0px !important;
 }
 
-.form-group label {
+.buscador .form-group label {
   float: left;
   margin-top: 22px;
   text-align: center;
@@ -223,7 +223,7 @@ footer {
   font-size: 18px !important;
 }
 
-.form-group input {
+.buscador .form-group input {
   width: 100%;
   box-sizing: border-box;
   display: block;
@@ -239,7 +239,7 @@ footer {
   min-height: 70px;
 }
 
-.form-group h5 {
+.buscador .form-group h5 {
   padding-top: 20px;
 }
 
@@ -365,7 +365,7 @@ textarea {
   max-width: 540px !important;
 }
 
-.form-check-input {
+.App .form-check-input {
   position: relative !important;
 }
 

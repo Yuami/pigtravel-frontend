@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Col, FormGroup, Input, Label} from "reactstrap";
+import {Col, FormGroup} from "reactstrap";
 import LabelForm from "./LabelForm";
 import InputForm from "./InputForm";
 

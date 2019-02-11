@@ -29,7 +29,7 @@
   margin: 0px !important;
 }
 
-.form-group label {
+.buscador .form-group label {
   float: left;
   margin-top: 22px;
   text-align: center;
@@ -56,7 +56,7 @@ min-width: 200px}
   font-size: 18px !important;
 }
 
-.form-group input {
+.buscador .form-group input {
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -73,7 +73,7 @@ min-width: 200px}
 .filtro{
   min-height: 70px;
 }
-.form-group h5{
+.buscador .form-group h5{
   padding-top: 20px;
 }
 
