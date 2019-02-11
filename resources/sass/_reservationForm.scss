@@ -1,5 +1,43 @@
-#reservationForm{
+#reservationForm {
   ul, li {
     list-style-type: none;
   }
+}
+
+#reservationInfo {
+  #houseName {
+    word-wrap: break-word;
+  }
+  #houseImage {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  #arrowIcon {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  #reservationInfo {
+    #houseImage {
+      width: 90px;
+      height: auto;
+    }
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
 }

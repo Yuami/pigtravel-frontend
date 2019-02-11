@@ -8,7 +8,7 @@ export function translate(locale, string, type) {
     };
 
     type = type || 'general';
-    return langs[locale][type][string];
+    return langs[locale] == undefined ? langs['es'][type][string] : langs[locale][type][string];
 }
 
 export function title(title) {
