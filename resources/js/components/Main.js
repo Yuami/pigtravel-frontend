@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { LocaleContext } from "../LocaleContext.js";
+import React, {Component} from "react";
+import {LocaleContext} from "../LocaleContext.js";
 import Header from "./layout/Header";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Footer from "./layout/Footer";
@@ -14,6 +14,7 @@ import ReservationForm from "./layout/ReservationForm";
 import Register from "../Views/Register";
 import Contact from "../Views/Contact";
 import HouseList from "../Views/HouseList";
+import moment from "react-daterange-picker/example/moment-range";
 
 
 export default class Main extends Component {
@@ -26,12 +27,13 @@ export default class Main extends Component {
     }
 
     componentDidMount() {
-        if (localStorage.hasOwnProperty('locale')){
-            this.setState({"locale": localStorage["locale"]});
+        if (!localStorage.hasOwnProperty('locale')) {
+            localStorage["locale"] = this.state.preferredLocale;
         }
+        this.setState({"locale": localStorage["locale"]});
     }
 
-    changeLanguage = ({ currentTarget: { id } }) => {
+    changeLanguage = ({currentTarget: {id}}) => {
         localStorage["locale"] = id;
         this.setState({
             locale: id
@@ -39,9 +41,12 @@ export default class Main extends Component {
     };
 
     render() {
+        var checkIn = moment('2012-01-01');
+        var checkOut = moment('2012-01-01');
+
         return (
             <LocaleContext.Provider value={this.state.locale}>
-                <Header changeLanguage={this.changeLanguage} />
+                <Header changeLanguage={this.changeLanguage}/>
                 {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter*/}
                 <Switch>
                     <Route exact path="/" component={Home}/>
@@ -55,7 +60,7 @@ export default class Main extends Component {
                     </Route>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/phil">
-                        <ReservationForm idVivienda={50}/>
+                        <ReservationForm idVivienda={49} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                     <Route exact path="/house-list" component={HouseList}/>

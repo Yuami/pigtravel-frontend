@@ -1,7 +1,7 @@
 {
   "header": {
-    "login": "Iniciar Sesion",
-    "logout": "Cerrar Sesion",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
     "register": "Registrar"
   },
   "footer" : {
@@ -10,7 +10,7 @@
     "about-us.terms": "Terminos y condiciones",
     "support": "Atención al cliente",
     "support.contact": "Contacto",
-    "follow": "Siguenos"
+    "follow": "Síguenos"
   },
   "general": {
     "email": "contact@pigtravel.top",
@@ -21,13 +21,16 @@
   },
   "reservation": {
     "house-rules": "Normas de la casa",
-    "allowed": "En esta casa puedes",
-    "disallowed": "En la casa no tienes permiso para",
-    "includes": "La reserva incluye"
+    "allowed": "estan permitidos",
+    "disallowed": "no estan permitidos",
+    "includes": "La reserva incluye",
+    "message": "Preguntas o información al propietario",
+    "accept": "Aceptar y continuar"
+
   },
   "searcher": {
     "city": "¿Donde quieres ir?",
-    "guests": "huespedes",
+    "guests": "huéspedes",
     "guest": "huesped",
     "checkin": "Entrada ",
     "checkout": "Salida "
@@ -47,7 +50,7 @@
     "owner": "Propietario",
     "checkIn": "Entrada",
     "checkOut": "Salida",
-    "guests": "Huespedes",
+    "guests": "Huéspedes",
     "pricePerNight": "Precio por noche",
     "priceBreakdown": "Desglose precio",
     "serviceFee": "Tarifa de servicio",

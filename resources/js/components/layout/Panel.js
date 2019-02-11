@@ -13,7 +13,7 @@ class Panel extends Component {
 
         return (
             <div>
-                <div id={this.props.id} className="panel panel-default shadow">
+                <div id={this.props.id} className="panel panel-default shadow-sm">
                     {header}
                     <div className="panel-body">{this.props.children}</div>
                 </div>
@@ -24,8 +24,7 @@ class Panel extends Component {
 
 Panel.propTypes = {
     id: PropTypes.string,
-    header: PropTypes.string,
-    body: PropTypes.string.isRequired
+    header: PropTypes.string
 };
 
 export default Panel;

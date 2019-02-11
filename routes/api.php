@@ -37,3 +37,7 @@ Route::get('/idiomas', function () {
 Route::get('/servicio/{id}', function ($id) {
     return \App\ViviendasHasServicio::getByVivienda($id);
 });
+
+Route::get('/viviendas/{id}', function($id){
+    return \App\Vivienda::find($id);
+});
