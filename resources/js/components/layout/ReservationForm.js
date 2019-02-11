@@ -5,6 +5,10 @@ import Panel from "./Panel";
 import axios from "axios";
 import {Route} from "react-router-dom";
 import MainModal from "./MainModal";
+import TextAreaForm from "../general/Forms/TextAreaForm";
+import FormButton from "../general/Forms/FormButton";
+import {LocaleContext} from "../../LocaleContext";
+import {translate} from "../../helpers";
 
 class ReservationForm extends Component {
 
@@ -14,58 +18,100 @@ class ReservationForm extends Component {
         this.state = {
             servicios: []
         };
+
+        this.renderInformation.bind(this);
+        this.renderRules.bind(this);
     }
 
+    rules = [13, 14, 22];
+
     componentWillMount() {
-        var url = '/api/servicio/' + this.props.idVivienda;
+        const url = '/api/servicio/' + this.props.idVivienda;
         axios.get(url).then((res) => {
             this.setState({servicios: res.data});
         });
     }
 
+    static checkServiceLanguage(idioma, index = '') {
+        return (localStorage["locale"] === idioma);
+    };
 
-    render() {
-        const rules = [13, 14, 22];
+    convertDate(date) {
+        var month = dateObj.getUTCMonth() + 1; //months from 1-12
+        var day = dateObj.getUTCDate();
+        var year = dateObj.getUTCFullYear();
+    }
 
-        const renderRules = this.state.servicios.map(function (value, index, array) {
-            if (rules.includes(value.idServicio)) {
+    renderRules() {
+        const rules = this.rules;
+
+        return this.state.servicios.map(function (value, index, array) {
+            if (rules.includes(value.idServicio) && ReservationForm.checkServiceLanguage(value.idioma, index)) {
                 if (value.activo) {
                     return (
-                        <li><Translate type={"reservation"} string={"allowed"}/> {value.nombre.toLowerCase()}</li>
+                        <li key={value.idServicio}>{value.nombre} <Translate type={"reservation"} string={"allowed"}/>
+                        </li>
                     );
                 } else {
                     return (
-                        <li><Translate type={"reservation"} string={"disallowed"}/> {value.nombre.toLowerCase()}</li>
+                        <li key={value.idServicio}>{value.nombre} <Translate type={"reservation"}
+                                                                             string={"disallowed"}/></li>
                     )
                 }
             }
         });
+    }
 
-        const renderInformacion = this.state.servicios.map(function (value, index, array) {
-            if (!rules.includes(value.idServicio) && value.activo) {
+    renderInformation() {
+        const rules = this.rules;
+        return this.state.servicios.map(function (value, index, array) {
+            if (!rules.includes(value.idServicio) && value.activo && ReservationForm.checkServiceLanguage(value.idioma, index)) {
                 return (
-                    <li>{value.nombre}</li>
+                    <li key={value.idServicio}>{value.nombre}</li>
                 )
             }
         });
+    }
+
+
+    render() {
+        const renderRules = this.renderRules();
+
+        const renderInformacion = this.renderInformation();
+
         return (
-            <Panel id={"reservationForm"} body={"Body"}>
-                <ul>
-                    <li><h3><Translate type={'reservation'} string={'house-rules'}/></h3></li>
-                    <ul>{renderRules}</ul>
-                    <li><h3><Translate type={'reservation'} string={'includes'}/></h3></li>
-                    <ul>{renderInformacion}</ul>
-                </ul>
-                <MainModal buttonLabel={"lol"} modalHeader={"ja"} modalBody={"lol"} primaryButton={"ey"}/>
-            </Panel>
+            <div className={'container-fluid'}>
+                <div className={'col-md-8'}>
+                    <Panel id={"reservationForm"}>
+                        <ul>
+                            <li><h3><Translate type={'reservation'} string={'house-rules'}/></h3></li>
+                            <ul className={'mb-4'}>{renderRules}</ul>
+                            <li><h3><Translate type={'reservation'} string={'includes'}/></h3></li>
+                            <ul className={'mb-4'}>{renderInformacion}</ul>
+                            <li><h3><Translate type={'reservation'} string={'message'}/></h3></li>
+                            <TextAreaForm classname={'customTextarea'} name={'message'}/>
+                        </ul>
+                        <LocaleContext.Consumer>
+                            {locale =>
+                                <FormButton text={translate(locale, 'accept', 'reservation')}/>
+                            }
+                        </LocaleContext.Consumer>
+                    </Panel>
+                </div>
+                <div className={'col-md-4'}>
+                    <Panel id={'reservationInfo'}>
+
+                    </Panel>
+                </div>
+            </div>
         );
     }
 }
 
 ReservationForm.propTypes = {
     idVivienda: PropTypes.number.isRequired,
-    xs: PropTypes.number,
-    md: PropTypes.number,
+    pax: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
 };
 
 export default ReservationForm;
