@@ -1,19 +1,15 @@
 import React, { Component } from "react";
 import { LocaleContext } from "../LocaleContext.js";
 import Header from "./layout/Header";
-import {BrowserRouter, Switch, Route} from "react-router-dom"
-import axios from 'axios';
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Footer from "./layout/Footer";
 import Home from "../Views/Home";
 import Login from "../Views/Login";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
-import TitleInicio from "./specific/TitleInicio";
-import Searcher from "./layout/Searcher";
 import MainModal from "./layout/MainModal";
 import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
-import Panel from "./layout/Panel";
 import ReservationForm from "./layout/ReservationForm";
 import Register from "../Views/Register";
 import Contact from "../Views/Contact";
@@ -49,7 +45,8 @@ export default class Main extends Component {
                 {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter*/}
                 <Switch>
                     <Route exact path="/" component={Home}/>
-                    <Route exact path="/bookings" component={BookingDetail}/>
+                    <Route exact path="/bookings"/>
+                    <Route exact path="/bookings/1" component={BookingDetail}/>
                     <Route exact path="/about-us" component={AboutUs}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/contact" component={Contact}/>
