@@ -107,7 +107,7 @@ class ReservationForm extends Component {
                             <TextAreaForm classname={'customTextarea'} name={'message'}/>
                             <LocaleContext.Consumer>
                                 {locale =>
-                                    <FormButton text={translate(locale, 'accept', 'reservation')}/>
+                                    <FormButton id="reservationButton" className={'pull-right'} text={translate(locale, 'accept', 'reservation')}/>
                                 }
                             </LocaleContext.Consumer>
                         </Panel>
@@ -124,7 +124,12 @@ class ReservationForm extends Component {
                                 </Col>
                             </Row>
                             <Row>
-                                <Col xs={'12'} lg={'8'}>
+                                <Col xs={'12'} lg={'4'} className={'order-lg-1'}>
+                                    <img className={'pull-right'} id="houseImage"
+                                         src={'http://admin.pigtravel.top/assets/uploads/img/casas/default-image.jpg'}
+                                         alt='house image'/>
+                                </Col>
+                                <Col xs={'12'} lg={'8'} className={'order-lg-0'}>
                                     <Row>
                                         <Col>
                                             <p className={'mb-0 mt-3'}>
@@ -136,11 +141,6 @@ class ReservationForm extends Component {
                                             <p className={'mb-0'}>{this.props.pax}&nbsp;{this.state.pax}</p>
                                         </Col>
                                     </Row>
-                                </Col>
-                                <Col xs={'12'} lg={'4'}>
-                                    <img className={'pull-right'} id="houseImage"
-                                         src={'http://admin.pigtravel.top/assets/uploads/img/casas/default-image.jpg'}
-                                         alt='house image'/>
                                 </Col>
                             </Row>
                             <hr/>
@@ -170,8 +170,6 @@ class ReservationForm extends Component {
                                     <p className={'font-weight-bold pull-right'}>{this.state.total}{coin}</p>
                                 </Col>
                             </Row>
-                            {console.log(this.props.checkIn.format('DD/MM/YYYY'))}
-                            {console.log(this.props.checkOut.format('DD/MM/YYYY'))}
                         </Panel>
                     </Col>
                 </Row>
