@@ -169,9 +169,10 @@ footer {
   display: none;
 }
 
-.input-group {
+.buscador .form-group {
   padding-left: 0px !important;
   padding-right: 0px !important;
+  margin-bottom: 0px !important;
   width: 100%;
   height: 70px;
 }
@@ -191,7 +192,7 @@ footer {
   margin: 0px !important;
 }
 
-.input-group label {
+.form-group label {
   float: left;
   margin-top: 22px;
   text-align: center;
@@ -222,12 +223,15 @@ footer {
   font-size: 18px !important;
 }
 
-.input-group input {
+.form-group input {
   width: 100%;
   box-sizing: border-box;
   display: block;
   height: 70px;
   font-size: 14pt;
+}
+
+.buscador .form-group input {
   border: none;
 }
 
@@ -235,15 +239,11 @@ footer {
   min-height: 70px;
 }
 
-.input-group h5 {
+.form-group h5 {
   padding-top: 20px;
 }
 
-#calendario h5 {
-  padding-top: 25px;
-}
-
-.input-group .SearcherIcon {
+.form-group .SearcherIcon {
   height: 70px;
   border: none;
   color: white;
@@ -253,7 +253,7 @@ footer {
   background-color: #FA6839;
 }
 
-.input-group .SearcherIcon:hover {
+.form-group .SearcherIcon:hover {
   color: white;
 }
 
@@ -270,6 +270,18 @@ footer {
 .btn-primary.focus,
 .btn-primary:focus {
   background-color: #FA6839;
+}
+
+.customTextarea {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  background: none;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 8px 12px;
+  outline: 0;
 }
 
 .GasrFbdQYtD26JnmJzJpj {
@@ -341,6 +353,7 @@ textarea {
   margin-top: 6px;
   margin-bottom: 16px;
   resize: vertical;
+  font-size: 14pt !important;
 }
 
 .App .btn {
@@ -354,6 +367,17 @@ textarea {
 
 .form-check-input {
   position: relative !important;
+}
+
+.demoForm {
+  width: 400px;
+  max-width: 80%;
+  margin: auto;
+}
+
+.formErrors {
+  margin: 2em 0;
+  color: #d9534f;
 }
 
 #reservationForm ul,
