@@ -287,6 +287,18 @@ footer {
   background-color: #FA6839;
 }
 
+.customTextarea {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  background: none;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 8px 12px;
+  outline: 0;
+}
+
 .bookingCont {
   position: relative;
   display: flex;

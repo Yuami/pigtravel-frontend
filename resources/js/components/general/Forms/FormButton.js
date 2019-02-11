@@ -4,7 +4,7 @@ import Button from "reactstrap/es/Button";
 
 class FormButton extends Component {
     render() {
-        return (<Button color='primary' block href={this.props.page}>{this.props.text}</Button>);
+        return (<Button className={'pull-right'} size='lg' color='primary' href={this.props.page}>{this.props.text}</Button>);
     }
 }
 
