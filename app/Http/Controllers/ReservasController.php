@@ -14,8 +14,7 @@ class ReservasController extends Controller
     }
 
     public function show() {
-        $reservas= Reserva::all()->where('id','=',1)->first();
-        return view('welcome')->with(compact('reservas'));
+        return view('welcome');
     }
 
     public function destroy(Reserva $reserva) {

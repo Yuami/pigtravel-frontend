@@ -12,14 +12,14 @@ class BookingDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            values: []
+            values: [],
         };
-        this.getOptions = this.getOptions.bind(this)
+        this.getOptions = this.getOptions.bind(this);
     }
 
-    getOptions() {
+getOptions() {
         axios({
-            url: '/api/bookings/1',
+            url: '/api/bookings',
             method: 'get'
         }).then((response) => {
             this.setState({
@@ -31,9 +31,11 @@ class BookingDetail extends Component {
     }
 
     componentDidMount() {
-        this.getOptions()
+        this.getOptions();
     }
     render() {
+
+
         const bookingDetails = [
             {
                 type: 'bookings',
@@ -44,7 +46,6 @@ class BookingDetail extends Component {
                 link: '/bookings/booking'
             },
         ];
-
         return (
             <div>
                 <UserRouter title={'booking'} list={bookingDetails}/>
@@ -58,7 +59,9 @@ class BookingDetail extends Component {
                                 <Col lg="7" sm="12" xs="12" >
                                     <Row>
                                         <Col>
-                                            <h1>values</h1>
+                                                {this.state.values.map((v) => (
+                                                    <h1>{v.nombreVivienda}</h1>
+                                                ))}
                                         </Col>
                                     </Row>
                                     <Row>
@@ -69,7 +72,9 @@ class BookingDetail extends Component {
                                 </Col>
                                 <Col lg="2" sm="11" xs="11" className="float-right">
                                     <Row className="precio">
-                                            <h1><strong>Pagada</strong></h1>
+                                           <strong>{this.state.values.map((v) => (
+                                                <h1>{v.estado}</h1>
+                                            ))}</strong>
                                     </Row>
                                 </Col>
                             </Row>
@@ -89,7 +94,9 @@ class BookingDetail extends Component {
                                     <img src="/img/user.jpg" height="70px" className="userImg"></img>
                                 </Col>
                                 <Col sm="8" xs="8" className="my-auto">
-                                    <h3>Philipp Vujic</h3>
+                                    {this.state.values.map((v) => (
+                                        <h3>{v.nombre} {v.apellido1}</h3>
+                                    ))}
                                 </Col>
                             </Row>
                         </Col>
@@ -100,38 +107,40 @@ class BookingDetail extends Component {
                                     <h4><strong><Translate type="bookingDetails" string="checkIn"/></strong></h4>
                                 </Row>
                                 <Row>
-                                    <Col lg="6" xs="6" className="text-center">
-                                        <h4>21/05/19</h4>
-                                    </Col>
-                                    <Col lg="6" xs="6" className="text-center">
-                                        <h4>12:00h</h4>
+                                    <Col lg="12" className="text-center">
+                                        {this.state.values.map((v) => (
+                                            <h4>{v.checkIn}</h4>
+                                        ))}
+
                                     </Col>
                                 </Row>
                                 <Row>
                                     <h4><strong><Translate type="bookingDetails" string="checkOut"/></strong></h4>
                                 </Row>
                                 <Row>
-                                    <Col lg="6" xs="6" className="text-center">
-                                        <h4>31/05/19</h4>
-                                    </Col>
-                                    <Col lg="6" xs="6" className="text-center">
-                                        <h4>13:00h</h4>
+                                    <Col lg="12" className="text-center">
+                                        {this.state.values.map((v) => (
+                                            <h4>{v.checkOut}</h4>
+                                        ))}
+
                                     </Col>
                                 </Row>
                                 <Row>
                                     <h4><strong><Translate type="bookingDetails" string="guests"/></strong></h4>
                                 </Row>
                                 <Row>
-                                    <Col lg="6" xs="6" className="text-center">
-                                        <h4>2</h4>
+                                    <Col lg="12" className="text-center">
+                                          {this.state.values.map((v) => (
+                                            <h4>{v.totalClientes}</h4>
+                                        ))}
                                     </Col>
                                 </Row>
                                 <Row>
                                     <h4><strong><Translate type="bookingDetails" string="pricePerNight"/></strong></h4>
                                 </Row>
                                 <Row>
-                                    <Col lg="6"  xs="6" className="text-center">
-                                        <h4>55€</h4>
+                                    <Col lg="12" className="text-center">
+                                        <h4>2</h4>
                                     </Col>
                                 </Row>
 

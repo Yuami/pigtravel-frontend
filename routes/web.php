@@ -12,11 +12,9 @@
 */
 
 Auth::routes();
-Route::get('/reservas', 'ReservasController@index');
+Route::get('/bookings', 'ReservasController@index');
 
-Route::get('/reservas', 'ReservasController@show');
-
-Route::get('/reservas/{reserva}', 'ReservasController@show');
+Route::get('/bookings/{idReserva}', 'ReservasController@show');
 
 Route::get('/verify', 'TokenController@index');
 Route::get('/gentoken/{email}/{type}', 'TokenController@generate');
