@@ -26,7 +26,7 @@ class Translate extends Component {
         const {string} = this.props;
         return (
             <LocaleContext.Consumer>
-                {value => langs[value][type][string]}
+                {value => langs[value] == undefined ? langs['es'][type][string] : langs[value][type][string]}
             </LocaleContext.Consumer>
         );
     }

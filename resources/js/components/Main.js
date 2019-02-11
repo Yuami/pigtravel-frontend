@@ -42,7 +42,7 @@ export default class Main extends Component {
 
     render() {
         var checkIn = moment('2012-01-01');
-        var checkOut = moment('2012-01-01');
+        var checkOut = moment('2012-01-04');
 
         return (
             <LocaleContext.Provider value={this.state.locale}>
