@@ -25,9 +25,8 @@ Route::get("/regions",function (){
     $regions=\App\Region::getIfHave();
     return $regions;
 } );
-Route::get('/bookings', function () {
-    $booking=\App\Reserva::details();
-    return $booking;
+Route::get('/bookings/{id}', function ($id) {
+    return \App\Reserva::details($id);
 });
 
 Route::get('/idiomas', function () {

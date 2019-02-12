@@ -50,13 +50,14 @@ export default class Main extends Component {
                 {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter*/}
                 <Switch>
                     <Route exact path="/" component={Home}/>
-                    <Route exact path="/bookings"/>
-                    <Route exact path="/bookings/1" component={BookingDetail}/>
+                    <Route exact path="/bookings/:idReserva" component={BookingDetail}>
+                    </Route>
                     <Route exact path="/about-us" component={AboutUs}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/contact" component={Contact}/>
                     <Route exact path="/modal">
-                        <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"} primaryButton={"lol"}/>
+                        <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"}
+                                   primaryButton={"lol"}/>
                     </Route>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/phil">
