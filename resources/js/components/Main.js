@@ -60,7 +60,7 @@ export default class Main extends Component {
                     </Route>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/phil">
-                        <ReservationForm idVivienda={49} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
+                        <ReservationForm idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                     <Route exact path="/house-list" component={HouseList}/>
