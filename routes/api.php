@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,21 +14,22 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/test', function () {
+    return \App\TipoVivienda::all();
+});
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::get("/cities",function (){
-    $cities=\App\Cities::getIfHave();
-    return $cities;
+    return \App\Cities::getIfHaveHouses();
 } );
 Route::get("/regions",function (){
-    $regions=\App\Region::getIfHave();
-    return $regions;
+    return\App\Region::getIfHaveHouses();
 } );
-Route::get('/bookings', function () {
-    $booking=\App\Reserva::details();
-    return $booking;
+Route::get('/bookings/{id}', function ($id) {
+    return \App\Reserva::all()->where('id','=',$id);
 });
 
 Route::get('/idiomas', function () {
@@ -38,6 +40,5 @@ Route::get('/servicio/{id}', function ($id) {
     return \App\ViviendasHasServicio::getByVivienda($id);
 });
 
-Route::get('/viviendas/{id}', function($id){
-    return \App\Vivienda::find($id);
+Route::get('/search', function (){
 });

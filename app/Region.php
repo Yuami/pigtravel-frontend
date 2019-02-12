@@ -14,7 +14,7 @@ class Region{
 
     protected $table = 'regions';
 
-    static function getIfHave(){
+    static function getIfHaveHouses(){
         $regions = DB::table('regions')
             ->select('regions.id','regions.name as province')
             ->distinct()

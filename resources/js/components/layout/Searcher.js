@@ -24,12 +24,12 @@ class Searcher extends Component {
     IncrementItem = () => {
         this.setState({clicks: this.state.clicks + 1});
     };
-    
+
     DecreaseItem = () => {
-        const clicks = this.state.clicks - 1 < 1 ? 1 : this.state.clicks -1;
+        const clicks = this.state.clicks - 1 < 1 ? 1 : this.state.clicks - 1;
         this.setState({clicks});
     };
-    
+
     ToggleDiv = () => {
         this.setState({show: !this.state.show});
     };
@@ -37,8 +37,10 @@ class Searcher extends Component {
 
     render() {
         const decreaseBtn = this.state.clicks === 1 ?
-            <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon icon={'fa fa-minus'}/></Button> :
-            <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon icon={'fa fa-minus'}/></Button>;
+            <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
+                icon={'fa fa-minus'}/></Button> :
+            <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon
+                icon={'fa fa-minus'}/></Button>;
 
         return (
 
@@ -62,7 +64,7 @@ class Searcher extends Component {
                         <Label><FaIcon icon={'fa fa-user'}/></Label>
                          <div className="inputSearcher">
                             {this.state.clicks} <input type="hidden" name="guests" value={this.state.clicks}/>
-                            <Translate string={'guest'} type={'searcher'}/>
+                            <Translate string={this.state.clicks === 1 ? 'guest' : 'guests'} type={'searcher'}/>
                          </div>
                         <Popover placement="bottom" isOpen={this.state.show} target="guests"
                                  toggle={this.ToggleDiv}  trigger="legacy">
