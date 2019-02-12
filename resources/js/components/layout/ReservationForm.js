@@ -65,12 +65,12 @@ class ReservationForm extends Component {
             if (rules.includes(value.idServicio) && ReservationForm.checkServiceLanguage(value.idioma)) {
                 if (value.activo) {
                     return (
-                        <li key={value.idServicio}>{value.nombre} <Translate type={"reservation"} string={"allowed"}/>
+                        <li key={value.idServicio}><span className={'fas fa-fw ' + value.icon}></span> {value.nombre} <Translate type={"reservation"} string={"allowed"}/>
                         </li>
                     );
                 } else {
                     return (
-                        <li key={value.idServicio}>{value.nombre} <Translate type={"reservation"}
+                        <li key={value.idServicio}><span className={'fas fa-fw ' + value.icon}></span> {value.nombre} <Translate type={"reservation"}
                                                                              string={"disallowed"}/></li>
                     )
                 }
@@ -83,7 +83,7 @@ class ReservationForm extends Component {
         return this.state.servicios.map(function (value, index, array) {
             if (!rules.includes(value.idServicio) && value.activo && ReservationForm.checkServiceLanguage(value.idioma)) {
                 return (
-                    <li key={value.idServicio}>{value.nombre}</li>
+                    <li className={'col-6'} key={value.idServicio}><span className={'fas fa-fw ' + value.icon}></span> {value.nombre}</li>
                 )
             }
         });
@@ -102,7 +102,7 @@ class ReservationForm extends Component {
                             <li><h3><Translate type={'reservation'} string={'house-rules'}/></h3></li>
                             <ul className={'mb-4'}>{renderRules}</ul>
                             <li><h3><Translate type={'reservation'} string={'includes'}/></h3></li>
-                            <ul className={'mb-4'}>{renderInformacion}</ul>
+                            <ul className={'row mb-4'}>{renderInformacion}</ul>
                             <li><h3><Translate type={'reservation'} string={'message'}/></h3></li>
                             <TextAreaForm classname={'customTextarea'} name={'message'}/>
                             <LocaleContext.Consumer>
