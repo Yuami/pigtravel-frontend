@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Persona;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -43,30 +44,49 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nombre' => ['required', 'string', 'max:255'],
+            'apellido1' => ['required', 'string', 'max:255'],
+            'apellido2' => ['required', 'string', 'max:255'],
+            'DNI' => ['required', 'string', 'max:255'],
+            'tlf' => ['required', 'integer', 'max:255'],
+            'correo' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'fechaNacimiento' => ['required', 'date'],
+            'descripcion' => ['string', 'max:255'],
+            'idCiudad' => ['string', 'max:255'],
+            'idFoto' => ['string', 'max:255']
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        return Persona::create([
+            'nombre' => $data['nombre'],
+            'apellido1' => $data['apellido1'],
+            'apellido2' => $data['apellido2'],
+            'DNI' => $data['dni'],
+            'tlf' => $data['tlf'],
+            'correo' => $data['email'],
+            'password' => Hash::make($data['password'], [
+                'memory' => 1024,
+                'time' => 2,
+                'threads' => 2]),
+            'fechaNacimiento' => $data['fechaN'],
+            'descripcion' => $data['desc'],
+            'idCiudad' => $data['idC'],
+            'idFoto' => $data['idF'],
         ]);
     }
 }

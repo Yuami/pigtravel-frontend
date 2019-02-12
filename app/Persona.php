@@ -6,7 +6,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-
 class Persona extends Authenticatable
 {
     use Notifiable;
@@ -14,9 +13,35 @@ class Persona extends Authenticatable
     protected $table = 'persona';
 
     protected $guarded = ['id'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'nombre', 'apellido1', 'apellido2', 'dni', 'tlf',
-        'correo', 'fechaNacimiento', 'descripcion', 'password', 'idCiudad', 'idFoto'
+        'nombre', 'apellido1', 'apellido2',
+        'DNI', 'tlf', 'correo', 'password',
+        'fechaNacimiento', 'descripcion', 'idCiudad', 'idFoto'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 
     protected $hidden = ["password"];
