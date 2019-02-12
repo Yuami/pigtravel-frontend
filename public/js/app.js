@@ -113044,7 +113044,7 @@ function (_Component) {
         name: "guests",
         value: this.state.clicks
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        string: 'guest',
+        string: this.state.clicks === 1 ? 'guest' : 'guests',
         type: 'searcher'
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Popover"], {
         placement: "bottom",
@@ -113294,23 +113294,23 @@ function (_Component) {
       var groupedOptions = [{
         label: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
           type: 'autocomplete',
-          string: 'city'
-        }),
-        options: optionsCities.map(function (v, k) {
-          return {
-            value: v.id,
-            label: v.name + "," + v.province
-          };
-        })
-      }, {
-        label: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          type: 'autocomplete',
           string: 'region'
         }),
         options: optionsRegions.map(function (v, k) {
           return {
             value: v.id,
             label: v.province
+          };
+        })
+      }, {
+        label: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_lang_Translate__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          type: 'autocomplete',
+          string: 'city'
+        }),
+        options: optionsCities.map(function (v, k) {
+          return {
+            value: v.id,
+            label: v.name + "," + v.province
           };
         })
       }];
@@ -113695,8 +113695,8 @@ module.exports = {"es":[{"title":"<h3><strong>Galletas</strong></h3>","body":"<p
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\code\vacacional\front\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\code\vacacional\front\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\j_for\Desktop\DAW\Proyecto\WEB\front-lloguer-vacacional\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\j_for\Desktop\DAW\Proyecto\WEB\front-lloguer-vacacional\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

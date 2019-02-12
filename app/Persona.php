@@ -19,6 +19,8 @@ class Persona extends Authenticatable
         'correo', 'fechaNacimiento', 'descripcion', 'password', 'idCiudad', 'idFoto'
     ];
 
+    protected $hidden = ["password"];
+
     public $timestamps = false;
 
     public static function getByCorreo($correo)

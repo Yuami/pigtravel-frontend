@@ -24,12 +24,12 @@ class Searcher extends Component {
     IncrementItem = () => {
         this.setState({clicks: this.state.clicks + 1});
     };
-    
+
     DecreaseItem = () => {
-        const clicks = this.state.clicks - 1 < 1 ? 1 : this.state.clicks -1;
+        const clicks = this.state.clicks - 1 < 1 ? 1 : this.state.clicks - 1;
         this.setState({clicks});
     };
-    
+
     ToggleDiv = () => {
         this.setState({show: !this.state.show});
     };
@@ -37,45 +37,48 @@ class Searcher extends Component {
 
     render() {
         const decreaseBtn = this.state.clicks === 1 ?
-            <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon icon={'fa fa-minus'}/></Button> :
-            <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon icon={'fa fa-minus'}/></Button>;
+            <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
+                icon={'fa fa-minus'}/></Button> :
+            <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon
+                icon={'fa fa-minus'}/></Button>;
 
         return (
 
-            <Col md="10" lg="8" sm="8" xs="10"  className="buscador shadow">
+            <Col md="10" lg="8" sm="8" xs="10" className="buscador shadow">
                 <Form>
-                <Col md="6" lg="4" sm="12"  xs="12" className="filtro">
-                    <FormGroup>
-                        <Label>
-                            <FaIcon icon={'fa fa-globe'}/>
-                        </Label>
-                        <div id="location">
-                            <AutocompleteCity/>
-                        </div>
-                    </FormGroup>
-                </Col>
-                <Col md="6" lg="4" sm="12" xs="12"  className="filtro">
-                    <DatePickerInicio/>
-                </Col>
-                <Col md="6" lg="3" sm="12" xs="12" className="filtro">
-                    <FormGroup id={"guests"}>
-                        <Label><FaIcon icon={'fa fa-user'}/></Label>
-                         <div className="inputSearcher">
-                            {this.state.clicks} <input type="hidden" name="guests" value={this.state.clicks}/>
-                            <Translate string={'guest'} type={'searcher'}/>
-                         </div>
-                        <Popover placement="bottom" isOpen={this.state.show} target="guests"
-                                 toggle={this.ToggleDiv}  trigger="legacy">
-                            <PopoverBody>
-                                {decreaseBtn}
-                                <Button color="" className="incrementIcon" onClick={this.IncrementItem}><FaIcon icon={'fa fa-plus'}/></Button>
-                            </PopoverBody>
-                        </Popover>
-                    </FormGroup>
-                </Col>
-                <Col md="6" lg="1" sm="12" xs="12" className="form-group">
-                    <Button color="primary" className="SearcherIcon"><FaIcon icon={'fa fa-search'} size={'fa-2x'}/></Button>
-                </Col>
+                    <Col md="6" lg="4" sm="12" xs="12" className="filtro">
+                        <FormGroup>
+                            <Label>
+                                <FaIcon icon={'fa fa-globe'}/>
+                            </Label>
+                            <div id="location">
+                                <AutocompleteCity/>
+                            </div>
+                        </FormGroup>
+                    </Col>
+                    <Col md="6" lg="4" sm="12" xs="12" className="filtro">
+                        <DatePickerInicio/>
+                    </Col>
+                    <Col md="6" lg="3" sm="12" xs="12" className="filtro">
+                        <FormGroup id={"guests"}>
+                            <Label><FaIcon icon={'fa fa-user'}/></Label>
+                            <div className="inputSearcher">
+                                {this.state.clicks} <input type="hidden" name="guests" value={this.state.clicks}/>
+                                <Translate string={this.state.clicks === 1 ? 'guest' : 'guests'} type={'searcher'}/>
+                            </div>
+                            <Popover placement="bottom" isOpen={this.state.show} target="guests"
+                                     toggle={this.ToggleDiv} trigger="legacy">
+                                <PopoverBody>
+                                    {decreaseBtn}
+                                    <Button color="" className="incrementIcon" onClick={this.IncrementItem}><FaIcon
+                                        icon={'fa fa-plus'}/></Button>
+                                </PopoverBody>
+                            </Popover>
+                        </FormGroup>
+                    </Col>
+                    <Col md="6" lg="1" sm="12" xs="12" className="form-group">
+                        <Button color="primary" className="SearcherIcon"><FaIcon icon={'fa fa-search'} size={'fa-2x'}/></Button>
+                    </Col>
                 </Form>
             </Col>
         );

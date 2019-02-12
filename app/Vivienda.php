@@ -18,6 +18,17 @@ class Vivienda extends Model
 
     public function fotos()
     {
-        return $this->hasMany(Fotos::class);
+        return $this->hasManyThrough(Fotos::class, ViviendaHasFotos::class, "idFoto","id", "id", "idFoto");
     }
+
+    public function city()
+    {
+        return $this->belongsTo(Cities::class);
+    }
+
+    public function tipoVivienda()
+    {
+        return $this->belongsTo(TipoVivienda::class);
+    }
+
 }

@@ -9,7 +9,7 @@ class Cities extends Model
 {
     protected $table = 'cities';
 
-    static function getIfHave(){
+    static function getIfHaveHouses(){
         $cities = DB::table('cities')
             ->select('cities.id','cities.name','regions.name as province')
             ->distinct()
