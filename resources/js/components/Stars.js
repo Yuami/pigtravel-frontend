@@ -94,7 +94,7 @@ class Stars extends Component {
     static propTypes = {
         size: PropTypes.oneOf(['', 'fa-xs', 'fa-sm', 'fa-lg', 'fa-2x', 'fa-3x', 'fa-5x', 'fa-7x', 'fa-10x']),
         editing: PropTypes.bool,
-        rating: PropTypes.string.isRequired,
+        rating: PropTypes.any.isRequired,
         color: PropTypes.oneOf(["primary", "secondary"])
     };
 }
