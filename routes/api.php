@@ -42,3 +42,7 @@ Route::get('/servicio/{id}', function ($id) {
 
 Route::get('/search', function (){
 });
+
+Route::get('/viviendas/{id}', function($id){
+    return \App\Vivienda::find($id);
+});
