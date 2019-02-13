@@ -21,15 +21,6 @@ class Reservation extends Component {
         super(props);
         this.state = {
             servicios: [],
-            casa: [],
-            pax: '',
-            nights: this.props.checkOut.diff(this.props.checkIn, 'days'),
-            serviceFee: this.props.price * 0.05 + 5,
-        };
-
-        this.state = {
-            ...this.state,
-            total: this.state.serviceFee + this.props.price,
         };
 
         this.renderInformation.bind(this);
@@ -40,23 +31,16 @@ class Reservation extends Component {
 
     componentWillMount() {
         const servicioURL = '/api/servicio/' + this.props.idVivienda;
-        const viviendaURL = '/api/viviendas/' + this.props.idVivienda;
-
-
 
         axios.get(servicioURL).then((res) => {
             this.setState({servicios: res.data});
         });
 
-        axios.get(viviendaURL).then((res) => {
-            this.setState({casa: res.data});
-        });
     }
 
     static checkServiceLanguage(idioma) {
         return (localStorage["locale"] === idioma);
-    }
-    ;
+    };
 
     renderRules() {
         const rules = this.rules;
@@ -96,7 +80,6 @@ class Reservation extends Component {
     render() {
         const renderRules = this.renderRules();
         const renderInformacion = this.renderInformation();
-        console.log(this.props);
 
         return (
             <Container fluid className={'pt-5'}>
