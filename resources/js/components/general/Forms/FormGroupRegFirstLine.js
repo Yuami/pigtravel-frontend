@@ -9,7 +9,7 @@ class FormGroupRegFirstLine extends Component {
         return (
             <Col className="my-2" xs="12" md="4">
                 <FormGroup>
-                    <LabelForm name={this.props.name} text={this.props.text}/>
+                    <LabelForm name={this.props.name} label={this.props.label}/>
                     <InputForm type='text' name={this.props.name} placeholder={this.props.placeholder}/>
                 </FormGroup>
             </Col>
@@ -20,7 +20,7 @@ class FormGroupRegFirstLine extends Component {
 FormGroupRegFirstLine.propTypes = {
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
-    text: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired
 };
 
 export default FormGroupRegFirstLine;
