@@ -14,22 +14,32 @@ class Vivienda extends Model
 
     public function vendedor()
     {
-        return $this->belongsTo(Vendedor::class, 'idPersona');
+        return $this->belongsTo(Persona::class, 'idVendedor');
     }
 
     public function fotos()
     {
-        return $this->hasManyThrough(Fotos::class, ViviendaHasFotos::class, "idFoto","id", "id", "idFoto");
+        return $this->hasMany(ViviendaHasFotos::class, "idVivienda");
     }
 
     public function city()
     {
-        return $this->belongsTo(Cities::class);
+        return $this->belongsTo(Cities::class, 'idCiudad','id');
     }
 
     public function tipoVivienda()
     {
-        return $this->belongsTo(TipoVivienda::class);
+        return $this->belongsTo(TipoVivienda::class, 'idTipoVivienda');
+    }
+
+    public function valoraciones()
+    {
+        return $this->hasMany(ValoracionVivienda::class, 'idVivienda');
+    }
+
+    public function tarifas()
+    {
+        return $this->hasManyThrough(Tarifa::class, ViviendaHasTarifa::class, "idVivienda","id","id", "idTarifa");
     }
     static function details($id){
         $regions = DB::table('vivienda')

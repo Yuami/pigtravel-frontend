@@ -14,9 +14,10 @@ import Register from "../Views/Register";
 import Contact from "../Views/Contact";
 import HouseList from "../Views/HouseList";
 import moment from "react-daterange-picker/example/moment-range";
-import House from "../Views/House";
 import Reservation from "../Views/Reservation";
 import ReservationPayment from "../Views/ReservationPayment";
+
+
 export default class Main extends Component {
     constructor(props) {
         super(props);
@@ -51,8 +52,6 @@ export default class Main extends Component {
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/bookings/:idReserva" component={BookingDetail}>
-                    </Route>
-                    <Route exact path="/houses/:idHouse" component={House}>
                     </Route>
                     <Route exact path="/about-us" component={AboutUs}/>
                     <Route exact path="/login" component={Login}/>

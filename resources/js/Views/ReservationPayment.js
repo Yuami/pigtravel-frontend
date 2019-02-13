@@ -8,6 +8,7 @@ import Row from "reactstrap/es/Row";
 import Container from "reactstrap/es/Container";
 import Panel from "../components/layout/Panel";
 import ReservationInfo from "../components/specific/ReservationInfo";
+import Cards from 'react-credit-cards';
 import Form from "reactstrap/es/Form";
 import FormButton from "../components/general/Forms/FormButton";
 import {translate} from "../helpers";
