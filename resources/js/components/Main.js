@@ -10,11 +10,12 @@ import * as ReactDOM from "react-dom";
 import MainModal from "./layout/MainModal";
 import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
-import ReservationForm from "./layout/ReservationForm";
 import Register from "../Views/Register";
 import Contact from "../Views/Contact";
 import HouseList from "../Views/HouseList";
 import moment from "react-daterange-picker/example/moment-range";
+import Reservation from "../Views/Reservation";
+import ReservationPayment from "../Views/ReservationPayment";
 
 
 export default class Main extends Component {
@@ -60,8 +61,11 @@ export default class Main extends Component {
                                    primaryButton={"lol"}/>
                     </Route>
                     <Route exact path="/register" component={Register}/>
-                    <Route exact path="/phil">
-                        <ReservationForm idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
+                    <Route exact path="/reservation">
+                        <Reservation idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
+                    </Route>
+                    <Route exact path="/payment">
+                        <ReservationPayment idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                     <Route exact path="/house-list" component={HouseList}/>

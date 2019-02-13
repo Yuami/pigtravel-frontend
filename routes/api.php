@@ -46,3 +46,7 @@ Route::get('/viviendas/{id}', function($id){
 Route::get('/viviendas', function (){
     return ViviendaResource::collection(Vivienda::all());
 });
+
+Route::get('/viviendas/{id}', function($id){
+    return \App\Vivienda::find($id);
+});
