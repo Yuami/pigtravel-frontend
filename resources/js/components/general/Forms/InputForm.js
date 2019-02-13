@@ -1,20 +1,22 @@
 import React, {Component} from 'react';
+import {Input} from 'reactstrap';
 import PropTypes from 'prop-types';
-import {AvField} from 'availity-reactstrap-validation';
 
 class InputForm extends Component {
     render() {
-        return (<AvField type={this.props.type} name={this.props.name} id={this.props.name}
-                         placeholder={this.props.placeholder} label={this.props.label}
-                         errorMessage={this.props.eMessage} validate={this.props.validate}/>);
+        return (
+            <Input type={this.props.type} className={this.props.className} name={this.props.name} id={this.props.name}
+                   placeholder={this.props.placeholder} value={this.props.value} onChange={this.props.onChange}
+                   onBlur={this.props.onBlur}/>);
     }
 }
 
 InputForm.propTypes = {
     type: PropTypes.string.isRequired,
-    eMessage: PropTypes.string,
-    validate: PropTypes.object.isRequired,
-    label: PropTypes.string,
+    className: PropTypes.string,
+    value: PropTypes.string,
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func,
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string
 };

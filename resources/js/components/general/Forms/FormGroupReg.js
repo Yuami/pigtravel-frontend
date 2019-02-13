@@ -9,8 +9,10 @@ class FormGroupReg extends Component {
         return (
             <Col className="my-2" xs="12" md={this.props.md}>
                 <FormGroup>
-                    <LabelForm name={this.props.name} text={this.props.text}/>
-                    <InputForm type={this.props.type} name={this.props.name} placeholder={this.props.placeholder}/>
+                    <LabelForm name={this.props.name} label={this.props.label}/>
+                    <InputForm type={this.props.type} className={this.props.className} name={this.props.name}
+                                   id={this.props.name} placeholder={this.props.placeholder} value={this.props.value}
+                                   onChange={this.props.onChange} onBlur={this.props.onBlur}/>
                 </FormGroup>
             </Col>
         );
@@ -21,8 +23,12 @@ FormGroupReg.propTypes = {
     md: PropTypes.number,
     type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    placeholder: PropTypes.string
+    label: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
+    className: PropTypes.string,
+    value: PropTypes.string,
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func,
 };
 
 export default FormGroupReg;
