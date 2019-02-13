@@ -39,7 +39,7 @@ class HouseCard extends Component {
         house: PropTypes.shape({
             name: PropTypes.string.isRequired,
             img: PropTypes.string.isRequired,
-            price: PropTypes.string.isRequired,
+            price: PropTypes.any.isRequired,
             type: PropTypes.string.isRequired,
         }).isRequired,
     }
