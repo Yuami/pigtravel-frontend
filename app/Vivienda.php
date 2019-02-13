@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Vivienda extends Model
 {
@@ -29,6 +30,16 @@ class Vivienda extends Model
     public function tipoVivienda()
     {
         return $this->belongsTo(TipoVivienda::class);
+    }
+    static function details($id){
+        $regions = DB::table('vivienda')
+            ->select('vivienda.*', 'persona.nombre as vendedor','persona.apellido1','tarifa.precio')
+            ->join('persona','persona.id','=','vivienda.idVendedor')
+            ->join('vivienda_has_tarifa','vivienda_has_tarifa.idVivienda','=','vivienda.id')
+            ->join('tarifa','vivienda_has_tarifa.idTarifa','=','tarifa.id')
+            ->where('vivienda.id','=',$id)
+            ->get();
+        return $regions;
     }
 
 }

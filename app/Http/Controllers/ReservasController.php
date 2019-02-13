@@ -10,11 +10,16 @@ use Illuminate\Support\Facades\Mail;
 class ReservasController extends Controller
 {
     public function index() {
-        return Reserva::all();
+        $title = 'Bookings';
+        return view('welcome', compact('title'));
     }
 
-    public function show() {
-        return view('welcome');
+    public function show($idReserva) {
+        $reserva= Reserva::details($idReserva);
+        $title = $reserva->first()->nombreVivienda;
+        $description= Reserva::description($idReserva);
+
+        return view('welcome', compact('title','description'));
     }
 
     public function destroy(Reserva $reserva) {

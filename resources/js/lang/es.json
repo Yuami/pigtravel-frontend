@@ -79,5 +79,8 @@
   },
   "houselist": {
     "night": "por noche"
+  },
+  "house": {
+    "book": "RESERVAR"
   }
 }

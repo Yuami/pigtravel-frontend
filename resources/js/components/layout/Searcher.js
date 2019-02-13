@@ -46,7 +46,7 @@ class Searcher extends Component {
 
             <Col md="10" lg="8" sm="8" xs="10"  className="buscador shadow">
                 <Form action="/search">
-                <Col md="6" lg="4" sm="12"  xs="12" className="filtro">
+                <Col md="6" lg="5" sm="12" xs="12" className="filtro">
                     <FormGroup>
                         <Label>
                             <FaIcon icon={'fa fa-globe'}/>
@@ -59,7 +59,7 @@ class Searcher extends Component {
                 <Col md="6" lg="4" sm="12" xs="12"  className="filtro">
                     <DatePickerInicio/>
                 </Col>
-                <Col md="6" lg="3" sm="12" xs="12" className="filtro">
+                <Col md="6" lg="2" sm="12" xs="12" className="filtro">
                     <FormGroup id={"guests"}>
                         <Label><FaIcon icon={'fa fa-user'}/></Label>
                          <div className="inputSearcher">

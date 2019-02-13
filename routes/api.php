@@ -18,16 +18,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get("/cities",function (){
-    $cities=\App\Cities::getIfHave();
+    $cities=\App\Cities::getIfHaveHouses();
     return $cities;
 } );
 Route::get("/regions",function (){
-    $regions=\App\Region::getIfHave();
+    $regions=\App\Region::getIfHaveHouses();
     return $regions;
 } );
 Route::get('/bookings/{id}', function ($id) {
     return \App\Reserva::details($id);
 });
+Route::get('/houses/{id}', function ($id) {
+    return \App\Vivienda::details($id);
+});
+
 
 Route::get('/idiomas', function () {
     return \App\Idioma::all();
