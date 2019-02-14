@@ -12,7 +12,7 @@ class FormGroupReg extends Component {
                         <FormButton block={true} page={this.props.page} text={'Cancelar'}/>
                     </Col>
                     <Col>
-                        <FormButton block={true} text={'Confimar'}/>
+                        <FormButton type={'submit'} block={true} text={'Confimar'}/>
                     </Col>
                 </Row>
             </Col>

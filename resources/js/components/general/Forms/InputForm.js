@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class InputForm extends Component {
     render() {
         return (
-            <Input type={this.props.type} className={this.props.className} name={this.props.name} id={this.props.name}
+            <Input invalid={this.props.invalid} type={this.props.type} className={this.props.className} name={this.props.name} id={this.props.name}
                    placeholder={this.props.placeholder} value={this.props.value} onChange={this.props.onChange}
                    onBlur={this.props.onBlur}/>);
     }
@@ -13,6 +13,7 @@ class InputForm extends Component {
 
 InputForm.propTypes = {
     type: PropTypes.string.isRequired,
+    invalid: PropTypes.bool,
     className: PropTypes.string,
     value: PropTypes.string,
     onBlur: PropTypes.func,
