@@ -82,6 +82,11 @@
     "night": "per night"
   },
   "house": {
-    "book": "BOOK"
+    "book": "BOOK",
+    "description": "Description",
+    "services": "Services",
+    "availability": "Availability",
+    "location": "Location",
+    "priceNight": "average/night"
   }
 }

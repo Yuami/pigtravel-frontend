@@ -11,6 +11,8 @@ import FaIcon from "../components/general/FaIcon";
 import Translate from "../lang/Translate";
 import {LocaleContext, coin} from "../LocaleContext";
 import Stars from "../components/Stars";
+import SideBarHouse from "../components/specific/SideBarHouse";
+import Form from "reactstrap/es/Form";
 
 class House extends Component {
 
@@ -48,7 +50,6 @@ class House extends Component {
 
         return (
             <div>
-
                 <Container>
                     <h1>{this.state.details.map((v)=> v.nombre)}</h1>
                     <Row className="house">
@@ -57,7 +58,7 @@ class House extends Component {
                         </Col>
                         <Col>
                             <Row className="shadow m-3">
-                                <Col lg="2" sm="2" xs="3">
+                                <Col lg="3" sm="2" xs="3">
                                     <img src="/img/user.jpg" height="70px" className="userImg"></img>
                                 </Col>
                                 <Col sm="8" xs="8" className="my-auto">
@@ -77,6 +78,10 @@ class House extends Component {
                                     <Row className="justify-content-center">
                                         <h1 className="precioNoche"><strong>{this.state.details.map((v) => (v.precio))}{coin}</strong></h1>
                                     </Row>
+                                    <Row className="justify-content-center">
+                                        <h3><Translate type={'house'} string={'priceNight'}/></h3>
+                                    </Row>
+                                 <Form action="/book">
                                     <Row className="filtro">
                                         <DatePickerInicio/>
                                     </Row>
@@ -99,11 +104,16 @@ class House extends Component {
                                     <Row>
                                         <button type="submit" className="btn btn-primary btn-block"><Translate type={'house'} string={'book'}/></button>
                                     </Row>
+                                 </Form>
                                 </Col>
                             </Row>
                         </Col>
                     </Row>
-
+                    <Row>
+                        <Col lg="12">
+                            <SideBarHouse description={this.state.details.map((v) => (v.descripcion))} houseID={this.state.details.map((v)=> v.id)}/>
+                        </Col>
+                    </Row>
                 </Container>
 
             </div>

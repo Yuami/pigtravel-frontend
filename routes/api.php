@@ -33,7 +33,9 @@ Route::get('/bookings/{id}', function ($id) {
 Route::get('/houses/{id}', function ($id) {
     return \App\Vivienda::details($id);
 });
-
+Route::get('/block/{id}', function ($id) {
+    return \App\Reserva::datesByHouse($id);
+});
 
 Route::get('/idiomas', function () {
     return \App\Idioma::all();

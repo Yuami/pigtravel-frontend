@@ -23,5 +23,13 @@ class Reserva extends Model
             ->get();
         return $regions;
     }
+
+    static function datesByHouse($id){
+        $block = DB::table('reserva')
+            ->select('reserva.id','reserva.checkIn','reserva.checkOut')
+            ->where('reserva.id','=',$id)
+            ->get();
+        return $block;
+    }
 }
 

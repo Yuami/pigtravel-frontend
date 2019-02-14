@@ -7,12 +7,13 @@
 .house .btn{
   font-size: 20px;
 }
-.menu-wrapper{
-  width:100%;
-  height:600px;
-  background-color:red;
-  overflow:hidden;
+.leaflet-container {
+  height: 400px;
+  width: 100%;
 }
-.MuiAppBar-positionFixed-9 {
-  margin-top: 10px;
+.DayPicker-Month {
+  width: 40% !important;
+}
+.DayPicker{
+  width: 100%;
 }

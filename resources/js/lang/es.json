@@ -82,6 +82,11 @@
     "night": "por noche"
   },
   "house": {
-    "book": "RESERVAR"
+    "book": "RESERVAR",
+    "description": "Descripción",
+    "services": "Servicios",
+    "availability": "Disponibilidad",
+    "location": "Ubicación",
+    "priceNight": "promedio/noche"
   }
 }

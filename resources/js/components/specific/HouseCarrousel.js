@@ -18,6 +18,26 @@ class HouseCarrousel extends Component {
             {
                 original: 'http://lorempixel.com/1000/600/nature/3/',
                 thumbnail: 'http://lorempixel.com/250/150/nature/3/'
+            },
+            {
+                original: 'http://lorempixel.com/1000/600/nature/4/',
+                thumbnail: 'http://lorempixel.com/250/150/nature/4/'
+            },
+            {
+                original: 'http://lorempixel.com/1000/600/nature/5/',
+                thumbnail: 'http://lorempixel.com/250/150/nature/5/'
+            },
+            {
+                original: 'http://lorempixel.com/1000/600/nature/6/',
+                thumbnail: 'http://lorempixel.com/250/150/nature/6/'
+            },
+            {
+                original: 'http://lorempixel.com/1000/600/nature/7/',
+                thumbnail: 'http://lorempixel.com/250/150/nature/7/'
+            }
+            ,{
+                original: 'http://lorempixel.com/1000/600/nature/8/',
+                thumbnail: 'http://lorempixel.com/250/150/nature/8/'
             }
         ];
 
