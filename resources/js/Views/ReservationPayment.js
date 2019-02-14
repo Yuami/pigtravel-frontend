@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Translate from "../lang/Translate";
-import axios from "axios";
 import moment from "react-daterange-picker/example/moment-range";
 import Col from "reactstrap/es/Col";
 import Row from "reactstrap/es/Row";
@@ -9,16 +8,22 @@ import Container from "reactstrap/es/Container";
 import Panel from "../components/layout/Panel";
 import ReservationInfo from "../components/specific/ReservationInfo";
 import Form from "reactstrap/es/Form";
-import FormButton from "../components/general/Forms/FormButton";
-import {translate} from "../helpers";
-import {LocaleContext} from "../LocaleContext";
+import PaypalCheckout from "../components/specific/PaypalCheckout";
+import StripeCheckout from "../components/specific/StripeCheckout";
 
 class ReservationPayment extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            disabled: true
+            disabled: true,
+            paymentMethod: "creditCard",
+            serviceFee: this.props.price * 0.05 + 5,
+        };
+
+        this.state = {
+            ...this.state,
+            total: this.state.serviceFee + this.props.price,
         };
 
         this.paymentSelected = this.paymentSelected.bind(this);
@@ -30,14 +35,20 @@ class ReservationPayment extends Component {
     paymentSelected() {
         let method = $(".paymentMethod.active div").attr('id');
         if (method === 'creditCard') {
-            this.setState({disabled: true});
+            this.setState({paymentMethod: "creditCard"});
         } else if (method === 'paypal') {
-            this.setState({disabled: false});
+            this.setState({paymentMethod: "paypal"});
         }
     }
 
     render() {
-        const disabled = true;
+        let paymentButton;
+        if (this.state.paymentMethod === "creditCard") {
+            paymentButton = <StripeCheckout/>
+        } else if (this.state.paymentMethod === "paypal") {
+            paymentButton = <PaypalCheckout total={this.state.total}/>
+        }
+
         return (
             <Container fluid className={'pt-5'}>
                 <Row>
@@ -49,9 +60,9 @@ class ReservationPayment extends Component {
                                     <div
                                         className="btn-group paymentBtnGroup btn-group-justified justify-content-center d-flex"
                                         data-toggle="buttons" onClick={this.paymentSelected}>
-                                        <label className="btn paymentMethod">
+                                        <label className="btn paymentMethod active">
                                             <div id={'creditCard'} className="method creditcard"/>
-                                            <input type="radio" name="options"/>
+                                            <input type="radio" name="options" defaultChecked/>
                                         </label>
                                         <label className="btn paymentMethod">
                                             <div id={'paypal'} className="method paypal"/>
@@ -59,18 +70,14 @@ class ReservationPayment extends Component {
                                         </label>
                                     </div>
                                 </div>
-                                <LocaleContext.Consumer>
-                                    {locale =>
-                                        <FormButton className={'pull-right'}
-                                                    text={translate(locale, 'pay', 'reservation')}
-                                                    disabled={this.state.disabled}/>
-                                    }
-                                </LocaleContext.Consumer>
+                                <div id={'orderButtons'}>
+                                    {paymentButton}
+                                </div>
                             </Form>
                         </Panel>
                     </Col>
                     <Col lg='4' className={'order-0 order-lg-1'}>
-                        <ReservationInfo {...this.props}/>
+                        <ReservationInfo {...this.props} serviceFee={this.state.serviceFee} total={this.state.total}/>
                     </Col>
                 </Row>
             </Container>
