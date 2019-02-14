@@ -9,14 +9,21 @@ import AutocompleteCity from "../specific/AutocompleteCity";
 import FormButton from "../general/Forms/FormButton";
 import Form from "reactstrap/es/Form";
 import FormGroup from "reactstrap/es/FormGroup";
+import originalMoment from "moment";
+import {extendMoment} from "moment-range";
+
+const moment = extendMoment(originalMoment);
 
 class Searcher extends Component {
     constructor(props, context) {
         super(props, context);
 
+        const today = moment();
         this.state = {
             clicks: 1,
             show: false,
+            date: moment.range(today.clone(), today.clone().add(7, "days")),
+            place: undefined
         };
 
     }
@@ -34,6 +41,16 @@ class Searcher extends Component {
         this.setState({show: !this.state.show});
     };
 
+    handleChangeDates(date) {
+        this.setState({date});
+    }
+
+    handleChangePlace(place) {
+        this.setState({
+            place
+        });
+    }
+
 
     render() {
         const decreaseBtn = this.state.clicks === 1 ?
@@ -42,43 +59,44 @@ class Searcher extends Component {
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon
                 icon={'fa fa-minus'}/></Button>;
 
-        return (
+        console.log(this.state);
 
-            <Col md="10" lg="8" sm="8" xs="10"  className="buscador shadow">
-                <Form action="/search">
-                <Col md="6" lg="4" sm="12"  xs="12" className="filtro">
+        return (
+            <Col md="10" lg="8" sm="8" xs="10" className="buscador shadow">
+                <Col md="6" lg="4" sm="12" xs="12" className="filtro">
                     <FormGroup>
                         <Label>
                             <FaIcon icon={'fa fa-globe'}/>
                         </Label>
                         <div id="location">
-                            <AutocompleteCity/>
+                            <AutocompleteCity change={this.handleChangePlace.bind(this)} place={this.state.place}/>
                         </div>
                     </FormGroup>
                 </Col>
-                <Col md="6" lg="4" sm="12" xs="12"  className="filtro">
-                    <DatePickerInicio/>
+                <Col md="6" lg="4" sm="12" xs="12" className="filtro">
+                    <DatePickerInicio onChange={this.handleChangeDates.bind(this)} value={this.state.date}/>
                 </Col>
                 <Col md="6" lg="3" sm="12" xs="12" className="filtro">
                     <FormGroup id={"guests"}>
                         <Label><FaIcon icon={'fa fa-user'}/></Label>
-                         <div className="inputSearcher">
+                        <div className="inputSearcher">
                             {this.state.clicks} <input type="hidden" name="guests" value={this.state.clicks}/>
                             <Translate string={this.state.clicks === 1 ? 'guest' : 'guests'} type={'searcher'}/>
-                         </div>
+                        </div>
                         <Popover placement="bottom" isOpen={this.state.show} target="guests"
-                                 toggle={this.ToggleDiv}  trigger="legacy">
+                                 toggle={this.ToggleDiv} trigger="legacy">
                             <PopoverBody>
                                 {decreaseBtn}
-                                <Button color="" className="incrementIcon" onClick={this.IncrementItem}><FaIcon icon={'fa fa-plus'}/></Button>
+                                <Button color="" className="incrementIcon" onClick={this.IncrementItem}><FaIcon
+                                    icon={'fa fa-plus'}/></Button>
                             </PopoverBody>
                         </Popover>
                     </FormGroup>
                 </Col>
                 <Col md="6" lg="1" sm="12" xs="12" className="form-group">
-                    <Button color="primary" className="SearcherIcon"><FaIcon icon={'fa fa-search'} size={'fa-2x'}/></Button>
+                    <Button color="primary" className="SearcherIcon"><FaIcon icon={'fa fa-search'}
+                                                                             size={'fa-2x'}/></Button>
                 </Col>
-                </Form>
             </Col>
         );
     }

@@ -64,7 +64,7 @@ export default class Main extends Component {
                         <ReservationForm idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
-                    <Route exact path="/house-list" component={HouseList}/>
+                    <Route exact path="/search" component={HouseList}/>
                 </Switch>
                 <Footer/>
             </LocaleContext.Provider>
