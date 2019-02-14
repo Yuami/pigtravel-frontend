@@ -16,43 +16,28 @@ import {LocaleContext} from "../LocaleContext";
 class ReservationPayment extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            casa: [],
-            pax: '',
-            nights: this.props.checkOut.diff(this.props.checkIn, 'days'),
-            serviceFee: this.props.price * 0.05 + 5,
-        };
 
         this.state = {
-            ...this.state,
-            total: this.state.serviceFee + this.props.price,
+            disabled: true
         };
 
+        this.paymentSelected = this.paymentSelected.bind(this);
     }
 
     rules = [13, 14, 22];
 
-    componentWillMount() {
-        const viviendaURL = '/api/viviendas/' + this.props.idVivienda;
-
-        this.state.pax = this.props.pax > 1 ? <Translate type={'searcher'} string={'guests'}/> :
-            <Translate type={'searcher'} string={'guest'}/>;
-
-        axios.get(viviendaURL).then((res) => {
-            this.setState({casa: res.data});
-        });
-    }
 
     paymentSelected() {
         let method = $(".paymentMethod.active div").attr('id');
         if (method === 'creditCard') {
-
+            this.setState({disabled: true});
         } else if (method === 'paypal') {
-
+            this.setState({disabled: false});
         }
     }
 
     render() {
+        const disabled = true;
         return (
             <Container fluid className={'pt-5'}>
                 <Row>
@@ -78,7 +63,7 @@ class ReservationPayment extends Component {
                                     {locale =>
                                         <FormButton className={'pull-right'}
                                                     text={translate(locale, 'pay', 'reservation')}
-                                                    disabled/>
+                                                    disabled={this.state.disabled}/>
                                     }
                                 </LocaleContext.Consumer>
                             </Form>
