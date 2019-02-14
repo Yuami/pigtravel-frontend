@@ -132,7 +132,7 @@ class BookingDetail extends Component {
                             </Row>
 
                         </Col>
-                        <DesglosePrecio price={this.state.values.map(p => p.precio)} nights={this.state.days}/>
+                        <DesglosePrecio price={this.state.values.map(p => p.precio)} nights={this.state.days} />
                     </Row>
                 </Container>
             </div>

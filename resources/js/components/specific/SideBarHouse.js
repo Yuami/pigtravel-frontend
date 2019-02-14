@@ -12,6 +12,7 @@ import {
 import Translate from "../../lang/Translate";
 import PropTypes from "prop-types";
 import BlockedDays from "./BlockedDays";
+import {MapView} from "./MapView";
 
 
 export default class SideBarHouse extends React.Component {
@@ -22,7 +23,7 @@ export default class SideBarHouse extends React.Component {
         this.state = {
             activeTab: '1',
             isOpen: false,
-            markerPosition: { lat: 49.8419, lng: 24.0315 }
+            markerPosition: { lat: this.props.coordX, lng: this.props.coordY }
     };
     }
 
@@ -119,7 +120,7 @@ export default class SideBarHouse extends React.Component {
                                 <Row>
                                     <Col sm="12">
                                         <h1><strong><Translate type="house" string="location"/></strong></h1>
-
+                                          <MapView/>
                                     </Col>
                                 </Row>
                             </TabPane>
@@ -133,4 +134,6 @@ export default class SideBarHouse extends React.Component {
 SideBarHouse.propTypes = {
     description: PropTypes.string.isRequired,
     houseID: PropTypes.number.isRequired,
+    coordX: PropTypes.number.isRequired,
+    coordY: PropTypes.number.isRequired,
 };

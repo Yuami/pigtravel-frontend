@@ -14,12 +14,9 @@ class ReservasController extends Controller
         return view('welcome', compact('title'));
     }
 
-    public function show($idReserva) {
-        $reserva= Reserva::details($idReserva);
-        $title = $reserva->first()->nombreVivienda;
-        $description= Reserva::description($idReserva);
+    public function show() {
 
-        return view('welcome', compact('title','description'));
+        return view('welcome');
     }
 
     public function destroy(Reserva $reserva) {

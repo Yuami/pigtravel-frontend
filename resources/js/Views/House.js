@@ -111,7 +111,11 @@ class House extends Component {
                     </Row>
                     <Row>
                         <Col lg="12">
-                            <SideBarHouse description={this.state.details.map((v) => (v.descripcion))} houseID={this.state.details.map((v)=> v.id)}/>
+                            <SideBarHouse description={this.state.details.map((v) => (v.descripcion))}
+                                          houseID={this.state.details.map((v)=> v.id)}
+                                          coordX={this.state.details.map((v)=> v.coordX)}
+                                          coordY={this.state.details.map((v)=> v.coordY)}
+                            />
                         </Col>
                     </Row>
                 </Container>
