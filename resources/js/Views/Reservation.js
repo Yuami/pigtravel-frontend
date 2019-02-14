@@ -21,10 +21,18 @@ class Reservation extends Component {
         super(props);
         this.state = {
             servicios: [],
+            serviceFee: this.props.price * 0.05 + 5,
+
+        };
+
+        this.state = {
+            ...this.state,
+            total: this.state.serviceFee + this.props.price,
         };
 
         this.renderInformation.bind(this);
         this.renderRules.bind(this);
+
     }
 
     rules = [13, 14, 22];
@@ -40,7 +48,8 @@ class Reservation extends Component {
 
     static checkServiceLanguage(idioma) {
         return (localStorage["locale"] === idioma);
-    };
+    }
+    ;
 
     renderRules() {
         const rules = this.rules;
@@ -101,7 +110,7 @@ class Reservation extends Component {
                         </Panel>
                     </Col>
                     <Col lg='4' className={'order-0 order-lg-1'}>
-                        <ReservationInfo {...this.props}/>
+                        <ReservationInfo {...this.props} serviceFee={this.state.serviceFee} total={this.state.total}/>
                     </Col>
                 </Row>
             </Container>

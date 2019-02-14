@@ -461,6 +461,10 @@ textarea {
   outline: none !important;
 }
 
+#orderButtons div {
+  float: right;
+}
+
 @media (min-width: 992px) {
   #reservationInfo #houseImage {
     width: 90px;
@@ -515,15 +519,17 @@ textarea {
   font-size: 20px;
 }
 
-.menu-wrapper {
+.leaflet-container {
+  height: 400px;
   width: 100%;
-  height: 600px;
-  background-color: red;
-  overflow: hidden;
 }
 
-.MuiAppBar-positionFixed-9 {
-  margin-top: 10px;
+.DayPicker-Month {
+  width: 40% !important;
+}
+
+.DayPicker {
+  width: 100%;
 }
 
 /*!
