@@ -13,13 +13,16 @@ import Form from "reactstrap/es/Form";
 import FormButton from "../components/general/Forms/FormButton";
 import {translate} from "../helpers";
 import {LocaleContext} from "../LocaleContext";
+import PaypalCheckout from "../components/specific/PaypalCheckout";
+import StripeCheckout from "../components/specific/StripeCheckout";
 
 class ReservationPayment extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            disabled: true
+            disabled: true,
+            paymentMethod: "creditCard"
         };
 
         this.paymentSelected = this.paymentSelected.bind(this);
@@ -31,14 +34,20 @@ class ReservationPayment extends Component {
     paymentSelected() {
         let method = $(".paymentMethod.active div").attr('id');
         if (method === 'creditCard') {
-            this.setState({disabled: true});
+            this.setState({paymentMethod: "creditCard"});
         } else if (method === 'paypal') {
-            this.setState({disabled: false});
+            this.setState({paymentMethod: "paypal"});
         }
     }
 
     render() {
-        const disabled = true;
+        let paymentButton;
+        if (this.state.paymentMethod === "creditCard") {
+            paymentButton = <StripeCheckout/>
+        } else if (this.state.paymentMethod === "paypal") {
+            paymentButton = <PaypalCheckout/>
+        }
+
         return (
             <Container fluid className={'pt-5'}>
                 <Row>
@@ -50,9 +59,9 @@ class ReservationPayment extends Component {
                                     <div
                                         className="btn-group paymentBtnGroup btn-group-justified justify-content-center d-flex"
                                         data-toggle="buttons" onClick={this.paymentSelected}>
-                                        <label className="btn paymentMethod">
+                                        <label className="btn paymentMethod active">
                                             <div id={'creditCard'} className="method creditcard"/>
-                                            <input type="radio" name="options"/>
+                                            <input type="radio" name="options" defaultChecked/>
                                         </label>
                                         <label className="btn paymentMethod">
                                             <div id={'paypal'} className="method paypal"/>
@@ -60,13 +69,9 @@ class ReservationPayment extends Component {
                                         </label>
                                     </div>
                                 </div>
-                                <LocaleContext.Consumer>
-                                    {locale =>
-                                        <FormButton className={'pull-right'}
-                                                    text={translate(locale, 'pay', 'reservation')}
-                                                    disabled={this.state.disabled}/>
-                                    }
-                                </LocaleContext.Consumer>
+                                <div id={'orderButtons'}>
+                                    {paymentButton }
+                                </div>
                             </Form>
                         </Panel>
                     </Col>
