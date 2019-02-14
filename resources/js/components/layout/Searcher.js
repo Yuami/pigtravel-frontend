@@ -59,8 +59,6 @@ class Searcher extends Component {
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon
                 icon={'fa fa-minus'}/></Button>;
 
-        console.log(this.state);
-
         return (
             <Col md="10" lg="8" sm="8" xs="10" className="buscador shadow">
                 <Col md="6" lg="4" sm="12" xs="12" className="filtro">
