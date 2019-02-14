@@ -17,13 +17,7 @@ class ReservationInfo extends Component {
             casa: [],
             pax: '',
             nights: this.props.checkOut.diff(this.props.checkIn, 'days'),
-            serviceFee: this.props.price * 0.05 + 5,
-        };
-
-        this.state = {
-            ...this.state,
-            total: this.state.serviceFee + this.props.price,
-        };
+        }
     }
 
     componentWillMount() {
@@ -85,7 +79,7 @@ class ReservationInfo extends Component {
                         <p className={'mb-0'}><Translate type={'bookingDetails'} string={'serviceFee'}/></p>
                     </Col>
                     <Col xs='4'>
-                        <p className={'pull-right mb-0'}>{this.state.serviceFee}{coin}</p>
+                        <p className={'pull-right mb-0'}>{this.props.serviceFee}{coin}</p>
                     </Col>
                 </Row>
                 <hr/>
@@ -94,7 +88,7 @@ class ReservationInfo extends Component {
                         <p><Translate type={'bookingDetails'} string={'total'}/></p>
                     </Col>
                     <Col xs='4'>
-                        <p className={'font-weight-bold pull-right'}>{this.state.total}{coin}</p>
+                        <p className={'font-weight-bold pull-right'}>{this.props.total}{coin}</p>
                     </Col>
                 </Row>
             </Panel>
@@ -108,6 +102,8 @@ ReservationInfo.propTypes = {
     checkOut: PropTypes.instanceOf(moment).isRequired,
     pax: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
+    serviceFee: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
 };
 
 export default ReservationInfo;

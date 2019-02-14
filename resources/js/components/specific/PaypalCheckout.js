@@ -1,26 +1,29 @@
 import React from 'react';
 import PaypalBtn from 'react-paypal-checkout';
+import * as PropTypes from "prop-types";
 
-export default class PaypalCheckout extends React.Component {
+class PaypalCheckout extends React.Component {
+
+
     render() {
         const onSuccess = (payment) => {
             // Congratulation, it came here means everything's fine!
             console.log("The payment was succeeded!", payment);
-        }
+        };
 
         const onCancel = (data) => {
             // User pressed "cancel" or close Paypal's popup!
             console.log('The payment was cancelled!', data);
-        }
+        };
 
         const onError = (err) => {
             // The main Paypal's script cannot be loaded or somethings block the loading of that script!
             console.log("Error!", err);
-        }
+        };
 
         let env = 'sandbox'; // you can set here to 'production' for production
         let currency = 'EUR'; // or you can set this value from your props or state
-        let total = 1;  // same as above, this is the total amount (based on currency) to be
+        let total = this.props.total;  // same as above, this is the total amount (based on currency) to be
         let locale = 'en_US';
         // For Customize Style: https://developer.paypal.com/docs/checkout/how-to/customize-button/
         let style = {
@@ -56,3 +59,8 @@ export default class PaypalCheckout extends React.Component {
         );
     }
 }
+    PaypalCheckout.propTypes = {
+        total: PropTypes.number.isRequired,
+    };
+
+export default PaypalCheckout;

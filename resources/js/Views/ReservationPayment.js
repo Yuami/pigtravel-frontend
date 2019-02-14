@@ -1,18 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Translate from "../lang/Translate";
-import axios from "axios";
 import moment from "react-daterange-picker/example/moment-range";
 import Col from "reactstrap/es/Col";
 import Row from "reactstrap/es/Row";
 import Container from "reactstrap/es/Container";
 import Panel from "../components/layout/Panel";
 import ReservationInfo from "../components/specific/ReservationInfo";
-import Cards from 'react-credit-cards';
 import Form from "reactstrap/es/Form";
-import FormButton from "../components/general/Forms/FormButton";
-import {translate} from "../helpers";
-import {LocaleContext} from "../LocaleContext";
 import PaypalCheckout from "../components/specific/PaypalCheckout";
 import StripeCheckout from "../components/specific/StripeCheckout";
 
@@ -22,7 +17,13 @@ class ReservationPayment extends Component {
 
         this.state = {
             disabled: true,
-            paymentMethod: "creditCard"
+            paymentMethod: "creditCard",
+            serviceFee: this.props.price * 0.05 + 5,
+        };
+
+        this.state = {
+            ...this.state,
+            total: this.state.serviceFee + this.props.price,
         };
 
         this.paymentSelected = this.paymentSelected.bind(this);
@@ -45,7 +46,7 @@ class ReservationPayment extends Component {
         if (this.state.paymentMethod === "creditCard") {
             paymentButton = <StripeCheckout/>
         } else if (this.state.paymentMethod === "paypal") {
-            paymentButton = <PaypalCheckout/>
+            paymentButton = <PaypalCheckout total={this.state.total}/>
         }
 
         return (
@@ -70,13 +71,13 @@ class ReservationPayment extends Component {
                                     </div>
                                 </div>
                                 <div id={'orderButtons'}>
-                                    {paymentButton }
+                                    {paymentButton}
                                 </div>
                             </Form>
                         </Panel>
                     </Col>
                     <Col lg='4' className={'order-0 order-lg-1'}>
-                        <ReservationInfo {...this.props}/>
+                        <ReservationInfo {...this.props} serviceFee={this.state.serviceFee} total={this.state.total}/>
                     </Col>
                 </Row>
             </Container>
