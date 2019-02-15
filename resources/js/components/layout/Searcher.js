@@ -11,6 +11,7 @@ import Form from "reactstrap/es/Form";
 import FormGroup from "reactstrap/es/FormGroup";
 import originalMoment from "moment";
 import {extendMoment} from "moment-range";
+import Link from "react-router-dom/es/Link";
 
 const moment = extendMoment(originalMoment);
 
@@ -94,9 +95,11 @@ class Searcher extends Component {
                     </FormGroup>
                 </Col>
                 <Col md="6" lg="1" sm="12" xs="12" className="form-group">
-                    <Button color="primary" className="SearcherIcon">
-                        <FaIcon icon={'fa fa-search'} size={'fa-2x'}/>
-                    </Button>
+                    <Link to={"/search"}>
+                        <Button color="primary" className="SearcherIcon">
+                            <FaIcon icon={'fa fa-search'} size={'fa-2x'}/>
+                        </Button>
+                    </Link>
                 </Col>
             </Col>
         );
