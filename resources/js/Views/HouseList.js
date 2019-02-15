@@ -45,9 +45,10 @@ class HouseList extends Component {
                     {
                         houses.map(house => {
                                 if (house != null)
-                                    return <Col key={house.id} xs="12" sm="6" md="4" lg="3" xl="3" className="my-3">
-                                        <HouseCard house={house} clickable/>
-                                    </Col>
+                                    return (
+                                        <Col key={house.id} xs="12" sm="6" md="4" lg="3" xl="3" className="my-3">
+                                            <HouseCard house={house} clickable/>
+                                        </Col>);
                                 return null;
                             }
                         )
