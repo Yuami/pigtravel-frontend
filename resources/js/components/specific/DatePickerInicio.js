@@ -8,6 +8,7 @@ import {Label, Button, Popover, PopoverBody, InputGroup} from 'reactstrap';
 import Translate from "../../lang/Translate";
 import FormGroup from "reactstrap/es/FormGroup";
 import Input from "reactstrap/es/Input";
+import FaIcon from "../general/FaIcon";
 
 class DatePickerInicio extends Component {
     constructor(props, context) {

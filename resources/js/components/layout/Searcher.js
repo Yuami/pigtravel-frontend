@@ -18,11 +18,12 @@ class Searcher extends Component {
     constructor(props, context) {
         super(props, context);
 
-        const today = moment();
+        const fromDate = moment().add(1, "days");
+        const toDate = fromDate.clone().add(7, "days");
         this.state = {
             clicks: 1,
             show: false,
-            date: moment.range(today.clone(), today.clone().add(7, "days")),
+            date: moment.range(fromDate, toDate),
             place: undefined
         };
 
