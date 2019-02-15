@@ -26,8 +26,7 @@ Route::get("/regions",function (){
     return $regions;
 } );
 Route::get('/bookings/{id}', function ($id) {
-    $booking=\App\Reserva::all()->where('id','=',$id);
-    return $booking;
+    return \App\Reserva::details($id);
 });
 
 Route::get('/idiomas', function () {

@@ -44,6 +44,8 @@ class Persona extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $hidden = ["password"];
+
     public $timestamps = false;
 
     public static function getByCorreo($correo)
@@ -59,5 +61,14 @@ class Persona extends Authenticatable
     public function verify()
     {
         $this->update(['verified' => 1]);
+    }
+
+    public function viviendas()
+    {
+        return $this->hasManyThrough(Vivienda::class, Vendedor::class, 'idPersona','idVendedor');
+    }
+
+    public function getFotoAttribute()
+    {
     }
 }

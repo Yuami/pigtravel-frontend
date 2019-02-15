@@ -8,5 +8,4 @@ class Servicio extends Model
 {
     protected $table = 'servicio';
 
-
 }

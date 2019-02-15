@@ -13,7 +13,7 @@ class Panel extends Component {
 
         return (
             <div>
-                <div id={this.props.id} className="panel panel-default shadow-sm">
+                <div id={this.props.id} className="panel panel-default shadow-sm container-fluid">
                     {header}
                     <div className="panel-body">{this.props.children}</div>
                 </div>

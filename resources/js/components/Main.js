@@ -57,7 +57,8 @@ export default class Main extends Component {
                     {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter*/}
                     <Switch>
                         <Route exact path="/" component={Home}/>
-                        <Route exact path="/bookings" component={BookingDetail}/>
+                        <Route exact path="/bookings/:idReserva" component={BookingDetail}>
+                        </Route>
                         <Route exact path="/about-us" component={AboutUs}/>
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/contact" component={Contact}/>
@@ -67,7 +68,7 @@ export default class Main extends Component {
                         </Route>
                         <Route exact path="/register" component={Register}/>
                         <Route exact path="/phil">
-                            <ReservationForm idVivienda={49} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
+                            <ReservationForm idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
                         </Route>
                         <Route exact path="/terms" component={Terms}/>
                         <Route exact path="/house-list" component={HouseList}/>

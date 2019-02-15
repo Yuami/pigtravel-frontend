@@ -59,15 +59,15 @@ class AutocompleteCity extends Component {
         const {selectedOption, optionsCities, optionsRegions} = this.state;
         const groupedOptions = [
             {
-                label: <Translate type={'autocomplete'} string={'city'}/>,
-                options: optionsCities.map((v, k) => {
-                    return {value: v.id, label: v.name+","+v.province}
-                }),
-            },
-            {
                 label: <Translate type={'autocomplete'} string={'region'}/>,
                 options: optionsRegions.map((v, k) => {
                     return {value: v.id, label: v.province}
+                }),
+            },
+            {
+                label: <Translate type={'autocomplete'} string={'city'}/>,
+                options: optionsCities.map((v, k) => {
+                    return {value: v.id, label: v.name+","+v.province}
                 }),
             },
         ];
