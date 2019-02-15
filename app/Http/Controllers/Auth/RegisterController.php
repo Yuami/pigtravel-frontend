@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Persona;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -51,16 +50,16 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'nombre' => ['required', 'string', 'max:255'],
-            'apellido1' => ['required', 'string', 'max:255'],
-            'apellido2' => ['required', 'string', 'max:255'],
-            'DNI' => ['required', 'string', 'max:255'],
+            'ap1' => ['required', 'string', 'max:255'],
+            'ap2' => ['required', 'string', 'max:255'],
+            'dni' => ['required', 'string', 'max:255'],
             'tlf' => ['required', 'integer', 'max:255'],
-            'correo' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'fechaNacimiento' => ['required', 'date'],
-            'descripcion' => ['string', 'max:255'],
-            'idCiudad' => ['string', 'max:255'],
-            'idFoto' => ['string', 'max:255']
+            'fechaN' => ['required', 'date'],
+            'desc' => ['string', 'max:255'],
+            'idC' => ['string', 'max:255'],
+            'idF' => ['string', 'max:255']
         ]);
     }
 
@@ -72,10 +71,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Persona::create([
+        return User::create([
             'nombre' => $data['nombre'],
-            'apellido1' => $data['apellido1'],
-            'apellido2' => $data['apellido2'],
+            'apellido1' => $data['ap1'],
+            'apellido2' => $data['ap2'],
             'DNI' => $data['dni'],
             'tlf' => $data['tlf'],
             'correo' => $data['email'],
@@ -85,8 +84,8 @@ class RegisterController extends Controller
                 'threads' => 2]),
             'fechaNacimiento' => $data['fechaN'],
             'descripcion' => $data['desc'],
-            'idCiudad' => $data['idC'],
-            'idFoto' => $data['idF'],
+            'idC' => $data['idC'],
+            'idF' => $data['idF'],
         ]);
     }
 }

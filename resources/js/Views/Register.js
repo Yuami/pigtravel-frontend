@@ -8,6 +8,7 @@ import {
     Container,
     Row
 } from "reactstrap";
+import Panel from "../components/layout/Panel";
 
 class Register extends Component {
     render() {
@@ -18,12 +19,14 @@ class Register extends Component {
                         <img src="img/clipboard.png" alt="logo" height="100%" width="100%"/>
                     </Col>
                     <Col lg="6" sm="12">
-                        <Card className="shadow bg-light" action="/persona">
-                            <CardTitle className="mt-5 mb-3 text-center"><h3>REGISTRATE</h3></CardTitle>
-                            <CardBody>
-                                <FormRegister/>
-                            </CardBody>
-                        </Card>
+                        <Panel>
+                            <Card>
+                                <CardTitle className="mt-5 mb-3 text-center"><h3>REGISTRATE</h3></CardTitle>
+                                <CardBody>
+                                    <FormRegister/>
+                                </CardBody>
+                            </Card>
+                        </Panel>
                     </Col>
                 </Row>
             </Container>
