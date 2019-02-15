@@ -17,3 +17,22 @@
 .DayPicker{
   width: 100%;
 }
+.sidebar .nav-item{
+  width: 100%;
+}
+.services {
+  ul, li {
+    list-style-type: none;
+  }
+
+  .fas {
+    color: $primary;
+  }
+}
+.review{
+  border: 1px solid rgba(128, 128, 128, 0.35) !important;
+}
+
+.card-header{
+  background-color: rgba(128, 128, 128, 0.35) !important;
+}

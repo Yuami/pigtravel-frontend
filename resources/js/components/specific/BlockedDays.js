@@ -1,10 +1,11 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import axios from "axios";
 import PropTypes from "prop-types";
+import moment from "moment";
 
-export default class BlockedDays extends Component{
+export default class BlockedDays extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,9 +13,9 @@ export default class BlockedDays extends Component{
         };
     }
 
-    getBookings() {
+    componentWillMount() {
         axios({
-            url: '/api/book/'+this.props.idHouse,
+            url: '/api/blocks/'+this.props.idHouse,
             method: 'get'
         }).then((response) => {
             this.setState({
@@ -25,26 +26,22 @@ export default class BlockedDays extends Component{
         });
     }
 
-    componentDidMount() {
-        this.getBookings();
-    }
     render() {
 
         return (
-            <DayPicker
-                initialMonth={new Date(2019, 3,5)}
-                numberOfMonths={2}
-                disabledDays={[
-                    {
-                        after: new Date(2019, 3, 20),
-                        before: new Date(2019, 3, 25),
-                    },
-                ]}
-            />
+            <>
+                <DayPicker
+                    disabledDays={this.state.bookings.map(v => {
+                            return {before: moment(v.checkOut).toDate(),after: moment(v.checkIn).toDate()}
+                        }
+                    )}
+                    />
+
+         </>
         );
     }
 }
 
 BlockedDays.propTypes = {
-   idHouse: PropTypes.number.isRequired,
+    idHouse: PropTypes.number.isRequired,
 };

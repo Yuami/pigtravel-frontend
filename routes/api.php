@@ -27,11 +27,20 @@ Route::get("/regions",function (){
     $regions=\App\Region::getIfHaveHouses();
     return $regions;
 } );
+Route::get('/blocks/{id}', function ($id) {
+    return \App\Reserva::datesByHouse($id);
+});
+Route::get('/states', function () {
+    return \App\Estados::all();
+});
 Route::get('/bookings/{id}', function ($id) {
     return \App\Reserva::details($id);
 });
 Route::get('/houses/{id}', function ($id) {
     return \App\Vivienda::details($id);
+});
+Route::get('/reviews/{id}', function ($id) {
+    return \App\ValoracionVivienda::vvById($id);
 });
 Route::get('/block/{id}', function ($id) {
     return \App\Reserva::datesByHouse($id);

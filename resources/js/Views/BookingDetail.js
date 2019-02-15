@@ -7,27 +7,42 @@ import UserRouter from "../components/layout/UserRouter";
 import PropTypes from "prop-types";
 import axios from "axios";
 import DesglosePrecio from "../components/specific/DesglosePrecio";
+import moment from "moment";
 
 class BookingDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
             values: [],
+            states: [],
             days: 0,
         };
         this.renderInformation.bind(this);
     }
     renderInformation() {
-        this.state.days= this.props.values.map(p => p.checkOut).diff(this.values.map(p => p.checkIn), 'days');
-        console.log(this.state.days);
-    }
-    componentWillMount() {
+        this.state.days= this.props.values.map(p => moment(p.checkOut)).diff(this.values.map(p => moment(p.checkIn)), 'days');
 
+            const estado = this.state.values.map((v)=>(v.idEstado));
+            return this.state.states.map(function (value, index, array) {
+                if (estado==value.idEstado && BookingDetail.checkServiceLanguage(value.idioma)) {
+                    return (
+                        <h1>value.nombre</h1>
+                    )
+                }
+            });
+
+    }
+    static checkServiceLanguage(idioma) {
+        return (localStorage["locale"] === idioma);
+    }
+    ;
+    componentWillMount() {
         axios.get('/api/bookings/' +this.props.match.params.idReserva)
             .then((res) => this.setState({values: res.data}));
+        axios.get('/api/states')
+            .then((res) => this.setState({states: res.data}));
     }
     render() {
-
 
         const bookingDetails = [
             {
@@ -39,6 +54,7 @@ class BookingDetail extends Component {
                 link: '/bookings/booking'
             },
         ];
+        const precio= this.state.values.map((p) => (p.precio));
         return (
             <div>
                 <UserRouter title={'booking'} list={bookingDetails}/>
@@ -59,15 +75,17 @@ class BookingDetail extends Component {
                                     </Row>
                                     <Row>
                                         <Col>
-                                            <h4>Palma de Mallorca, España</h4>
+                                            {this.state.values.map((v) => (
+                                                <h4>{v.cityName},{v.countryName}</h4>
+                                            ))}
                                         </Col>
                                     </Row>
                                 </Col>
                                 <Col lg="2" sm="11" xs="11" className="float-right">
                                     <Row className="precio">
-                                        <strong>{this.state.values.map((v) => (
-                                            <h1>{v.estado}</h1>
-                                        ))}</strong>
+                                        <strong>
+                                            <h1></h1>
+                                      </strong>
                                     </Row>
                                 </Col>
                             </Row>
@@ -132,7 +150,7 @@ class BookingDetail extends Component {
                             </Row>
 
                         </Col>
-                        <DesglosePrecio price={this.state.values.map(p => p.precio)} nights={this.state.days} />
+                        <DesglosePrecio price={precio} nights={2} />
                     </Row>
                 </Container>
             </div>

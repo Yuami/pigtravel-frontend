@@ -12,11 +12,12 @@ class Reserva extends Model
 
     static function details($id){
         $regions = DB::table('reserva')
-            ->select('reserva.id','reserva.checkIn','reserva.checkOut','vivienda.nombre as nombreVivienda','reserva.precio','reserva.totalClientes','estado_has_idioma.nombre as estado','persona.nombre','persona.apellido1')
+            ->select('vivienda.nombre as nombreVivienda','reserva.*','persona.nombre','persona.apellido1','cities.name as cityName','countries.name as countryName','reserva_has_estado.idEstado')
             ->join('vivienda', 'reserva.idVivienda', '=', 'vivienda.id')
             ->join('reserva_has_estado', 'reserva_has_estado.idReserva', '=', 'reserva.id')
-            ->join('estado_has_idioma', 'estado_has_idioma.idEstado', '=', 'reserva_has_estado.idEstado')
             ->join('persona', 'vivienda.idVendedor', '=', 'persona.id')
+            ->join('cities','vivienda.idCiudad','=','cities.id')
+            ->join('countries','cities.country_id','=','countries.id')
             ->where('reserva.id','=',$id)
             ->orderBy('reserva_has_estado.fechaCambio')
             ->limit(1)
@@ -27,7 +28,7 @@ class Reserva extends Model
     static function datesByHouse($id){
         $block = DB::table('reserva')
             ->select('reserva.id','reserva.checkIn','reserva.checkOut')
-            ->where('reserva.id','=',$id)
+            ->where('reserva.idVivienda','=',$id)
             ->get();
         return $block;
     }

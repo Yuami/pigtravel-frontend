@@ -86,6 +86,7 @@
     "description": "Description",
     "services": "Services",
     "availability": "Availability",
+    "reviews": "Reviews",
     "location": "Location",
     "priceNight": "average/night"
   }

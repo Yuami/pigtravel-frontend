@@ -11,8 +11,9 @@ import FaIcon from "../components/general/FaIcon";
 import Translate from "../lang/Translate";
 import {LocaleContext, coin} from "../LocaleContext";
 import Stars from "../components/Stars";
-import SideBarHouse from "../components/specific/SideBarHouse";
+import SideBarHouse from "../components/layout/SideBarHouse";
 import Form from "reactstrap/es/Form";
+import Panel from "../components/layout/Panel";
 
 class House extends Component {
 
@@ -51,24 +52,27 @@ class House extends Component {
         return (
             <div>
                 <Container>
-                    <h1>{this.state.details.map((v)=> v.nombre)}</h1>
+                    <h1>{this.state.details.map((v) => v.nombre)}</h1>
                     <Row className="house">
-                        <Col lg="8" className="shadow">
-                            <HouseCarrousel/>
+                        <Col lg="8">
+                            <Panel>
+                                <HouseCarrousel/>
+                            </Panel>
                         </Col>
                         <Col>
-                            <Row className="shadow m-3">
-                                <Col lg="3" sm="2" xs="3">
+                            <Panel className=" m-3">
+                                <Row>
+                                <Col lg="3" sm="3" xs="4">
                                     <img src="/img/user.jpg" height="70px" className="userImg"></img>
                                 </Col>
-                                <Col sm="8" xs="8" className="my-auto">
+                                <Col lg="9" sm="9" xs="8" className="my-auto">
                                     {this.state.details.map((v) => (
                                         <h3>{v.vendedor} {v.apellido1}</h3>
                                     ))}
                                 </Col>
-                            </Row>
-
-                            <Row className="shadow m-3">
+                                </Row>
+                            </Panel>
+                            <Panel className="shadow m-3">
                                 <Col lg="12">
                                     <Row>
                                         <Col xs="7" lg="12">
@@ -76,45 +80,51 @@ class House extends Component {
                                         </Col>
                                     </Row>
                                     <Row className="justify-content-center">
-                                        <h1 className="precioNoche"><strong>{this.state.details.map((v) => (v.precio))}{coin}</strong></h1>
+                                        <h1 className="precioNoche">
+                                            <strong>{this.state.details.map((v) => (v.precio))}{coin}</strong></h1>
                                     </Row>
                                     <Row className="justify-content-center">
                                         <h3><Translate type={'house'} string={'priceNight'}/></h3>
                                     </Row>
-                                 <Form action="/book">
-                                    <Row className="filtro">
-                                        <DatePickerInicio/>
-                                    </Row>
-                                    <Row>
-                                        <FormGroup id={"guests"}>
-                                            <Label><FaIcon icon={'fa fa-user'}/></Label>
-                                            <div className="inputSearcher">
-                                                {this.state.clicks} <input type="hidden" name="guests" value={this.state.clicks}/>
-                                                <Translate string={this.state.clicks === 1 ? 'guest' : 'guests'} type={'searcher'}/>
-                                            </div>
-                                            <Popover placement="bottom" isOpen={this.state.show} target="guests"
-                                                     toggle={this.ToggleDiv}  trigger="legacy">
-                                                <PopoverBody>
-                                                    {decreaseBtn}
-                                                    <Button color="" className="incrementIcon" onClick={this.IncrementItem}><FaIcon icon={'fa fa-plus'}/></Button>
-                                                </PopoverBody>
-                                            </Popover>
-                                        </FormGroup>
-                                    </Row>
-                                    <Row>
-                                        <button type="submit" className="btn btn-primary btn-block"><Translate type={'house'} string={'book'}/></button>
-                                    </Row>
-                                 </Form>
+                                    <Form action="/book">
+                                        <Row className="filtro">
+                                            <DatePickerInicio/>
+                                        </Row>
+                                        <Row>
+                                            <FormGroup id={"guests"}>
+                                                <Label><FaIcon icon={'fa fa-user'}/></Label>
+                                                <div className="inputSearcher">
+                                                    {this.state.clicks} <input type="hidden" name="guests"
+                                                                               value={this.state.clicks}/>
+                                                    <Translate string={this.state.clicks === 1 ? 'guest' : 'guests'}
+                                                               type={'searcher'}/>
+                                                </div>
+                                                <Popover placement="bottom" isOpen={this.state.show} target="guests"
+                                                         toggle={this.ToggleDiv} trigger="legacy">
+                                                    <PopoverBody>
+                                                        {decreaseBtn}
+                                                        <Button color="" className="incrementIcon"
+                                                                onClick={this.IncrementItem}><FaIcon
+                                                            icon={'fa fa-plus'}/></Button>
+                                                    </PopoverBody>
+                                                </Popover>
+                                            </FormGroup>
+                                        </Row>
+                                        <Row>
+                                            <button type="submit" className="btn btn-primary btn-block"><Translate
+                                                type={'house'} string={'book'}/></button>
+                                        </Row>
+                                    </Form>
                                 </Col>
-                            </Row>
+                            </Panel>
                         </Col>
                     </Row>
                     <Row>
                         <Col lg="12">
                             <SideBarHouse description={this.state.details.map((v) => (v.descripcion))}
-                                          houseID={this.state.details.map((v)=> v.id)}
-                                          coordX={this.state.details.map((v)=> v.coordX)}
-                                          coordY={this.state.details.map((v)=> v.coordY)}
+                                          houseID={this.props.match.params.idHouse}
+                                          coordX={this.state.details.map((v) => v.coordX)}
+                                          coordY={this.state.details.map((v) => v.coordY)}
                             />
                         </Col>
                     </Row>
@@ -124,4 +134,5 @@ class House extends Component {
         );
     }
 }
+
 export default House;

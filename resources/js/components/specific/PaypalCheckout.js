@@ -1,5 +1,4 @@
 import React from 'react';
-import PaypalBtn from 'react-paypal-checkout';
 import * as PropTypes from "prop-types";
 
 class PaypalCheckout extends React.Component {

@@ -86,6 +86,7 @@
     "description": "Descripción",
     "services": "Servicios",
     "availability": "Disponibilidad",
+    "reviews": "Reseñas",
     "location": "Ubicación",
     "priceNight": "promedio/noche"
   }
