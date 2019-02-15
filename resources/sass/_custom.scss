@@ -34,5 +34,10 @@ body {
 
 .card {
   border: 0 !important;
+
+  &-house-link {
+    color: black !important;
+    text-decoration: none !important;
+  }
 }
 
