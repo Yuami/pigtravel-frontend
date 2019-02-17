@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import {LocaleContext} from "../LocaleContext.js";
 import Header from "./layout/Header";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import PropTypes from 'prop-types';
+import {BrowserRouter, Switch, Route, withRouter} from "react-router-dom";
 import Footer from "./layout/Footer";
 import Home from "../Views/Home";
 import Login from "../Views/Login";
@@ -19,7 +20,7 @@ import ReservationPayment from "../Views/ReservationPayment";
 import House from "../Views/House";
 import Profile from "../Views/Profile";
 
-export default class Main extends Component {
+class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -41,6 +42,8 @@ export default class Main extends Component {
             locale: id
         });
     };
+
+
 
     render() {
         var checkIn = moment('2012-01-01');
@@ -79,6 +82,9 @@ export default class Main extends Component {
         );
     }
 }
+
+export default withRouter(Main);
+
 
 if (document.getElementById('app')) {
     ReactDOM.render(
