@@ -106,7 +106,11 @@ class Reservation extends Component {
                                 {locale =>
                                     <FormButton page={'payment'} pageParams={
                                         {idVivienda: this.props.idVivienda,
-                                            checkIn: this.props.checkIn}}
+                                            checkIn: this.props.checkIn,
+                                            checkOut: this.props.checkOut,
+                                            pax: this.props.pax,
+                                            price: this.props.price
+                                        }}
                                          id="reservationButton" className={'pull-right'}
                                                 text={translate(locale, 'accept', 'reservation')}/>
                                 }
@@ -124,8 +128,8 @@ class Reservation extends Component {
 
 Reservation.propTypes = {
     idVivienda: PropTypes.number.isRequired,
-    checkIn: PropTypes.instanceOf(moment).isRequired,
-    checkOut: PropTypes.instanceOf(moment).isRequired,
+    checkIn: PropTypes.instanceOf(Date),
+    checkOut: PropTypes.instanceOf(Date),
     pax: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
 };

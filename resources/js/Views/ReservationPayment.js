@@ -15,18 +15,17 @@ import {withRouter} from "react-router-dom";
 class ReservationPayment extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props);
-
 
         this.state = {
             disabled: true,
             paymentMethod: "creditCard",
-            serviceFee: this.props.price * 0.05 + 5,
-        };
+            serviceFee: null,
 
-        this.state = {
-            ...this.state,
-            total: this.state.serviceFee + this.props.price,
+            idVivienda: null,
+            checkIn: null,
+            checkOut: null,
+            pax: null,
+            price: null,
         };
 
         this.paymentSelected = this.paymentSelected.bind(this);
@@ -43,9 +42,22 @@ class ReservationPayment extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         const { idVivienda } = this.props.location.state;
-        console.log(idVivienda);
+        const { checkIn } = this.props.location.state;
+        const { checkOut } = this.props.location.state;
+        const { pax } = this.props.location.state;
+        const { price } = this.props.location.state;
+
+        this.setState({
+            idVivienda: idVivienda,
+            checkIn: checkIn,
+            checkOut: checkOut,
+            pax: pax,
+            serviceFee: price * 0.05 + 5,
+            price: price,
+            total: (price * 0.05 + 5) + price,
+        })
     }
 
     render() {
@@ -84,7 +96,14 @@ class ReservationPayment extends Component {
                         </Panel>
                     </Col>
                     <Col lg='4' className={'order-0 order-lg-1'}>
-                        <ReservationInfo {...this.props} serviceFee={this.state.serviceFee} total={this.state.total}/>
+                        <ReservationInfo idVivienda={this.state.idVivienda}
+                                         pax={this.state.pax}
+                                         price={this.state.price}
+                                         checkIn={this.state.checkIn}
+                                         checkOut={this.state.checkOut}
+                                         serviceFee={this.state.serviceFee}
+                                         total={this.state.total}/>
+
                     </Col>
                 </Row>
             </Container>
@@ -94,11 +113,7 @@ class ReservationPayment extends Component {
 
 
 ReservationPayment.propTypes = {
-    idVivienda: PropTypes.number.isRequired,
-    checkIn: PropTypes.instanceOf(moment).isRequired,
-    checkOut: PropTypes.instanceOf(moment).isRequired,
-    pax: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
+
 };
 
 export default withRouter(ReservationPayment);
