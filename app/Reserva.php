@@ -9,6 +9,7 @@ class Reserva extends Model
 {
     protected $table = 'reserva';
 
+    public $timestamps = false;
 
     static function details($id){
         $regions = DB::table('reserva')

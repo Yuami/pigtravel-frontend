@@ -56,3 +56,5 @@ Route::get('/viviendas', function (){
 Route::get('/viviendas/{id}', function($id){
     return \App\Vivienda::find($id);
 });
+
+Route::post('/reservation', 'ReservasController@store');
