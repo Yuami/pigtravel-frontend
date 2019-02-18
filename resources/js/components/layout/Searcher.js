@@ -7,7 +7,7 @@ import AutocompleteCity from "../specific/AutocompleteCity";
 import FormGroup from "reactstrap/es/FormGroup";
 import originalMoment from "moment";
 import {extendMoment} from "moment-range";
-import Link from "react-router-dom/es/Link";
+import {withRouter, Link} from "react-router-dom";
 
 const moment = extendMoment(originalMoment);
 
@@ -87,12 +87,15 @@ class Searcher extends Component {
             </FormGroup>
         );
 
+        const {start, end} = this.state.date;
+        const dateFormat = 'YYYY-MM-DD';
         const linkButtonData = {
             pathname: "/search",
             state: {
                 guests: this.state.clicks,
-                place: this.state.place,
-                date: this.state.date
+                place: this.state.place === undefined ? undefined : this.state.place.value,
+                start: start.format(dateFormat),
+                end: end.format(dateFormat)
             }
         };
 
@@ -123,4 +126,4 @@ class Searcher extends Component {
     }
 }
 
-export default Searcher;
+export default withRouter(Searcher);

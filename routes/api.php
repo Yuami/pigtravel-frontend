@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 use App\Http\Resources\Vivienda as ViviendaResource;
+use App\Http\Resources\ViviendaCollection as ViviendaCollection;
 use App\Vivienda;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -50,7 +51,7 @@ Route::get('/viviendas/{id}', function($id){
 });
 
 Route::get('/viviendas', function (){
-    return ViviendaResource::collection(Vivienda::all());
+    return new ViviendaCollection(Vivienda::paginate(16)->where('idVendedor', '=', 9));
 });
 
 Route::get('/viviendas/{id}', function($id){
