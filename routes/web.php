@@ -13,6 +13,7 @@
 
 Auth::routes();
 Route::get('/bookings', 'ReservasController@index');
+Route::get('/room', 'RoomController@index');
 Route::get('/houses/{id}','ReservasController@index');
 Route::get('/bookings/{idReserva}', 'ReservasController@show');
 
