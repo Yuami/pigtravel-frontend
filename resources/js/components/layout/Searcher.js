@@ -6,7 +6,7 @@ import FaIcon from "../general/FaIcon";
 import {LocaleContext} from "../../LocaleContext";
 import {translate} from "../../helpers";
 import AutocompleteCity from "../specific/AutocompleteCity";
-import FormButton from "../general/Forms/FormButton";
+import FormButton from "../general/Forms/LinkButton";
 import Form from "reactstrap/es/Form";
 import FormGroup from "reactstrap/es/FormGroup";
 import originalMoment from "moment";

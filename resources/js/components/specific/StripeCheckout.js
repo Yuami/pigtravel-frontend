@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {LocaleContext} from "../../LocaleContext";
 import {translate} from "../../helpers";
-import FormButton from "../general/Forms/FormButton";
+import FormButton from "../general/Forms/LinkButton";
 
 class StripeCheckout extends Component {
 

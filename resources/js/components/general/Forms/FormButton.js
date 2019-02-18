@@ -1,21 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Button from "reactstrap/es/Button";
-import Link from "react-router-dom/es/Link";
-import {withRouter} from "react-router-dom";
 
 class FormButton extends Component {
     render() {
-        return (<Link to={{
-            pathname: this.props.page,
-            state: this.props.pageParams
-        }}>
-            <Button block={this.props.block}
-                    className={this.props.className}
-                    size='lg' color='primary'
-                    disabled={this.props.disabled}>{this.props.text}
-            </Button>
-        </Link>);
+        return (
+            <Button page={this.props.page} block={this.props.block} className={this.props.className}
+                    size='lg' color='primary' disabled={this.props.disabled}>{this.props.text}
+            </Button>)
+
     }
 }
 
@@ -29,10 +22,5 @@ FormButton.propTypes = {
     pageParams: PropTypes.object,
 };
 
-FormButton.defaultProps = {
-    disabled: false,
-    page: '#',
-};
 
-
-export default withRouter(FormButton);
+export default FormButton;

@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Col, Row} from "reactstrap";
-import FormButton from "./FormButton";
+import FormButton from "./LinkButton";
 
 class FormGroupReg extends Component {
     render() {
         return (
-            <Col className="my-2" xs="12">
+            <Col className="my-2" md="12">
                 <Row>
                     <Col>
-                        <FormButton block={true} page={this.props.page} text={'Cancelar'}/>
+                        <FormButton page={this.props.page} text={'Cancelar'} block={true}/>
                     </Col>
                     <Col>
-                        <FormButton type={'submit'} block={true} text={'Confimar'}/>
+                        <FormButton page={this.props.page} text={'Confirmar'} type={'submit'} block={true}/>
                     </Col>
                 </Row>
             </Col>

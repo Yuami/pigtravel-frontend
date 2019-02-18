@@ -4,7 +4,7 @@ import {Form, Formik} from 'formik';
 import * as Yup from 'yup';
 import FormGroupButton from "../general/Forms/FormGroupButton";
 import FormGroupReg from "../general/Forms/FormGroupReg";
-import FormButton from "../general/Forms/FormButton";
+import FormButton from "../general/Forms/LinkButton";
 import axios from "axios";
 import Input from "reactstrap/es/Input";
 
@@ -18,7 +18,7 @@ class FormRegister extends Component {
                 ap2: 'q',
                 dni: '123123123',
                 tlf: '123123123',
-                desc: '123123123',
+                desc: '1231231231',
                 idF: '1',
                 idC: '1',
                 fechaN: '02/02/2002',
@@ -109,16 +109,7 @@ class FormRegister extends Component {
                                               onChange={handleChange} onBlur={handleBlur} value={values.passwordC}
                                               error={errors.passwordC}/>
                             </Row>
-                            <Col className="my-2" md="12">
-                                <Row>
-                                    <Col>
-                                        <FormButton text={'Cancelar'} block={true}/>
-                                    </Col>
-                                    <Col>
-                                        <FormButton text={'Confirmar'} type={'submit'} block={true}/>
-                                    </Col>
-                                </Row>
-                            </Col>
+                            <FormGroupButton page={'/'}/>
                         </Form>
                     );
                 }}

@@ -9,7 +9,7 @@ import Col from "reactstrap/es/Col";
 import Row from "reactstrap/es/Row";
 import Container from "reactstrap/es/Container";
 import TextAreaForm from "../components/general/Forms/TextAreaForm";
-import FormButton from "../components/general/Forms/FormButton";
+import FormButton from "../components/general/Forms/LinkButton";
 import Panel from "../components/layout/Panel";
 import Stars from "../components/Stars";
 import ReservationInfo from "../components/specific/ReservationInfo";
