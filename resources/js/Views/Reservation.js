@@ -4,14 +4,12 @@ import Translate from "../lang/Translate";
 import axios from "axios";
 import {LocaleContext, coin} from "../LocaleContext";
 import {translate} from "../helpers";
-import moment from "react-daterange-picker/example/moment-range";
 import Col from "reactstrap/es/Col";
 import Row from "reactstrap/es/Row";
 import Container from "reactstrap/es/Container";
 import TextAreaForm from "../components/general/Forms/TextAreaForm";
 import FormButton from "../components/general/Forms/LinkButton";
 import Panel from "../components/layout/Panel";
-import Stars from "../components/Stars";
 import ReservationInfo from "../components/specific/ReservationInfo";
 import {withRouter} from "react-router-dom";
 
@@ -106,7 +104,11 @@ class Reservation extends Component {
                                 {locale =>
                                     <FormButton page={'payment'} pageParams={
                                         {idVivienda: this.props.idVivienda,
-                                            checkIn: this.props.checkIn}}
+                                            checkIn: this.props.checkIn,
+                                            checkOut: this.props.checkOut,
+                                            pax: this.props.pax,
+                                            price: this.props.price
+                                        }}
                                          id="reservationButton" className={'pull-right'}
                                                 text={translate(locale, 'accept', 'reservation')}/>
                                 }
@@ -124,8 +126,8 @@ class Reservation extends Component {
 
 Reservation.propTypes = {
     idVivienda: PropTypes.number.isRequired,
-    checkIn: PropTypes.instanceOf(moment).isRequired,
-    checkOut: PropTypes.instanceOf(moment).isRequired,
+    checkIn: PropTypes.instanceOf(Date),
+    checkOut: PropTypes.instanceOf(Date),
     pax: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
 };
