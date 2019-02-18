@@ -11,6 +11,7 @@ import Form from "reactstrap/es/Form";
 import PaypalCheckout from "../components/specific/PaypalCheckout";
 import StripeCheckout from "../components/specific/StripeCheckout";
 import {withRouter} from "react-router-dom";
+import Redirect from "react-router-dom/es/Redirect";
 
 class ReservationPayment extends Component {
     constructor(props) {
@@ -43,11 +44,11 @@ class ReservationPayment extends Component {
     }
 
     componentWillMount() {
-        const { idVivienda } = this.props.location.state;
-        const { checkIn } = this.props.location.state;
-        const { checkOut } = this.props.location.state;
-        const { pax } = this.props.location.state;
-        const { price } = this.props.location.state;
+        const {idVivienda} = this.props.location.state;
+        const {checkIn} = this.props.location.state;
+        const {checkOut} = this.props.location.state;
+        const {pax} = this.props.location.state;
+        const {price} = this.props.location.state;
 
         this.setState({
             idVivienda: idVivienda,
@@ -103,7 +104,6 @@ class ReservationPayment extends Component {
                                          checkOut={this.state.checkOut}
                                          serviceFee={this.state.serviceFee}
                                          total={this.state.total}/>
-
                     </Col>
                 </Row>
             </Container>
@@ -112,8 +112,6 @@ class ReservationPayment extends Component {
 }
 
 
-ReservationPayment.propTypes = {
-
-};
+ReservationPayment.propTypes = {};
 
 export default withRouter(ReservationPayment);

@@ -76,7 +76,6 @@ class ReservationInfo extends Component {
                 <Row>
                     <Col xs='8'>
                         <p className={'mb-0'}>{this.state.nights} x {this.props.price / this.state.nights}{coin}
-                            {console.log(this.state.nights)}
                             &nbsp;<Translate type={'houselist'} string={'night'}/></p>
                     </Col>
                     <Col xs='4'>

@@ -4,14 +4,12 @@ import Translate from "../lang/Translate";
 import axios from "axios";
 import {LocaleContext, coin} from "../LocaleContext";
 import {translate} from "../helpers";
-import moment from "react-daterange-picker/example/moment-range";
 import Col from "reactstrap/es/Col";
 import Row from "reactstrap/es/Row";
 import Container from "reactstrap/es/Container";
 import TextAreaForm from "../components/general/Forms/TextAreaForm";
 import FormButton from "../components/general/Forms/FormButton";
 import Panel from "../components/layout/Panel";
-import Stars from "../components/Stars";
 import ReservationInfo from "../components/specific/ReservationInfo";
 import {withRouter} from "react-router-dom";
 

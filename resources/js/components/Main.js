@@ -52,7 +52,7 @@ class Main extends Component {
         return (
             <LocaleContext.Provider value={this.state.locale}>
                 <Header changeLanguage={this.changeLanguage}/>
-                {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter*/}
+                {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter */}
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/bookings/:idReserva" component={BookingDetail}>
