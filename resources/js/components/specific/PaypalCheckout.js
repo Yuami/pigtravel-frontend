@@ -1,14 +1,24 @@
 import React from 'react';
 import PaypalBtn from 'react-paypal-checkout';
 import * as PropTypes from "prop-types";
+import axios from "axios";
 
 class PaypalCheckout extends React.Component {
 
 
     render() {
         const onSuccess = (payment) => {
-            // Congratulation, it came here means everything's fine!
-            console.log("The payment was succeeded!", payment);
+            axios.post('/api/reservation', {
+                paymentID: payment.paymentID,
+                idVivienda: this.props.idVivienda,
+                checkIn: this.props.checkIn.toISOString().slice(0, 19).replace('T', ' '),
+                checkOut: this.props.checkOut.toISOString().slice(0, 19).replace('T', ' '),
+                pax: this.props.pax
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
         };
 
         const onCancel = (data) => {
@@ -27,15 +37,15 @@ class PaypalCheckout extends React.Component {
         let locale = 'en_US';
         // For Customize Style: https://developer.paypal.com/docs/checkout/how-to/customize-button/
         let style = {
-            'label':'checkout',
+            'label': 'checkout',
             'tagline': true,
-            'size':'small',
-            'shape':'pill',
-            'color':'gold'
+            'size': 'small',
+            'shape': 'pill',
+            'color': 'gold'
         };
 
         const client = {
-            sandbox:    'AbrUW3IiIge0_Fc-IY3QISqQ1CBTb4pA1luDG0XZlBY4aS1qTKPBbDmqxVXhuNpmm9EROWRtI2SW-nMJ',
+            sandbox: 'AbrUW3IiIge0_Fc-IY3QISqQ1CBTb4pA1luDG0XZlBY4aS1qTKPBbDmqxVXhuNpmm9EROWRtI2SW-nMJ',
             production: 'YOUR-PRODUCTION-APP-ID',
         };
         // In order to get production's app-ID, you will have to send your app to Paypal for approval first
@@ -55,12 +65,19 @@ class PaypalCheckout extends React.Component {
                 style={style}
                 onError={onError}
                 onSuccess={onSuccess}
-                onCancel={onCancel} />
+                onCancel={onCancel}/>
         );
     }
 }
-    PaypalCheckout.propTypes = {
-        total: PropTypes.number.isRequired,
-    };
+
+PaypalCheckout.propTypes = {
+    idVivienda: PropTypes.number.isRequired,
+    checkIn: PropTypes.instanceOf(Date),
+    checkOut: PropTypes.instanceOf(Date),
+    pax: PropTypes.number.isRequired,
+    price: PropTypes.number,
+    serviceFee: PropTypes.number,
+    total: PropTypes.number.isRequired,
+};
 
 export default PaypalCheckout;

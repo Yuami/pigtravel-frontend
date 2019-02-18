@@ -12,6 +12,7 @@ import PaypalCheckout from "../components/specific/PaypalCheckout";
 import StripeCheckout from "../components/specific/StripeCheckout";
 import {withRouter} from "react-router-dom";
 import Redirect from "react-router-dom/es/Redirect";
+import {checkIfUndefined, redirectIfUndefined} from "../helpers";
 
 class ReservationPayment extends Component {
     constructor(props) {
@@ -20,13 +21,13 @@ class ReservationPayment extends Component {
         this.state = {
             disabled: true,
             paymentMethod: "creditCard",
-            serviceFee: null,
+            serviceFee: undefined,
 
-            idVivienda: null,
-            checkIn: null,
-            checkOut: null,
-            pax: null,
-            price: null,
+            idVivienda: undefined,
+            checkIn: undefined,
+            checkOut: undefined,
+            pax: undefined,
+            price: undefined,
         };
 
         this.paymentSelected = this.paymentSelected.bind(this);
@@ -44,11 +45,18 @@ class ReservationPayment extends Component {
     }
 
     componentWillMount() {
-        const {idVivienda} = this.props.location.state;
-        const {checkIn} = this.props.location.state;
-        const {checkOut} = this.props.location.state;
-        const {pax} = this.props.location.state;
-        const {price} = this.props.location.state;
+        const state = this.props.location.state;
+        if (checkIfUndefined(state, ['idVivienda', 'checkIn', 'checkOut', 'pax', 'price']))  {
+            this.setState({redirect: true});
+            return;
+        }
+
+
+        const {idVivienda} = state;
+        const {checkIn} = state;
+        const {checkOut} = state;
+        const {pax} = state;
+        const {price} = state;
 
         this.setState({
             idVivienda: idVivienda,
@@ -62,11 +70,15 @@ class ReservationPayment extends Component {
     }
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={'/'}/>;
+        }
+
         let paymentButton;
         if (this.state.paymentMethod === "creditCard") {
             paymentButton = <StripeCheckout/>
         } else if (this.state.paymentMethod === "paypal") {
-            paymentButton = <PaypalCheckout total={this.state.total}/>
+            paymentButton = <PaypalCheckout {...this.state} />
         }
 
         return (
@@ -97,13 +109,7 @@ class ReservationPayment extends Component {
                         </Panel>
                     </Col>
                     <Col lg='4' className={'order-0 order-lg-1'}>
-                        <ReservationInfo idVivienda={this.state.idVivienda}
-                                         pax={this.state.pax}
-                                         price={this.state.price}
-                                         checkIn={this.state.checkIn}
-                                         checkOut={this.state.checkOut}
-                                         serviceFee={this.state.serviceFee}
-                                         total={this.state.total}/>
+                        <ReservationInfo {...this.state}/>
                     </Col>
                 </Row>
             </Container>

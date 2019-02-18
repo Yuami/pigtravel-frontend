@@ -29,14 +29,12 @@ class ReservasController extends Controller
 
     public function store(Request $request)
     {
-
-
         $reserva = new Reserva;
         $reserva->checkIn = $request->checkIn;
         $reserva->checkOut = $request->checkOut;
         $reserva->idVivienda = $request->idVivienda;
-        $reserva->totalClientes = $request->totalClientes;
-        $reserva->idMetodoPago = $request->idMetodoPago;
+        $reserva->totalClientes = $request->pax;
+        $reserva->idMetodoPago = 1;
         $reserva->precio = 2;
         $reserva->idCliente = 1;
         $reserva->save();
