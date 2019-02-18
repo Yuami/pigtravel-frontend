@@ -46,13 +46,13 @@ class Main extends Component {
 
 
     render() {
-        var checkIn = moment('2012-01-01');
-        var checkOut = moment('2012-01-04');
+        var checkIn = new Date('2012-01-01');
+        var checkOut = new Date('2012-01-04');
 
         return (
             <LocaleContext.Provider value={this.state.locale}>
                 <Header changeLanguage={this.changeLanguage}/>
-                {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter*/}
+                {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter */}
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/bookings/:idReserva" component={BookingDetail}>
@@ -71,7 +71,7 @@ class Main extends Component {
                         <Reservation idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
                     </Route>
                     <Route exact path="/payment">
-                        <ReservationPayment idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
+                        <ReservationPayment/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
                     <Route exact path="/search" component={HouseList}/>
