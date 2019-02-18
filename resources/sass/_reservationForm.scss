@@ -2,6 +2,10 @@
   ul, li {
     list-style-type: none;
   }
+
+  .fas {
+    color: $primary;
+  }
 }
 
 #reservationInfo {
@@ -16,6 +20,61 @@
   #arrowIcon {
     font-size: 20px;
   }
+}
+
+.paymentWrap {
+  padding: 50px;
+}
+
+.paymentWrap .paymentBtnGroup {
+  max-width: 600px;
+  margin: auto;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod {
+  padding: 40px;
+  box-shadow: none;
+  position: relative;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod.active {
+  outline: none !important;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod.active .method {
+  border-color: $primary;
+  outline: none !important;
+  box-shadow: 0px 3px 22px 0px #7b7b7b;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid transparent;
+  transition: all 0.5s;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.creditcard {
+  background-image: url("/img/creditcard_logo.png");
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.paypal {
+  background-image: url("/img/paypal_logo.png");
+}
+
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method:hover {
+  outline: none !important;
+}
+
+#orderButtons div {
+  float:right;
 }
 
 @media (min-width: 576px) {

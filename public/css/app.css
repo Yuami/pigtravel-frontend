@@ -63,6 +63,11 @@ body {
   border: 0 !important;
 }
 
+.card-house-link {
+  color: black !important;
+  text-decoration: none !important;
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -169,7 +174,7 @@ footer {
   display: none;
 }
 
-.form-group {
+.buscador .form-group {
   padding-left: 0px !important;
   padding-right: 0px !important;
   margin-bottom: 0px !important;
@@ -178,21 +183,28 @@ footer {
 }
 
 .css-vj8t7z,
-.css-2o5izw {
-  max-height: 65px;
+.css-2o5izw,
+.css-1hwfws3 {
+  max-height: 70px;
   border-width: 0px !important;
   font-size: 18px !important;
 }
 
-.Select-menu-outer {
-  zIndex: 100 !important;
+.css-xp4uvy {
+  top: 60% !important;
+}
+
+.css-1492t68 {
+  left: 0;
+  width: 100%;
+  text-align: center;
 }
 
 .DateRangePicker__Month {
   margin: 0px !important;
 }
 
-.form-group label {
+.buscador .form-group label {
   float: left;
   margin-top: 22px;
   text-align: center;
@@ -206,9 +218,8 @@ footer {
 }
 
 #calendario,
-#guests,
-#location {
-  width: 90%;
+#guests {
+  width: 100%;
   text-align: center;
 }
 
@@ -223,12 +234,15 @@ footer {
   font-size: 18px !important;
 }
 
-.form-group input {
+.buscador .form-group input {
   width: 100%;
   box-sizing: border-box;
   display: block;
   height: 70px;
   font-size: 14pt;
+}
+
+.buscador .form-group input {
   border: none;
 }
 
@@ -236,7 +250,7 @@ footer {
   min-height: 70px;
 }
 
-.form-group h5 {
+.buscador .form-group h5 {
   padding-top: 20px;
 }
 
@@ -265,8 +279,21 @@ footer {
 }
 
 .btn-primary.focus,
-.btn-primary:focus {
+.btn-primary:focus,
+.btn-primary[disabled]:hover {
   background-color: #FA6839;
+}
+
+.customTextarea {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  background: none;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 8px 12px;
+  outline: 0;
 }
 
 .GasrFbdQYtD26JnmJzJpj {
@@ -338,6 +365,7 @@ textarea {
   margin-top: 6px;
   margin-bottom: 16px;
   resize: vertical;
+  font-size: 14pt !important;
 }
 
 .App .btn {
@@ -349,13 +377,104 @@ textarea {
   max-width: 540px !important;
 }
 
-.form-check-input {
+.App .form-check-input {
   position: relative !important;
+}
+
+.demoForm {
+  width: 400px;
+  max-width: 80%;
+  margin: auto;
+}
+
+.formErrors {
+  margin: 2em 0;
+  color: #d9534f;
 }
 
 #reservationForm ul,
 #reservationForm li {
   list-style-type: none;
+}
+
+#reservationForm .fas {
+  color: #FA6839;
+}
+
+#reservationInfo #houseName {
+  word-wrap: break-word;
+}
+
+#reservationInfo #houseImage {
+  width: 100%;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#reservationInfo #arrowIcon {
+  font-size: 20px;
+}
+
+.paymentWrap {
+  padding: 50px;
+}
+
+.paymentWrap .paymentBtnGroup {
+  max-width: 600px;
+  margin: auto;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod {
+  padding: 40px;
+  box-shadow: none;
+  position: relative;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod.active {
+  outline: none !important;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod.active .method {
+  border-color: #FA6839;
+  outline: none !important;
+  box-shadow: 0px 3px 22px 0px #7b7b7b;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid transparent;
+  transition: all 0.5s;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.creditcard {
+  background-image: url("/img/creditcard_logo.png");
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.paypal {
+  background-image: url("/img/paypal_logo.png");
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method:hover {
+  outline: none !important;
+}
+
+#orderButtons div {
+  float: right;
+}
+
+@media (min-width: 992px) {
+  #reservationInfo #houseImage {
+    width: 90px;
+    height: auto;
+  }
 }
 
 .house-card-img {
@@ -391,6 +510,31 @@ textarea {
   margin: 0;
   padding: 10px 5px;
   line-height: 0;
+}
+
+.precioNoche {
+  font-size: 45px;
+}
+
+.house label {
+  display: none;
+}
+
+.house .btn {
+  font-size: 20px;
+}
+
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+}
+
+.DayPicker-Month {
+  width: 40% !important;
+}
+
+.DayPicker {
+  width: 100%;
 }
 
 /*!

@@ -13,7 +13,7 @@
 
 Auth::routes();
 Route::get('/bookings', 'ReservasController@index');
-
+Route::get('/houses/{id}','ReservasController@index');
 Route::get('/bookings/{idReserva}', 'ReservasController@show');
 
 Route::get('/verify', 'TokenController@index');

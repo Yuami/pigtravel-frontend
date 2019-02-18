@@ -18,7 +18,9 @@
     "disallowed": "are not allowed",
     "includes": "The reservation includes",
     "message": "Information or questions to the house owner",
-    "accept": "Accept and continue"
+    "accept": "Accept and continue",
+    "paymentMethod": "Select the payment method",
+    "pay": "Pay now"
   },
   "general": {
     "email": "contact@pigtravel.top",
@@ -78,5 +80,13 @@
   },
   "houselist": {
     "night": "per night"
+  },
+  "house": {
+    "book": "BOOK",
+    "description": "Description",
+    "services": "Services",
+    "availability": "Availability",
+    "location": "Location",
+    "priceNight": "average/night"
   }
 }

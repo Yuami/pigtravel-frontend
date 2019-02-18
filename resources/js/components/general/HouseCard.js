@@ -24,7 +24,7 @@ class HouseCard extends Component {
                 <Container fluid className="mt-3">
                     <CardTitle><h1>{name}</h1></CardTitle>
                     <CardSubtitle>
-                        <p className="mt-3">
+                        <p className="mt-3" style={{textDecoration: "none"}}>
                             {price + coin + ' '}<Translate type="houselist" string="night"/>
                         </p>
                         <Stars rating={rating} color="primary"/>
@@ -39,7 +39,7 @@ class HouseCard extends Component {
         house: PropTypes.shape({
             name: PropTypes.string.isRequired,
             img: PropTypes.string.isRequired,
-            price: PropTypes.string.isRequired,
+            price: PropTypes.any.isRequired,
             type: PropTypes.string.isRequired,
         }).isRequired,
     }

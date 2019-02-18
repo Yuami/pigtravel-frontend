@@ -31,11 +31,9 @@ class AutocompleteCity extends Component {
             console.log(error, 'error cities')
         });
     }
+
     getOptionsRegions() {
-        axios({
-            url: '/api/regions',
-            method: 'get'
-        }).then((response) => {
+        axios('/api/regions').then((response) => {
             this.setState({
                 optionsRegions: response.data
             });
@@ -43,6 +41,7 @@ class AutocompleteCity extends Component {
             console.log(error, 'error regions')
         });
     }
+
     componentDidMount() {
         this.getOptionsCities();
         this.getOptionsRegions();
@@ -56,7 +55,7 @@ class AutocompleteCity extends Component {
 
 
 
-        const {selectedOption, optionsCities, optionsRegions} = this.state;
+        const {optionsCities, optionsRegions} = this.state;
         const groupedOptions = [
             {
                 label: <Translate type={'autocomplete'} string={'region'}/>,
@@ -74,9 +73,9 @@ class AutocompleteCity extends Component {
 
         return (
             <Select
-                value={selectedOption}
+                value={this.props.place}
                 name="city"
-                onChange={this.handleChange}
+                onChange={this.props.change}
                 options={groupedOptions}
                 blurInputOnSelect={false}
                 placeholder={<Translate type="searcher" string="city"/>}

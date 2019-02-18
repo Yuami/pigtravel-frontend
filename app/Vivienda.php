@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Vivienda extends Model
 {
@@ -13,22 +14,42 @@ class Vivienda extends Model
 
     public function vendedor()
     {
-        return $this->belongsTo(Vendedor::class, 'idPersona');
+        return $this->belongsTo(Persona::class, 'idVendedor');
     }
 
     public function fotos()
     {
-        return $this->hasManyThrough(Fotos::class, ViviendaHasFotos::class, "idFoto","id", "id", "idFoto");
+        return $this->hasMany(ViviendaHasFotos::class, "idVivienda");
     }
 
     public function city()
     {
-        return $this->belongsTo(Cities::class);
+        return $this->belongsTo(Cities::class, 'idCiudad','id');
     }
 
     public function tipoVivienda()
     {
-        return $this->belongsTo(TipoVivienda::class);
+        return $this->belongsTo(TipoVivienda::class, 'idTipoVivienda');
+    }
+
+    public function valoraciones()
+    {
+        return $this->hasMany(ValoracionVivienda::class, 'idVivienda');
+    }
+
+    public function tarifas()
+    {
+        return $this->hasManyThrough(Tarifa::class, ViviendaHasTarifa::class, "idVivienda","id","id", "idTarifa");
+    }
+    static function details($id){
+        $regions = DB::table('vivienda')
+            ->select('vivienda.*', 'persona.nombre as vendedor','persona.apellido1','tarifa.precio')
+            ->join('persona','persona.id','=','vivienda.idVendedor')
+            ->join('vivienda_has_tarifa','vivienda_has_tarifa.idVivienda','=','vivienda.id')
+            ->join('tarifa','vivienda_has_tarifa.idTarifa','=','tarifa.id')
+            ->where('vivienda.id','=',$id)
+            ->get();
+        return $regions;
     }
 
 }

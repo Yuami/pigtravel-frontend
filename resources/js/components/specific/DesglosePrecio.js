@@ -50,7 +50,7 @@ class DesglosePrecio extends Component {
                                 <h4><Translate type="bookingDetails" string="total"/></h4>
                             </Col>
                             <Col lg="6" sm="6" xs="6" className="text-center">
-                                <h4>{this.state.nights}{coin}</h4>
+                                <h4>{this.props.price}{coin}</h4>
                             </Col>
                         </Row>
                     </Col>
