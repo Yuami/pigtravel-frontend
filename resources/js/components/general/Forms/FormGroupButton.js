@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Col, Row} from "reactstrap";
-import FormButton from "./LinkButton";
+import FormButton from "./FormButton";
 
 class FormGroupReg extends Component {
     render() {

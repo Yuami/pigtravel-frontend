@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {FormFeedback, Col, Row} from 'reactstrap';
+import {Row} from 'reactstrap';
 import {Form, Formik} from 'formik';
 import * as Yup from 'yup';
 import FormGroupButton from "../general/Forms/FormGroupButton";
 import FormGroupReg from "../general/Forms/FormGroupReg";
-import FormButton from "../general/Forms/LinkButton";
 import axios from "axios";
 import Input from "reactstrap/es/Input";
 
@@ -12,18 +11,18 @@ class FormRegister extends Component {
     render() {
         return (
             <Formik initialValues={{
-                email: 'q@q.q',
-                nombre: 'q',
-                ap1: 'q',
-                ap2: 'q',
-                dni: '123123123',
-                tlf: '123123123',
-                desc: '1231231231',
-                idF: '1',
-                idC: '1',
-                fechaN: '02/02/2002',
-                password: '123123',
-                passwordC: '123123'
+                email: '',
+                nombre: '',
+                ap1: '',
+                ap2: '',
+                dni: '',
+                tlf: '',
+                desc: '',
+                idF: '',
+                idC: '716694',
+                fechaN: '',
+                password: '',
+                passwordC: ''
             }}
                     onSubmit={(values, {setSubmitting}) => {
                         delete values.passwordC;
