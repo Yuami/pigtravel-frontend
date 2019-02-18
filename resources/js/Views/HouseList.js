@@ -5,6 +5,8 @@ import Col from "reactstrap/es/Col";
 import Row from "reactstrap/es/Row";
 import axios from "axios";
 import PropTypes from "prop-types"
+import Link from "react-router-dom/es/Link";
+import {cleanURI} from "../helpers";
 
 
 class HouseList extends Component {
@@ -45,9 +47,12 @@ class HouseList extends Component {
                     {
                         houses.map(house => {
                                 if (house != null)
-                                    return <Col key={house.id} xs="12" sm="6" md="4" lg="3" xl="3" className="my-3">
-                                        <HouseCard house={house} clickable/>
-                                    </Col>
+                                    return (
+                                        <Col key={house.id} xs="12" sm="6" md="4" lg="3" xl="3" className="my-3">
+                                            <Link to={`/houses/${house.id}/${cleanURI(house.name)}`} className="card-house-link">
+                                                <HouseCard house={house} clickable/>
+                                            </Link>
+                                        </Col>);
                                 return null;
                             }
                         )

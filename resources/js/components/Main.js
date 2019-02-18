@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import {LocaleContext} from "../LocaleContext.js";
 import Header from "./layout/Header";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import PropTypes from 'prop-types';
+import {BrowserRouter, Switch, Route, withRouter} from "react-router-dom";
 import Footer from "./layout/Footer";
 import Home from "../Views/Home";
 import Login from "../Views/Login";
@@ -17,8 +18,9 @@ import moment from "react-daterange-picker/example/moment-range";
 import Reservation from "../Views/Reservation";
 import ReservationPayment from "../Views/ReservationPayment";
 import House from "../Views/House";
+import Profile from "../Views/Profile";
 
-export default class Main extends Component {
+class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -41,6 +43,8 @@ export default class Main extends Component {
         });
     };
 
+
+
     render() {
         var checkIn = moment('2012-01-01');
         var checkOut = moment('2012-01-04');
@@ -53,7 +57,7 @@ export default class Main extends Component {
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/bookings/:idReserva" component={BookingDetail}>
                     </Route>
-                    <Route exact path="/houses/:idHouse" component={House}>
+                    <Route exact path="/houses/:idHouse/:name" component={House}>
                     </Route>
                     <Route exact path="/about-us" component={AboutUs}/>
                     <Route exact path="/login" component={Login}/>
@@ -70,13 +74,17 @@ export default class Main extends Component {
                         <ReservationPayment idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
                     </Route>
                     <Route exact path="/terms" component={Terms}/>
-                    <Route exact path="/house-list" component={HouseList}/>
+                    <Route exact path="/search" component={HouseList}/>
+                    <Route path="/profile/:id/:name" component={Profile}/>
                 </Switch>
                 <Footer/>
             </LocaleContext.Provider>
         );
     }
 }
+
+export default withRouter(Main);
+
 
 if (document.getElementById('app')) {
     ReactDOM.render(

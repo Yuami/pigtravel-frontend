@@ -10,10 +10,13 @@ import ReservationInfo from "../components/specific/ReservationInfo";
 import Form from "reactstrap/es/Form";
 import PaypalCheckout from "../components/specific/PaypalCheckout";
 import StripeCheckout from "../components/specific/StripeCheckout";
+import {withRouter} from "react-router-dom";
 
 class ReservationPayment extends Component {
     constructor(props) {
         super(props);
+        console.log(this.props);
+
 
         this.state = {
             disabled: true,
@@ -31,7 +34,6 @@ class ReservationPayment extends Component {
 
     rules = [13, 14, 22];
 
-
     paymentSelected() {
         let method = $(".paymentMethod.active div").attr('id');
         if (method === 'creditCard') {
@@ -39,6 +41,11 @@ class ReservationPayment extends Component {
         } else if (method === 'paypal') {
             this.setState({paymentMethod: "paypal"});
         }
+    }
+
+    componentDidMount() {
+        const { idVivienda } = this.props.location.state;
+        console.log(idVivienda);
     }
 
     render() {
@@ -94,4 +101,4 @@ ReservationPayment.propTypes = {
     price: PropTypes.number.isRequired,
 };
 
-export default ReservationPayment;
+export default withRouter(ReservationPayment);

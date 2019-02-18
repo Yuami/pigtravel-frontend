@@ -10,8 +10,8 @@ class Stars extends Component {
         this.changeRating = this.changeRating.bind(this);
         this.renderStars = this.renderStars.bind(this);
         this.renderHalfStar = this.renderHalfStar.bind(this);
-        this.onHoverStart = this.onHoverStart.bind(this)
-        this.onHoverEnd = this.onHoverEnd.bind(this)
+        this.onHoverStart = this.onHoverStart.bind(this);
+        this.onHoverEnd = this.onHoverEnd.bind(this);
     }
 
     style = {

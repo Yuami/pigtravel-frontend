@@ -24,7 +24,7 @@ class HouseCard extends Component {
                 <Container fluid className="mt-3">
                     <CardTitle><h1>{name}</h1></CardTitle>
                     <CardSubtitle>
-                        <p className="mt-3">
+                        <p className="mt-3" style={{textDecoration: "none"}}>
                             {price + coin + ' '}<Translate type="houselist" string="night"/>
                         </p>
                         <Stars rating={rating} color="primary"/>

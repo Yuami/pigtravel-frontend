@@ -13,6 +13,7 @@ import FormButton from "../components/general/Forms/FormButton";
 import Panel from "../components/layout/Panel";
 import Stars from "../components/Stars";
 import ReservationInfo from "../components/specific/ReservationInfo";
+import {withRouter} from "react-router-dom";
 
 class Reservation extends Component {
 
@@ -103,7 +104,10 @@ class Reservation extends Component {
                             <TextAreaForm classname={'customTextarea'} name={'message'}/>
                             <LocaleContext.Consumer>
                                 {locale =>
-                                    <FormButton id="reservationButton" className={'pull-right'}
+                                    <FormButton page={'payment'} pageParams={
+                                        {idVivienda: this.props.idVivienda,
+                                            checkIn: this.props.checkIn}}
+                                         id="reservationButton" className={'pull-right'}
                                                 text={translate(locale, 'accept', 'reservation')}/>
                                 }
                             </LocaleContext.Consumer>
@@ -126,4 +130,4 @@ Reservation.propTypes = {
     price: PropTypes.number.isRequired,
 };
 
-export default Reservation;
+export default withRouter(Reservation);

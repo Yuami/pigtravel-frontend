@@ -8,21 +8,19 @@ import {Label, Button, Popover, PopoverBody, InputGroup} from 'reactstrap';
 import Translate from "../../lang/Translate";
 import FormGroup from "reactstrap/es/FormGroup";
 import Input from "reactstrap/es/Input";
+import FaIcon from "../general/FaIcon";
 
 class DatePickerInicio extends Component {
     constructor(props, context) {
         super(props, context);
-        const fromDate = moment();
-        const toDate = moment().add(1, 'days');
+
         this.state = {
-            fromD: fromDate,
-            value: moment.range(fromDate, toDate),
             show: false
         };
     }
 
     onSelect = (value, states) => {
-        this.setState({value, states});
+        this.props.onChange(value);
     };
 
     ToggleDiv = () => {
@@ -33,11 +31,9 @@ class DatePickerInicio extends Component {
     renderSelectionValue = () => {
         return (
             <div className="inputSearcher">
-                {this.state.value.start.format("DD-MM")}
-                {" "}<i className="fa fa-long-arrow-alt-right"></i>{" "}
-                {this.state.value.end.format("DD-MM")}
-                <input type="hidden" name="start" value={this.state.value.start.format("DD-MM")}/>
-                <input type="hidden" name="end" value={this.state.value.end.format("DD-MM")}/>
+                {this.props.value.start.format("DD-MM")}
+                <FaIcon icon={"fa fa-long-arrow-alt-right"}/>
+                {this.props.value.end.format("DD-MM")}
             </div>
         );
     };
@@ -46,16 +42,16 @@ class DatePickerInicio extends Component {
     render() {
         return (
             <FormGroup id="calendario">
-                <Label><i className="fa fa-calendar"></i></Label>
+                <Label><FaIcon icon={"fa fa-calendar"}/></Label>
                 {this.renderSelectionValue()}
                 <Popover placement="bottom" isOpen={this.state.show} target="calendario"
                          toggle={this.ToggleDiv} trigger="legacy">
                     <PopoverBody>
                         <DateRangePicker
-                            value={this.state.value}
-                            onSelect={this.onSelect}
+                            value={this.props.value}
+                            onSelect={this.props.onChange}
                             singleDateRange={true}
-                            minimumDate={this.state.fromD}
+                            minimumDate={this.props.value.start.toDate()}
                         />
                     </PopoverBody>
                 </Popover>
