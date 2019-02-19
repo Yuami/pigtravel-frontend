@@ -46,27 +46,31 @@ class ReservationPayment extends Component {
 
     componentWillMount() {
         const state = this.props.location.state;
-        if (checkIfUndefined(state, ['idVivienda', 'checkIn', 'checkOut', 'pax', 'price']))  {
+        if (checkIfUndefined(state, ['idVivienda', 'checkIn', 'checkOut', 'pax', 'price'])) {
             this.setState({redirect: true});
             return;
         }
 
-
-        const {idVivienda} = state;
-        const {checkIn} = state;
-        const {checkOut} = state;
-        const {pax} = state;
-        const {price} = state;
+        const {
+            idVivienda,
+            checkIn,
+            checkOut,
+            pax,
+            price,
+            total,
+            serviceFee,
+        } = state;
 
         this.setState({
             idVivienda: idVivienda,
             checkIn: checkIn,
             checkOut: checkOut,
             pax: pax,
-            serviceFee: price * 0.05 + 5,
+            serviceFee: serviceFee,
             price: price,
-            total: (price * 0.05 + 5) + price,
-        })
+            total: total,
+        });
+
     }
 
     render() {

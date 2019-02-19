@@ -2,23 +2,42 @@ import React from 'react';
 import PaypalBtn from 'react-paypal-checkout';
 import * as PropTypes from "prop-types";
 import axios from "axios";
+import {withRouter} from "react-router-dom";
+import Redirect from "react-router-dom/es/Redirect";
 
 class PaypalCheckout extends React.Component {
 
 
-    render() {
-        const onSuccess = (payment) => {
-            axios.post('/api/reservation', {
-                paymentID: payment.paymentID,
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            info: Object.freeze({
                 idVivienda: this.props.idVivienda,
                 checkIn: this.props.checkIn.toISOString().slice(0, 19).replace('T', ' '),
                 checkOut: this.props.checkOut.toISOString().slice(0, 19).replace('T', ' '),
-                pax: this.props.pax
+                pax: this.props.pax,
+                precio: this.props.total,
+            })
+        }
+    }
+
+    render() {
+        const onSuccess = (payment) => {
+
+            axios.post('/api/reservation', {
+                paymentID: payment.paymentID,
+                idVivienda: this.state.info.idVivienda,
+                checkIn: this.state.info.checkIn,
+                checkOut: this.state.info.checkOut,
+                pax: this.state.info.pax,
+                precio: this.state.info.precio
             }).then(function (response) {
-                console.log(response);
+                window.location = ("/reservation/" + response.data);
             }).catch(function (error) {
                 console.log(error);
             });
+
         };
 
         const onCancel = (data) => {
@@ -60,7 +79,7 @@ class PaypalCheckout extends React.Component {
                 env={env}
                 client={client}
                 currency={currency}
-                total={total}
+                total={this.state.info.precio}
                 locale={locale}
                 style={style}
                 onError={onError}
@@ -80,4 +99,4 @@ PaypalCheckout.propTypes = {
     total: PropTypes.number.isRequired,
 };
 
-export default PaypalCheckout;
+export default withRouter(PaypalCheckout);

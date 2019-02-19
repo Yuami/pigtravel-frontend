@@ -68,7 +68,7 @@ class Main extends Component {
                     </Route>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/reservation">
-                        <Reservation idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={2}/>
+                        <Reservation idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={10}/>
                     </Route>
                     <Route exact path="/payment">
                         <ReservationPayment/>

@@ -63,6 +63,4 @@ class TokenController extends Controller
                 break;
         }
     }
-
-
 }

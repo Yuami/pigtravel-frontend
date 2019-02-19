@@ -35,9 +35,12 @@ class ReservasController extends Controller
         $reserva->idVivienda = $request->idVivienda;
         $reserva->totalClientes = $request->pax;
         $reserva->idMetodoPago = 1;
-        $reserva->precio = 2;
+        $reserva->precio = $request->precio;
         $reserva->idCliente = 1;
         $reserva->save();
+
+        return $reserva->id;
+
     }
 
     public function generateMail($email, $idReserva)
