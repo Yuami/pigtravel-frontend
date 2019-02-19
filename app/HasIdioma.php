@@ -15,7 +15,7 @@ class HasIdioma extends Model
             ->select($name)
             ->where('id' . ucfirst($this->table), $this->id)
             ->get()
-            ->pluck($name);
+            ->pluck($name)->first();
     }
 
     public function __call($method, $parameters)

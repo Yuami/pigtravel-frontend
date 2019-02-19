@@ -39,6 +39,7 @@ class Vivienda extends JsonResource
                 "general" => $this->tarifas->firstWhere('general', 1),
                 'extra' => $this->tarifas->where('general', '!=', 1),
             ],
-            'backlink' => env("BACKDOMAIN")
-        ];    }
+            'servicios' => $this->servicios
+        ];
+    }
 }

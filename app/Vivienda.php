@@ -41,6 +41,12 @@ class Vivienda extends Model
     {
         return $this->hasManyThrough(Tarifa::class, ViviendaHasTarifa::class, "idVivienda","id","id", "idTarifa");
     }
+
+    public function servicios()
+    {
+        return $this->hasManyThrough(Servicio::class, ViviendaHasServicio::class, "idVivienda", "id", "id", "idServicio");
+    }
+
     static function details($id){
         $regions = DB::table('vivienda')
             ->select('vivienda.*', 'persona.nombre as vendedor','persona.apellido1','tarifa.precio')
