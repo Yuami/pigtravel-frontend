@@ -10,16 +10,18 @@ import {coin} from "../../LocaleContext"
 
 class HouseCard extends Component {
 
-    state = {};
+    state = {
+    };
 
     render() {
+        console.log(this.props);
         const {clickable, house} = this.props;
-        const {img, name, type, price, rating} = house;
+        const {img, nombre: name, tipoVivienda: type, price, valoracion} = house;
         return (
             <MainCard clickable={clickable}>
                 <div className="house-card-img">
                     <img src={img} alt={name} width="100%"/>
-                    <span><h4>{type}</h4></span>
+                    <span><h4>{type.nombre}</h4></span>
                 </div>
                 <Container fluid className="mt-3">
                     <CardTitle><h1>{name}</h1></CardTitle>
@@ -27,7 +29,8 @@ class HouseCard extends Component {
                         <p className="mt-3" style={{textDecoration: "none"}}>
                             {price + coin + ' '}<Translate type="houselist" string="night"/>
                         </p>
-                        <Stars rating={rating} color="primary"/>
+                        <Stars rating={valoracion == undefined || valoracion.length == 0 ? 0 : valoracion[0].media}
+                               color="primary"/>
                     </CardSubtitle>
                 </Container>
             </MainCard>
