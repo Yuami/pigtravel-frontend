@@ -12,11 +12,11 @@ import FormGroupButton from "../general/Forms/FormGroupButton";
 class FormLogIn extends Component {
     render() {
         return (
-            <Form className="row" action="/login" method="POST">
+            <Form className="row" action="/login" method="post">
                 <CSRF/>
-                <FormGroupReg md={'12'} type={'email'} name={'correo'} text={'Correo'}
-                              placeholder={'email@example.com'}/>
-                <FormGroupReg md={'12'} type={'password'} name={'pass'} text={'Contraseña'} placeholder={'*********'}/>
+                <FormGroupReg md={12} type={'email'} name={'correo'} text={'Correo'}
+                              placeholder={'email@example.com'} label={'Correo'} value={'admin@admin.com'}/>
+                <FormGroupReg md={12} type={'password'} name={'password'} text={'Contraseña'} placeholder={'*********'} label={'Contraseña'} value={'1234'}/>
                 <Col className="my-2">
                     <Row className="justify-content-center">
                         <MyMedia/>

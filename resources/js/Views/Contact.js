@@ -4,7 +4,7 @@ import Translate from "../lang/Translate";
 import FormGroup from "reactstrap/es/FormGroup";
 import {LocaleContext} from "../LocaleContext";
 import {translate} from "../helpers";
-import FormButton from "../components/general/Forms/FormButton";
+import FormButton from "../components/general/Forms/LinkButton";
 import Label from "reactstrap/es/Label";
 import UserRouter from "../components/layout/UserRouter";
 

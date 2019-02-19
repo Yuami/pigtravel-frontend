@@ -8,6 +8,7 @@ import {
     Container,
     Row
 } from "reactstrap";
+import Link from "@material-ui/core/es/Link/Link";
 
 class LogIn extends Component {
     render() {
@@ -19,7 +20,7 @@ class LogIn extends Component {
                     </Col>
                     <Col lg="6" sm="12">
                         <Card className="shadow bg-light" action="/persona">
-                            <CardTitle className="mt-5 mb-3 text-center"><h3>REGISTRATE</h3></CardTitle>
+                            <CardTitle className="mt-5 mb-3 text-center"><h3>Inicia Sesion</h3></CardTitle>
                             <CardBody>
                                 <FormLogIn/>
                             </CardBody>

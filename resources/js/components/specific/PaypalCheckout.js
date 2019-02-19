@@ -1,13 +1,42 @@
 import React from 'react';
 import * as PropTypes from "prop-types";
+import axios from "axios";
+import {withRouter} from "react-router-dom";
+import Redirect from "react-router-dom/es/Redirect";
 
 class PaypalCheckout extends React.Component {
 
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            info: Object.freeze({
+                idVivienda: this.props.idVivienda,
+                checkIn: this.props.checkIn.toISOString().slice(0, 19).replace('T', ' '),
+                checkOut: this.props.checkOut.toISOString().slice(0, 19).replace('T', ' '),
+                pax: this.props.pax,
+                precio: this.props.total,
+            })
+        }
+    }
+
     render() {
         const onSuccess = (payment) => {
-            // Congratulation, it came here means everything's fine!
-            console.log("The payment was succeeded!", payment);
+
+            axios.post('/api/reservation', {
+                paymentID: payment.paymentID,
+                idVivienda: this.state.info.idVivienda,
+                checkIn: this.state.info.checkIn,
+                checkOut: this.state.info.checkOut,
+                pax: this.state.info.pax,
+                precio: this.state.info.precio
+            }).then(function (response) {
+                window.location = ("/reservation/" + response.data);
+            }).catch(function (error) {
+                console.log(error);
+            });
+
         };
 
         const onCancel = (data) => {
@@ -26,15 +55,15 @@ class PaypalCheckout extends React.Component {
         let locale = 'en_US';
         // For Customize Style: https://developer.paypal.com/docs/checkout/how-to/customize-button/
         let style = {
-            'label':'checkout',
+            'label': 'checkout',
             'tagline': true,
-            'size':'small',
-            'shape':'pill',
-            'color':'gold'
+            'size': 'small',
+            'shape': 'pill',
+            'color': 'gold'
         };
 
         const client = {
-            sandbox:    'AbrUW3IiIge0_Fc-IY3QISqQ1CBTb4pA1luDG0XZlBY4aS1qTKPBbDmqxVXhuNpmm9EROWRtI2SW-nMJ',
+            sandbox: 'AbrUW3IiIge0_Fc-IY3QISqQ1CBTb4pA1luDG0XZlBY4aS1qTKPBbDmqxVXhuNpmm9EROWRtI2SW-nMJ',
             production: 'YOUR-PRODUCTION-APP-ID',
         };
         // In order to get production's app-ID, you will have to send your app to Paypal for approval first
@@ -49,17 +78,24 @@ class PaypalCheckout extends React.Component {
                 env={env}
                 client={client}
                 currency={currency}
-                total={total}
+                total={this.state.info.precio}
                 locale={locale}
                 style={style}
                 onError={onError}
                 onSuccess={onSuccess}
-                onCancel={onCancel} />
+                onCancel={onCancel}/>
         );
     }
 }
-    PaypalCheckout.propTypes = {
-        total: PropTypes.number.isRequired,
-    };
 
-export default PaypalCheckout;
+PaypalCheckout.propTypes = {
+    idVivienda: PropTypes.number.isRequired,
+    checkIn: PropTypes.instanceOf(Date),
+    checkOut: PropTypes.instanceOf(Date),
+    pax: PropTypes.number.isRequired,
+    price: PropTypes.number,
+    serviceFee: PropTypes.number,
+    total: PropTypes.number.isRequired,
+};
+
+export default withRouter(PaypalCheckout);

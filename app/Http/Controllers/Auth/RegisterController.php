@@ -43,30 +43,49 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'nombre' => ['required', 'string', 'max:255'],
+            'ap1' => ['required', 'string', 'max:255'],
+            'ap2' => ['required', 'string', 'max:255'],
+            'dni' => ['required', 'string', 'max:255'],
+            'tlf' => ['required', 'integer', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'fechaN' => ['required', 'date'],
+            'desc' => ['string', 'max:255'],
+            'idC' => ['string', 'max:255'],
+            'idF' => ['string', 'max:255']
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'nombre' => $data['nombre'],
+            'apellido1' => $data['ap1'],
+            'apellido2' => $data['ap2'],
+            'DNI' => $data['dni'],
+            'tlf' => $data['tlf'],
+            'correo' => $data['email'],
+            'password' => Hash::make($data['password'], [
+                'memory' => 1024,
+                'time' => 2,
+                'threads' => 2]),
+            'fechaNacimiento' => $data['fechaN'],
+            'descripcion' => $data['desc'],
+            'idC' => $data['idC'],
+            'idF' => $data['idF'],
         ]);
     }
 }

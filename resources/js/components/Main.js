@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {LocaleContext} from "../LocaleContext.js";
+import {FormContext} from "../FormContext.js";
 import Header from "./layout/Header";
 import PropTypes from 'prop-types';
 import {BrowserRouter, Switch, Route, withRouter} from "react-router-dom";
@@ -44,40 +45,42 @@ class Main extends Component {
     };
 
 
-
     render() {
-        var checkIn = moment('2012-01-01');
-        var checkOut = moment('2012-01-04');
+        var checkIn = new Date('2012-01-01');
+        var checkOut = new Date('2012-01-04');
+        let token = document.head.querySelector('meta[name="csrf-token"]');
 
         return (
             <LocaleContext.Provider value={this.state.locale}>
-                <Header changeLanguage={this.changeLanguage}/>
-                {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter*/}
-                <Switch>
-                    <Route exact path="/" component={Home}/>
-                    <Route exact path="/bookings/:idReserva" component={BookingDetail}>
-                    </Route>
-                    <Route exact path="/houses/:idHouse/:name" component={House}>
-                    </Route>
-                    <Route exact path="/about-us" component={AboutUs}/>
-                    <Route exact path="/login" component={Login}/>
-                    <Route exact path="/contact" component={Contact}/>
-                    <Route exact path="/modal">
-                        <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"}
-                                   primaryButton={"lol"}/>
-                    </Route>
-                    <Route exact path="/register" component={Register}/>
-                    <Route exact path="/reservation">
-                        <Reservation idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
-                    </Route>
-                    <Route exact path="/payment">
-                        <ReservationPayment idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
-                    </Route>
-                    <Route exact path="/terms" component={Terms}/>
-                    <Route exact path="/search" component={HouseList}/>
-                    <Route path="/profile/:id/:name" component={Profile}/>
-                </Switch>
-                <Footer/>
+                <FormContext.Provider value={token}>
+                    <Header changeLanguage={this.changeLanguage}/>
+                    {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter */}
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/bookings/:idReserva" component={BookingDetail}>
+                        </Route>
+                        <Route exact path="/houses/:idHouse/:name" component={House}>
+                        </Route>
+                        <Route exact path="/about-us" component={AboutUs}/>
+                        <Route exact path="/login" component={Login}/>
+                        <Route exact path="/contact" component={Contact}/>
+                        <Route exact path="/modal">
+                            <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"}
+                                       primaryButton={"lol"}/>
+                        </Route>
+                        <Route exact path="/register" component={Register}/>
+                        <Route exact path="/reservation">
+                            <Reservation idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
+                        </Route>
+                        <Route exact path="/payment">
+                            <ReservationPayment/>
+                        </Route>
+                        <Route exact path="/terms" component={Terms}/>
+                        <Route exact path="/search" component={HouseList}/>
+                        <Route path="/profile/:id/:name" component={Profile}/>
+                    </Switch>
+                    <Footer/>
+                </FormContext.Provider>
             </LocaleContext.Provider>
         );
     }

@@ -4,7 +4,6 @@ import axios from "axios";
 import moment from "react-daterange-picker/example/moment-range";
 import Col from "reactstrap/es/Col";
 import Row from "reactstrap/es/Row";
-import Container from "reactstrap/es/Container";
 import Panel from "../layout/Panel";
 import Translate from "../../lang/Translate";
 import Stars from "../Stars";
@@ -13,10 +12,17 @@ import {coin} from "../../LocaleContext";
 class ReservationInfo extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             casa: [],
             pax: '',
-            nights: this.props.checkOut.diff(this.props.checkIn, 'days'),
+            checkIn: moment(this.props.checkIn),
+            checkOut: moment(this.props.checkOut),
+        };
+
+        this.state = {
+            ...this.state,
+            nights: this.state.checkOut.diff(this.state.checkIn, 'days'),
         }
     }
 
@@ -30,6 +36,7 @@ class ReservationInfo extends Component {
             this.setState({casa: res.data});
         });
     }
+
 
     render() {
         return (
@@ -53,8 +60,8 @@ class ReservationInfo extends Component {
                         <Row>
                             <Col>
                                 <p className={'mb-0 mt-3'}>
-                                    {this.props.checkIn.format('DD/MM/YYYY')} <span
-                                    id={'arrowIcon'}>⇒</span> {this.props.checkOut.format('DD/MM/YYYY')}</p>
+                                    {this.state.checkIn.format('DD/MM/YYYY')} <span
+                                    id={'arrowIcon'}>⇒</span> {this.state.checkOut.format('DD/MM/YYYY')}</p>
                             </Col>
                         </Row>
                         <Row>
@@ -98,8 +105,8 @@ class ReservationInfo extends Component {
 
 ReservationInfo.propTypes = {
     idVivienda: PropTypes.number.isRequired,
-    checkIn: PropTypes.instanceOf(moment).isRequired,
-    checkOut: PropTypes.instanceOf(moment).isRequired,
+    checkIn: PropTypes.instanceOf(Date),
+    checkOut: PropTypes.instanceOf(Date),
     pax: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
     serviceFee: PropTypes.number.isRequired,
