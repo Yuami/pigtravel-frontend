@@ -27,3 +27,12 @@ export function cleanURI(string) {
         .replace(/\-\-+/g, '-') // Replace multiple — with single -
         .replace(/^-+/, '') // Trim — from start of text .replace(/-+$/, '') // Trim — from end of text
 }
+
+export function checkIfUndefined(obj, check){
+    if (obj === undefined) return true;
+    check.forEach(item => {
+        if (obj[item] === undefined) return true;
+    });
+
+    return false;
+}

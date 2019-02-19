@@ -4,7 +4,6 @@ import axios from "axios";
 import moment from "react-daterange-picker/example/moment-range";
 import Col from "reactstrap/es/Col";
 import Row from "reactstrap/es/Row";
-import Container from "reactstrap/es/Container";
 import Panel from "../layout/Panel";
 import Translate from "../../lang/Translate";
 import Stars from "../Stars";

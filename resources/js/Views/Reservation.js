@@ -18,15 +18,18 @@ class Reservation extends Component {
 
     constructor(props) {
         super(props);
+
+        const allPrices = Object.freeze({
+            price: this.props.price,
+            serviceFee: this.props.price * 0.05 + 5,
+            total: (this.props.price * 0.05 + 5) + this.props.price,
+        });
+
         this.state = {
             servicios: [],
-            serviceFee: this.props.price * 0.05 + 5,
-
-        };
-
-        this.state = {
-            ...this.state,
-            total: this.state.serviceFee + this.props.price,
+            price: allPrices.price,
+            serviceFee: allPrices.serviceFee,
+            total: allPrices.total,
         };
 
         this.renderInformation.bind(this);
@@ -103,13 +106,16 @@ class Reservation extends Component {
                             <LocaleContext.Consumer>
                                 {locale =>
                                     <FormButton page={'payment'} pageParams={
-                                        {idVivienda: this.props.idVivienda,
+                                        {
+                                            idVivienda: this.props.idVivienda,
                                             checkIn: this.props.checkIn,
                                             checkOut: this.props.checkOut,
                                             pax: this.props.pax,
-                                            price: this.props.price
+                                            price: this.state.price,
+                                            serviceFee: this.state.serviceFee,
+                                            total: this.state.total,
                                         }}
-                                         id="reservationButton" className={'pull-right'}
+                                                id="reservationButton" className={'pull-right'}
                                                 text={translate(locale, 'accept', 'reservation')}/>
                                 }
                             </LocaleContext.Consumer>
