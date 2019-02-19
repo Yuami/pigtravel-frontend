@@ -31,7 +31,7 @@ Route::get('/blocks/{id}', function ($id) {
     return \App\Reserva::datesByHouse($id);
 });
 Route::get('/states', function () {
-    return \App\Estados::all();
+    return \App\Estados::statesByLanguage();
 });
 Route::get('/bookings/{id}', function ($id) {
     return \App\Reserva::details($id);

@@ -89,5 +89,12 @@
     "reviews": "Reseñas",
     "location": "Ubicación",
     "priceNight": "promedio/noche"
+  },
+  "userDropdown": {
+    "inbox": "Bandeja de entrada",
+    "bookings": "Reservas",
+    "profile": "Mi perfil",
+    "account": "Cuenta",
+    "exit": "Salir"
   }
 }

@@ -12,12 +12,12 @@ class LanguagePicker extends Component {
         const languages = [
             {
                 id: 'es',
-                img: 'img/spain-flag.png',
+                img: '/img/spain-flag.png',
                 name: 'Español',
             },
             {
                 id: 'en',
-                img: 'img/united-kingdom-flag.png',
+                img: '/img/united-kingdom-flag.png',
                 name: 'English',
             }
         ];

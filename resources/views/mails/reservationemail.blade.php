@@ -244,7 +244,7 @@
                                     <div align="center" class="center fixedwidth" style="padding-right: 0px;  padding-left: 0px;">
                                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px;line-height:0px;"><td style="padding-right: 0px; padding-left: 0px;" align="center"><![endif]-->
                                         <div style="color:#FA6839;font-family:Georgia, Times, 'Times New Roman', serif;line-height:120%; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
-                                            <div style="font-size:10px;line-height:14px;font-family:Georgia, Times, 'Times New Roman', serif;color:#000000;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><span style="font-size: 38px; line-height: 45px;"><span style="line-height: 45px; font-size: 38px;">Gracias por confiar en nosotros</span></span></p><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><em><span style="color: rgb(85, 85, 85); font-size: 80px; line-height: 96px;"><span style="line-height: 96px; font-size: 80px;"></span></span></em></p></div>
+                                            <div style="font-size:10px;line-height:14px;font-family:Georgia, Times, 'Times New Roman', serif;color:#000000;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px;text-align: center"><span style="line-height: 45px; font-size: 20px;">Gracias por confiar en nosotros</span></p></div>
                                         </div>
                                         <!--[if mso]></td></tr></table><![endif]-->
 
@@ -252,21 +252,66 @@
 
 
 
-                                    <div class="">
+                                    <div class="" style="background-color: #d3d5d7;margin-right: 20px; margin-left: 20px;">
                                         <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 30px; padding-left: 30px; padding-top: 20px; padding-bottom: 15px;"><![endif]-->
-                                        <div style="color:#555555;font-family:Georgia, Times, 'Times New Roman', serif;line-height:120%; padding-right: 30px; padding-left: 30px; padding-top: 20px; padding-bottom: 15px;">
+                                        <div style="color:#555555;font-family:Georgia, Times, 'Times New Roman', serif;line-height:120%; padding-right: 30px; padding-left: 30px; padding-bottom: 15px;">
+                                            <div style="font-size:10px;line-height:14px;font-family:Georgia, Times, 'Times New Roman', serif;color:#000000;text-align:left;"><p style="margin: 0;font-size: 20px;line-height: 17px;text-align: left"><span style="line-height: 45px; font-size: 15px;">Booking details:</span></p></div>
+
                                             <div style="font-family:Georgia, Times, 'Times New Roman', serif;line-height:14px;font-size:12px;color:#555555;text-align:left;">      <table border="0" cellpadding="0" cellspacing="0" width="100%" class="divider " style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
-                                                    <table style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #FFFFFF;width: 100%" cellpadding="0" cellspacing="0">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="divider " style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
                                                         <tbody>
-                                                        <tr>
-                                                            <td>Casa en la playa</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2 noches</td>
-                                                            <td>5 huespedes</td>
+                                                        <tr style="vertical-align: top">
+                                                            <td class="divider_inner" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;padding-right: 0px;padding-left: 0px;padding-top: 0px;padding-bottom: 0px;min-width: 100%;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                                <table class="divider_content" align="center" border="0" cellpadding="10" cellspacing="5" width="100%" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;border-top: 0px solid transparent;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td style="font-size:18px;text-align: center;word-break: break-word;border-collapse: collapse !important;vertical-align: top;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                                            <span>{{ $reserva->getHouseName() }}!</span>
+                                                                        </td>
+                                                                        <td style="font-size:18px;text-align: center;word-break: break-word;border-collapse: collapse !important;vertical-align: top;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                                            <span>{{ $reserva->getCity() }}!</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-size:18px;text-align: center;word-break: break-word;border-collapse: collapse !important;vertical-align: top;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                                            <span>{{ $reserva->getDays() }}!</span>
+                                                                        </td>
+                                                                        <td style="font-size:18px;text-align: center;word-break: break-word;border-collapse: collapse !important;vertical-align: top;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                                            <span>{{ $reserva->totalClientes }}!</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-size:18px;text-align: center;word-break: break-word;border-collapse: collapse !important;vertical-align: top;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                                            <span>Price: {{ $reserva->precio }}!€</span>
+                                                                        </td>
+                                                                        <td style="font-size:18px;text-align: center;word-break: break-word;border-collapse: collapse !important;vertical-align: top;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                                            <span>Price/night: {{ $reserva->getPriceNight }}!€</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" style="font-size:18px;text-align: center;word-break: break-word;border-collapse: collapse !important;vertical-align: top;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                                            <span>Check In: {{ $reserva->checkIn }}!</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" style="font-size:18px;text-align: center;word-break: break-word;border-collapse: collapse !important;vertical-align: top;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                                            <span>Check Out: {{ $reserva->checkOut }}!</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" style="text-align:center;font-size:18px;word-break: break-word;border-collapse: collapse !important;vertical-align: top;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                                            <a href="<?= $reservaUrl ?>" target="_blank" style="display: block;width:100%;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ffffff; background-color: #FA6839; border-radius: 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-top: 0px solid #A5CEA3; border-right: 0px solid #A5CEA3; border-bottom: 0px solid #A5CEA3; border-left: 0px solid #A5CEA3; padding-top: 5px;  padding-bottom: 5px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;mso-border-alt: none">
+                                                                                <span style="font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:16px;line-height:32px;">More details</span>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
+                                                </table>
                                             </div>
                                         </div>
                                         <!--[if mso]></td></tr></table><![endif]-->
@@ -289,6 +334,8 @@
                         <div class="col num12" style="min-width: 320px;max-width: 500px;display: table-cell;vertical-align: top;">
                             <div style="background-color: transparent; width: 100% !important;">
                                 <!--[if (!mso)&(!IE)]><!--><div style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;"><!--<![endif]-->
+
+
 
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="divider " style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
                                         <tbody>

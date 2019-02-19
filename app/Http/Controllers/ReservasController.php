@@ -12,8 +12,7 @@ class ReservasController extends Controller
 {
     public function index()
     {
-        $title = 'Bookings';
-        return view('welcome', compact('title'));
+        return view('welcome');
     }
 
     public function show()

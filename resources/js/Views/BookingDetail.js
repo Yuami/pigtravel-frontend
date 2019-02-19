@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import DesglosePrecio from "../components/specific/DesglosePrecio";
 import moment from "moment";
+import PrintPDF from "../components/specific/PrintPDF";
 
 class BookingDetail extends Component {
     constructor(props) {
@@ -17,21 +18,8 @@ class BookingDetail extends Component {
             states: [],
             days: 0,
         };
-        this.renderInformation.bind(this);
     }
-    renderInformation() {
-        this.state.days= this.props.values.map(p => moment(p.checkOut)).diff(this.values.map(p => moment(p.checkIn)), 'days');
 
-            const estado = this.state.values.map((v)=>(v.idEstado));
-            return this.state.states.map(function (value, index, array) {
-                if (estado==value.idEstado && BookingDetail.checkServiceLanguage(value.idioma)) {
-                    return (
-                        <h1>value.nombre</h1>
-                    )
-                }
-            });
-
-    }
     static checkServiceLanguage(idioma) {
         return (localStorage["locale"] === idioma);
     }
@@ -55,15 +43,14 @@ class BookingDetail extends Component {
             },
         ];
         const precio= this.state.values.map((p) => (p.precio));
-        return (
-            <div>
-                <UserRouter title={'booking'} list={bookingDetails}/>
-                <Container className="bookingCont shadow">
+        const estado= this.state.values.map((p)=> (p.idEstado));
+        const book=(
+       <>
                     <Row className="mb-2">
                         <Col lg="12">
                             <Row>
                                 <Col lg="2" className="image">
-                                    <img src="img/casa.png" class="img img-responsive full-width"></img>
+                                    <img src="/img/casa.png" className="img img-responsive"></img>
                                 </Col>
                                 <Col lg="7" sm="12" xs="12">
                                     <Row>
@@ -84,8 +71,16 @@ class BookingDetail extends Component {
                                 <Col lg="2" sm="11" xs="11" className="float-right">
                                     <Row className="precio">
                                         <strong>
-                                            <h1></h1>
-                                      </strong>
+                                            <h1>
+                                                {this.state.states.map(function (value, index) {
+                                                    if (estado == value.id && BookingDetail.checkServiceLanguage(value.idioma)) {
+                                                        return (
+                                                            value.nombre
+                                                        )
+                                                    }
+                                                })}
+                                            </h1>
+                                        </strong>
                                     </Row>
                                 </Col>
                             </Row>
@@ -115,10 +110,11 @@ class BookingDetail extends Component {
                             <Row>
                                 <Col lg="12" className="detalle">
                                     <Row>
-                                        <h4><strong><Translate type="bookingDetails" string="checkIn"/></strong></h4>
-                                    </Row>
-                                    <Row>
-                                        <Col lg="12" className="text-center">
+                                        <Col lg="6">
+                                            <h4><strong><Translate type="bookingDetails" string="checkIn"/></strong>
+                                            </h4>
+                                        </Col>
+                                        <Col lg="6">
                                             {this.state.values.map((v) => (
                                                 <h4>{v.checkIn}</h4>
                                             ))}
@@ -126,10 +122,11 @@ class BookingDetail extends Component {
                                         </Col>
                                     </Row>
                                     <Row>
-                                        <h4><strong><Translate type="bookingDetails" string="checkOut"/></strong></h4>
-                                    </Row>
-                                    <Row>
-                                        <Col lg="12" className="text-center">
+                                        <Col lg="6">
+                                            <h4><strong><Translate type="bookingDetails" string="checkOut"/></strong>
+                                            </h4>
+                                        </Col>
+                                        <Col lg="6">
                                             {this.state.values.map((v) => (
                                                 <h4>{v.checkOut}</h4>
                                             ))}
@@ -137,10 +134,10 @@ class BookingDetail extends Component {
                                         </Col>
                                     </Row>
                                     <Row>
-                                        <h4><strong><Translate type="bookingDetails" string="guests"/></strong></h4>
-                                    </Row>
-                                    <Row>
-                                        <Col lg="12" className="text-center">
+                                        <Col lg="6">
+                                            <h4><strong><Translate type="bookingDetails" string="guests"/></strong></h4>
+                                        </Col>
+                                        <Col lg="6">
                                             {this.state.values.map((v) => (
                                                 <h4>{v.totalClientes}</h4>
                                             ))}
@@ -150,8 +147,17 @@ class BookingDetail extends Component {
                             </Row>
 
                         </Col>
-                        <DesglosePrecio price={precio} nights={2} />
+                        <DesglosePrecio price={precio} nights={2}/>
                     </Row>
+        </>
+
+    );
+        return (
+            <div>
+                <UserRouter title={'booking'} list={bookingDetails}/>
+                <Container className="bookingCont shadow">
+            {book}
+            <PrintPDF comp={book}/>
                 </Container>
             </div>
         );

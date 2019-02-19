@@ -88,7 +88,6 @@ class House extends Component {
                                     </Row>
                                     <Form action="/book">
                                         <Row className="filtro">
-                                            <DatePickerInicio/>
                                         </Row>
                                         <Row>
                                             <FormGroup id={"guests"}>
@@ -109,6 +108,14 @@ class House extends Component {
                                                     </PopoverBody>
                                                 </Popover>
                                             </FormGroup>
+                                        </Row>
+                                        <Row className="mt-5">
+                                            <Col lg="6" sm="6" xs="6" className="text-center">
+                                                <h4><Translate type="bookingDetails" string="total"/></h4>
+                                            </Col>
+                                            <Col lg="6" sm="6" xs="6" className="text-center">
+                                                <h4>{(this.state.details.map((v)=>v.precio) * 1.05 + 5)}{coin}</h4>
+                                            </Col>
                                         </Row>
                                         <Row>
                                             <button type="submit" className="btn btn-primary btn-block"><Translate

@@ -16,4 +16,13 @@ class Estados extends Model
 {
     protected $table = 'estado_has_idioma';
 
+    static function statesByLanguage()
+    {
+        $states = DB::table('estado')
+            ->select('estado.*','idioma.nombre as idioma','estado_has_idioma.nombre')
+            ->join('estado_has_idioma','estado_has_idioma.idEstado','=','estado.id')
+            ->join('idioma','idioma.id','=','estado_has_idioma.idIdioma')
+            ->get();
+        return $states;
+    }
 }

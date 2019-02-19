@@ -89,5 +89,12 @@
     "reviews": "Reviews",
     "location": "Location",
     "priceNight": "average/night"
+  },
+  "userDropdown": {
+    "inbox": "Inbox",
+    "bookings": "Bookings",
+    "profile": "My profile",
+    "account": "Account",
+    "exit": "Exit"
   }
 }

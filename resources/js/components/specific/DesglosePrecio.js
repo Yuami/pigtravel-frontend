@@ -42,7 +42,7 @@ class DesglosePrecio extends Component {
                                 <h4><Translate type="bookingDetails" string="serviceFee"/></h4>
                             </Col>
                             <Col lg="6" sm="6" xs="6" className="text-center">
-                                <h4>{this.state.serviceFee}{coin}</h4>
+                                <h4>{this.props.price * 0.05 + 5}{coin}</h4>
                             </Col>
                         </Row>
                         <Row className="mt-5">
@@ -50,7 +50,7 @@ class DesglosePrecio extends Component {
                                 <h4><Translate type="bookingDetails" string="total"/></h4>
                             </Col>
                             <Col lg="6" sm="6" xs="6" className="text-center">
-                                <h4>{this.state.total}{coin}</h4>
+                                <h4>{(this.props.price * 1.05 + 5)}{coin}</h4>
                             </Col>
                         </Row>
                     </Col>
