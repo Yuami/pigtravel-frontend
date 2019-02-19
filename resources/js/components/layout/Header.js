@@ -50,10 +50,10 @@ class Header extends Component {
                     </Nav>
                     <Nav className="ml-auto w-100 justify-content-end" navbar>
                         <NavItem className="header-content">
-                            <NavLink href="/login"><Translate string={'login'} type={'header'}/></NavLink>
+                            <NavLink><Link to="/login"><Translate string={'login'} type={'header'}/></Link></NavLink>
                         </NavItem>
                         <NavItem className="header-content">
-                            <NavLink href="/register"><Translate string={'register'} type={'header'}/></NavLink>
+                            <NavLink><Link to="/register"><Translate string={'register'} type={'header'}/></Link></NavLink>
                         </NavItem>
                         <UncontrolledDropdown nav inNavbar>
                                 <LanguagePicker changeLanguage={this.props.changeLanguage}/>

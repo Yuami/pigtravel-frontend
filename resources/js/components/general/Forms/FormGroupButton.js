@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Col, Row} from "reactstrap";
 import FormButton from "./FormButton";
+import {Link} from "react-router-dom";
 
 class FormGroupReg extends Component {
     render() {
@@ -9,10 +10,10 @@ class FormGroupReg extends Component {
             <Col className="my-2" md="12">
                 <Row>
                     <Col>
-                        <FormButton page={this.props.page} text={'Cancelar'} block={true}/>
+                        <Link to={'/'} className={'btn btn-primary btn-lg btn-block '}>Cancelar</Link>
                     </Col>
                     <Col>
-                        <FormButton page={this.props.page} text={'Confirmar'} type={'submit'} block={true}/>
+                        <FormButton ref={this.props.page} text={'Confirmar'} type={'submit'} block={true}/>
                     </Col>
                 </Row>
             </Col>
