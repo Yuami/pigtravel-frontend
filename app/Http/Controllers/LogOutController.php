@@ -10,12 +10,13 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
-class RoomController
+class LogOutController
 {
     public function index()
     {
-        dd(Auth::user(), Auth::id(),Auth::logout());
+        dd(Auth::user(), Session::flush(), Session::save(), Auth::logout());
         if (Auth::check())
             return view('welcome');
     }

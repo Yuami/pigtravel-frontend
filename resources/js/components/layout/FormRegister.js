@@ -32,7 +32,10 @@ class FormRegister extends Component {
                                 console.log(response);
                             }).catch(function (error) {
                             console.log(error);
-                        });
+                        }).then(function () {
+                                window.location = '/';
+                            }
+                        );
                     }}
                     validationSchema={Yup.object().shape({
                         nombre: Yup.string().required('El nombre es necesario'),
