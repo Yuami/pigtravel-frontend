@@ -78,7 +78,7 @@ class House extends Component {
                                     </Col>
                                 </Row>
                             </Panel>
-                            <Panel className="shadow m-3">
+                            <Panel id='reservationPanel' className="shadow m-3">
                                 <Col lg="12">
                                     <Row>
                                         <Col xs="7" lg="12">
@@ -122,10 +122,10 @@ class House extends Component {
                                             <h4>{(this.state.details.map((v) => v.precio) * 1.05 + 5)}{coin}</h4>
                                         </Col>
                                     </Row>
-                                    <Row>
+                                    <Row id={'buttonRow'}>
                                         <LocaleContext.Consumer>
                                             {locale =>
-                                                <LinkButton page={'/reservation'} pageParams={
+                                                <LinkButton block={true} page={'/reservation'} pageParams={
                                                     {
                                                         idVivienda: this.props.match.params.idHouse,
                                                         checkIn: new Date('2012-01-01'),

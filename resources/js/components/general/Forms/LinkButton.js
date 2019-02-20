@@ -6,13 +6,14 @@ import {withRouter} from "react-router-dom";
 
 class LinkButton extends Component {
     render() {
-        return (<Link to={{
+        return (
+            <Link to={{
             pathname: this.props.page,
             state: this.props.pageParams
         }}>
-            <Button block={this.props.block}
+            <Button
                     className={this.props.className}
-                    size='lg' color='primary'
+                    size={this.props.size} color='primary'
                     disabled={this.props.disabled}>{this.props.text}
             </Button>
         </Link>);
@@ -22,16 +23,16 @@ class LinkButton extends Component {
 LinkButton.propTypes = {
     text: PropTypes.string.isRequired,
     className: PropTypes.string,
-    block: PropTypes.string,
     page: PropTypes.string,
     disabled: PropTypes.bool,
     type: PropTypes.string,
     pageParams: PropTypes.object,
+    size: PropTypes.string,
 };
 
 LinkButton.defaultProps = {
     disabled: false,
-    page: '#',
+    page: '#'
 };
 
 

@@ -524,6 +524,10 @@ textarea {
   display: none;
 }
 
+#buttonRow a {
+  width: 100%;
+}
+
 .house .btn {
   font-size: 20px;
 }

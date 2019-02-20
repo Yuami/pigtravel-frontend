@@ -116,7 +116,8 @@ class Reservation extends Component {
                                             total: this.state.total,
                                         }}
                                                 id="reservationButton" className={'pull-right'}
-                                                text={translate(locale, 'accept', 'reservation')}/>
+                                                text={translate(locale, 'accept', 'reservation')
+                                                } size={'lg'} />
                                 }
                             </LocaleContext.Consumer>
                         </Panel>
