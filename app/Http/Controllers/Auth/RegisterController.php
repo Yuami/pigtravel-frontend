@@ -50,14 +50,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nombre' => ['required', 'string', 'max:255'],
-            'ap1' => ['required', 'string', 'max:255'],
-            'ap2' => ['required', 'string', 'max:255'],
-            'dni' => ['required', 'string', 'max:255'],
-            'tlf' => ['required', 'integer', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'fechaN' => ['required', 'date'],
+            'nombre' => ['', 'string', 'max:255'],
+            'ap1' => ['', 'string', 'max:255'],
+            'ap2' => ['', 'string', 'max:255'],
+            'dni' => ['', 'string', 'max:255'],
+            'tlf' => ['', 'integer', 'max:255'],
+            'email' => ['', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['', 'string', 'min:6', 'confirmed'],
+            'fechaN' => ['', 'date'],
             'desc' => ['string', 'max:255'],
             'idC' => ['string', 'max:255'],
             'idF' => ['string', 'max:255']
@@ -72,6 +72,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $data=$data['values'];
         $user = User::create([
             'nombre' => $data['nombre'],
             'apellido1' => $data['ap1'],
