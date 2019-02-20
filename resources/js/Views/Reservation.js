@@ -8,7 +8,7 @@ import Col from "reactstrap/es/Col";
 import Row from "reactstrap/es/Row";
 import Container from "reactstrap/es/Container";
 import TextAreaForm from "../components/general/Forms/TextAreaForm";
-import FormButton from "../components/general/Forms/LinkButton";
+import LinkButton from "../components/general/Forms/LinkButton";
 import Panel from "../components/layout/Panel";
 import ReservationInfo from "../components/specific/ReservationInfo";
 import {withRouter} from "react-router-dom";
@@ -105,7 +105,7 @@ class Reservation extends Component {
                             <TextAreaForm classname={'customTextarea'} name={'message'}/>
                             <LocaleContext.Consumer>
                                 {locale =>
-                                    <FormButton page={'payment'} pageParams={
+                                    <LinkButton page={'/payment'} pageParams={
                                         {
                                             idVivienda: this.props.idVivienda,
                                             checkIn: this.props.checkIn,

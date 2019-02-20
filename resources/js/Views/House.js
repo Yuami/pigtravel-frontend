@@ -14,6 +14,8 @@ import Stars from "../components/Stars";
 import SideBarHouse from "../components/layout/SideBarHouse";
 import Form from "reactstrap/es/Form";
 import Panel from "../components/layout/Panel";
+import LinkButton from "../components/general/Forms/LinkButton";
+import {translate} from "../helpers";
 
 class House extends Component {
 
@@ -26,6 +28,7 @@ class House extends Component {
             priceNight: 55,
         };
     }
+
     IncrementItem = () => {
         this.setState({clicks: this.state.clicks + 1});
     };
@@ -34,14 +37,17 @@ class House extends Component {
         const clicks = this.state.clicks - 1 < 1 ? 1 : this.state.clicks - 1;
         this.setState({clicks});
     };
+
     componentWillMount() {
 
-        axios.get('/api/houses/'+this.props.match.params.idHouse)
+        axios.get('/api/houses/' + this.props.match.params.idHouse)
             .then((res) => this.setState({details: res.data}));
     }
+
     ToggleDiv = () => {
         this.setState({show: !this.state.show});
     };
+
     render() {
         const decreaseBtn = this.state.clicks === 1 ?
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
@@ -62,14 +68,14 @@ class House extends Component {
                         <Col>
                             <Panel className=" m-3">
                                 <Row>
-                                <Col lg="3" sm="3" xs="4">
-                                    <img src="/img/user.jpg" height="70px" className="userImg"></img>
-                                </Col>
-                                <Col lg="9" sm="9" xs="8" className="my-auto">
-                                    {this.state.details.map((v) => (
-                                        <h3>{v.vendedor} {v.apellido1}</h3>
-                                    ))}
-                                </Col>
+                                    <Col lg="3" sm="3" xs="4">
+                                        <img src="/img/user.jpg" height="70px" className="userImg"></img>
+                                    </Col>
+                                    <Col lg="9" sm="9" xs="8" className="my-auto">
+                                        {this.state.details.map((v) => (
+                                            <h3>{v.vendedor} {v.apellido1}</h3>
+                                        ))}
+                                    </Col>
                                 </Row>
                             </Panel>
                             <Panel className="shadow m-3">
@@ -86,42 +92,52 @@ class House extends Component {
                                     <Row className="justify-content-center">
                                         <h3><Translate type={'house'} string={'priceNight'}/></h3>
                                     </Row>
-                                    <Form action="/book">
-                                        <Row className="filtro">
-                                        </Row>
-                                        <Row>
-                                            <FormGroup id={"guests"}>
-                                                <Label><FaIcon icon={'fa fa-user'}/></Label>
-                                                <div className="inputSearcher">
-                                                    {this.state.clicks} <input type="hidden" name="guests"
-                                                                               value={this.state.clicks}/>
-                                                    <Translate string={this.state.clicks === 1 ? 'guest' : 'guests'}
-                                                               type={'searcher'}/>
-                                                </div>
-                                                <Popover placement="bottom" isOpen={this.state.show} target="guests"
-                                                         toggle={this.ToggleDiv} trigger="legacy">
-                                                    <PopoverBody>
-                                                        {decreaseBtn}
-                                                        <Button color="" className="incrementIcon"
-                                                                onClick={this.IncrementItem}><FaIcon
-                                                            icon={'fa fa-plus'}/></Button>
-                                                    </PopoverBody>
-                                                </Popover>
-                                            </FormGroup>
-                                        </Row>
-                                        <Row className="mt-5">
-                                            <Col lg="6" sm="6" xs="6" className="text-center">
-                                                <h4><Translate type="bookingDetails" string="total"/></h4>
-                                            </Col>
-                                            <Col lg="6" sm="6" xs="6" className="text-center">
-                                                <h4>{(this.state.details.map((v)=>v.precio) * 1.05 + 5)}{coin}</h4>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <button type="submit" className="btn btn-primary btn-block"><Translate
-                                                type={'house'} string={'book'}/></button>
-                                        </Row>
-                                    </Form>
+                                    <Row className="filtro">
+                                    </Row>
+                                    <Row>
+                                        <FormGroup id={"guests"}>
+                                            <Label><FaIcon icon={'fa fa-user'}/></Label>
+                                            <div className="inputSearcher">
+                                                {this.state.clicks} <input type="hidden" name="guests"
+                                                                           value={this.state.clicks}/>
+                                                <Translate string={this.state.clicks === 1 ? 'guest' : 'guests'}
+                                                           type={'searcher'}/>
+                                            </div>
+                                            <Popover placement="bottom" isOpen={this.state.show} target="guests"
+                                                     toggle={this.ToggleDiv} trigger="legacy">
+                                                <PopoverBody>
+                                                    {decreaseBtn}
+                                                    <Button color="" className="incrementIcon"
+                                                            onClick={this.IncrementItem}><FaIcon
+                                                        icon={'fa fa-plus'}/></Button>
+                                                </PopoverBody>
+                                            </Popover>
+                                        </FormGroup>
+                                    </Row>
+                                    <Row className="mt-5">
+                                        <Col lg="6" sm="6" xs="6" className="text-center">
+                                            <h4><Translate type="bookingDetails" string="total"/></h4>
+                                        </Col>
+                                        <Col lg="6" sm="6" xs="6" className="text-center">
+                                            <h4>{(this.state.details.map((v) => v.precio) * 1.05 + 5)}{coin}</h4>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <LocaleContext.Consumer>
+                                            {locale =>
+                                                <LinkButton page={'/reservation'} pageParams={
+                                                    {
+                                                        idVivienda: this.props.match.params.idHouse,
+                                                        checkIn: new Date('2012-01-01'),
+                                                        checkOut: new Date('2012-01-04'),
+                                                        pax: this.state.clicks,
+                                                        price: this.state.priceNight,
+                                                    }}
+                                                            id="reservationButton"
+                                                            className={'btn btn-primary btn-block'}
+                                                            text={translate(locale, 'book', 'house')}/>}
+                                        </LocaleContext.Consumer>
+                                    </Row>
                                 </Col>
                             </Panel>
                         </Col>
