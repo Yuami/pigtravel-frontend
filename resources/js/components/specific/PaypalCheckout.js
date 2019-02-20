@@ -1,4 +1,5 @@
 import React from 'react';
+import PaypalBtn from 'react-paypal-checkout';
 import * as PropTypes from "prop-types";
 import axios from "axios";
 import {withRouter} from "react-router-dom";
@@ -32,10 +33,11 @@ class PaypalCheckout extends React.Component {
                 pax: this.state.info.pax,
                 precio: this.state.info.precio
             }).then(function (response) {
-                window.location = ("/reservation/" + response.data);
+                window.location = ("/bookings/" + response.data);
             }).catch(function (error) {
                 console.log(error);
             });
+
         };
 
         const onCancel = (data) => {

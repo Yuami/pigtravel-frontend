@@ -43,6 +43,7 @@
     "leaflet": "^1.4.0",
     "moment": "^2.24.0",
     "moment-range": "^4.0.1",
+    "paypal-checkout": "^4.0.257",
     "prop-types": "^15.6.2",
     "rater": "0.0.2",
     "react-async-script-loader": "latest",

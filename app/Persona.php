@@ -44,8 +44,6 @@ class Persona extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $hidden = ["password"];
-
     public $timestamps = false;
 
     public static function getByCorreo($correo)
