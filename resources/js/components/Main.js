@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import {BrowserRouter, Switch, Route, withRouter} from "react-router-dom";
 import Footer from "./layout/Footer";
 import Home from "../Views/Home";
+import LogOut from "../Views/LogOut";
 import Login from "../Views/Login";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
@@ -63,6 +64,7 @@ class Main extends Component {
                         </Route>
                         <Route exact path="/about-us" component={AboutUs}/>
                         <Route exact path="/login" component={Login}/>
+                        <Route exact path="/logout" component={LogOut}/>
                         <Route exact path="/contact" component={Contact}/>
                         <Route exact path="/modal">
                             <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"}
