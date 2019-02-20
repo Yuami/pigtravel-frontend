@@ -140,6 +140,10 @@ footer {
   font-size: 15px;
 }
 
+#navbarCustom {
+  max-height: 50px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -535,6 +539,27 @@ textarea {
 
 .DayPicker {
   width: 100%;
+}
+
+.sidebar .nav-item {
+  width: 100%;
+}
+
+.services ul,
+.services li {
+  list-style-type: none;
+}
+
+.services .fas {
+  color: #FA6839;
+}
+
+.review {
+  border: 1px solid rgba(128, 128, 128, 0.35) !important;
+}
+
+.card-header {
+  background-color: rgba(128, 128, 128, 0.35) !important;
 }
 
 /*!
