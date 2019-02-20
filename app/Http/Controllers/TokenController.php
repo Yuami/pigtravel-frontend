@@ -35,7 +35,7 @@ class TokenController extends Controller
         $persona->verify();
     }
 
-    public function generate($email, $type) //type = verifyAcc || changePass
+    public static function generate($email, $type) //type = verifyAcc || changePass
     {
         $token = Token::firstOrNew(array(
             "email" => $email,

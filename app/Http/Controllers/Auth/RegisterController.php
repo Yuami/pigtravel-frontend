@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\TokenController;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -71,7 +72,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'nombre' => $data['nombre'],
             'apellido1' => $data['ap1'],
             'apellido2' => $data['ap2'],
@@ -87,5 +88,7 @@ class RegisterController extends Controller
             'idC' => $data['idC'],
             'idF' => $data['idF'],
         ]);
+        TokenController::generate($data['email'], 'verifyAcc');
+        return $user;
     }
 }

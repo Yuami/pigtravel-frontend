@@ -18,8 +18,6 @@ Route::get('/houses/{id}','ReservasController@index');
 Route::get('/bookings/{idReserva}', 'ReservasController@show');
 
 Route::get('/verify', 'TokenController@index');
-Route::get('/gentoken/{email}/{type}', 'TokenController@generate');
-
 
 Route::post('/receivemail', 'MailController@receive');
 

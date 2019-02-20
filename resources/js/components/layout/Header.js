@@ -28,7 +28,7 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state= {
-            isOpen: true,
+            isOpen: false,
             isLog: true,
             dropdownOpen: false
         };
