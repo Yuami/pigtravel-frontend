@@ -20,6 +20,7 @@ class FormLogin extends Component {
                             }).catch(function (error) {
                             console.log(error);
                         }).then(function () {
+                                window.location = '/';
                             }
                         );
                     }}
@@ -42,7 +43,8 @@ class FormLogin extends Component {
                     } = props;
                     return (
                         <Form onSubmit={handleSubmit}>
-                            <FormGroupReg md={12} invalid={errors.correo && touched.correo ? true : false} type={'email'}
+                            <FormGroupReg md={12} invalid={errors.correo && touched.correo ? true : false}
+                                          type={'email'}
                                           name={'correo'} label={'Correo'} onChange={handleChange}
                                           onBlur={handleBlur} value={values.correo} error={errors.correo}/>
                             <FormGroupReg md={12} invalid={errors.password && touched.password ? true : false}

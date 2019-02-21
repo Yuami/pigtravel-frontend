@@ -88,8 +88,17 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect('');
+    }
+
     protected function credentials(Request $request)
     {
-        return $request->only($this->username(), 'password');
+        return $request->json('values');
     }
 }
