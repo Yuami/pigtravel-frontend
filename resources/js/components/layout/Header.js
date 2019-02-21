@@ -56,6 +56,9 @@ class Header extends Component {
                   </Nav>
                   <Nav className="ml-auto w-100 justify-content-end" navbar>
                       <NavItem className="header-content">
+                          <NavLink href="/logout"><Translate string={'logout'} type={'header'}/></NavLink>
+                      </NavItem>
+                      <NavItem className="header-content">
                           <NavLink href="/login"><Translate string={'login'} type={'header'}/></NavLink>
                       </NavItem>
                       <NavItem className="header-content">

@@ -1,0 +1,13 @@
+// Theme colors
+$primary: #FA6839;
+$primaryTr: rgb(250, 104, 57, 0.3);
+$secondary: #314D68;
+$light: #F6F7FC;
+$info: #22CDF3;
+
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "light": $light,
+        "info": $info
+);

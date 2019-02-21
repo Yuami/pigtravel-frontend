@@ -16,8 +16,15 @@ class LogOutController
 {
     public function index()
     {
-        dd(Auth::user(), Session::flush(), Session::save(), Auth::logout());
-        if (Auth::check())
+
+        if (Auth::check()) {
+            var_dump(Auth::all());
+            Session::flush();
+            Session::save();
+            Auth::logout();
             return view('welcome');
+        }else{
+            return view('welcome');
+        }
     }
 }

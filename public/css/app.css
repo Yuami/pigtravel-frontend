@@ -47,18 +47,6 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.form-control {
-  border: 0 !important;
-}
-
-.btn {
-  border: 0 !important;
-}
-
-.btn-cancelar {
-  color: white;
-}
-
 .card {
   border: 0 !important;
 }
@@ -288,6 +276,18 @@ footer {
   background-color: #FA6839;
 }
 
+.btn {
+  border: 0 !important;
+}
+
+.btn-cancelar {
+  color: white;
+}
+
+.form-control {
+  border: 0 !important;
+}
+
 .customTextarea {
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
@@ -303,6 +303,13 @@ footer {
 .GasrFbdQYtD26JnmJzJpj {
   border: solid #aaa1a4 !important;
   border-width: 0 5px 5px 0 !important;
+}
+
+.invalid-feedback {
+  text-align: center;
+  color: #FA6839;
+  border-radius: 2px;
+  background-color: rgba(250, 104, 57, 0.3);
 }
 
 .bookingCont {
