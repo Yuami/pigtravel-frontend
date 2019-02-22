@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ReservedEmail;
+use App\Mensaje;
+use App\ReservaHasEstado;
+use App\Vivienda;
 use App\Reserva;
-use App\Mail\validateEmail;
-use App\Token;
+use http\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+
 
 class ReservasController extends Controller
 {
@@ -28,9 +32,16 @@ class ReservasController extends Controller
 
     public function store(Request $request)
     {
+        $vivienda = Vivienda::find($request->idVivienda);
+
+        //Cambia el tiempo a la entrada y salida de la casa
+        $checkIn = substr($request->checkIn, 0, 11) . $vivienda->horaEntrada;
+        $checkOut = substr($request->checkOut, 0, 11) . $vivienda->horaSalida;
+
+        //Crea la reserva
         $reserva = new Reserva;
-        $reserva->checkIn = $request->checkIn;
-        $reserva->checkOut = $request->checkOut;
+        $reserva->checkIn = $checkIn;
+        $reserva->checkOut = $checkOut;
         $reserva->idVivienda = $request->idVivienda;
         $reserva->totalClientes = $request->pax;
         $reserva->idMetodoPago = 1;
@@ -38,30 +49,30 @@ class ReservasController extends Controller
         $reserva->idCliente = 1;
         $reserva->save();
 
-        return $reserva->id;
+        $estado = new ReservaHasEstado();
+        $estado->idEstado = $request->estado;
+        $estado->idReserva = $reserva->id;
+        $estado->save();
 
-    }
-
-    public function generateMail($email, $idReserva)
-    {
-        $token = Token::firstOrNew(array(
-            "email" => $email,
-            "idReserva" => $idReserva
-        ));
-
-        $genToken = md5(rand(1, 1000));
-
-        if ($token->token) {
-            Token::where([
-                'email' => $email,
-                'idReserva' => $idReserva,
-            ])->update(['token' => $genToken]);
-        } else {
-            $token->token = $genToken;
-            $token->save();
+        if (strlen($request->message) > 1){
+            $message = new Mensaje;
+            $message->idSender = $reserva->idCliente;
+            $message->idReciever = $vivienda->idVendedor;
+            $message->mensaje = $request->message;
+            $message->idVivienda = $reserva->idVivienda;
+            $message->idReserva = $reserva->id;
+            $message->save();
         }
 
-        Mail::to($email)->send(new validateEmail(Token::getByToken($genToken)));
+        $this->generateMail('newtimestube@gmail.com', $reserva->id, $request->estado, $request->paymentID);
 
+        return $reserva->id;
+    }
+
+    public function generateMail($email, $idReserva, $estado, $paymentID)
+    {
+        if($estado == 4) {
+            Mail::to($email)->send(new ReservedEmail($email, $idReserva, $estado, $paymentID));
+        }
     }
 }

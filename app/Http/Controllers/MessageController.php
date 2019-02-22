@@ -18,10 +18,8 @@ class MessageController extends Controller {
         return view('welcome');
 
     }
-    public function store(Request $request)
+    public function store(Request $request) {
 
-            {
-                dd($request->input('email'));
             }
 }
 

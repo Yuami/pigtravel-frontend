@@ -158,7 +158,6 @@ class BookingDetail extends Component {
                 <UserRouter title={'booking'} list={bookingDetails}/>
                 <Container className="bookingCont shadow">
                     {book}
-                    <PrintPDF comp={book}/>
                 </Container>
             </div>
         );

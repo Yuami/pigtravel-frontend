@@ -31,8 +31,11 @@ class PaypalCheckout extends React.Component {
                 checkIn: this.state.info.checkIn,
                 checkOut: this.state.info.checkOut,
                 pax: this.state.info.pax,
-                precio: this.state.info.precio
+                precio: this.state.info.precio,
+                estado: 4,
+                message: message
             }).then(function (response) {
+
                 window.location = ("/bookings/" + response.data);
             }).catch(function (error) {
                 console.log(error);
@@ -97,6 +100,7 @@ PaypalCheckout.propTypes = {
     price: PropTypes.number,
     serviceFee: PropTypes.number,
     total: PropTypes.number.isRequired,
+    message: PropTypes.string,
 };
 
 export default withRouter(PaypalCheckout);

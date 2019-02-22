@@ -12,6 +12,8 @@ import LinkButton from "../components/general/Forms/LinkButton";
 import Panel from "../components/layout/Panel";
 import ReservationInfo from "../components/specific/ReservationInfo";
 import {withRouter} from "react-router-dom";
+import {FormGroup, Input, Label} from "reactstrap";
+import Textarea from "@material-ui/core/InputBase/Textarea";
 
 class Reservation extends Component {
 
@@ -26,6 +28,7 @@ class Reservation extends Component {
         });
 
         this.state = {
+            message: '',
             servicios: [],
             price: allPrices.price,
             serviceFee: allPrices.serviceFee,
@@ -34,7 +37,6 @@ class Reservation extends Component {
 
         this.renderInformation.bind(this);
         this.renderRules.bind(this);
-
     }
 
     rules = [13, 14, 22];
@@ -75,6 +77,8 @@ class Reservation extends Component {
         });
     }
 
+
+
     renderInformation() {
         const rules = this.rules;
         return this.state.servicios.map(function (value, index, array) {
@@ -87,8 +91,13 @@ class Reservation extends Component {
         });
     }
 
+    handleChange = (event) => {
+        this.setState({message: event.target.value});
+    };
 
     render() {
+
+        console.log(this.state.message);
         const renderRules = this.renderRules();
         const renderInformacion = this.renderInformation();
 
@@ -102,7 +111,11 @@ class Reservation extends Component {
                             <li><h3><Translate type={'reservation'} string={'includes'}/></h3></li>
                             <ul className={'row mb-4'}>{renderInformacion}</ul>
                             <li><h3><Translate type={'reservation'} string={'message'}/></h3></li>
-                            <TextAreaForm classname={'customTextarea'} name={'message'}/>
+                            <FormGroup>
+                                <Label for={'message'}/>
+                                <Textarea className={'customTextarea'} rows='6' type="textarea" name="message" id={'message'}
+                                          value={this.state.value} onChange={this.handleChange}/>
+                            </FormGroup>
                             <LocaleContext.Consumer>
                                 {locale =>
                                     <LinkButton page={'/payment'} pageParams={
@@ -114,6 +127,7 @@ class Reservation extends Component {
                                             price: this.state.price,
                                             serviceFee: this.state.serviceFee,
                                             total: this.state.total,
+                                            message: this.state.total,
                                         }}
                                                 id="reservationButton" className={'pull-right'}
                                                 text={translate(locale, 'accept', 'reservation')
