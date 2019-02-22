@@ -49,7 +49,7 @@ class Reservation extends Component {
         const viviendaURL = '/api/viviendas/' + this.props.idVivienda;
 
         axios.get(viviendaURL).then((res) => {
-            this.setState({vivienda: res.data});
+            this.setState({vivienda: res.data.data});
         });
 
         axios.get(servicioURL).then((res) => {
@@ -64,8 +64,6 @@ class Reservation extends Component {
 
     renderRules() {
         const rules = this.rules;
-
-        console.log(this.state);
         return this.state.servicios.map(function (value, index, array) {
             if (rules.includes(value.idServicio) && Reservation.checkServiceLanguage(value.idioma)) {
                 if (value.activo) {
@@ -96,8 +94,9 @@ class Reservation extends Component {
             price: this.state.price,
             serviceFee: this.state.serviceFee,
             total: this.state.total,
-            message: this.state.total,
+            message: this.state.message,
         };
+
 
         return this.state.vivienda.alquilerAutomatico ?
             <LocaleContext.Consumer>

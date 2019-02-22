@@ -33,9 +33,8 @@ class PaypalCheckout extends React.Component {
                 pax: this.state.info.pax,
                 precio: this.state.info.precio,
                 estado: 4,
-                message: message
+                message: this.props.message
             }).then(function (response) {
-
                 window.location = ("/bookings/" + response.data);
             }).catch(function (error) {
                 console.log(error);
