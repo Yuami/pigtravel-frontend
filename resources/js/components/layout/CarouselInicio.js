@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 
 import InfiniteCarousel from 'react-leaf-carousel';
 import Translate from "../../lang/Translate";
+import MainCard from "../general/MainCard";
+import CardImg from "reactstrap/es/CardImg";
+import CardBody from "reactstrap/es/CardBody";
+import CardTitle from "reactstrap/es/CardTitle";
+import CardText from "reactstrap/es/CardText";
 
 class CarouselInicio extends Component {
     render() {
@@ -30,41 +35,42 @@ class CarouselInicio extends Component {
                 slidesToScroll={3}
                 slidesToShow={3}
                 scrollOnDevice={true}>
-                <div className="card">
-                    <img className="card-img-top img-fluid" src="img/mallorca.jpg"
-                         alt="Card image cap"></img>
-                        <div className="card-body">
-                            <h4 className="card-title">Mallorca</h4>
-                            <p className="card-text"><Translate type={"carrousel"} string={"es"}/></p>
-                        </div>
-                </div>
-                <div className="card">
-                    <img className="card-img-top img-fluid" src="img/paris.jpg"
-                         alt="Card image cap"></img>
-                    <div className="card-body">
-                        <h4 className="card-title">París</h4>
-                        <p className="card-text"><Translate type={"carrousel"} string={"fr"}/></p>
-                    </div>
-                </div>
-                <div className="card">
-                    <img className="card-img-top img-fluid" src="img/mallorca.jpg"
-                         alt="Card image cap"></img>
-                    <div className="card-body">
-                        <h4 className="card-title">Berlín</h4>
-                        <p className="card-text"><Translate type={"carrousel"} string={"gr"}/></p>
-                    </div>
-                </div>
-                <div className="card">
-                    <img className="card-img-top img-fluid" src="img/maldivas.jpg"
-                         alt="Card image cap"></img>
-                    <div className="card-body">
-                        <h4 className="card-title">Malé</h4>
-                        <p className="card-text"><Translate type={"carrousel"} string={"mv"}/></p>
-                    </div>
-                </div>
+
+                <MainCard clickable>
+                    <CardImg top src="/img/mallorca.jpg"/>
+                    <CardBody>
+                        <CardTitle>Mallorca</CardTitle>
+                        <CardText><Translate type={"carrousel"} string={"es"}/></CardText>
+                    </CardBody>
+                </MainCard>
+
+                <MainCard clickable>
+                    <CardImg top src="/img/paris.jpg"/>
+                    <CardBody>
+                        <CardTitle>París</CardTitle>
+                        <CardText><Translate type={"carrousel"} string={"fr"}/></CardText>
+                    </CardBody>
+                </MainCard>
+
+                <MainCard clickable>
+                    <CardImg top src="/img/maldivas.jpg"/>
+                    <CardBody>
+                        <CardTitle>Malé</CardTitle>
+                        <CardText><Translate type={"carrousel"} string={"mv"}/></CardText>
+                    </CardBody>
+                </MainCard>
+
+                <MainCard clickable>
+                    <CardImg top src="/img/mallorca.jpg"/>
+                    <CardBody>
+                        <CardTitle>Berlin</CardTitle>
+                        <CardText><Translate type={"carrousel"} string={"gr"}/></CardText>
+                    </CardBody>
+                </MainCard>
             </InfiniteCarousel>
 
         )
     }
-};
+}
+
 export default CarouselInicio;

@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 class LocaleController extends Controller
 {
 
-    public function chnage($locale)
+    public function change($locale)
     {
         app()->setLocale($locale);
+        return 'success';
     }
 
     /**

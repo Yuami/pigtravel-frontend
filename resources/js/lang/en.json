@@ -80,7 +80,8 @@
     "city": "City"
   },
   "houselist": {
-    "night": "per night"
+    "night": "per night",
+    "error": "Search error! Try another search or try the same search later."
   },
   "house": {
     "book": "BOOK",

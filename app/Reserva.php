@@ -11,6 +11,16 @@ class Reserva extends Model
 
     public $timestamps = false;
 
+    public function estados()
+    {
+        return $this->hasManyThrough(Estado::class, ReservaHasEstado::class, 'idReserva', 'id', 'id', 'idEstado');
+    }
+
+    public function getLastEstadoAttribute()
+    {
+        return $this->estados()->orderBy('fechaCambio', 'desc')->first();
+    }
+
     static function details($id){
         $regions = DB::table('reserva')
             ->select('reserva.id','reserva.checkIn','reserva.checkOut','vivienda.nombre as nombreVivienda','reserva.precio','reserva.totalClientes','estado_has_idioma.nombre as estado','persona.nombre','persona.apellido1')

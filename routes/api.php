@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get("/cities",function (){
-    $cities=\App\Cities::getIfHaveHouses();
+    $cities=\App\City::getIfHaveHouses();
     return $cities;
 } );
 Route::get("/regions",function (){
@@ -50,7 +50,11 @@ Route::get('/viviendas/{id}', function($id){
 Route::get('/viviendas', "ViviendaController@index");
 
 Route::get('/viviendas/{id}', function($id){
-    return \App\Vivienda::find($id);
+    return new \App\Http\Resources\Vivienda(\App\Vivienda::find($id));
 });
+
+Route::post('/locale/{locale}', 'LocaleController@change');
+
+Route::get('/locale', 'LocaleController@index');
 
 Route::post('/reservation', 'ReservasController@store');

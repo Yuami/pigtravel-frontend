@@ -80,7 +80,8 @@
     "city": "Ciudad"
   },
   "houselist": {
-    "night": "por noche"
+    "night": "por noche",
+    "error": "Hay un error en la busqueda! Intenta otra busqueado o intentaló más tarde."
   },
   "house": {
     "book": "RESERVAR",
