@@ -49,12 +49,14 @@ class ReservasController extends Controller
         $reserva->idCliente = 1;
         $reserva->save();
 
-        $estado = new ReservaHasEstado();
-        $estado->idEstado = $request->estado;
-        $estado->idReserva = $reserva->id;
-        $estado->save();
+        if ($request->estado != 3) {
+            $estado = new ReservaHasEstado();
+            $estado->idEstado = $request->estado;
+            $estado->idReserva = $reserva->id;
+            $estado->save();
+        }
 
-        if (strlen($request->message) > 1){
+        if (strlen($request->message) > 1) {
             $message = new Mensaje;
             $message->idSender = $reserva->idCliente;
             $message->idReciever = $vivienda->idVendedor;
@@ -71,7 +73,7 @@ class ReservasController extends Controller
 
     public function generateMail($email, $idReserva, $estado, $paymentID)
     {
-        if($estado == 4) {
+        if ($estado == 4) {
             Mail::to($email)->send(new ReservedEmail($email, $idReserva, $estado, $paymentID));
         }
     }

@@ -20,7 +20,8 @@
     "message": "Information or questions to the house owner",
     "accept": "Accept and continue",
     "paymentMethod": "Select the payment method",
-    "pay": "Pay now"
+    "pay": "Pay now",
+    "request": "Request a reservation"
   },
   "general": {
     "email": "contact@pigtravel.top",
