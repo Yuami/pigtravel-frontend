@@ -28,7 +28,9 @@
     "message": "Preguntas o información al propietario",
     "accept": "Aceptar y continuar",
     "paymentMethod": "Selecciona el método de pago",
-    "pay": "Pagar ahora"
+    "pay": "Pagar ahora",
+    "request": "Envia una peticion de reserva"
+
   },
   "searcher": {
     "city": "¿Donde quieres ir?",
