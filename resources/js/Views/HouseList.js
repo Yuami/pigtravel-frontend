@@ -91,6 +91,8 @@ class HouseList extends Component {
         return (
             <Container className="my-5" fluid={!error}>
                 <Row>
+                </Row>
+                <Row>
                     {houseList}
                 </Row>
             </Container>

@@ -17,10 +17,6 @@ class Vivienda extends JsonResource
      */
     public function toArray($request)
     {
-//        return [
-//
-//        ];
-
         return [
             'id' => $this->id,
             'vendedor' => $this->when(Auth::check(), $this->vendedor, $this->idVendedor),
@@ -42,7 +38,7 @@ class Vivienda extends JsonResource
             'valoracion' => $this->valoraciones,
             'descripcion' => $this->descripcion,
             'tarifas' => [
-                "general" => $this->tarifas,
+                "general" => $this->tarifas->firstWhere('general', 1),
                 'extra' => $this->tarifas->where('general', '!=', 1),
             ],
             'reservas' => Reserva::collection($this->reservas),
