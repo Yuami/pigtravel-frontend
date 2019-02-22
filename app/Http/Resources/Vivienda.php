@@ -2,13 +2,15 @@
 
 namespace App\Http\Resources;
 
-use http\Env;
+use App\Http\Resources\City as CityResource;
+use App\City;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Auth;
 
 class Vivienda extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transform the resource collection into an array.
      *
      * @param  \Illuminate\Http\Request $request
      * @return array
@@ -17,7 +19,7 @@ class Vivienda extends JsonResource
     {
         return [
             'id' => $this->id,
-            'vendedor' => $this->vendedor,
+            'vendedor' => $this->when(Auth::check(), $this->vendedor, $this->idVendedor),
             'nombre' => $this->nombre,
             'capacidad' => $this->capacidad,
             'latitude' => [
@@ -31,7 +33,7 @@ class Vivienda extends JsonResource
             'alquilerAutomatico' => $this->alquilerAutomatico,
             'destacada' => $this->destacada,
             'tipoVivienda' => $this->tipoVivienda,
-            'ciudad' => $this->idCiudad,
+            'ciudad' => new CityResource(City::find($this->idCiudad)),
             'fotos' => $this->fotos,
             'valoracion' => $this->valoraciones,
             'descripcion' => $this->descripcion,
@@ -39,7 +41,8 @@ class Vivienda extends JsonResource
                 "general" => $this->tarifas->firstWhere('general', 1),
                 'extra' => $this->tarifas->where('general', '!=', 1),
             ],
-            'backlink' => env("BACKDOMAIN")
+            'reservas' => Reserva::collection($this->reservas),
+            'servicios' => $this->servicios
         ];
     }
 }

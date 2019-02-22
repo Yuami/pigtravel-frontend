@@ -5,9 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Cities extends Model
+class City extends Model
 {
-    protected $table = 'cities';
 
     public function region()
     {
