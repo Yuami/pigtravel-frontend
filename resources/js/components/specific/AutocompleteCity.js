@@ -20,10 +20,7 @@ class AutocompleteCity extends Component {
     }
 
     getOptionsCities() {
-        axios({
-            url: '/api/cities',
-            method: 'get'
-        }).then((response) => {
+        axios('/api/cities').then((response) => {
             this.setState({
                 optionsCities: response.data
             });

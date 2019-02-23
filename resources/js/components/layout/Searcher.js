@@ -3,6 +3,8 @@ import Translate from "../../lang/Translate";
 import {Col, Label, Button, Popover, PopoverBody} from 'reactstrap';
 import DatePickerInicio from "../specific/DatePickerInicio"
 import FaIcon from "../general/FaIcon";
+import {LocaleContext} from "../../LocaleContext";
+import {translate} from "../../helpers";
 import AutocompleteCity from "../specific/AutocompleteCity";
 import FormButton from "../general/Forms/LinkButton";
 import Form from "reactstrap/es/Form";
@@ -128,4 +130,4 @@ class Searcher extends Component {
     }
 }
 
-export default withRouter(Searcher);
+export default Searcher;

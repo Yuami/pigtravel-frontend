@@ -10,6 +10,7 @@ import Spinner from "reactstrap/es/Spinner";
 import Translate from "../lang/Translate";
 import {Alert} from "reactstrap";
 import CarouselInicio from "../components/layout/CarouselInicio";
+import PanelSearcher from "../components/PanelSearcher";
 
 
 class HouseList extends Component {
@@ -91,6 +92,9 @@ class HouseList extends Component {
         return (
             <Container className="my-5" fluid={!error}>
                 <Row>
+                    <Col xs="12" md="6">
+                        <PanelSearcher/>
+                    </Col>
                 </Row>
                 <Row>
                     {houseList}

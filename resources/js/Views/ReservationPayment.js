@@ -21,13 +21,13 @@ class ReservationPayment extends Component {
         this.state = {
             disabled: true,
             paymentMethod: "creditCard",
-            serviceFee: undefined,
+            serviceFee: null,
 
-            idVivienda: undefined,
-            checkIn: undefined,
-            checkOut: undefined,
-            pax: undefined,
-            price: undefined,
+            idVivienda: null,
+            checkIn: null,
+            checkOut: null,
+            pax: null,
+            price: null,
             message: ''
         };
 
