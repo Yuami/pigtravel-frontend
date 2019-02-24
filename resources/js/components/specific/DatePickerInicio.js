@@ -51,7 +51,7 @@ class DatePickerInicio extends Component {
                             value={this.props.value}
                             onSelect={this.props.onChange}
                             singleDateRange={true}
-                            minimumDate={this.props.value.start.toDate()}
+                            minimumDate={moment()}
                         />
                     </PopoverBody>
                 </Popover>
