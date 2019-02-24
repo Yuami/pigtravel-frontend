@@ -28,14 +28,16 @@
     "support": "Atención al cliente",
     "home": "Inicio",
     "more-information": "Más información",
-    "loading": "Cargando"
+    "loading": "Cargando",
+    "filters": "Filtros"
   },
   "searcher": {
     "city": "¿Donde quieres ir?",
     "guests": "huéspedes",
     "guest": "huesped",
     "checkin": "Entrada ",
-    "checkout": "Salida "
+    "checkout": "Salida ",
+    "search": "Buscar"
   },
   "index": {
     "titleIndex": "RESERVA APARTAMENTOS EN TODO EL MUNDO"

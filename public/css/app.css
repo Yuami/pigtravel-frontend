@@ -68,6 +68,10 @@ body {
   text-decoration: none !important;
 }
 
+.Select-menu-outer {
+  z-index: 999 !important;
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -223,8 +227,8 @@ footer {
 
 #calendario,
 #guests {
-  width: 100%;
   text-align: center;
+  margin-bottom: 0;
 }
 
 .inputSearcher {

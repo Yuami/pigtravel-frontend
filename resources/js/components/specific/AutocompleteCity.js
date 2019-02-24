@@ -75,6 +75,7 @@ class AutocompleteCity extends Component {
                 onChange={this.props.change}
                 options={groupedOptions}
                 blurInputOnSelect={false}
+                className="Select-menu-outer"
                 placeholder={<Translate type="searcher" string="city"/>}
             />
         );

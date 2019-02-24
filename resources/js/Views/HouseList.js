@@ -11,6 +11,12 @@ import Translate from "../lang/Translate";
 import {Alert} from "reactstrap";
 import CarouselInicio from "../components/layout/CarouselInicio";
 import PanelSearcher from "../components/PanelSearcher";
+import originalMoment from "moment";
+import {extendMoment} from "moment-range";
+import Panel from "../components/layout/Panel";
+import Button from "react-bootstrap/Button";
+
+const moment = extendMoment(originalMoment);
 
 
 class HouseList extends Component {
@@ -21,6 +27,10 @@ class HouseList extends Component {
         links: null,
         meta: null,
         error: false,
+        start: moment().format('YYYY-MM-DD'),
+        end: moment().add(1, "week").format('YYYY-MM-DD'),
+        guests: this.props.location.state.guests,
+        place: this.props.location.state.place,
     };
 
     componentWillMount() {
@@ -36,19 +46,22 @@ class HouseList extends Component {
         query = query.substr(0, query.length - 1);
         query = query === '?' ? '' : query;
         query = endPoint + query;
-        console.log(query);
+
         axios.get(query)
             .then(data => data.data)
             .then(houses => this.setState({
                 houses: houses.data,
                 links: houses.links,
                 meta: houses.meta,
-                loading: false
+                loading: false,
+                ...params
             }))
             .catch(e => this.setState({
                 loading: false,
-                error: true
+                error: true,
+                ...params
             }));
+
     }
 
 
@@ -89,11 +102,17 @@ class HouseList extends Component {
                     </Alert>
                 </>);
         }
+
         return (
             <Container className="my-5" fluid={!error}>
                 <Row>
-                    <Col xs="12" md="6">
-                        <PanelSearcher/>
+                    <Col xs="12" md="8">
+                        <PanelSearcher start={this.state.start} end={this.state.end} guests={this.state.guests} place={this.state.place}/>
+                    </Col>
+                    <Col xs="12" md="4">
+                        <Panel>
+                            <Button color="primary"><Translate type="general" string="filters"/></Button>
+                        </Panel>
                     </Col>
                 </Row>
                 <Row>

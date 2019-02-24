@@ -13,6 +13,7 @@ class ValoracionVivienda extends Model
     {
         return $this->hasMany(ValoracionViviendaHasTipo::class, 'id', 'idValoracion');
     }
+
     static function vvById($id){
             $VV = DB::table('valoracion_vivienda')
                 ->select('valoracion_vivienda.mensaje','valoracion_vivienda.media','persona.nombre')

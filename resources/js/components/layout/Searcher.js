@@ -3,15 +3,11 @@ import Translate from "../../lang/Translate";
 import {Col, Label, Button, Popover, PopoverBody} from 'reactstrap';
 import DatePickerInicio from "../specific/DatePickerInicio"
 import FaIcon from "../general/FaIcon";
-import {LocaleContext} from "../../LocaleContext";
-import {translate} from "../../helpers";
 import AutocompleteCity from "../specific/AutocompleteCity";
-import FormButton from "../general/Forms/LinkButton";
-import Form from "reactstrap/es/Form";
 import FormGroup from "reactstrap/es/FormGroup";
+import {Link} from "react-router-dom";
 import originalMoment from "moment";
 import {extendMoment} from "moment-range";
-import {withRouter, Link} from "react-router-dom";
 
 const moment = extendMoment(originalMoment);
 
