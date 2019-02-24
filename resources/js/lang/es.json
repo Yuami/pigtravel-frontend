@@ -12,14 +12,6 @@
     "support.contact": "Contacto",
     "follow": "Síguenos"
   },
-  "general": {
-    "email": "contact@pigtravel.top",
-    "about-us": "Sobre nosotros",
-    "support": "Atención al cliente",
-    "home": "Inicio",
-    "more-information": "Más información",
-    "loading": "Cargando"
-  },
   "reservation": {
     "house-rules": "Normas de la casa",
     "allowed": "estan permitidos",
@@ -29,6 +21,14 @@
     "accept": "Aceptar y continuar",
     "paymentMethod": "Selecciona el método de pago",
     "pay": "Pagar ahora"
+  },
+  "general": {
+    "email": "contact@pigtravel.top",
+    "about-us": "Sobre nosotros",
+    "support": "Atención al cliente",
+    "home": "Inicio",
+    "more-information": "Más información",
+    "loading": "Cargando"
   },
   "searcher": {
     "city": "¿Donde quieres ir?",
