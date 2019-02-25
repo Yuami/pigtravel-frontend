@@ -44,8 +44,6 @@ class Main extends Component {
         this.setState({
             locale: id
         });
-        const endPoint = '/api/locale/' + id;
-        axios.post(endPoint);
     };
 
 
