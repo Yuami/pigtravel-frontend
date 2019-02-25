@@ -1,15 +1,12 @@
-
 // Fonts
+@import "../../node_modules/react-toastify/dist/ReactToastify.min.css";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
 // Variables
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
-
 @import 'variables';
 @import 'index';
-
 // small Components
 @import "color";
 @import "custom";
@@ -28,6 +25,5 @@
 @import "reservationForm";
 @import "houseCard";
 @import "house";
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

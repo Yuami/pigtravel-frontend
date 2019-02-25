@@ -21,11 +21,13 @@ import Reservation from "../Views/Reservation";
 import ReservationPayment from "../Views/ReservationPayment";
 import House from "../Views/House";
 import Profile from "../Views/Profile";
+import {AuthContext} from "../AuthContext"
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isAuth: false,
             preferredLocale: "es",
             locale: "es"
         };
@@ -53,36 +55,38 @@ class Main extends Component {
 
         return (
             <LocaleContext.Provider value={this.state.locale}>
-                <FormContext.Provider value={token}>
-                    <Header changeLanguage={this.changeLanguage}/>
-                    {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter */}
-                    <Switch>
-                        <Route exact path="/" component={Home}/>
-                        <Route exact path="/bookings/:idReserva" component={BookingDetail}>
-                        </Route>
-                        <Route exact path="/houses/:idHouse/:name" component={House}>
-                        </Route>
-                        <Route exact path="/about-us" component={AboutUs}/>
-                        <Route exact path="/login" component={Login}/>
-                        <Route exact path="/logout" component={LogOut}/>
-                        <Route exact path="/contact" component={Contact}/>
-                        <Route exact path="/modal">
-                            <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"}
-                                       primaryButton={"lol"}/>
-                        </Route>
-                        <Route exact path="/register" component={Register}/>
-                        <Route exact path="/reservation">
-                            <Reservation idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
-                        </Route>
-                        <Route exact path="/payment">
-                            <ReservationPayment/>
-                        </Route>
-                        <Route exact path="/terms" component={Terms}/>
-                        <Route exact path="/search" component={HouseList}/>
-                        <Route path="/profile/:id/:name" component={Profile}/>
-                    </Switch>
-                    <Footer/>
-                </FormContext.Provider>
+                <AuthContext.Provider value={this.state.isAuth}>
+                    <FormContext.Provider value={token}>
+                        <Header changeLanguage={this.changeLanguage}/>
+                        {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter*/}
+                        <Switch>
+                            <Route exact path="/" component={Home}/>
+                            <Route exact path="/bookings/:idReserva" component={BookingDetail}>
+                            </Route>
+                            <Route exact path="/houses/:idHouse/:name" component={House}>
+                            </Route>
+                            <Route exact path="/about-us" component={AboutUs}/>
+                            <Route exact path="/login" component={Login}/>
+                            <Route exact path="/logout" component={LogOut}/>
+                            <Route exact path="/contact" component={Contact}/>
+                            <Route exact path="/modal">
+                                <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"}
+                                           primaryButton={"lol"}/>
+                            </Route>
+                            <Route exact path="/register" component={Register}/>
+                            <Route exact path="/reservation">
+                                <Reservation idVivienda={51} checkIn={checkIn} checkOut={checkOut} pax={2} price={300}/>
+                            </Route>
+                            <Route exact path="/payment">
+                                <ReservationPayment/>
+                            </Route>
+                            <Route exact path="/terms" component={Terms}/>
+                            <Route exact path="/search" component={HouseList}/>
+                            <Route path="/profile/:id/:name" component={Profile}/>
+                        </Switch>
+                        <Footer/>
+                    </FormContext.Provider>
+                </AuthContext.Provider>
             </LocaleContext.Provider>
         );
     }

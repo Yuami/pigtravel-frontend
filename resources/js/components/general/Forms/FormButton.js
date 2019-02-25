@@ -6,7 +6,7 @@ class FormButton extends Component {
     render() {
         return (
             <Button page={this.props.page} block={this.props.block} className={this.props.className}
-                    size='lg' color='primary' disabled={this.props.disabled}>{this.props.text}
+                    size='lg' color='primary' disabled={this.props.disabled} onClick={this.props.onclick}>{this.props.text}
             </Button>)
 
     }
@@ -15,6 +15,7 @@ class FormButton extends Component {
 FormButton.propTypes = {
     text: PropTypes.string.isRequired,
     className: PropTypes.string,
+    onclick: PropTypes.string,
     block: PropTypes.string,
     page: PropTypes.string,
     disabled: PropTypes.bool,
