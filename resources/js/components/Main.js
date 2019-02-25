@@ -21,6 +21,7 @@ import Reservation from "../Views/Reservation";
 import ReservationPayment from "../Views/ReservationPayment";
 import House from "../Views/House";
 import Profile from "../Views/Profile";
+import axios from "axios";
 
 class Main extends Component {
     constructor(props) {
@@ -43,6 +44,8 @@ class Main extends Component {
         this.setState({
             locale: id
         });
+        const endPoint = '/api/locale/' + id;
+        axios.post(endPoint);
     };
 
 

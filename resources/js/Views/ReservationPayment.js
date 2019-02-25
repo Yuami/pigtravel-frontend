@@ -28,6 +28,7 @@ class ReservationPayment extends Component {
             checkOut: undefined,
             pax: undefined,
             price: undefined,
+            message: ''
         };
 
         this.paymentSelected = this.paymentSelected.bind(this);
@@ -46,7 +47,7 @@ class ReservationPayment extends Component {
 
     componentWillMount() {
         const state = this.props.location.state;
-        if (checkIfUndefined(state, ['idVivienda', 'checkIn', 'checkOut', 'pax', 'price'])) {
+        if (checkIfUndefined(state, ['idVivienda', 'checkIn', 'checkOut', 'pax', 'price', 'total', 'serviceFee'])) {
             this.setState({redirect: true});
             return;
         }
@@ -59,6 +60,7 @@ class ReservationPayment extends Component {
             price,
             total,
             serviceFee,
+            message
         } = state;
 
         this.setState({
@@ -69,6 +71,7 @@ class ReservationPayment extends Component {
             serviceFee: serviceFee,
             price: price,
             total: total,
+            message: message,
         });
 
     }

@@ -12,15 +12,13 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-use App\Http\Resources\Vivienda as ViviendaResource;
-use App\Vivienda;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::get("/cities",function (){
-    $cities=\App\Cities::getIfHaveHouses();
+    $cities=\App\City::getIfHaveHouses();
     return $cities;
 } );
 Route::get("/regions",function (){
@@ -58,12 +56,14 @@ Route::get('/viviendas/{id}', function($id){
     return \App\Vivienda::find($id);
 });
 
-Route::get('/viviendas', function (){
-    return ViviendaResource::collection(Vivienda::all());
-});
+Route::get('/viviendas', "ViviendaController@index");
 
 Route::get('/viviendas/{id}', function($id){
-    return \App\Vivienda::find($id);
+    return new \App\Http\Resources\Vivienda(\App\Vivienda::find($id));
 });
+
+Route::post('/locale/{locale}', 'LocaleController@change');
+
+Route::get('/locale', 'LocaleController@index');
 
 Route::post('/reservation', 'ReservasController@store');

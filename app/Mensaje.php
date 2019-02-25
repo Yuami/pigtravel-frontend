@@ -7,7 +7,8 @@ class Mensaje extends Model
 {
 
     public $table = 'mensajes';
+    public $timestamps = false;
 
-    public $fillable = ['name','email','message'];
+    public $fillable = ['idSender', 'idReciever', 'idVivienda','idReserva','message'];
 
 }

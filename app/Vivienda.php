@@ -24,7 +24,7 @@ class Vivienda extends Model
 
     public function city()
     {
-        return $this->belongsTo(Cities::class, 'idCiudad','id');
+        return $this->belongsTo(City::class, 'idCiudad','id');
     }
 
     public function tipoVivienda()
@@ -41,6 +41,32 @@ class Vivienda extends Model
     {
         return $this->hasManyThrough(Tarifa::class, ViviendaHasTarifa::class, "idVivienda","id","id", "idTarifa");
     }
+
+    public function servicios()
+    {
+        return $this->hasManyThrough(Servicio::class, ViviendaHasServicio::class, "idVivienda", "id", "id", "idServicio");
+    }
+
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class, 'idVivienda');
+    }
+
+    public function rejectableByDates($checkIn, $checkOut)
+    {
+        $rejected = false;
+        foreach ($this->reservas as $reserva){
+            $id = $reserva->lastEstado->id;
+            $rejectableState = $id == 2 || $id == 4;
+            $intersection = $reserva->checkIn < $checkOut && $reserva->checkOut > $checkIn;
+
+            if ($rejected = $rejectableState && $intersection)
+                break;
+        }
+
+        return $rejected;
+    }
+
     static function details($id){
         $regions = DB::table('vivienda')
             ->select('vivienda.*', 'persona.nombre as vendedor','persona.apellido1','tarifa.precio')

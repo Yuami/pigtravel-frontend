@@ -33,7 +33,7 @@ class ReservationInfo extends Component {
             <Translate type={'searcher'} string={'guest'}/>;
 
         axios.get(viviendaURL).then((res) => {
-            this.setState({casa: res.data});
+            this.setState({casa: res.data.data});
         });
     }
 

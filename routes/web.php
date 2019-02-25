@@ -22,3 +22,4 @@ Route::get('/verify', 'TokenController@index');
 Route::post('/receivemail', 'MailController@receive');
 
 Route::get('/{any}','IndexController@index')->where('any', '.*');
+
