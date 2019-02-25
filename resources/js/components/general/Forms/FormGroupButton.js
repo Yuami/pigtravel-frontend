@@ -4,7 +4,7 @@ import {Col, Row} from "reactstrap";
 import FormButton from "./FormButton";
 import {Link} from "react-router-dom";
 
-class FormGroupReg extends Component {
+class FormGroupButton extends Component {
     render() {
         return (
             <Col className="my-2" md="12">
@@ -13,7 +13,8 @@ class FormGroupReg extends Component {
                         <Link to={'/'} className={'btn btn-primary btn-lg btn-block '}>Cancelar</Link>
                     </Col>
                     <Col>
-                        <FormButton ref={this.props.page} text={'Confirmar'} type={'submit'} block={true}/>
+                        <FormButton onclick={this.props.onclick} ref={this.props.page} text={'Confirmar'}
+                                    type={'submit'} block={true}/>
                     </Col>
                 </Row>
             </Col>
@@ -21,8 +22,9 @@ class FormGroupReg extends Component {
     }
 }
 
-FormGroupReg.propTypes = {
+FormGroupButton.propTypes = {
+    onclick: PropTypes.string,
     page: PropTypes.string
 };
 
-export default FormGroupReg;
+export default FormGroupButton;

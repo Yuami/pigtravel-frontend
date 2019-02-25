@@ -1,14 +1,6 @@
 import React, {Component} from 'react';
 import FormLogIn from "../components/layout/FormLogIn";
-import {
-    CardTitle,
-    CardBody,
-    Card,
-    Col,
-    Container,
-    Row
-} from "reactstrap";
-import Link from "@material-ui/core/es/Link/Link";
+import {CardTitle, CardBody, Card, Col, Container, Row} from "reactstrap";
 
 class LogIn extends Component {
     render() {

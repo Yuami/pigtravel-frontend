@@ -19,7 +19,18 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers {
+        redirectPath as laravelRedirectPath;
+    }
+
+    public function redirectPath()
+    {
+        // Do your logic to flash data to session...
+        session()->flash('message', 'your message');
+
+        // Return the results of the method we are overriding that we aliased.
+        return $this->laravelRedirectPath();
+    }
 
     /**
      * Where to redirect users after login.
@@ -88,8 +99,28 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+        $auth = $this->authenticated($request, $this->guard()->user());
+        $request->session()->flash('message', 'Te has logueado');
+        return $auth
+            ?: redirect()->intended($this->redirectPath());
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect('');
+    }
+
     protected function credentials(Request $request)
     {
-        return $request->only($this->username(), 'password');
+        return $request->json('values');
     }
 }
