@@ -31,7 +31,7 @@ class HouseList extends Component {
         end: moment().add(1, "week").format('YYYY-MM-DD'),
         guests: this.props.location.state.guests,
         place: this.props.location.state.place,
-        showMap: false
+        showMap: true
     };
 
     componentWillMount() {
@@ -97,18 +97,21 @@ class HouseList extends Component {
                 (<Row>
                         <Col xs="12" lg={showMap ? "9" : "12"}>
                             {houses.map(house => {
+                                const houseProps = {
+                                    pathname: `/houses/${house.id}/${cleanURI(house.nombre)}`,
+                                    state: {
+                                        guests: this.state.guests,
+                                        start: this.state.start,
+                                        end: this.state.end,
+                                        place: this.state.place
+                                    }
+                                };
+
                                 if (house !== null)
                                     return (
-                                        <Col key={house.id} xs="12" sm="6" md="4" lg={showMap ? "4" : "3"} className="my-3">
-                                            <Link to={{
-                                                pathname: `/houses/${house.id}/${cleanURI(house.nombre)}`,
-                                                state: {
-                                                    start: this.state.start,
-                                                    end: this.state.end,
-                                                    place: this.state.place,
-                                                    guests: this.state.guests
-                                                }
-                                            }}
+                                        <Col key={house.id} xs="12" sm="6" md="4" lg={showMap ? "4" : "3"}
+                                             className="my-3">
+                                            <Link to={houseProps}
                                                   className="card-house-link">
                                                 <HouseCard house={house} links={this.state.links}
                                                            img={'/assets/uploads/img/casas/default-image.jpg'}
@@ -171,10 +174,7 @@ class HouseList extends Component {
                         </Panel>
                     </Col>
                 </Row>
-
-                <Row>
-                    {houseList}
-                </Row>
+                {houseList}
             </Container>
         );
     }
