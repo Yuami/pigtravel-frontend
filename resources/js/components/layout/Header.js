@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import ReactDOM from 'react-dom';
-import {LocaleContext} from "../../LocaleContext";
-import PropTypes from 'prop-types';
 import {
     Navbar,
     NavbarBrand,
@@ -13,23 +10,16 @@ import {
     Collapse,
     UncontrolledDropdown
 } from 'reactstrap';
-import Col from "reactstrap/es/Col";
 import LanguagePicker from "../LanguagePicker";
 import Translate from "../../lang/Translate";
-import Dropdown from "reactstrap/es/Dropdown";
-import DropdownToggle from "react-bootstrap/es/DropdownToggle";
-import DropdownMenu from "react-bootstrap/es/DropdownMenu";
-import DropdownItem from "react-bootstrap/es/DropdownItem";
-import DropListLangs from "../DropListLangs";
 import DropdownPerfil from "../specific/DropdownPerfil";
-
+import {AuthContext} from "../../AuthContext";
 
 class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isOpen: false,
-            isAuth: false,
             dropdownOpen: false
         };
         this.toggle = this.toggle.bind(this);
@@ -112,7 +102,6 @@ class Header extends Component {
             )
         }
     }
-
 
     render() {
         const log = this.renderCollapse();
