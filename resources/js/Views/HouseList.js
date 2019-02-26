@@ -38,7 +38,7 @@ class HouseList extends Component {
         this.reload();
     }
 
-    toogleMap(){
+    toogleMap() {
         this.setState({showMap: !this.state.showMap})
     }
 
@@ -81,13 +81,12 @@ class HouseList extends Component {
     }
 
     render() {
-        const {houses, loading, error} = this.state;
-        const params = this.props.location.state;
+        const {houses, loading, error, showMap} = this.state;
         let houseList;
 
         if (!error) {
             houseList = loading ?
-                (<Col xs="12">
+                (<Col>
                     <h1 className="text-primary d-flex justify-content-center mb-5">
                         <Translate string="loading" type="general"/>
                     </h1>
@@ -95,20 +94,28 @@ class HouseList extends Component {
                         <Spinner color="primary" size="xl" style={{width: '8rem', height: '8rem'}} type="grow"/>
                     </div>
                 </Col>) :
-                (houses.map(house => {
-                            if (house !== null)
-                                return (
-                                    <Col key={house.id} xs="12" sm="6" md="4" lg="3" xl="3" className="my-3">
-                                        <Link to={`/houses/${house.id}/${cleanURI(house.nombre)}`}
-                                              className="card-house-link">
-                                            <HouseCard house={house} links={this.state.links}
-                                                       img={'/assets/uploads/img/casas/default-image.jpg'} clickable/>
-                                        </Link>
-                                    </Col>);
-                            return null;
-                        }
-                    )
-                );
+                (<Row>
+                        <Col xs="12" lg={showMap ? "9" : "12"}>
+                            {houses.map(house => {
+                                if (house !== null)
+                                    return (
+                                        <Col key={house.id} xs="12" sm="6" md="4" lg={showMap ? "4" : "3"} className="my-3">
+                                            <Link to={`/houses/${house.id}/${cleanURI(house.nombre)}`}
+                                                  className="card-house-link">
+                                                <HouseCard house={house} links={this.state.links}
+                                                           img={'/assets/uploads/img/casas/default-image.jpg'}
+                                                           clickable/>
+                                            </Link>
+                                        </Col>);
+                                return null;
+                            })
+                            }
+                        </Col>
+                        <Col lg="3" className={"d-none " + (showMap ? "d-lg-block" : "")}>
+                            Mapa
+                        </Col>
+                    </Row>
+                )
         } else {
             houseList = (
                 <>
