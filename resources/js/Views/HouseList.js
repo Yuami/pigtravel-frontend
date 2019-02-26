@@ -4,7 +4,7 @@ import HouseCard from "../components/general/HouseCard";
 import Col from "reactstrap/es/Col";
 import Row from "reactstrap/es/Row";
 import axios from "axios";
-import Link from "react-router-dom/es/Link";
+import {Link, withRouter} from "react-router-dom";
 import {cleanURI} from "../helpers";
 import Spinner from "reactstrap/es/Spinner";
 import Translate from "../lang/Translate";
@@ -100,4 +100,4 @@ class HouseList extends Component {
     }
 }
 
-export default HouseList;
+export default withRouter(HouseList);
