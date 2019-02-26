@@ -47,8 +47,8 @@ class Main extends Component {
 
 
     render() {
-        var checkIn = new Date('2012-01-01');
-        var checkOut = new Date('2012-01-04');
+        var checkIn = new Date('2019-03-01');
+        var checkOut = new Date('2019-03-04');
         let token = document.head.querySelector('meta[name="csrf-token"]');
 
         return (
