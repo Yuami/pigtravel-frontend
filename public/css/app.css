@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);@charset "UTF-8";
 
 .HeadLine {
   text-align: center;
@@ -398,7 +398,7 @@ textarea {
 
 #reservationForm ul,
 #reservationForm li {
-  list-style-type: none;
+  padding-left: 40px !important;
 }
 
 #reservationForm .fas {
@@ -470,8 +470,12 @@ textarea {
   outline: none !important;
 }
 
-#orderButtons div {
+#orderButtons div div {
   float: right;
+}
+
+#creditCard div {
+  float: none !important;
 }
 
 @media (min-width: 992px) {
@@ -1028,7 +1032,9 @@ mark,
   background-color: #fcf8e3;
 }
 
-.list-unstyled {
+.list-unstyled,
+#reservationForm ul,
+#reservationForm li {
   padding-left: 0;
   list-style: none;
 }

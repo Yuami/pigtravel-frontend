@@ -99,5 +99,10 @@
     "profile": "My profile",
     "account": "Account",
     "exit": "Exit"
+  },
+  "verify": {
+    "title": "Verification",
+    "text": "Your Account has been verified!",
+    "confirmButtonText": "Accept"
   }
 }
