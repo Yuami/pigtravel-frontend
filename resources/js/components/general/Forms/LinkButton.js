@@ -11,17 +11,18 @@ class LinkButton extends Component {
             pathname: this.props.page,
             state: this.props.pageParams
         }}>
-            <Button
-                    className={this.props.className}
+            <Button className={this.props.className}
                     size={this.props.size} color='primary'
-                    disabled={this.props.disabled}>{this.props.text}
+                    disabled={this.props.disabled}
+                    block={this.props.block || false}>
+                {this.props.text || this.props.children}
             </Button>
         </Link>);
     }
 }
 
 LinkButton.propTypes = {
-    text: PropTypes.string.isRequired,
+    text: PropTypes.string,
     className: PropTypes.string,
     page: PropTypes.string,
     disabled: PropTypes.bool,

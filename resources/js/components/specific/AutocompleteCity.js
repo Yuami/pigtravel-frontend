@@ -20,10 +20,7 @@ class AutocompleteCity extends Component {
     }
 
     getOptionsCities() {
-        axios({
-            url: '/api/cities',
-            method: 'get'
-        }).then((response) => {
+        axios('/api/cities').then((response) => {
             this.setState({
                 optionsCities: response.data
             });
@@ -78,6 +75,7 @@ class AutocompleteCity extends Component {
                 onChange={this.props.change}
                 options={groupedOptions}
                 blurInputOnSelect={false}
+                className="Select-menu-outer"
                 placeholder={<Translate type="searcher" string="city"/>}
             />
         );

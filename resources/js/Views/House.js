@@ -21,6 +21,7 @@ import {extendMoment} from "moment-range";
 import DesglosePrecio from "../components/specific/DesglosePrecio";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
 const moment = extendMoment(originalMoment);
+import PanelSearcher from "../components/PanelSearcher";
 
 class House extends Component {
     constructor(props, context) {
@@ -35,8 +36,8 @@ class House extends Component {
             date: moment.range(fromDate, toDate),
             days: toDate.diff(fromDate,'days'),
         };
-
     }
+
     IncrementItem = () => {
         this.setState({clicks: this.state.clicks + 1});
     };
@@ -61,7 +62,6 @@ class House extends Component {
     };
 
     render() {
-        console.log(this.state.days);
         const decreaseBtn = this.state.clicks === 1 ?
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
                 icon={'fa fa-minus'}/></Button> :

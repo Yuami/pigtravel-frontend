@@ -5,7 +5,7 @@ import Header from "./layout/Header";
 import {BrowserRouter, Switch, Route, withRouter} from "react-router-dom";
 import Footer from "./layout/Footer";
 import Home from "../Views/Home";
-import Login from "../Views/Login";
+import Login from "../Views/LogIn";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
 import MainModal from "./layout/MainModal";

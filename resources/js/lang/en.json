@@ -29,14 +29,16 @@
     "support": "Support",
     "home": "Home",
     "more-information": "More information",
-    "loading": "Loading"
+    "loading": "Loading",
+    "filters": "Filters"
   },
   "searcher": {
     "city": "Where do you wanna go?",
     "guests": "guests",
     "guest": "guest",
     "checkin": "From ",
-    "checkout": "To "
+    "checkout": "To ",
+    "search": "Search"
   },
   "index": {
     "titleIndex": "BOOK APARTMENTS ALL OVER THE WORLD"
