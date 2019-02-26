@@ -14,7 +14,7 @@
   },
   "reservation": {
     "house-rules": "Rules of the house",
-    "allowed": "You're allowed to",
+    "allowed": "are allowed",
     "disallowed": "are not allowed",
     "includes": "The reservation includes",
     "message": "Information or questions to the house owner",

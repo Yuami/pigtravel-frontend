@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import DesglosePrecio from "../components/specific/DesglosePrecio";
 import moment from "moment";
+import Panel from "../components/layout/Panel";
 
 class BookingDetail extends Component {
     constructor(props) {
@@ -154,7 +155,7 @@ class BookingDetail extends Component {
                                 <Row>
                                     <h4><strong><Translate type="bookingDetails" string="priceBreakdown"/></strong></h4>
                                 </Row>
-                                 <DesglosePrecio price={precio} nights={2}/>
+                                <DesglosePrecio price={precio} nights={2}/>
                             </Col>
                         </Row>
                     </Col>
@@ -165,8 +166,10 @@ class BookingDetail extends Component {
         return (
             <div>
                 <UserRouter title={'booking'} list={bookingDetails}/>
-                <Container className="bookingCont shadow">
-                    {book}
+                <Container className="bookingCont">
+                    <Panel>
+                        {book}
+                    </Panel>
                 </Container>
             </div>
         );

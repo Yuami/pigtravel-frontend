@@ -12,13 +12,11 @@ import Translate from "../lang/Translate";
 import {LocaleContext, coin} from "../LocaleContext";
 import Stars from "../components/Stars";
 import SideBarHouse from "../components/layout/SideBarHouse";
-import Form from "reactstrap/es/Form";
 import Panel from "../components/layout/Panel";
 import LinkButton from "../components/general/Forms/LinkButton";
 import {translate} from "../helpers";
 import originalMoment from "moment";
 import {extendMoment} from "moment-range";
-import DesglosePrecio from "../components/specific/DesglosePrecio";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
 const moment = extendMoment(originalMoment);
 import PanelSearcher from "../components/PanelSearcher";
@@ -26,15 +24,14 @@ import PanelSearcher from "../components/PanelSearcher";
 class House extends Component {
     constructor(props, context) {
         super(props, context);
-        const fromDate = moment().add(1, "days");
-        const toDate = fromDate.clone().add(7, "days");
-
+        var startDate = moment("13.04.2016", "DD.MM.YYYY");
+        var endDate = moment("28.04.2016", "DD.MM.YYYY");
         this.state = {
             details: [],
             clicks: 2,
             show: false,
-            date: moment.range(fromDate, toDate),
-            days: toDate.diff(fromDate,'days'),
+            date: moment.range(startDate,endDate),
+            days: endDate.diff(startDate, 'days'),
         };
     }
 
@@ -52,9 +49,11 @@ class House extends Component {
 
 
     componentWillMount() {
-
         axios.get('/api/houses/' + this.props.match.params.idHouse)
-            .then((res) => this.setState({details: res.data}));
+            .then(house => this.setState({
+                details: house.data
+            }))
+
     }
 
     ToggleDiv = () => {
@@ -62,6 +61,7 @@ class House extends Component {
     };
 
     render() {
+
         const decreaseBtn = this.state.clicks === 1 ?
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
                 icon={'fa fa-minus'}/></Button> :
@@ -95,7 +95,7 @@ class House extends Component {
                                 <Col lg="12">
                                     <Row>
                                         <Col xs="7" lg="12">
-                                            <div className={'pull-right'}>{<Stars rating={'5'}/>}</div>
+                                            <Stars rating={5}/>
                                         </Col>
                                     </Row>
                                     <Row className="justify-content-center">
@@ -130,7 +130,7 @@ class House extends Component {
                                         </FormGroup>
                                     </Row>
                                     <Row>
-                                        <Col lg="12" className="mt-4">
+                                        <Col lg="12" className="mt-4 desglose">
                                             <DesglosePrecioCasa nights={this.state.days}
                                                             price={this.state.details.map((v) => v.precio)}/>
                                         </Col>
