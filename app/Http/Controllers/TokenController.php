@@ -17,8 +17,10 @@ class TokenController extends Controller
         if (is_null($token))
             return abort(403, 'Token has expired or does not exist');
         $this->verify($token);
-        $this->destroy($token);
-        return "Account has been verified";
+        //$this->destroy($token);
+
+        setcookie('alert', 'verified', time() + (60), "/");
+        return redirect('/');
     }
 
     public function destroy($token)

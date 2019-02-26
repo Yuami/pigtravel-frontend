@@ -100,5 +100,10 @@
     "profile": "Mi perfil",
     "account": "Cuenta",
     "exit": "Salir"
+  },
+  "verify": {
+    "title": "Verificación",
+    "text": "Tu cuenta ha sido verificada!",
+    "confirmButtonText": "Aceptar"
   }
 }
