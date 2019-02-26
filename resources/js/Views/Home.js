@@ -3,45 +3,55 @@ import Translate from "../lang/Translate";
 import TitleInicio from "../components/specific/TitleInicio";
 import Searcher from "../components/layout/Searcher";
 import CarouselInicio from "../components/layout/CarouselInicio";
-import {ToastContainer, toast} from 'react-toastify';
-import Main from "../components/Main";
+import Cookies from 'js-cookie';
+import Swal from 'sweetalert2';
+import {LocaleContext} from "../LocaleContext";
+import {translate} from "../helpers";
 
 class Home extends Component {
-    render() {
-        let notify = () => {
-            toast("Lorem ipsum dolor");
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            alert: Cookies.get('alert'),
         };
+    }
+
+    componentWillMount() {
+        if (this.state.alert !== undefined) {
+            Cookies.remove('alert');
+        }
+    }
+
+
+    static contextType = LocaleContext;
+
+    render() {
+        if (this.state.alert !== undefined)
+            Swal.fire({
+                title: translate(this.context, 'title', 'verify'),
+                text: translate(this.context, 'text', 'verify'),
+                type: 'success',
+                confirmButtonText: translate(this.context, 'confirmButtonText', 'verify'),
+            });
 
         return (
-            <div className="mb-5">
-                <div>
-                    <button onClick={notify}>Notify</button>
-                    <ToastContainer
-                        position="top-left"
-                        autoClose={5000}
-                        hideProgressBar={false}
-                        newestOnTop={false}
-                        closeOnClick
-                        rtl={false}
-                        pauseOnVisibilityChange
-                        draggable
-                        pauseOnHover
-                    />
-                </div>
-                <div className="jumbotron_cont">
-                    <TitleInicio/>
-                    <Searcher/>
-                </div>
-                <div id="recomendacionCiudades">
-                    <div id="textoRecomendacion">
-                        <h2><Translate type={"carrousel"} string={"recomendacion"}/></h2>
+            <>
+                <div className="mb-5">
+                    <div className="jumbotron_cont">
+                        <TitleInicio/>
+                        <Searcher/>
                     </div>
+                    <div id="recomendacionCiudades">
+                        <div id="textoRecomendacion">
+                            <h2><Translate type={"carrousel"} string={"recomendacion"}/></h2>
+                        </div>
+                    </div>
+                    <CarouselInicio/>
                 </div>
-                <CarouselInicio/>
-            </div>
+            </>
         );
     }
 }
-Main.Prop
 
 export default Home;

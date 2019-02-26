@@ -1,6 +1,7 @@
 #reservationForm {
   ul, li {
-    list-style-type: none;
+    @extend .list-unstyled;
+    padding-left: 40px !important;
   }
 
   .fas {
@@ -73,8 +74,13 @@
   outline: none !important;
 }
 
-#orderButtons div {
+
+#orderButtons div div {
   float:right;
+}
+
+#creditCard div {
+  float:none !important;
 }
 
 @media (min-width: 576px) {

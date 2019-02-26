@@ -12,20 +12,26 @@ import Translate from "../lang/Translate";
 import {LocaleContext, coin} from "../LocaleContext";
 import Stars from "../components/Stars";
 import SideBarHouse from "../components/layout/SideBarHouse";
-import Form from "reactstrap/es/Form";
 import Panel from "../components/layout/Panel";
 import LinkButton from "../components/general/Forms/LinkButton";
 import {translate} from "../helpers";
+import originalMoment from "moment";
+import {extendMoment} from "moment-range";
+import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
+const moment = extendMoment(originalMoment);
+import PanelSearcher from "../components/PanelSearcher";
 
 class House extends Component {
-
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
+        var startDate = moment("13.04.2016", "DD.MM.YYYY");
+        var endDate = moment("28.04.2016", "DD.MM.YYYY");
         this.state = {
             details: [],
-            clicks: 1,
+            clicks: 2,
             show: false,
-            priceNight: 55,
+            date: moment.range(startDate,endDate),
+            days: endDate.diff(startDate, 'days'),
         };
     }
 
@@ -37,11 +43,17 @@ class House extends Component {
         const clicks = this.state.clicks - 1 < 1 ? 1 : this.state.clicks - 1;
         this.setState({clicks});
     };
+    handleChangeDates(date) {
+        this.setState({date});
+    }
+
 
     componentWillMount() {
-
         axios.get('/api/houses/' + this.props.match.params.idHouse)
-            .then((res) => this.setState({details: res.data}));
+            .then(house => this.setState({
+                details: house.data
+            }))
+
     }
 
     ToggleDiv = () => {
@@ -49,6 +61,7 @@ class House extends Component {
     };
 
     render() {
+
         const decreaseBtn = this.state.clicks === 1 ?
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
                 icon={'fa fa-minus'}/></Button> :
@@ -82,7 +95,7 @@ class House extends Component {
                                 <Col lg="12">
                                     <Row>
                                         <Col xs="7" lg="12">
-                                            <div className={'pull-right'}>{<Stars rating={'5'}/>}</div>
+                                            <Stars rating={5}/>
                                         </Col>
                                     </Row>
                                     <Row className="justify-content-center">
@@ -93,6 +106,8 @@ class House extends Component {
                                         <h3><Translate type={'house'} string={'priceNight'}/></h3>
                                     </Row>
                                     <Row className="filtro">
+                                        <DatePickerInicio onChange={this.handleChangeDates.bind(this)}
+                                                          value={this.state.date}/>
                                     </Row>
                                     <Row>
                                         <FormGroup id={"guests"}>
@@ -114,12 +129,10 @@ class House extends Component {
                                             </Popover>
                                         </FormGroup>
                                     </Row>
-                                    <Row className="mt-5">
-                                        <Col lg="6" sm="6" xs="6" className="text-center">
-                                            <h4><Translate type="bookingDetails" string="total"/></h4>
-                                        </Col>
-                                        <Col lg="6" sm="6" xs="6" className="text-center">
-                                            <h4>{(this.state.details.map((v) => v.precio) * 1.05 + 5)}{coin}</h4>
+                                    <Row>
+                                        <Col lg="12" className="mt-4 desglose">
+                                            <DesglosePrecioCasa nights={this.state.days}
+                                                            price={this.state.details.map((v) => v.precio)}/>
                                         </Col>
                                     </Row>
                                     <Row id={'buttonRow'}>

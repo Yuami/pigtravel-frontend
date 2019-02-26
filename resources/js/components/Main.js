@@ -2,12 +2,10 @@ import React, {Component} from "react";
 import {LocaleContext} from "../LocaleContext.js";
 import {FormContext} from "../FormContext.js";
 import Header from "./layout/Header";
-import PropTypes from 'prop-types';
 import {BrowserRouter, Switch, Route, withRouter} from "react-router-dom";
 import Footer from "./layout/Footer";
 import Home from "../Views/Home";
-import LogOut from "../Views/LogOut";
-import Login from "../Views/Login";
+import Login from "../Views/LogIn";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
 import MainModal from "./layout/MainModal";
@@ -16,7 +14,6 @@ import BookingDetail from "../Views/BookingDetail";
 import Register from "../Views/Register";
 import Contact from "../Views/Contact";
 import HouseList from "../Views/HouseList";
-import moment from "react-daterange-picker/example/moment-range";
 import Reservation from "../Views/Reservation";
 import ReservationPayment from "../Views/ReservationPayment";
 import House from "../Views/House";
@@ -44,6 +41,8 @@ class Main extends Component {
         this.setState({
             locale: id
         });
+        const endPoint = '/api/locale/' + id;
+        axios.post(endPoint);
     };
 
 
@@ -65,7 +64,6 @@ class Main extends Component {
                         </Route>
                         <Route exact path="/about-us" component={AboutUs}/>
                         <Route exact path="/login" component={Login}/>
-                        <Route exact path="/logout" component={LogOut}/>
                         <Route exact path="/contact" component={Contact}/>
                         <Route exact path="/modal">
                             <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"}

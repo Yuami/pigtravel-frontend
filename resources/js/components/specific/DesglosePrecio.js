@@ -23,18 +23,13 @@ class DesglosePrecio extends Component {
         render() {
 
         return (
-            <Col lg="5" className="ml-auto">
-                <Row>
-                    <Col lg="12" className="detalle">
-                        <Row>
-                            <h4><strong><Translate type="bookingDetails" string="priceBreakdown"/></strong></h4>
-                        </Row>
+     <>
                         <Row>
                             <Col lg="6" sm="6" xs="6" className="text-center">
-                                <h4>{this.props.price / this.props.nights}{coin} x {this.props.nights} noches</h4>
+                                    <h4>{(this.props.price-(this.props.price * 0.05 + 5)) / this.props.nights}{coin} x {this.props.nights} noches</h4>
                             </Col>
                             <Col lg="6" sm="6" xs="6" className="text-center">
-                                <h4>{this.props.price}{coin}</h4>
+                                <h4>{this.props.price-(this.props.price * 0.05 + 5)}{coin}</h4>
                             </Col>
                         </Row>
                         <Row>
@@ -50,12 +45,10 @@ class DesglosePrecio extends Component {
                                 <h4><Translate type="bookingDetails" string="total"/></h4>
                             </Col>
                             <Col lg="6" sm="6" xs="6" className="text-center">
-                                <h4>{(this.props.price * 1.05 + 5)}{coin}</h4>
+                                <h4>{(this.props.price)}{coin}</h4>
                             </Col>
                         </Row>
-                    </Col>
-                </Row>
-            </Col>);
+                 </>);
     }
 }
 

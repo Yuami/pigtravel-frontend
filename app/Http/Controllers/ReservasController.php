@@ -34,7 +34,7 @@ class ReservasController extends Controller
     {
         $vivienda = Vivienda::find($request->idVivienda);
 
-        //Cambia el tiempo a la entrada y salida de la casa
+        //Cambia el tiempo a la entrada y salida de la vivienda
         $checkIn = substr($request->checkIn, 0, 11) . $vivienda->horaEntrada;
         $checkOut = substr($request->checkOut, 0, 11) . $vivienda->horaSalida;
 

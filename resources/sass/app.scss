@@ -1,14 +1,16 @@
+
 // Fonts
-@import "../../node_modules/react-toastify/dist/ReactToastify.min.css";
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
 // Variables
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
+
 @import 'variables';
 @import 'index';
+
 // small Components
-@import "color";
 @import "custom";
 @import "footer";
 @import "header";
@@ -16,7 +18,6 @@
 @import "boton";
 @import "form";
 @import "carrousel";
-@import "feedback";
 
 // big Components
 @import "bookingDetails";
@@ -25,5 +26,6 @@
 @import "reservationForm";
 @import "houseCard";
 @import "house";
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

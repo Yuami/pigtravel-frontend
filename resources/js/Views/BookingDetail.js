@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import DesglosePrecio from "../components/specific/DesglosePrecio";
 import moment from "moment";
+import Panel from "../components/layout/Panel";
 
 class BookingDetail extends Component {
     constructor(props) {
@@ -148,7 +149,16 @@ class BookingDetail extends Component {
                         </Row>
 
                     </Col>
-                    <DesglosePrecio price={precio} nights={2}/>
+                    <Col lg="5" className="ml-auto">
+                        <Row>
+                            <Col lg="12" className="detalle">
+                                <Row>
+                                    <h4><strong><Translate type="bookingDetails" string="priceBreakdown"/></strong></h4>
+                                </Row>
+                                <DesglosePrecio price={precio} nights={2}/>
+                            </Col>
+                        </Row>
+                    </Col>
                 </Row>
             </>
 
@@ -156,8 +166,10 @@ class BookingDetail extends Component {
         return (
             <div>
                 <UserRouter title={'booking'} list={bookingDetails}/>
-                <Container className="bookingCont shadow">
-                    {book}
+                <Container className="bookingCont">
+                    <Panel>
+                        {book}
+                    </Panel>
                 </Container>
             </div>
         );
