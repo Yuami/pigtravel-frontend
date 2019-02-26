@@ -35,19 +35,19 @@ class HouseList extends Component {
     };
 
     componentWillMount() {
-        this.reload();
+        const params = this.props.location.state;
+        this.reload(params);
     }
 
     toogleMap() {
         this.setState({showMap: !this.state.showMap})
     }
 
-    reload() {
+    reload(params) {
         this.setState({
             loading: true
         });
 
-        const params = this.props.location.state;
         const endPoint = '/api/viviendas';
         let query = '?';
 
@@ -100,7 +100,15 @@ class HouseList extends Component {
                                 if (house !== null)
                                     return (
                                         <Col key={house.id} xs="12" sm="6" md="4" lg={showMap ? "4" : "3"} className="my-3">
-                                            <Link to={`/houses/${house.id}/${cleanURI(house.nombre)}`}
+                                            <Link to={{
+                                                pathname: `/houses/${house.id}/${cleanURI(house.nombre)}`,
+                                                state: {
+                                                    start: this.state.start,
+                                                    end: this.state.end,
+                                                    place: this.state.place,
+                                                    guests: this.state.guests
+                                                }
+                                            }}
                                                   className="card-house-link">
                                                 <HouseCard house={house} links={this.state.links}
                                                            img={'/assets/uploads/img/casas/default-image.jpg'}
