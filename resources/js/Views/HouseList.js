@@ -135,7 +135,7 @@ class HouseList extends Component {
 
         const switchMap = (
             <div>
-                <Button color={this.state.showMap ? "success" : "danger"} onClick={this.toogleMap.bind(this)} block>
+                <Button color={showMap ? "success" : "danger"} onClick={this.toogleMap.bind(this)} block>
                 <span className="mt-2">
                     <FaIcon icon="fa fa-map-marked-alt" size="fa-3x"/>
                 </span>
