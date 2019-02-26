@@ -1,6 +1,18 @@
-
 // Body
 $body-bg: #f8fafc;
+
+//Button
+$input-border-width: 0;
+
+//Feedback
+$form-feedback-invalid-color: $primary;
+$form-feedback-icon-invalid-color: $primary;
+
+//Shadows
+$enable-shadows: true;
+
+//Link
+$link-hover-decoration: none;
 
 // Typography
 $font-family-sans-serif: "Roboto", sans-serif;

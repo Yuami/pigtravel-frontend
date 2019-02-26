@@ -17,14 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("/cities",function (){
-    $cities=\App\City::getIfHaveHouses();
+Route::get("/cities", function () {
+    $cities = \App\City::getIfHaveHouses();
     return $cities;
-} );
-Route::get("/regions",function (){
-    $regions=\App\Region::getIfHaveHouses();
+});
+Route::get("/regions", function () {
+    $regions = \App\Region::getIfHaveHouses();
     return $regions;
-} );
+});
 Route::get('/blocks/{id}', function ($id) {
     return \App\Reserva::datesByHouse($id);
 });
@@ -52,13 +52,16 @@ Route::get('/servicio/{id}', function ($id) {
     return \App\ViviendasHasServicio::getByVivienda($id);
 });
 
-Route::get('/viviendas/{id}', function($id){
+Route::get('/viviendas/{id}', function ($id) {
     return \App\Vivienda::find($id);
+});
+Route::get('/auth', function () {
+    return json_encode(auth()->check());
 });
 
 Route::get('/viviendas', "ViviendaController@index");
 
-Route::get('/viviendas/{id}', function($id){
+Route::get('/viviendas/{id}', function ($id) {
     return new \App\Http\Resources\Vivienda(\App\Vivienda::find($id));
 });
 

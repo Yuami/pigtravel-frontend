@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -99,15 +100,11 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
-    protected function sendLoginResponse(Request $request)
+    protected function attemptLogin(Request $request)
     {
-        $request->session()->regenerate();
-
-        $this->clearLoginAttempts($request);
-        $auth = $this->authenticated($request, $this->guard()->user());
-        $request->session()->flash('message', 'Te has logueado');
-        return $auth
-            ?: redirect()->intended($this->redirectPath());
+        return $this->guard()->attempt(
+            $this->credentials($request), $request->filled('remember')
+        );
     }
 
     public function logout(Request $request)
@@ -123,4 +120,5 @@ class LoginController extends Controller
     {
         return $request->json('values');
     }
+
 }
