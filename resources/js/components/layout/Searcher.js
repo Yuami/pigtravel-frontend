@@ -4,12 +4,10 @@ import {Col, Label, Button, Popover, PopoverBody} from 'reactstrap';
 import DatePickerInicio from "../specific/DatePickerInicio"
 import FaIcon from "../general/FaIcon";
 import AutocompleteCity from "../specific/AutocompleteCity";
-import FormButton from "../general/Forms/LinkButton";
-import Form from "reactstrap/es/Form";
 import FormGroup from "reactstrap/es/FormGroup";
+import {Link} from "react-router-dom";
 import originalMoment from "moment";
 import {extendMoment} from "moment-range";
-import {withRouter, Link} from "react-router-dom";
 
 const moment = extendMoment(originalMoment);
 
@@ -128,4 +126,4 @@ class Searcher extends Component {
     }
 }
 
-export default withRouter(Searcher);
+export default Searcher;

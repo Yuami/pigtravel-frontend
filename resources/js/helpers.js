@@ -29,9 +29,9 @@ export function cleanURI(string) {
 }
 
 export function checkIfUndefined(obj, check){
-    if (obj === undefined) return true;
+    if (obj === undefined || obj === null) return true;
     check.forEach(item => {
-        if (obj[item] === undefined) return true;
+        if (obj[item] === undefined || obj[item] === null) return true;
     });
 
     return false;

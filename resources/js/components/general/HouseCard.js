@@ -14,7 +14,6 @@ class HouseCard extends Component {
     };
 
     render() {
-        console.log(this.props);
         const {clickable, house, img} = this.props;
         const {fotos, nombre: name, tipoVivienda: type, tarifas, valoracion} = house;
         let image =  this.props.links.back + (fotos.length === 0 ? img : fotos[0].path);
@@ -31,7 +30,7 @@ class HouseCard extends Component {
                         <p className="mt-3" style={{textDecoration: "none"}}>
                             {tarifa.precio + coin + ' '}<Translate type="houselist" string="night"/>
                         </p>
-                        <Stars rating={valoracion == undefined || valoracion.length == 0 ? 0 : valoracion[0].media}
+                        <Stars rating={valoracion == undefined || valoracion.length == 0 ? 0 : valoracion[0].media == null ? 0 : valoracion[0].media}
                                color="primary"/>
                     </CardSubtitle>
                 </Container>

@@ -14,10 +14,11 @@ class ReservationInfo extends Component {
         super(props);
 
         this.state = {
-            casa: [],
+            vivienda: [],
             pax: '',
             checkIn: moment(this.props.checkIn),
             checkOut: moment(this.props.checkOut),
+            success: false,
         };
 
         this.state = {
@@ -33,21 +34,29 @@ class ReservationInfo extends Component {
             <Translate type={'searcher'} string={'guest'}/>;
 
         axios.get(viviendaURL).then((res) => {
-            this.setState({casa: res.data.data});
+            this.setState({
+                vivienda: res.data.data,
+                success: true
+            });
         });
     }
 
 
     render() {
+        console.log(this.state.vivienda.valoracion);
+        const valoracion = this.state.vivienda.valoracion !== undefined  && this.state.vivienda.valoracion.length > 0?
+            this.state.vivienda.valoracion[0].media / 1 : 0;
         return (
             <Panel id={'reservationInfo'}>
                 <Row>
                     <Col xs="7">
-                        <h3 id='houseName'>{this.state.casa.nombre}</h3>
+                        <h3 id='houseName'>{this.state.vivienda.nombre}</h3>
                     </Col>
 
                     <Col xs='5'>
-                        <div className={'pull-right'}>{<Stars rating={'5'}/>}</div>
+                        <div className={'pull-right'}>
+                            {this.state.success ? <Stars rating={valoracion} color={"primary"}/> : null}
+                        </div>
                     </Col>
                 </Row>
                 <Row>

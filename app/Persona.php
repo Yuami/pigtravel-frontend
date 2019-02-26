@@ -22,7 +22,7 @@ class Persona extends Authenticatable
     protected $fillable = [
         'nombre', 'apellido1', 'apellido2',
         'DNI', 'tlf', 'correo', 'password',
-        'fechaNacimiento', 'descripcion', 'idCiudad', 'idFoto'
+        'fechaNacimiento', 'descripcion', 'idCiudad', 'idFoto', 'verified'
     ];
 
     /**
@@ -58,7 +58,7 @@ class Persona extends Authenticatable
 
     public function verify()
     {
-        $this->update(['verified' => 1]);
+        return $this->update(['verified' => 1]);
     }
 
     public function viviendas()

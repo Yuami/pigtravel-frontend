@@ -11,6 +11,7 @@ import Form from "reactstrap/es/Form";
 import PaypalCheckout from "../components/specific/PaypalCheckout";
 import StripeCheckout from "../components/specific/StripeCheckout";
 import {withRouter} from "react-router-dom";
+import 'https://js.stripe.com/v3/';
 
 class ReservationPayment extends Component {
     constructor(props) {
@@ -45,7 +46,6 @@ class ReservationPayment extends Component {
 
     componentDidMount() {
         const { idVivienda } = this.props.location.state;
-        console.log(idVivienda);
     }
 
     render() {

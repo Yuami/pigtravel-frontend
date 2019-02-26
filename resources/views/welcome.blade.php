@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>
 </head>
 <body>
-
 <div id="app" class="main-container"></div>
 <div id="meta"></div>
 @if ($errors->any())
@@ -27,6 +26,8 @@
         </ul>
     </div>
 @endif
+
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>

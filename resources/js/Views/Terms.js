@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Accordion from "../components/general/Accordion";
+import Accordion from "../components/general/Accordion/Accordion";
 import terms from "../lang/terms.json";
 import {LocaleContext} from "../LocaleContext";
-import AccordionItem from "../components/general/AccordionItem";
+import AccordionItem from "../components/general/Accordion/AccordionItem";
 
 class Terms extends Component {
 
