@@ -9,7 +9,6 @@ import Col from "react-bootstrap/Col";
 import FaIcon from "./general/FaIcon";
 import {Button, Label, Popover, PopoverBody} from "reactstrap";
 import Translate from "../lang/Translate";
-import FormGroup from "@material-ui/core/FormGroup";
 import {Link} from "react-router-dom";
 
 const moment = extendMoment(originalMoment);
@@ -38,11 +37,9 @@ class PanelSearcher extends Component {
     }
 
     decreaseGuests() {
-        const guests = this.state.guests - 1 <= 0 ? 1 : this.state.guests
+        const guests = this.state.guests - 1 <= 0 ? 1 : this.state.guests - 1;
 
-        this.setState({
-            guests
-        })
+        this.setState({guests})
     }
 
     toggleDiv() {
@@ -51,19 +48,21 @@ class PanelSearcher extends Component {
 
     render() {
         const datePicker = (
-            <div className="mt-2">
+            <div className="mt-3 mt-md-2">
                 <DatePickerInicio onChange={this.handleChangeDate.bind(this)}
                                   value={this.state.date}
                                   notIcon
-                                  list/>
+                                  list
+                />
             </div>
         );
 
         const guests = (
             <div id={"guests"}>
-                <div className="mt-2" style={{fontSize: "18px", cursor: "pointer"}}>
+                <div className="mt-3 mt-md-2" style={{cursor: "pointer", fontSize: '18px'}}>
+                    <span className="text-nowrap">
                     {this.state.guests} <input type="hidden" name="guests" value={this.state.guests}/>
-                    <Translate string={this.state.guests === 1 ? 'guest' : 'guests'} type={'searcher'}/>
+                    <Translate string={this.state.guests === 1 ? 'guest' : 'guests'} type={'searcher'}/></span>
                 </div>
                 <Popover placement="bottom" isOpen={this.state.show} target="guests"
                          toggle={this.toggleDiv.bind(this)} trigger="legacy">
@@ -94,10 +93,9 @@ class PanelSearcher extends Component {
 
         const submit = (
             <Link to={linkProps}>
-                <Button color="primary" className="mt-2" block>
+                <Button color="primary" className="mt-3 mt-md-2" onClick={this.props.onSubmit || null} block>
                     <FaIcon icon='fa fa-search' size="fa-2x"/>
-                    <span className={"d-md-none"} style={{fontSize: "18px"}}> <Translate type="searcher"
-                                                                                         string="search"/></span>
+                    <span className="d-md-none" style={{fontSize: "18px"}}> <Translate type="searcher" string="search"/></span>
                 </Button>
             </Link>
         );

@@ -59,7 +59,6 @@ class House extends Component {
         return (
             <div>
                 <Container>
-                    <PanelSearcher start={'2019-11-22'} end={'2019-12-22'}/>
                     <h1>{this.state.details.map((v) => v.nombre)}</h1>
                     <Row className="house">
                         <Col lg="8">

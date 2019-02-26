@@ -9,12 +9,12 @@ import {cleanURI} from "../helpers";
 import Spinner from "reactstrap/es/Spinner";
 import Translate from "../lang/Translate";
 import {Alert} from "reactstrap";
-import CarouselInicio from "../components/layout/CarouselInicio";
 import PanelSearcher from "../components/PanelSearcher";
 import originalMoment from "moment";
 import {extendMoment} from "moment-range";
 import Panel from "../components/layout/Panel";
-import Button from "react-bootstrap/Button";
+import FaIcon from "../components/general/FaIcon";
+import Button from "reactstrap/es/Button";
 
 const moment = extendMoment(originalMoment);
 
@@ -31,9 +31,22 @@ class HouseList extends Component {
         end: moment().add(1, "week").format('YYYY-MM-DD'),
         guests: this.props.location.state.guests,
         place: this.props.location.state.place,
+        showMap: false
     };
 
     componentWillMount() {
+        this.reload();
+    }
+
+    toogleMap(){
+        this.setState({showMap: !this.state.showMap})
+    }
+
+    reload() {
+        this.setState({
+            loading: true
+        });
+
         const params = this.props.location.state;
         const endPoint = '/api/viviendas';
         let query = '?';
@@ -61,9 +74,11 @@ class HouseList extends Component {
                 error: true,
                 ...params
             }));
-
     }
 
+    changeMapShow() {
+        this.setState({showMap: !this.state.showMap})
+    }
 
     render() {
         const {houses, loading, error} = this.state;
@@ -103,18 +118,45 @@ class HouseList extends Component {
                 </>);
         }
 
+        const filterBtn = (
+            <Button color="primary" block>
+                <span style={{fontSize: "18px"}}>
+                    <Translate type="general" string="filters"/>
+                </span>
+            </Button>
+        );
+
+        const switchMap = (
+            <div>
+                <Button color={this.state.showMap ? "success" : "danger"} onClick={this.toogleMap.bind(this)} block>
+                <span className="mt-2">
+                    <FaIcon icon="fa fa-map-marked-alt" size="fa-3x"/>
+                </span>
+                </Button>
+            </div>);
+
         return (
             <Container className="my-5" fluid={!error}>
                 <Row>
-                    <Col xs="12" md="8">
-                        <PanelSearcher start={this.state.start} end={this.state.end} guests={this.state.guests} place={this.state.place}/>
+                    <Col xs="12" lg="9">
+                        <PanelSearcher start={this.state.start} end={this.state.end} guests={this.state.guests}
+                                       place={this.state.place} onSubmit={this.reload.bind(this)}/>
                     </Col>
-                    <Col xs="12" md="4">
+
+                    <Col xs="12" lg="3">
                         <Panel>
-                            <Button color="primary"><Translate type="general" string="filters"/></Button>
+                            <Row>
+                                <Col xs="12" lg="7">
+                                    {filterBtn}
+                                </Col>
+                                <Col lg="5" className="d-none d-lg-block">
+                                    {switchMap}
+                                </Col>
+                            </Row>
                         </Panel>
                     </Col>
                 </Row>
+
                 <Row>
                     {houseList}
                 </Row>
