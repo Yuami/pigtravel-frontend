@@ -148,7 +148,16 @@ class BookingDetail extends Component {
                         </Row>
 
                     </Col>
-                    <DesglosePrecio price={precio} nights={2}/>
+                    <Col lg="5" className="ml-auto">
+                        <Row>
+                            <Col lg="12" className="detalle">
+                                <Row>
+                                    <h4><strong><Translate type="bookingDetails" string="priceBreakdown"/></strong></h4>
+                                </Row>
+                                 <DesglosePrecio price={precio} nights={2}/>
+                            </Col>
+                        </Row>
+                    </Col>
                 </Row>
             </>
 

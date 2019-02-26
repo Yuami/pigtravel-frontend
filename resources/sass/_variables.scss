@@ -4,6 +4,7 @@ $body-bg: #f8fafc;
 
 // Typography
 $font-family-sans-serif: "Roboto", sans-serif;
+$font-family-monospace: "Segoe UI";
 $font-size-base: 1.4rem;
 $line-height-base: 1.6;
 
@@ -18,3 +19,9 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+
+$font-family-monospace: "Segoe UI";
+$enable-gradients: true;
+$form-check-input-gutter: 1.2rem;
+$rounded-pill:  40rem;

@@ -16,19 +16,27 @@ import Form from "reactstrap/es/Form";
 import Panel from "../components/layout/Panel";
 import LinkButton from "../components/general/Forms/LinkButton";
 import {translate} from "../helpers";
+import originalMoment from "moment";
+import {extendMoment} from "moment-range";
+import DesglosePrecio from "../components/specific/DesglosePrecio";
+import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
+const moment = extendMoment(originalMoment);
 
 class House extends Component {
+    constructor(props, context) {
+        super(props, context);
+        const fromDate = moment().add(1, "days");
+        const toDate = fromDate.clone().add(7, "days");
 
-    constructor(props) {
-        super(props);
         this.state = {
             details: [],
-            clicks: 1,
+            clicks: 2,
             show: false,
-            priceNight: 55,
+            date: moment.range(fromDate, toDate),
+            days: toDate.diff(fromDate,'days'),
         };
-    }
 
+    }
     IncrementItem = () => {
         this.setState({clicks: this.state.clicks + 1});
     };
@@ -37,6 +45,10 @@ class House extends Component {
         const clicks = this.state.clicks - 1 < 1 ? 1 : this.state.clicks - 1;
         this.setState({clicks});
     };
+    handleChangeDates(date) {
+        this.setState({date});
+    }
+
 
     componentWillMount() {
 
@@ -49,6 +61,7 @@ class House extends Component {
     };
 
     render() {
+        console.log(this.state.days);
         const decreaseBtn = this.state.clicks === 1 ?
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
                 icon={'fa fa-minus'}/></Button> :
@@ -93,6 +106,8 @@ class House extends Component {
                                         <h3><Translate type={'house'} string={'priceNight'}/></h3>
                                     </Row>
                                     <Row className="filtro">
+                                        <DatePickerInicio onChange={this.handleChangeDates.bind(this)}
+                                                          value={this.state.date}/>
                                     </Row>
                                     <Row>
                                         <FormGroup id={"guests"}>
@@ -114,12 +129,10 @@ class House extends Component {
                                             </Popover>
                                         </FormGroup>
                                     </Row>
-                                    <Row className="mt-5">
-                                        <Col lg="6" sm="6" xs="6" className="text-center">
-                                            <h4><Translate type="bookingDetails" string="total"/></h4>
-                                        </Col>
-                                        <Col lg="6" sm="6" xs="6" className="text-center">
-                                            <h4>{(this.state.details.map((v) => v.precio) * 1.05 + 5)}{coin}</h4>
+                                    <Row>
+                                        <Col lg="12" className="mt-4">
+                                            <DesglosePrecioCasa nights={this.state.days}
+                                                            price={this.state.details.map((v) => v.precio)}/>
                                         </Col>
                                     </Row>
                                     <Row id={'buttonRow'}>

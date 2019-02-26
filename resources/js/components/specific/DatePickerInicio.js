@@ -5,9 +5,7 @@ import originalMoment from "moment";
 import {extendMoment} from "moment-range";
 const moment = extendMoment(originalMoment);
 import {Label, Button, Popover, PopoverBody, InputGroup} from 'reactstrap';
-import Translate from "../../lang/Translate";
 import FormGroup from "reactstrap/es/FormGroup";
-import Input from "reactstrap/es/Input";
 import FaIcon from "../general/FaIcon";
 
 class DatePickerInicio extends Component {
@@ -18,7 +16,6 @@ class DatePickerInicio extends Component {
             show: false
         };
     }
-
     onSelect = (value, states) => {
         this.props.onChange(value);
     };
