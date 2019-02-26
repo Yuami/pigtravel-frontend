@@ -1,31 +1,71 @@
 import React, {Component} from 'react';
-import {
-    Col,
-    Row,
-    Form
-} from "reactstrap";
-import CSRF from "../general/CSRF";
-import MyMedia from "../general/Media/MyMedia";
-import FormGroupReg from "../general/Forms/FormGroupReg";
+import {Form, Formik} from 'formik';
+import * as Yup from 'yup';
 import FormGroupButton from "../general/Forms/FormGroupButton";
+import FormGroupReg from "../general/Forms/FormGroupReg";
+import axios from "axios";
+import {ToastContainer, toast} from 'react-toastify';
 
-class FormLogIn extends Component {
+class FormLogin extends Component {
     render() {
+        let notify = () => {
+            toast.success("Has iniciado Sesion!!");
+        };
         return (
-            <Form className="row" action="/login" method="post">
-                <CSRF/>
-                <FormGroupReg md={12} type={'email'} name={'correo'} text={'Correo'}
-                              placeholder={'email@example.com'} label={'Correo'} value={'admin@admin.com'}/>
-                <FormGroupReg md={12} type={'password'} name={'password'} text={'Contraseña'} placeholder={'*********'} label={'Contraseña'} value={'1234'}/>
-                <Col className="my-2">
-                    <Row className="justify-content-center">
-                        <MyMedia/>
-                    </Row>
-                </Col>
-                <FormGroupButton page={'/'}/>
-            </Form>
+            <Formik initialValues={{
+                correo: 'q@q.q',
+                password: '123123',
+            }}
+                    onSubmit={(values, {setSubmitting}) => {
+                        console.log(values);
+                        axios.post('/login', {values})
+                            .then(function (response) {
+                                console.log(response);
+                            }).catch(function (error) {
+                            console.log(error);
+                        }).then(function () {
+                                window.location = '/';
+                            }
+                        ).then(function () {
+                            notify();
+                        });
+                    }}
+                    validationSchema={Yup.object().shape({
+                        correo: Yup.string().email('El email no es valido').required('El email es necesario'),
+                        password: Yup.string().min(4, 'La contraseña ha de tener minimo 4 caracteres')
+                            .required('La contraseña es necesaria'),
+                    })}>
+                {props => {
+                    const {
+                        values,
+                        touched,
+                        errors,
+                        dirty,
+                        isSubmitting,
+                        handleChange,
+                        handleBlur,
+                        handleSubmit,
+                        handleReset,
+                    } = props;
+                    return (
+                        <Form onSubmit={handleSubmit}>
+                            <FormGroupReg md={12} invalid={errors.correo && touched.correo ? true : false}
+                                          type={'email'} name={'correo'} label={'Correo'} onChange={handleChange}
+                                          onBlur={handleBlur} value={values.correo} error={errors.correo}/>
+                            <FormGroupReg md={12} invalid={errors.password && touched.password ? true : false}
+                                          type={'password'} name={'password'} label={'Contraseña'}
+                                          onChange={handleChange} onBlur={handleBlur} value={values.password}
+                                          error={errors.password}/>
+                            <FormGroupButton page={'/'}/>
+                            <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false}
+                                            newestOnTop={false} closeOnClick rtl={false} pauseOnVisibilityChange
+                                            draggable pauseOnHover/>
+                        </Form>
+                    );
+                }}
+            </Formik>
         );
     }
 }
 
-export default FormLogIn;
+export default FormLogin;

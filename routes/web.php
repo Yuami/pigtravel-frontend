@@ -13,13 +13,12 @@
 
 Auth::routes();
 Route::get('/bookings', 'ReservasController@index');
-Route::get('/logout', 'LogOutController@index');
-Route::get('/houses/{id}','ReservasController@index');
+Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('/houses/{id}', 'ReservasController@index');
 Route::get('/bookings/{idReserva}', 'ReservasController@show');
 
 Route::get('/verify', 'TokenController@index');
 
 Route::post('/receivemail', 'MailController@receive');
 
-Route::get('/{any}','IndexController@index')->where('any', '.*');
-
+Route::get('/{any}', 'IndexController@index')->where('any', '.*');
