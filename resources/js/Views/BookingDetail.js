@@ -52,7 +52,8 @@ class BookingDetail extends Component {
                     <Col lg="12">
                         <Row>
                             <Col lg="2" className="image">
-                                <img src="/img/casa.png" className="img img-responsive"/>
+                                <img src={"http://admin.pigtravel.top" + this.state.values.map((v) => v.perfilVendedor)}
+                                    height="70px" className="rounded-circle"></img>
                             </Col>
                             <Col lg="7" sm="12" xs="12">
                                 <Row>
@@ -99,7 +100,9 @@ class BookingDetail extends Component {
                                 </Row>
                                 <Row>
                                     <Col lg="2" sm="2" xs="3">
-                                        <img src="/img/user.jpg" height="70px" className="userImg"/>
+                                        <img src={"http://admin.pigtravel.top" + this.state.values.map((v) => v.perfilVendedor)}
+                                            height="70px" className="rounded-circle"></img>
+
                                     </Col>
                                     <Col sm="8" xs="8" className="my-auto">
                                         {this.state.values.map((v) => (
@@ -170,6 +173,7 @@ class BookingDetail extends Component {
                     <Panel>
                         {book}
                     </Panel>
+
                 </Container>
             </div>
         );

@@ -37,6 +37,9 @@ Route::get('/bookings/{id}', function ($id) {
 Route::get('/houses/{id}', function ($id) {
     return \App\Vivienda::details($id);
 });
+Route::get('/houseImages/{id}', function ($id) {
+    return \App\Vivienda::images($id);
+});
 Route::get('/reviews/{id}', function ($id) {
     return \App\ValoracionVivienda::vvById($id);
 });

@@ -67,7 +67,7 @@ class House extends Component {
                 icon={'fa fa-minus'}/></Button> :
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon
                 icon={'fa fa-minus'}/></Button>;
-
+console.log(this.state.details.map((v) => v.perfilVendedor));
         return (
             <div>
                 <Container>
@@ -75,14 +75,14 @@ class House extends Component {
                     <Row className="house">
                         <Col lg="8">
                             <Panel>
-                                <HouseCarrousel/>
+                               <HouseCarrousel idHouse={this.props.match.params.idHouse}/>
                             </Panel>
                         </Col>
                         <Col>
                             <Panel className=" m-3">
                                 <Row>
                                     <Col lg="3" sm="3" xs="4">
-                                        <img src="/img/user.jpg" height="70px" className="userImg"></img>
+                                        <img src={"http://admin.pigtravel.top"+this.state.details.map((v) => v.perfilVendedor)} height="70px" class="rounded-circle"></img>
                                     </Col>
                                     <Col lg="9" sm="9" xs="8" className="my-auto">
                                         {this.state.details.map((v) => (
@@ -105,11 +105,11 @@ class House extends Component {
                                     <Row className="justify-content-center">
                                         <h3><Translate type={'house'} string={'priceNight'}/></h3>
                                     </Row>
-                                    <Row className="filtro">
+                                    <Row className="filtro justify-content-center">
                                         <DatePickerInicio onChange={this.handleChangeDates.bind(this)}
                                                           value={this.state.date}/>
                                     </Row>
-                                    <Row>
+                                    <Row className="justify-content-center">
                                         <FormGroup id={"guests"}>
                                             <Label><FaIcon icon={'fa fa-user'}/></Label>
                                             <div className="inputSearcher">

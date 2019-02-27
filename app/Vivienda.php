@@ -69,13 +69,23 @@ class Vivienda extends Model
 
     static function details($id){
         $regions = DB::table('vivienda')
-            ->select('vivienda.*', 'persona.nombre as vendedor','persona.apellido1','tarifa.precio')
+            ->select('vivienda.*', 'persona.nombre as vendedor','fotos.path as perfilVendedor','persona.apellido1','tarifa.precio')
             ->join('persona','persona.id','=','vivienda.idVendedor')
             ->join('vivienda_has_tarifa','vivienda_has_tarifa.idVivienda','=','vivienda.id')
+            ->join('fotos','fotos.id','=','persona.idFoto')
             ->join('tarifa','vivienda_has_tarifa.idTarifa','=','tarifa.id')
             ->where('vivienda.id','=',$id)
             ->get();
         return $regions;
+    }
+
+    static function images($id){
+        $fotos = DB::table('fotos')
+            ->select('fotos.path')
+            ->join('vivienda_has_fotos','vivienda_has_fotos.idFoto','=','fotos.id')
+            ->where('vivienda_has_fotos.idVivienda','=',$id)
+            ->get();
+        return $fotos;
     }
 
 }
