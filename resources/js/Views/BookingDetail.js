@@ -9,6 +9,7 @@ import axios from "axios";
 import DesglosePrecio from "../components/specific/DesglosePrecio";
 import moment from "moment";
 import Panel from "../components/layout/Panel";
+import HouseCarrousel from "../components/specific/HouseCarrousel";
 
 class BookingDetail extends Component {
     constructor(props) {
@@ -16,6 +17,8 @@ class BookingDetail extends Component {
         this.state = {
             values: [],
             states: [],
+            houseImg:[],
+            image:[],
             days: 0,
         };
     }
@@ -30,6 +33,9 @@ class BookingDetail extends Component {
             .then((res) => this.setState({values: res.data}));
         axios.get('/api/states')
             .then((res) => this.setState({states: res.data}));
+        axios.get('/api/fotoPerfil/'+this.state.values.map((v)=> v.idCliente))
+            .then((res) => this.setState({image: res.data}));
+
     }
 
     render() {
@@ -52,8 +58,9 @@ class BookingDetail extends Component {
                     <Col lg="12">
                         <Row>
                             <Col lg="2" className="image">
-                                <img src={"http://admin.pigtravel.top" + this.state.values.map((v) => v.perfilVendedor)}
-                                    height="70px" className="rounded-circle"></img>
+
+                                <img src={"http://admin.pigtravel.top" + this.state.values.map((v) => v.fotoCasa)}
+                                    height="120px"></img>
                             </Col>
                             <Col lg="7" sm="12" xs="12">
                                 <Row>
@@ -74,7 +81,7 @@ class BookingDetail extends Component {
                             <Col lg="2" sm="11" xs="11" className="float-right">
                                 <Row className="precio">
                                     <strong>
-                                        <h1>
+                                        <h4>
                                             {this.state.states.map(function (value, index) {
                                                 if (estado == value.id && BookingDetail.checkServiceLanguage(value.idioma)) {
                                                     return (
@@ -82,7 +89,7 @@ class BookingDetail extends Component {
                                                     )
                                                 }
                                             })}
-                                        </h1>
+                                        </h4>
                                     </strong>
                                 </Row>
                             </Col>
@@ -179,5 +186,4 @@ class BookingDetail extends Component {
         );
     }
 }
-
 export default BookingDetail;

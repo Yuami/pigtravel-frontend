@@ -23,11 +23,13 @@ class Reserva extends Model
 
     static function details($id){
         return DB::table('reserva')
-            ->select('vivienda.nombre as nombreVivienda','fotos.path as perfilVendedor', 'reserva.*', 'persona.nombre', 'persona.apellido1', 'cities.name as cityName', 'countries.name as countryName', 'reserva_has_estado.idEstado')
+            ->select('vivienda.nombre as nombreVivienda','fotoPerfil.path as perfilVendedor','fotoCasa.path as fotoCasa', 'reserva.*', 'persona.nombre', 'persona.apellido1', 'cities.name as cityName', 'countries.name as countryName', 'reserva_has_estado.idEstado')
             ->join('vivienda', 'reserva.idVivienda', '=', 'vivienda.id')
             ->join('reserva_has_estado', 'reserva_has_estado.idReserva', '=', 'reserva.id')
+            ->join('vivienda_has_fotos','vivienda_has_fotos.idVivienda','=','vivienda.id')
             ->join('persona', 'vivienda.idVendedor', '=', 'persona.id')
-            ->join('fotos','fotos.id','=','persona.idFoto')
+            ->join('fotos as fotoPerfil','fotoPerfil.id','=','persona.idFoto')
+            ->join('fotos as fotoCasa','fotoCasa.id','=','vivienda_has_fotos.idFoto')
             ->join('cities', 'vivienda.idCiudad', '=', 'cities.id')
             ->join('countries', 'cities.country_id', '=', 'countries.id')
             ->where('reserva.id', '=', $id)

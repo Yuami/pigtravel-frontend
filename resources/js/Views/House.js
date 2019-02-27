@@ -28,7 +28,7 @@ class House extends Component {
         var endDate = moment("28.04.2016", "DD.MM.YYYY");
         this.state = {
             details: [],
-            clicks: 2,
+            guests: this.props.location.state.guests,
             show: false,
             date: moment.range(startDate,endDate),
             days: endDate.diff(startDate, 'days'),
@@ -36,12 +36,12 @@ class House extends Component {
     }
 
     IncrementItem = () => {
-        this.setState({clicks: this.state.clicks + 1});
+        this.setState({guests: this.state.guests + 1});
     };
 
     DecreaseItem = () => {
-        const clicks = this.state.clicks - 1 < 1 ? 1 : this.state.clicks - 1;
-        this.setState({clicks});
+        const clicks = this.state.guests - 1 < 1 ? 1 : this.state.guests - 1;
+        this.setState({guests});
     };
     handleChangeDates(date) {
         this.setState({date});
@@ -62,7 +62,7 @@ class House extends Component {
 
     render() {
 
-        const decreaseBtn = this.state.clicks === 1 ?
+        const decreaseBtn = this.state.guests === 1 ?
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
                 icon={'fa fa-minus'}/></Button> :
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon
@@ -113,9 +113,9 @@ console.log(this.state.details.map((v) => v.perfilVendedor));
                                         <FormGroup id={"guests"}>
                                             <Label><FaIcon icon={'fa fa-user'}/></Label>
                                             <div className="inputSearcher">
-                                                {this.state.clicks} <input type="hidden" name="guests"
-                                                                           value={this.state.clicks}/>
-                                                <Translate string={this.state.clicks === 1 ? 'guest' : 'guests'}
+                                                {this.state.guests} <input type="hidden" name="guests"
+                                                                           value={this.state.guests}/>
+                                                <Translate string={this.state.guests === 1 ? 'guest' : 'guests'}
                                                            type={'searcher'}/>
                                             </div>
                                             <Popover placement="bottom" isOpen={this.state.show} target="guests"
@@ -143,7 +143,7 @@ console.log(this.state.details.map((v) => v.perfilVendedor));
                                                         idVivienda: this.props.match.params.idHouse,
                                                         checkIn: new Date('2012-01-01'),
                                                         checkOut: new Date('2012-01-04'),
-                                                        pax: this.state.clicks,
+                                                        pax: this.state.guests,
                                                         price: this.state.priceNight,
                                                     }}
                                                             id="reservationButton"

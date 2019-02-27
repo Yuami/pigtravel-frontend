@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -31,4 +32,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    static function images($id){
+
+        $fotos = DB::table('fotos')
+            ->select('fotos.path')
+            ->join('persona','persona.idFoto','=','fotos.id')
+            ->where('persona.id','=',$id)
+            ->get();
+        return $fotos;
+    }
 }

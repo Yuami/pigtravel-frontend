@@ -31,6 +31,9 @@ Route::get('/blocks/{id}', function ($id) {
 Route::get('/states', function () {
     return \App\Estados::statesByLanguage();
 });
+Route::get('/fotoPerfil/{id}', function ($id) {
+    return \App\User::images($id);
+});
 Route::get('/bookings/{id}', function ($id) {
     return \App\Reserva::details($id);
 });
