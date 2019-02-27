@@ -73,9 +73,4 @@ class Persona extends Authenticatable
     {
         return $this->hasOne(Fotos::class, 'id','idFoto');
     }
-
-//    public function getFotoAttribute()
-//    {
-//        return $this->foto;
-//    }
 }

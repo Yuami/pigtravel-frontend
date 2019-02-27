@@ -58,7 +58,12 @@ Route::get('/viviendas/{id}', function ($id) {
 Route::get('/auth', function () {
     return json_encode(auth()->check());
 });
-
+Route::get('/persona/{id}/img', function ($id) {
+    return [
+        'foto' => \App\Persona::find($id)->foto,
+        'back' => env('BACKDOMAIN')
+    ];
+});
 Route::get('/viviendas', "ViviendaController@index");
 
 Route::get('/viviendas/{id}', function ($id) {
