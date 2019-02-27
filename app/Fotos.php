@@ -8,5 +8,10 @@ class Fotos extends Model
 {
     protected $table = "fotos";
     protected $fillable = ["path"];
+
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'idFoto');
+    }
 }
 

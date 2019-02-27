@@ -34,6 +34,9 @@ class Persona extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+//    protected $appends = [
+//        'foto'
+//    ];
 
     /**
      * The attributes that should be cast to native types.
@@ -63,10 +66,16 @@ class Persona extends Authenticatable
 
     public function viviendas()
     {
-        return $this->hasManyThrough(Vivienda::class, Vendedor::class, 'idPersona','idVendedor');
+        return $this->hasManyThrough(Vivienda::class, Vendedor::class, 'idPersona', 'idVendedor');
     }
 
-    public function getFotoAttribute()
+    public function foto()
     {
+        return $this->hasOne(Fotos::class, 'id','idFoto');
     }
+
+//    public function getFotoAttribute()
+//    {
+//        return $this->foto;
+//    }
 }
