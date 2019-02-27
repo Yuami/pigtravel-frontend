@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Translate from "../lang/Translate";
 import axios from "axios";
 import {LocaleContext, coin} from "../LocaleContext";
-import {translate} from "../helpers";
+import {checkIfUndefined, translate} from "../helpers";
 import Col from "reactstrap/es/Col";
 import Row from "reactstrap/es/Row";
 import Container from "reactstrap/es/Container";
@@ -21,18 +21,14 @@ class Reservation extends Component {
     constructor(props) {
         super(props);
 
-        const allPrices = Object.freeze({
-            price: this.props.price,
-            serviceFee: this.props.price * 0.05 + 5,
-            total: (this.props.price * 0.05 + 5) + this.props.price,
-        });
 
         this.state = {
+            idVivienda: null,
+            serviceFee: null,
+            price: null,
+            total: null,
             message: '',
             servicios: [],
-            price: allPrices.price,
-            serviceFee: allPrices.serviceFee,
-            total: allPrices.total,
             vivienda: [],
         };
 
@@ -44,8 +40,32 @@ class Reservation extends Component {
     rules = [13, 14, 22];
 
     componentWillMount() {
-        const servicioURL = '/api/servicio/' + this.props.idVivienda;
-        const viviendaURL = '/api/viviendas/' + this.props.idVivienda;
+        const state = this.props.location.state;
+        if (checkIfUndefined(state, ['idVivienda', 'checkIn', 'checkOut', 'pax', 'price'])) {
+            this.setState({redirect: true});
+            return;
+        }
+
+        const {
+            idVivienda,
+            checkIn,
+            checkOut,
+            pax,
+            price
+        } = state;
+
+        this.setState({
+            idVivienda: idVivienda,
+            price: price,
+            serviceFee: price * 0.05 + 5,
+            total: (price * 0.05 + 5) + price,
+            checkIn: checkIn,
+            checkOut: checkOut,
+            pax: pax,
+        });
+
+        const servicioURL = '/api/servicio/' + idVivienda;
+        const viviendaURL = '/api/viviendas/' + idVivienda;
 
         axios.get(viviendaURL).then((res) => {
             this.setState({vivienda: res.data.data});
@@ -179,7 +199,7 @@ class Reservation extends Component {
                         </Panel>
                     </Col>
                     <Col lg='4' className={'order-0 order-lg-1'}>
-                        <ReservationInfo {...this.props} serviceFee={this.state.serviceFee} total={this.state.total}/>
+                        <ReservationInfo {...this.state}/>
                     </Col>
                 </Row>
             </Container>
@@ -188,11 +208,6 @@ class Reservation extends Component {
 }
 
 Reservation.propTypes = {
-    idVivienda: PropTypes.number.isRequired,
-    checkIn: PropTypes.instanceOf(Date),
-    checkOut: PropTypes.instanceOf(Date),
-    pax: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
 };
 
 export default withRouter(Reservation);

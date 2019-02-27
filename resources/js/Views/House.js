@@ -159,7 +159,7 @@ class House extends Component {
                                                         checkIn: this.props.location.state.start,
                                                         checkOut: this.props.location.state.end,
                                                         pax: this.state.guests,
-                                                        price: this.state.priceNight,
+                                                        price: this.state.details.map((v) => (v.precio))[0] * this.state.days,
                                                     }}
                                                             id="reservationButton"
                                                             className={'btn btn-primary btn-block'}
