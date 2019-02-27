@@ -75,6 +75,7 @@ class Vivienda extends Model
             ->join('fotos','fotos.id','=','persona.idFoto')
             ->join('tarifa','vivienda_has_tarifa.idTarifa','=','tarifa.id')
             ->where('vivienda.id','=',$id)
+            ->limit(1)
             ->get();
         return $regions;
     }
@@ -84,7 +85,6 @@ class Vivienda extends Model
             ->select('fotos.path')
             ->join('vivienda_has_fotos','vivienda_has_fotos.idFoto','=','fotos.id')
             ->where('vivienda_has_fotos.idVivienda','=',$id)
-            ->limit(1)
             ->get();
         return $fotos;
     }

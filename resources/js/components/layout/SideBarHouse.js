@@ -168,7 +168,7 @@ export default class SideBarHouse extends Component {
                                     <Row>
                                         <Col sm="12">
                                             <h1><strong><Translate type="house" string="location"/></strong></h1>
-                                            <MapView/>
+                                            <MapView lat={this.props.coordX} lng={this.props.coordY}/>
                                         </Col>
                                     </Row>
                                 </TabPane>

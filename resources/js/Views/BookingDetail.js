@@ -60,8 +60,7 @@ class BookingDetail extends Component {
                     <Col lg="12">
                         <Row>
                             <Col lg="2" className="image">
-                                <img src={"http://admin.pigtravel.top" + this.state.values.map((v) => v.fotoCasa)}
-                                    height="120px"></img>
+                                <img src={"http://admin.pigtravel.top" + this.state.values.map((v) => v.fotoCasa)}></img>
                             </Col>
                             <Col lg="7" sm="12" xs="12">
                                 <Row>

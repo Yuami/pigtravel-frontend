@@ -10,6 +10,8 @@ import {Button, Label, Popover, PopoverBody} from "reactstrap";
 import FaIcon from "../components/general/FaIcon";
 import Translate from "../lang/Translate";
 import {LocaleContext, coin} from "../LocaleContext";
+
+import {checkIfUndefined} from "../helpers";
 import Stars from "../components/Stars";
 import SideBarHouse from "../components/layout/SideBarHouse";
 import Panel from "../components/layout/Panel";
@@ -23,15 +25,28 @@ import PanelSearcher from "../components/PanelSearcher";
 
 class House extends Component {
     constructor(props, context) {
+
         super(props, context);
 
-        this.state = {
-            details: [],
-            guests: this.props.location.state.guests,
-            show: false,
-            date: moment.range( this.props.location.state.start, this.props.location.state.end),
-            days: moment(this.props.location.state.end).diff(moment(this.props.location.state.start), 'days'),
-        };
+        const stateless = checkIfUndefined(this.props.location.state, ["guests", "start", "end"]);
+
+        if (stateless) {
+            this.state = {
+                details: [],
+                guests: 1,
+                show: false,
+                date: moment.range(moment().format('YYYY-MM-DD'), moment().add(1, 'week').format('YYYY-MM-DD')),
+                days: moment().add(1, 'week').diff(moment(), 'days'),
+            }
+        } else {
+            this.state = {
+                details: [],
+                guests: this.props.location.state.guests,
+                show: false,
+                date: moment.range(this.props.location.state.start, this.props.location.state.end),
+                days: moment(this.props.location.state.end).diff(moment(this.props.location.state.start), 'days'),
+            };
+        }
     }
 
     IncrementItem = () => {
@@ -60,12 +75,14 @@ class House extends Component {
     };
 
     render() {
+        const coordX= this.state.details.map((v) => v.coordX).toString();
+        const coordY= this.state.details.map((v) => v.coordY).toString();
         const decreaseBtn = this.state.guests === 1 ?
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
                 icon={'fa fa-minus'}/></Button> :
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon
                 icon={'fa fa-minus'}/></Button>;
-console.log(this.state.details.map((v) => v.perfilVendedor));
+
         return (
             <div>
                 <Container>
@@ -139,8 +156,8 @@ console.log(this.state.details.map((v) => v.perfilVendedor));
                                                 <LinkButton block={true} page={'/reservation'} pageParams={
                                                     {
                                                         idVivienda: this.props.match.params.idHouse,
-                                                        checkIn: new Date('2012-01-01'),
-                                                        checkOut: new Date('2012-01-04'),
+                                                        checkIn: this.props.location.state.start,
+                                                        checkOut: this.props.location.state.end,
                                                         pax: this.state.guests,
                                                         price: this.state.priceNight,
                                                     }}
@@ -157,8 +174,8 @@ console.log(this.state.details.map((v) => v.perfilVendedor));
                         <Col lg="12">
                             <SideBarHouse description={this.state.details.map((v) => (v.descripcion))}
                                           houseID={this.props.match.params.idHouse}
-                                          coordX={this.state.details.map((v) => v.coordX)}
-                                          coordY={this.state.details.map((v) => v.coordY)}
+                                          coordX={coordX}
+                                          coordY={coordY}
                             />
                         </Col>
                     </Row>
