@@ -10,24 +10,24 @@ class DropdownPerfil extends Component {
         return (
             <>
                 <DropdownToggle className="p-0" nav caret>
-                    <img src="/img/user.jpg" height="50px" className="userImg"></img>
+                    <img src="/img/user.jpg" height="50px" className="userImg"/>
                 </DropdownToggle>
                 <DropdownMenu right>
                     <a>
                         <DropdownItem>
-                            <i className="fas fa-envelope"></i> <Translate type={'userDropdown'} string={'inbox'}/>
+                            <i className="fas fa-envelope"/> <Translate type={'userDropdown'} string={'inbox'}/>
                         </DropdownItem>
                         <DropdownItem>
-                            <i className="fas fa-suitcase"></i> <Translate type={'userDropdown'} string={'bookings'}/>
+                            <i className="fas fa-suitcase"/> <Translate type={'userDropdown'} string={'bookings'}/>
                         </DropdownItem>
                         <DropdownItem>
-                            <i className="fas fa-user"></i> <Translate type={'userDropdown'} string={'profile'}/>
+                            <i className="fas fa-user"/> <Translate type={'userDropdown'} string={'profile'}/>
                         </DropdownItem>
                         <DropdownItem>
-                            <i className="fas fa-cog"></i> <Translate type={'userDropdown'} string={'account'}/>
+                            <i className="fas fa-cog"/> <Translate type={'userDropdown'} string={'account'}/>
                     </DropdownItem>
                         <DropdownItem>
-                            <i className="fas fa-sign-out-alt"></i> <Translate type={'userDropdown'} string={'exit'}/>
+                            <i className="fas fa-sign-out-alt"/> <Translate type={'userDropdown'} string={'exit'}/>
                         </DropdownItem>
                     </a>
                 </DropdownMenu>
