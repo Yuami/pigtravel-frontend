@@ -18,6 +18,9 @@ class HouseCarrousel extends Component {
     componentWillMount() {
         axios.get('/api/houseImages/'+this.props.idHouse)
             .then((res) => this.setState({images: res.data}));
+        if (this.state.images == null){
+
+        }
     }
 
     render() {
