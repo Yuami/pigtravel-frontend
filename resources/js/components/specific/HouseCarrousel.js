@@ -1,50 +1,41 @@
 import ImageGallery from 'react-image-gallery';
 import React, {Component} from 'react';
 import "react-image-gallery/styles/css/image-gallery.css";
+import PropTypes from "prop-types";
+import axios from "axios";
+import moment from "moment";
+import DayPicker from "react-day-picker";
 
 class HouseCarrousel extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            images: [],
+        };
+    }
+
+    componentWillMount() {
+        axios.get('/api/houseImages/'+this.props.idHouse)
+            .then((res) => this.setState({images: res.data}));
+    }
 
     render() {
-
-        const images = [
-            {
-                original: 'http://lorempixel.com/1000/600/nature/1/',
-                thumbnail: 'http://lorempixel.com/250/150/nature/1/',
-            },
-            {
-                original: 'http://lorempixel.com/1000/600/nature/2/',
-                thumbnail: 'http://lorempixel.com/250/150/nature/2/'
-            },
-            {
-                original: 'http://lorempixel.com/1000/600/nature/3/',
-                thumbnail: 'http://lorempixel.com/250/150/nature/3/'
-            },
-            {
-                original: 'http://lorempixel.com/1000/600/nature/4/',
-                thumbnail: 'http://lorempixel.com/250/150/nature/4/'
-            },
-            {
-                original: 'http://lorempixel.com/1000/600/nature/5/',
-                thumbnail: 'http://lorempixel.com/250/150/nature/5/'
-            },
-            {
-                original: 'http://lorempixel.com/1000/600/nature/6/',
-                thumbnail: 'http://lorempixel.com/250/150/nature/6/'
-            },
-            {
-                original: 'http://lorempixel.com/1000/600/nature/7/',
-                thumbnail: 'http://lorempixel.com/250/150/nature/7/'
-            }
-            ,{
-                original: 'http://lorempixel.com/1000/600/nature/8/',
-                thumbnail: 'http://lorempixel.com/250/150/nature/8/'
-            }
-        ];
-
         return (
-            <ImageGallery items={images} />
+            <ImageGallery items={
+                this.state.images.map(v => {
+                            return {
+                                original: "http://admin.pigtravel.top" + v.path,
+                                thumbnail: "http://admin.pigtravel.top" + v.path
+                            }
+                    }
+                )}/>
         );
     }
 
 }
+
+HouseCarrousel.propTypes = {
+    idHouse: PropTypes.number.isRequired,
+};
 export default HouseCarrousel;

@@ -24,24 +24,23 @@ import PanelSearcher from "../components/PanelSearcher";
 class House extends Component {
     constructor(props, context) {
         super(props, context);
-        var startDate = moment("13.04.2016", "DD.MM.YYYY");
-        var endDate = moment("28.04.2016", "DD.MM.YYYY");
+
         this.state = {
             details: [],
-            clicks: 2,
+            guests: this.props.location.state.guests,
             show: false,
-            date: moment.range(startDate,endDate),
-            days: endDate.diff(startDate, 'days'),
+            date: moment.range( this.props.location.state.start, this.props.location.state.end),
+            days: moment(this.props.location.state.end).diff(moment(this.props.location.state.start), 'days'),
         };
     }
 
     IncrementItem = () => {
-        this.setState({clicks: this.state.clicks + 1});
+        this.setState({guests: this.state.guests + 1});
     };
 
     DecreaseItem = () => {
-        const clicks = this.state.clicks - 1 < 1 ? 1 : this.state.clicks - 1;
-        this.setState({clicks});
+        const guests = this.state.guests - 1 < 1 ? 1 : this.state.guests - 1;
+        this.setState({guests});
     };
     handleChangeDates(date) {
         this.setState({date});
@@ -61,13 +60,12 @@ class House extends Component {
     };
 
     render() {
-
-        const decreaseBtn = this.state.clicks === 1 ?
+        const decreaseBtn = this.state.guests === 1 ?
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
                 icon={'fa fa-minus'}/></Button> :
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon
                 icon={'fa fa-minus'}/></Button>;
-
+console.log(this.state.details.map((v) => v.perfilVendedor));
         return (
             <div>
                 <Container>
@@ -75,14 +73,14 @@ class House extends Component {
                     <Row className="house">
                         <Col lg="8">
                             <Panel>
-                                <HouseCarrousel/>
+                               <HouseCarrousel idHouse={this.props.match.params.idHouse}/>
                             </Panel>
                         </Col>
                         <Col>
                             <Panel className=" m-3">
                                 <Row>
                                     <Col lg="3" sm="3" xs="4">
-                                        <img src="/img/user.jpg" height="70px" className="userImg"></img>
+                                        <img src={"http://admin.pigtravel.top"+this.state.details.map((v) => v.perfilVendedor)} height="70px" class="rounded-circle"></img>
                                     </Col>
                                     <Col lg="9" sm="9" xs="8" className="my-auto">
                                         {this.state.details.map((v) => (
@@ -105,17 +103,17 @@ class House extends Component {
                                     <Row className="justify-content-center">
                                         <h3><Translate type={'house'} string={'priceNight'}/></h3>
                                     </Row>
-                                    <Row className="filtro">
+                                    <Row className="filtro justify-content-center">
                                         <DatePickerInicio onChange={this.handleChangeDates.bind(this)}
                                                           value={this.state.date}/>
                                     </Row>
-                                    <Row>
+                                    <Row className="justify-content-center">
                                         <FormGroup id={"guests"}>
                                             <Label><FaIcon icon={'fa fa-user'}/></Label>
                                             <div className="inputSearcher">
-                                                {this.state.clicks} <input type="hidden" name="guests"
-                                                                           value={this.state.clicks}/>
-                                                <Translate string={this.state.clicks === 1 ? 'guest' : 'guests'}
+                                                {this.state.guests} <input type="hidden" name="guests"
+                                                                           value={this.state.guests}/>
+                                                <Translate string={this.state.guests === 1 ? 'guest' : 'guests'}
                                                            type={'searcher'}/>
                                             </div>
                                             <Popover placement="bottom" isOpen={this.state.show} target="guests"
@@ -143,7 +141,7 @@ class House extends Component {
                                                         idVivienda: this.props.match.params.idHouse,
                                                         checkIn: new Date('2012-01-01'),
                                                         checkOut: new Date('2012-01-04'),
-                                                        pax: this.state.clicks,
+                                                        pax: this.state.guests,
                                                         price: this.state.priceNight,
                                                     }}
                                                             id="reservationButton"

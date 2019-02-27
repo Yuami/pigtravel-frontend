@@ -31,11 +31,17 @@ Route::get('/blocks/{id}', function ($id) {
 Route::get('/states', function () {
     return \App\Estados::statesByLanguage();
 });
+Route::get('/fotoPerfil/{id}', function ($id) {
+    return \App\User::images($id);
+});
 Route::get('/bookings/{id}', function ($id) {
     return \App\Reserva::details($id);
 });
 Route::get('/houses/{id}', function ($id) {
     return \App\Vivienda::details($id);
+});
+Route::get('/houseImages/{id}', function ($id) {
+    return \App\Vivienda::images($id);
 });
 Route::get('/reviews/{id}', function ($id) {
     return \App\ValoracionVivienda::vvById($id);

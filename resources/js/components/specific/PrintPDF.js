@@ -18,7 +18,6 @@ class PrintPDF extends Component {
             loading: true
         });
 
-        setTimeout(() => {
             this.setState(
                 {
                     loading: false,
@@ -36,7 +35,6 @@ class PrintPDF extends Component {
                     }, 1);
                 }
             );
-        }, 3000);
     }
 
     render() {
