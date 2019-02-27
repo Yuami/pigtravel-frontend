@@ -24,8 +24,10 @@ class HouseCarrousel extends Component {
         return (
             <ImageGallery items={
                 this.state.images.map(v => {
-                        return {original: "http://admin.pigtravel.top" + v.path,
-                        thumbnail:"http://admin.pigtravel.top" + v.path }
+                            return {
+                                original: "http://admin.pigtravel.top" + v.path,
+                                thumbnail: "http://admin.pigtravel.top" + v.path
+                            }
                     }
                 )}/>
         );

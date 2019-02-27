@@ -24,14 +24,13 @@ import PanelSearcher from "../components/PanelSearcher";
 class House extends Component {
     constructor(props, context) {
         super(props, context);
-        var startDate = moment("13.04.2016", "DD.MM.YYYY");
-        var endDate = moment("28.04.2016", "DD.MM.YYYY");
+
         this.state = {
             details: [],
             guests: this.props.location.state.guests,
             show: false,
-            date: moment.range(startDate,endDate),
-            days: endDate.diff(startDate, 'days'),
+            date: moment.range( this.props.location.state.start, this.props.location.state.end),
+            days: moment(this.props.location.state.end).diff(moment(this.props.location.state.start), 'days'),
         };
     }
 
@@ -40,7 +39,7 @@ class House extends Component {
     };
 
     DecreaseItem = () => {
-        const clicks = this.state.guests - 1 < 1 ? 1 : this.state.guests - 1;
+        const guests = this.state.guests - 1 < 1 ? 1 : this.state.guests - 1;
         this.setState({guests});
     };
     handleChangeDates(date) {
@@ -61,7 +60,6 @@ class House extends Component {
     };
 
     render() {
-
         const decreaseBtn = this.state.guests === 1 ?
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
                 icon={'fa fa-minus'}/></Button> :

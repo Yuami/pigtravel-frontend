@@ -52,13 +52,14 @@ class BookingDetail extends Component {
         ];
         const precio = this.state.values.map((p) => (p.precio));
         const estado = this.state.values.map((p) => (p.idEstado));
+        const fromDate= moment(this.state.values.map((v) => (v.checkIn))).format('YYYY-MM-DD');
+        const toDate=moment(this.state.values.map((v) => v.checkOut)).format('YYYY-MM-DD');
         const book = (
             <>
                 <Row className="mb-2">
                     <Col lg="12">
                         <Row>
                             <Col lg="2" className="image">
-
                                 <img src={"http://admin.pigtravel.top" + this.state.values.map((v) => v.fotoCasa)}
                                     height="120px"></img>
                             </Col>
