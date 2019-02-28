@@ -61,10 +61,21 @@ Route::get('/servicio/{id}', function ($id) {
 Route::get('/viviendas/{id}', function ($id) {
     return \App\Vivienda::find($id);
 });
+
 Route::get('/auth', function () {
     return json_encode(auth()->check());
 });
+Route::get('/auth/id', function () {
+    return json_encode(auth()->id());
+});
 
+Route::get('/persona/{id}/img', function ($id) {
+    dd($id);
+    return [
+        'foto' => \App\Persona::find($id)->foto,
+        'back' => env('BACKDOMAIN')
+    ];
+});
 Route::get('/viviendas', "ViviendaController@index");
 
 Route::get('/viviendas/{id}', function ($id) {

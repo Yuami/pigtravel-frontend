@@ -63,10 +63,11 @@ class Persona extends Authenticatable
 
     public function viviendas()
     {
-        return $this->hasManyThrough(Vivienda::class, Vendedor::class, 'idPersona','idVendedor');
+        return $this->hasManyThrough(Vivienda::class, Vendedor::class, 'idPersona', 'idVendedor');
     }
 
-    public function getFotoAttribute()
+    public function foto()
     {
+        return $this->hasOne(Fotos::class, 'id','idFoto');
     }
 }
