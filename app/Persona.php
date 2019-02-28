@@ -34,9 +34,6 @@ class Persona extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-//    protected $appends = [
-//        'foto'
-//    ];
 
     /**
      * The attributes that should be cast to native types.
