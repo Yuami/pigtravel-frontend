@@ -23,6 +23,7 @@ class PaypalCheckout extends React.Component {
     }
 
     render() {
+
         const onSuccess = (payment) => {
 
             axios.post('/api/reservation', {
@@ -44,6 +45,21 @@ class PaypalCheckout extends React.Component {
 
         const onCancel = (data) => {
             // User pressed "cancel" or close Paypal's popup!
+
+            axios.post('/api/reservation', {
+                idVivienda: this.state.info.idVivienda,
+                checkIn: this.state.info.checkIn,
+                checkOut: this.state.info.checkOut,
+                pax: this.state.info.pax,
+                precio: this.state.info.precio,
+                estado: 4,
+                message: this.props.message
+            }).then(function (response) {
+                window.location = ("/bookings/" + response.data);
+            }).catch(function (error) {
+                console.log(error);
+            });
+
             console.log('The payment was cancelled!', data);
         };
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ReservedEmail;
 use App\Mensaje;
 use App\ReservaHasEstado;
+use App\ReservaHasEstadoInsert;
 use App\Vivienda;
 use App\Reserva;
 use http\Message;
@@ -49,8 +50,9 @@ class ReservasController extends Controller
         $reserva->idCliente = 1;
         $reserva->save();
 
+
         if ($request->estado != 3) {
-            $estado = new ReservaHasEstado();
+            $estado = new ReservaHasEstadoInsert();
             $estado->idEstado = $request->estado;
             $estado->idReserva = $reserva->id;
             $estado->save();

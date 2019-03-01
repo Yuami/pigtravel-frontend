@@ -53,10 +53,8 @@ class Main extends Component {
         axios.get("/api/auth")
             .then((response) => {
                     this.setState({isAuth: response.data});
-                    console.log(response.data);
                 }
-            ).catch(error => console.log(error)
-        )
+            )
     };
 
 
@@ -64,7 +62,6 @@ class Main extends Component {
         var checkIn = new Date('2019-03-01');
         var checkOut = new Date('2019-03-04');
         let token = document.head.querySelector('meta[name="csrf-token"]');
-        console.log(this.state.isAuth);
 
         return (
             <LocaleContext.Provider value={this.state.locale}>

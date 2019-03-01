@@ -8,6 +8,8 @@ class ReservaHasEstado extends Model
 {
     protected $table = "reserva_has_estado";
     protected $primaryKey = ["idReserva", "idEstado"];
+    protected $guarded = [];
+
     const UPDATED_AT = 'fechaCambio';
     const CREATED_AT = 'fechaCambio';
 

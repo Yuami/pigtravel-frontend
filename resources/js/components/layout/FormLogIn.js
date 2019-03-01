@@ -17,10 +17,8 @@ class FormLogin extends Component {
                 password: '123123',
             }}
                     onSubmit={(values, {setSubmitting}) => {
-                        console.log(values);
                         axios.post('/login', {values})
                             .then(function (response) {
-                                console.log(response);
                             }).catch(function (error) {
                             console.log(error);
                         }).then(function () {

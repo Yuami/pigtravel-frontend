@@ -20,6 +20,7 @@ import {translate} from "../helpers";
 import originalMoment from "moment";
 import {extendMoment} from "moment-range";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
+
 const moment = extendMoment(originalMoment);
 import PanelSearcher from "../components/PanelSearcher";
 
@@ -57,6 +58,7 @@ class House extends Component {
         const guests = this.state.guests - 1 < 1 ? 1 : this.state.guests - 1;
         this.setState({guests});
     };
+
     handleChangeDates(date) {
         this.setState({date});
     }
@@ -75,8 +77,8 @@ class House extends Component {
     };
 
     render() {
-        const coordX= this.state.details.map((v) => v.coordX).toString();
-        const coordY= this.state.details.map((v) => v.coordY).toString();
+        const coordX = this.state.details.map((v) => v.coordX).toString();
+        const coordY = this.state.details.map((v) => v.coordY).toString();
         const decreaseBtn = this.state.guests === 1 ?
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
                 icon={'fa fa-minus'}/></Button> :
@@ -90,14 +92,16 @@ class House extends Component {
                     <Row className="house">
                         <Col lg="8">
                             <Panel>
-                               <HouseCarrousel idHouse={this.props.match.params.idHouse}/>
+                                <HouseCarrousel idHouse={this.props.match.params.idHouse}/>
                             </Panel>
                         </Col>
                         <Col>
                             <Panel className=" m-3">
                                 <Row>
                                     <Col lg="3" sm="3" xs="4">
-                                        <img src={"http://admin.pigtravel.top"+this.state.details.map((v) => v.perfilVendedor)} height="70px" class="rounded-circle"></img>
+                                        <img
+                                            src={"http://admin.pigtravel.top" + this.state.details.map((v) => v.perfilVendedor)}
+                                            height="70px" class="rounded-circle"></img>
                                     </Col>
                                     <Col lg="9" sm="9" xs="8" className="my-auto">
                                         {this.state.details.map((v) => (
@@ -147,7 +151,7 @@ class House extends Component {
                                     <Row>
                                         <Col lg="12" className="mt-4 desglose">
                                             <DesglosePrecioCasa nights={this.state.days}
-                                                            price={this.state.details.map((v) => v.precio)}/>
+                                                                price={this.state.details.map((v) => v.precio)}/>
                                         </Col>
                                     </Row>
                                     <Row id={'buttonRow'}>
@@ -155,11 +159,12 @@ class House extends Component {
                                             {locale =>
                                                 <LinkButton block={true} page={'/reservation'} pageParams={
                                                     {
-                                                        idVivienda: this.props.match.params.idHouse,
-                                                        checkIn: this.props.location.state.start,
-                                                        checkOut: this.props.location.state.end,
+                                                        idVivienda: parseInt(this.props.match.params.idHouse),
+                                                        checkIn: new Date(this.props.location.state.start),
+                                                        checkOut: new Date(this.props.location.state.end),
                                                         pax: this.state.guests,
-                                                        price: this.state.details.map((v) => (v.precio))[0] * this.state.days,
+                                                        price: this.state.details.map((v) => (v.precio))[0] * this.state.days ?
+                                                            this.state.details.map((v) => (v.precio))[0] * this.state.days : 0,
                                                     }}
                                                             id="reservationButton"
                                                             className={'btn btn-primary btn-block'}

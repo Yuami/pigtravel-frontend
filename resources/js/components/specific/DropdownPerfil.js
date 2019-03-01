@@ -14,15 +14,12 @@ class DropdownPerfil extends Component {
 
     componentWillMount() {
         axios.get('/api/auth/id').then((response) => {
-            console.log(response.data);
             this.setState({idPersona: response.data});
         });
-        console.log(this.state.idPersona)
 
     }
     componentDidMount() {
         axios.get('/api/persona/' + this.state.idPersona + '/img').then((response) => {
-                console.log(response.data);
                 this.setState({foto: response.data.back + response.data.foto.path});
             }
         )

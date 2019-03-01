@@ -106,18 +106,17 @@ class Reservation extends Component {
 
     renderSubmitButton() {
         const info = {
-            idVivienda: this.props.idVivienda,
-            checkIn: this.props.checkIn,
-            checkOut: this.props.checkOut,
-            pax: this.props.pax,
+            idVivienda: this.state.idVivienda,
+            checkIn: this.state.checkIn,
+            checkOut: this.state.checkOut,
+            pax: this.state.pax,
             price: this.state.price,
             serviceFee: this.state.serviceFee,
             total: this.state.total,
             message: this.state.message,
         };
 
-
-        return this.state.vivienda.alquilerAutomatico ?
+         return this.state.vivienda.alquilerAutomatico ?
             <LocaleContext.Consumer>
                 {locale =>
                     <LinkButton page={'/payment'} pageParams={info}
@@ -141,7 +140,6 @@ class Reservation extends Component {
     }
 
 
-
     renderInformation() {
         const rules = this.rules;
         return this.state.servicios.map(function (value, index, array) {
@@ -160,10 +158,10 @@ class Reservation extends Component {
 
     handleSubmit = (event) => {
         axios.post('/api/reservation', {
-            idVivienda: this.props.idVivienda,
-            checkIn: this.props.checkIn,
-            checkOut: this.props.checkOut,
-            pax: this.props.pax,
+            idVivienda: this.state.idVivienda,
+            checkIn: this.state.checkIn,
+            checkOut: this.state.checkOut,
+            pax: this.state.pax,
             precio: this.state.total,
             estado: 3,
             message: this.state.message,
@@ -175,6 +173,7 @@ class Reservation extends Component {
     };
 
     render() {
+
         const renderRules = this.renderRules();
         const renderInformacion = this.renderInformation();
         const renderSubmitButton = this.renderSubmitButton();
@@ -207,7 +206,6 @@ class Reservation extends Component {
     }
 }
 
-Reservation.propTypes = {
-};
+Reservation.propTypes = {};
 
 export default withRouter(Reservation);
