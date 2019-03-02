@@ -10,7 +10,6 @@ class LocaleController extends Controller
     public function change($locale)
     {
         app()->setLocale($locale);
-        return 'success';
     }
 
     /**
