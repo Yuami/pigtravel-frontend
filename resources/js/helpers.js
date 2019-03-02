@@ -11,7 +11,7 @@ export function translate(locale, string, type) {
     return langs[locale] == undefined ? langs['es'][type][string] : langs[locale][type][string];
 }
 
-export function title(title) {
+export function titleChange(title) {
     document.title = title + ' - Pig Travel'
 }
 

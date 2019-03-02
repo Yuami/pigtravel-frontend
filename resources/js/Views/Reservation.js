@@ -64,8 +64,8 @@ class Reservation extends Component {
             pax: pax,
         });
 
-        const servicioURL = '/api/servicio/' + idVivienda;
         const viviendaURL = '/api/viviendas/' + idVivienda;
+        const servicioURL = viviendaURL + '/servicios';
 
         axios.get(viviendaURL).then((res) => {
             this.setState({vivienda: res.data.data});

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\ViviendaCollection as ViviendaCollection;
+use \App\Http\Resources\Vivienda as ViviendaResource;
 use App\Vivienda;
 
 class ViviendaController extends Controller
@@ -25,6 +26,7 @@ class ViviendaController extends Controller
         {
             $query->where('reserva.checkin', '<', $params["end"])->where('reserva.checkout', '>', $params["start"]);
         });
+
         $v->where('vivienda.capacidad', '>=', $params['guests']);
         return $v->has("tarifas");
     }
@@ -36,6 +38,7 @@ class ViviendaController extends Controller
      */
     public function index(Request $request)
     {
+        if (empty($request->all())) return new ViviendaCollection(Vivienda::all());
 
         $params = $request->validate([
             'start' => 'required|date|after_or_equal:today',
@@ -84,7 +87,7 @@ class ViviendaController extends Controller
      */
     public function show($id)
     {
-        //
+        return new ViviendaResource(Vivienda::find($id));
     }
 
     /**

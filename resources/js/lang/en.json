@@ -83,6 +83,8 @@
     "city": "City"
   },
   "houselist": {
+    "title": "House list",
+    "service": "Services",
     "night": "per night",
     "error": "Search error! Try another search or try the same search later."
   },

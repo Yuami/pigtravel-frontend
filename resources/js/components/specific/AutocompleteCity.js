@@ -14,8 +14,9 @@ class AutocompleteCity extends Component {
             optionsRegions:[],
             value: undefined,
             label: undefined,
-            selectedOption: null
+            selectedOption: null,
         };
+
         this.getOptionsCities = this.getOptionsCities.bind(this)
     }
 
@@ -49,9 +50,6 @@ class AutocompleteCity extends Component {
     };
 
     render() {
-
-
-
         const {optionsCities, optionsRegions} = this.state;
         const groupedOptions = [
             {

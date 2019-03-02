@@ -7,7 +7,6 @@ import {BrowserRouter, Switch, Route, withRouter} from "react-router-dom";
 import Footer from "./layout/Footer";
 import Home from "../Views/Home";
 import LogOut from "../Views/LogOut";
-import Login from "../Views/Login";
 import AboutUs from "../Views/AboutUs";
 import * as ReactDOM from "react-dom";
 import MainModal from "./layout/MainModal";
@@ -21,6 +20,7 @@ import ReservationPayment from "../Views/ReservationPayment";
 import House from "../Views/House";
 import Profile from "../Views/Profile";
 import axios from "axios";
+import LogIn from "../Views/LogIn";
 
 class Main extends Component {
     constructor(props) {
@@ -74,7 +74,7 @@ class Main extends Component {
                             <Route exact path="/houses/:idHouse/:name" component={House}>
                             </Route>
                             <Route exact path="/about-us" component={AboutUs}/>
-                            <Route exact path="/login" component={Login}/>
+                            <Route exact path="/login" component={LogIn}/>
                             <Route exact path="/logout" component={LogOut}/>
                             <Route exact path="/contact" component={Contact}/>
                             <Route exact path="/modal">

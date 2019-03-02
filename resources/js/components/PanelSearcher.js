@@ -9,18 +9,51 @@ import Col from "react-bootstrap/Col";
 import FaIcon from "./general/FaIcon";
 import {Button, Label, Popover, PopoverBody} from "reactstrap";
 import Translate from "../lang/Translate";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
+import axios from "axios";
 
 const moment = extendMoment(originalMoment);
 
 class PanelSearcher extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     state = {
         place: this.props.place || null,
         guests: this.props.guests || 1,
         date: moment.range(this.props.start || moment.format('YYYY-MM-DD'), this.props.end || moment.add(1, 'week').format('YYYY-MM-DD')),
-        show: false
+        show: false,
+        first: true
     };
+
+    componentWillMount() {
+        this.getPlace();
+    }
+
+
+    getPlace() {
+        if (!this.props.place) return null;
+        if (!this.state.first) return;
+
+        let label = `/api/cities/${this.props.place}`;
+        if (this.props.place < 3000) {
+            label = `/api/regions/${this.props.place}`
+        }
+
+        axios.get(label)
+            .then(r => {
+                let data = r.data;
+                this.setState({
+                    place: {
+                        value: data.id,
+                        label: data.name
+                    }
+                })
+            })
+            .catch(e => console.log(e));
+    }
 
     handleChangePlace(place) {
         this.setState({place});
@@ -93,7 +126,7 @@ class PanelSearcher extends Component {
 
         const submit = (
             <Link to={linkProps}>
-                <Button color="primary" className="mt-3 mt-md-2" onClick={this.props.onSubmit || null} block>
+                <Button color="primary" className="mt-3 mt-md-2" block>
                     <FaIcon icon='fa fa-search' size="fa-2x"/>
                     <span className="d-md-none" style={{fontSize: "18px"}}> <Translate type="searcher" string="search"/></span>
                 </Button>
@@ -123,4 +156,4 @@ class PanelSearcher extends Component {
     static propTypes = {}
 }
 
-export default PanelSearcher;
+export default withRouter(PanelSearcher);

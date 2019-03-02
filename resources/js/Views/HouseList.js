@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component, useContext} from 'react';
 import Container from "reactstrap/es/Container";
 import HouseCard from "../components/general/HouseCard";
 import Col from "reactstrap/es/Col";
 import Row from "reactstrap/es/Row";
 import axios from "axios";
 import Link from "react-router-dom/es/Link";
-import {cleanURI} from "../helpers";
+import {cleanURI, titleChange, translate} from "../helpers";
 import Spinner from "reactstrap/es/Spinner";
 import Translate from "../lang/Translate";
 import {Alert} from "reactstrap";
@@ -15,6 +15,10 @@ import {extendMoment} from "moment-range";
 import Panel from "../components/layout/Panel";
 import FaIcon from "../components/general/FaIcon";
 import Button from "reactstrap/es/Button";
+import HouseListFilters from "../components/general/HouseListFilters";
+import ModalHeader from "react-bootstrap/ModalHeader";
+import ModalBody from "react-bootstrap/ModalBody";
+import ModalFooter from "react-bootstrap/ModalFooter";
 
 const moment = extendMoment(originalMoment);
 
@@ -31,12 +35,17 @@ class HouseList extends Component {
         end: moment().add(1, "week").format('YYYY-MM-DD'),
         guests: this.props.location.state.guests,
         place: this.props.location.state.place,
-        showMap: true
+        showMap: true,
+        params: null
     };
 
-    componentWillMount() {
-        const params = this.props.location.state;
-        this.reload(params);
+    componentDidMount() {
+        this.reload(this.props.location.state);
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        if (nextProps.location.state == this.state.params) return;
+        this.reload(nextProps.location.state);
     }
 
     toogleMap() {
@@ -45,7 +54,12 @@ class HouseList extends Component {
 
     reload(params) {
         this.setState({
-            loading: true
+            loading: true,
+            params,
+            guests: params.guests,
+            place: params.place,
+            start: params.start,
+            end: params.end
         });
 
         const endPoint = '/api/viviendas';
@@ -67,12 +81,10 @@ class HouseList extends Component {
                 links: houses.links,
                 meta: houses.meta,
                 loading: false,
-                ...params
             }))
             .catch(e => this.setState({
                 loading: false,
                 error: true,
-                ...params
             }));
     }
 
@@ -136,13 +148,7 @@ class HouseList extends Component {
                 </>);
         }
 
-        const filterBtn = (
-            <Button color="primary" block>
-                <span style={{fontSize: "18px"}}>
-                    <Translate type="general" string="filters"/>
-                </span>
-            </Button>
-        );
+        const filterBtn = (<HouseListFilters/>);
 
         const switchMap = (
             <div>
