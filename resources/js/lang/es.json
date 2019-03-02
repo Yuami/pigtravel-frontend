@@ -96,7 +96,9 @@
     "availability": "Disponibilidad",
     "reviews": "Reseñas",
     "location": "Ubicación",
-    "priceNight": "promedio/noche"
+    "priceNight": "promedio/noche",
+    "rating": "Valoracion",
+    "ratings": "Valoraciones"
   },
   "userDropdown": {
     "inbox": "Bandeja de entrada",

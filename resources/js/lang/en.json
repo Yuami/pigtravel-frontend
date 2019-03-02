@@ -95,7 +95,9 @@
     "availability": "Availability",
     "reviews": "Reviews",
     "location": "Location",
-    "priceNight": "average/night"
+    "priceNight": "average/night",
+    "rating": "Rating",
+    "ratings": "Ratings"
   },
   "userDropdown": {
     "inbox": "Inbox",

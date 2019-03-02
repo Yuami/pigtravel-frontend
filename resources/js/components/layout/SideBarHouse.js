@@ -30,16 +30,18 @@ export default class SideBarHouse extends Component {
             values: [],
             markerPosition: {lat: this.props.coordX, lng: this.props.coordY}
         };
-        this.renderInformation=this.renderInformation.bind(this);
+        this.renderInformation = this.renderInformation.bind(this);
     }
+
     componentWillMount() {
 
-        axios.get('/api/servicio/'+this.props.houseID)
+        axios.get('/api/viviendas/' + this.props.houseID + "/servicios")
             .then((res) => this.setState({values: res.data}));
     }
+
     renderInformation() {
         return this.state.values.map(function (value, index, array) {
-            if (value.activo  && SideBarHouse.checkServiceLanguage(value.idioma)) {
+            if (value.activo && SideBarHouse.checkServiceLanguage(value.idioma)) {
                 return (
                     <li className={'col-6'} key={value.idServicio}>
                         <span className={'fas fa-fw ' + value.icon}></span> {value.nombre}</li>
@@ -51,6 +53,7 @@ export default class SideBarHouse extends Component {
     static checkServiceLanguage(idioma) {
         return (localStorage["locale"] === idioma);
     };
+
     toggleNav() {
         this.setState({isOpen: !this.state.isOpen});
     }
@@ -67,7 +70,7 @@ export default class SideBarHouse extends Component {
 
     render() {
         const {markerPosition} = this.state.markerPosition;
-        const renderInformation1 =this.renderInformation();
+        const renderInformation1 = this.renderInformation();
         return (
             <div>
                 <Row>

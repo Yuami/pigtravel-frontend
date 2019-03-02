@@ -8,6 +8,7 @@ import Panel from "../layout/Panel";
 import Translate from "../../lang/Translate";
 import Stars from "../Stars";
 import {coin} from "../../LocaleContext";
+import NumeroValoraciones from "./NumeroValoraciones";
 
 class ReservationInfo extends Component {
     constructor(props) {
@@ -44,7 +45,7 @@ class ReservationInfo extends Component {
 
     render() {
         console.log(this.state.vivienda.valoracion);
-        const valoracion = this.state.vivienda.valoracion !== undefined  && this.state.vivienda.valoracion.length > 0?
+        const valoracion = this.state.vivienda.valoracion !== undefined && this.state.vivienda.valoracion.length > 0 ?
             this.state.vivienda.valoracion[0].media / 1 : 0;
         return (
             <Panel id={'reservationInfo'}>
@@ -54,9 +55,14 @@ class ReservationInfo extends Component {
                     </Col>
 
                     <Col xs='5'>
-                        <div className={'pull-right'}>
+
+                        <Row className={'justify-content-end mr-0'}>
                             {this.state.success ? <Stars rating={valoracion} color={"primary"}/> : null}
-                        </div>
+                        </Row>
+
+                        <Row className={'justify-content-end mr-0'}>
+                            <NumeroValoraciones idVivienda={this.props.idVivienda}/>
+                        </Row>
                     </Col>
                 </Row>
                 <Row>
