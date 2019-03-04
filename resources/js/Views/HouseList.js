@@ -1,25 +1,17 @@
-import React, {Component, useContext} from 'react';
-import Container from "reactstrap/es/Container";
+import React, {Component} from 'react';
+import {Container, Row, Col, Spinner, Alert, Button} from "reactstrap";
+import {Map, TileLayer, Marker, Popup} from "react-leaflet";
 import HouseCard from "../components/general/HouseCard";
-import Col from "reactstrap/es/Col";
-import Row from "reactstrap/es/Row";
 import axios from "axios";
 import Link from "react-router-dom/es/Link";
-import {cleanURI, titleChange, translate} from "../helpers";
-import Spinner from "reactstrap/es/Spinner";
+import {cleanURI} from "../helpers";
 import Translate from "../lang/Translate";
-import {Alert} from "reactstrap";
 import PanelSearcher from "../components/PanelSearcher";
 import originalMoment from "moment";
 import {extendMoment} from "moment-range";
 import Panel from "../components/layout/Panel";
 import FaIcon from "../components/general/FaIcon";
-import Button from "reactstrap/es/Button";
 import HouseListFilters from "../components/general/HouseListFilters";
-import Map from "react-leaflet/es/Map";
-import TileLayer from "react-leaflet/es/TileLayer";
-import Marker from "react-leaflet/es/Marker";
-import Popup from "react-leaflet/es/Popup";
 
 const moment = extendMoment(originalMoment);
 
