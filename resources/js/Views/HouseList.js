@@ -86,20 +86,25 @@ class HouseList extends Component {
             end: params.end
         });
 
-        if ((params.place !== undefined || params.place != null) && params.place > 3000) {
-            axios.get(`/api/cities/${params.place}`)
-                .then(res => res.data)
-                .then(city => this.setState({
-                    position: [city.data.latitude.x, city.data.latitude.y],
-                    zoom: 13
-                }));
-        } else {
-            axios.get(`/api/regions/${params.place}`)
-                .then(res => res.data)
-                .then(region => {
-                    return true
-                })
-        }
+        if (params.place !== undefined || params.place != null)
+            if (params.place > 3000) {
+                axios.get(`/api/cities/${params.place}`)
+                    .then(res => res.data)
+                    .then(city => this.setState({
+                        position: [city.data.latitude.x, city.data.latitude.y],
+                        zoom: 12
+                    }));
+            } else {
+                axios.get(`/api/regions/${params.place}`)
+                    .then(res => res.data)
+                    .then(region => this.setState({
+                        zoom: 4,
+                        bounds: {
+                            nE: {lat: 51.56341232867588, lng: 5.537109375000001},
+                            sW: {lat: 24.44714958973082, lng: -15.205078125000002}
+                        }
+                    }));
+            }
 
         const endPoint = '/api/viviendas';
         let query = this.queryBuilder(endPoint, params);
@@ -118,7 +123,7 @@ class HouseList extends Component {
             }));
     }
 
-    changeMapShow() {
+    toggleMapShow() {
         this.setState({showMap: !this.state.showMap})
     }
 
@@ -144,7 +149,8 @@ class HouseList extends Component {
     }
 
     filterHouse = (house) => {
-        if (!this.isInBounds(house.latitude.x, house.latitude.y)) return false;
+        if (!this.isInBounds(house.latitude.x, house.latitude.y) && this.state.showMap && window.innerWidth >= 992) return false;
+
         return true;
     };
 
@@ -160,12 +166,13 @@ class HouseList extends Component {
                 <Spinner color="primary" size="xl" style={{width: '8rem', height: '8rem'}} type="grow"/>
             </div>
         </Col>);
+
         const map = (
             <Map center={this.state.position} zoom={this.state.zoom} onMoveend={this.updateBounds}
                  ref={map => this.map = map}>
                 <TileLayer
-                    attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&amp;copy <a href="https://www.mapbox.com/">Mapbox</a> contributors'
+                    url="https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoieXVhbWk5OSIsImEiOiJjanBtZGViODYwM2hzNDRvYXYyMHdkaWt6In0.VH2qzO2CXgLzAN73axn2AQ"
                 />
                 {houses.map(house => {
                     let x = house.latitude.x;
@@ -201,6 +208,8 @@ class HouseList extends Component {
                 (<Row>
                     <Col xs="12" lg={showMap ? "9" : "12"}>
                         {houses.map(house => {
+                            if (house === null) return null;
+
                             const houseProps = {
                                 pathname: `/houses/${house.id}/${cleanURI(house.nombre)}`,
                                 state: {
@@ -210,7 +219,6 @@ class HouseList extends Component {
                                     place: this.state.place
                                 }
                             };
-                            if (house === null) return null;
 
                             return (
                                 <Col key={house.id} xs="12" sm="6" md="4" lg={showMap ? "4" : "3"}
