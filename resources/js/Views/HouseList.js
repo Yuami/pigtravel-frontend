@@ -23,12 +23,9 @@ import Popup from "react-leaflet/es/Popup";
 
 const moment = extendMoment(originalMoment);
 
+let mapDetected = false;
 
 class HouseList extends Component {
-
-    handleMove() {
-
-    }
 
     state = {
         houses: [],
@@ -43,7 +40,11 @@ class HouseList extends Component {
         showMap: true,
         params: null,
         position: [39.3262345, -4.8380649],
-        zoom: 4
+        zoom: 4,
+        bounds: {
+            nE: {lat: 51.56341232867588, lng: 5.537109375000001},
+            sW: {lat: 24.44714958973082, lng: -15.205078125000002}
+        },
     };
 
     componentDidMount() {
@@ -51,12 +52,28 @@ class HouseList extends Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
+        if (this.map) {
+            mapDetected = this.map;
+        }
+
         if (nextProps.location.state == this.state.params) return;
         this.reload(nextProps.location.state);
     }
 
     toogleMap() {
         this.setState({showMap: !this.state.showMap})
+    }
+
+    queryBuilder(endPoint, params) {
+        let query = '?';
+        for (let param in params) {
+            if (params[param] !== undefined) {
+                query += `${param}=${params[param]}&`;
+            }
+        }
+        query = query.substr(0, query.length - 1);
+        query = query === '?' ? '' : query;
+        return endPoint + query;
     }
 
     reload(params) {
@@ -69,7 +86,7 @@ class HouseList extends Component {
             end: params.end
         });
 
-        if ((params.place != undefined || params.place != null) && params.place > 3000) {
+        if ((params.place !== undefined || params.place != null) && params.place > 3000) {
             axios.get(`/api/cities/${params.place}`)
                 .then(res => res.data)
                 .then(city => this.setState({
@@ -80,21 +97,12 @@ class HouseList extends Component {
             axios.get(`/api/regions/${params.place}`)
                 .then(res => res.data)
                 .then(region => {
-                    console.log(region.data);
+                    return true
                 })
         }
 
         const endPoint = '/api/viviendas';
-        let query = '?';
-
-        for (let param in params) {
-            if (params[param] !== undefined) {
-                query += `${param}=${params[param]}&`;
-            }
-        }
-        query = query.substr(0, query.length - 1);
-        query = query === '?' ? '' : query;
-        query = endPoint + query;
+        let query = this.queryBuilder(endPoint, params);
 
         axios.get(query)
             .then(data => data.data)
@@ -114,20 +122,35 @@ class HouseList extends Component {
         this.setState({showMap: !this.state.showMap})
     }
 
-    filterByBoundsFactory = (bounds) =>
-        (point) => {
-            const {lng, lat} = point;
+    updateBounds = () => {
+        if (mapDetected) {
+            let bounds = mapDetected.leafletElement.getBounds();
+            this.setState({
+                bounds: {
+                    nE: bounds._northEast,
+                    sW: bounds._southWest,
+                }
+            });
+        }
+    };
 
-            return (
-                lng > bounds.southWest.lng &&
-                lng < bounds.northEast.lng &&
-                lat > bounds.southWest.lat &&
-                lat < bounds.northEast.lat
-            );
-        };
+    isInBounds(x, y) {
+        let nE = this.state.bounds.nE;
+        let sW = this.state.bounds.sW;
+        return x < nE.lat &&
+            y < nE.lng &&
+            x > sW.lat &&
+            y > sW.lng;
+    }
+
+    filterHouse = (house) => {
+        if (!this.isInBounds(house.latitude.x, house.latitude.y)) return false;
+        return true;
+    };
 
     render() {
-        const {houses, loading, error, showMap} = this.state;
+        let {houses, loading, error, showMap} = this.state;
+        houses = houses.filter(this.filterHouse);
         let houseList;
         const loader = (<Col>
             <h1 className="text-primary d-flex justify-content-center mb-5">
@@ -137,6 +160,41 @@ class HouseList extends Component {
                 <Spinner color="primary" size="xl" style={{width: '8rem', height: '8rem'}} type="grow"/>
             </div>
         </Col>);
+        const map = (
+            <Map center={this.state.position} zoom={this.state.zoom} onMoveend={this.updateBounds}
+                 ref={map => this.map = map}>
+                <TileLayer
+                    attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {houses.map(house => {
+                    let x = house.latitude.x;
+                    let y = house.latitude.y;
+                    const position = [x, y];
+
+                    const houseProps = {
+                        pathname: `/houses/${house.id}/${cleanURI(house.nombre)}`,
+                        state: {
+                            guests: this.state.guests,
+                            start: this.state.start,
+                            end: this.state.end,
+                            place: this.state.place
+                        }
+                    };
+
+                    return (<Marker key={house.id} position={position}>
+                        <Popup>
+                            <Link to={houseProps}
+                                  className="card-house-link">
+                                <HouseCard house={house} links={this.state.links}
+                                           img={'/assets/uploads/img/casas/default-image.jpg'}
+                                           clickable map/>
+                            </Link>
+                        </Popup>
+                    </Marker>)
+                })}
+            </Map>
+        );
 
         if (!error) {
             houseList = loading ? loader :
@@ -167,38 +225,7 @@ class HouseList extends Component {
                         })}
                     </Col>
                     <Col lg="3" className={"d-none " + (showMap ? "d-lg-block" : "")}>
-                        <Map center={this.state.position} zoom={this.state.zoom}>
-                            <TileLayer
-                                attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            />
-                            {houses.map(house => {
-                                let x = house.latitude.x;
-                                let y = house.latitude.y;
-                                const position = [x, y];
-
-                                const houseProps = {
-                                    pathname: `/houses/${house.id}/${cleanURI(house.nombre)}`,
-                                    state: {
-                                        guests: this.state.guests,
-                                        start: this.state.start,
-                                        end: this.state.end,
-                                        place: this.state.place
-                                    }
-                                };
-
-                                return (<Marker position={position}>
-                                    <Popup>
-                                        <Link to={houseProps}
-                                              className="card-house-link">
-                                            <HouseCard house={house} links={this.state.links}
-                                                       img={'/assets/uploads/img/casas/default-image.jpg'}
-                                                       clickable map/>
-                                        </Link>
-                                    </Popup>
-                                </Marker>)
-                            })}
-                        </Map>
+                        {map}
                     </Col>
                 </Row>)
         } else {
