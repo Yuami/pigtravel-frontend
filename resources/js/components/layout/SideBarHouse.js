@@ -74,7 +74,7 @@ export default class SideBarHouse extends Component {
         return (
             <div>
                 <Row>
-                    <Col lg="2" xs="10" className="m-5 sidebar">
+                    <Col lg="2" xs="12" className="sidebar">
                         <Panel>
                             <Navbar className="justify-content-center" expand="md" color="white" light>
                                 <NavbarToggler onClick={this.toggleNav}/>
@@ -132,7 +132,7 @@ export default class SideBarHouse extends Component {
                             </Navbar>
                         </Panel>
                     </Col>
-                    <Col lg="8" className="m-5">
+                    <Col lg="10">
                         <Panel>
                             <TabContent activeTab={this.state.activeTab}>
                                 <TabPane tabId="1">

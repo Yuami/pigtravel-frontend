@@ -18,7 +18,7 @@ class DatePickerInicio extends Component {
         };
     }
     onSelect = (value, states) => {
-        this.props.onChange(value);
+        console.log('fddf'+this.props.value.start.format("DD-MM"));
     };
 
     ToggleDiv = () => {

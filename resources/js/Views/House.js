@@ -23,6 +23,8 @@ import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
 
 const moment = extendMoment(originalMoment);
 import PanelSearcher from "../components/PanelSearcher";
+import ReservationInfo from "../components/specific/ReservationInfo";
+import NumeroValoraciones from "../components/specific/NumeroValoraciones";
 
 class House extends Component {
     constructor(props, context) {
@@ -51,7 +53,11 @@ class House extends Component {
     }
 
     IncrementItem = () => {
-        this.setState({guests: this.state.guests + 1});
+        const maxGuests= this.state.details.map((v)=> v.capacidad);
+        console.log(maxGuests);
+        const guests = this.state.guests + 1 > 3 ? 3 : this.state.guests + 1;
+        this.setState({guests});
+
     };
 
     DecreaseItem = () => {
@@ -60,10 +66,11 @@ class House extends Component {
     };
 
     handleChangeDates(date) {
+
         this.setState({date});
+        this.setState({ days: date.end.diff(date.start,'days')})
+
     }
-
-
     componentWillMount() {
         axios.get('/api/houses/' + this.props.match.params.idHouse)
             .then(house => this.setState({
@@ -84,7 +91,7 @@ class House extends Component {
                 icon={'fa fa-minus'}/></Button> :
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon
                 icon={'fa fa-minus'}/></Button>;
-
+        console.log(this.state.days);
         return (
             <div>
                 <Container>
@@ -112,10 +119,8 @@ class House extends Component {
                             </Panel>
                             <Panel id='reservationPanel' className="shadow m-3">
                                 <Col lg="12">
-                                    <Row>
-                                        <Col xs="7" lg="12">
-                                            <Stars rating={5}/>
-                                        </Col>
+                                    <Row className={'justify-content-end mr-0'}>
+                                        <Stars rating={5} color={"primary"}/>
                                     </Row>
                                     <Row className="justify-content-center">
                                         <h1 className="precioNoche">
@@ -149,7 +154,7 @@ class House extends Component {
                                         </FormGroup>
                                     </Row>
                                     <Row>
-                                        <Col lg="12" className="mt-4 desglose">
+                                        <Col lg="12" className="mt-4">
                                             <DesglosePrecioCasa nights={this.state.days}
                                                                 price={this.state.details.map((v) => v.precio)}/>
                                         </Col>

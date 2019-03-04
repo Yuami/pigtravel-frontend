@@ -20,11 +20,12 @@ class DesglosePrecioCasa extends Component {
             total:  this.props.price+this.state.serviceFee,
         };
     }
+
     render() {
        console.log(this.props.nights);
         return (
             <>
-                <Row>
+                <Row className="desglose">
                     <Col lg="6" sm="6" xs="6">
                         <h4>{this.props.price}{coin} x {this.props.nights} noches</h4>
                     </Col>
@@ -32,20 +33,20 @@ class DesglosePrecioCasa extends Component {
                         <h4>{this.props.price*this.props.nights}{coin}</h4>
                     </Col>
                 </Row>
-                <Row>
+                <Row className="desglose">
                     <Col lg="6" sm="6" xs="6">
                         <h4><Translate type="bookingDetails" string="serviceFee"/></h4>
                     </Col>
                     <Col lg="6" sm="6" xs="6" className="text-right">
-                        <h4>{this.props.price * 0.05 + 5}{coin}</h4>
+                        <h4>{(this.props.price*this.props.nights) * 0.05 + 5}{coin}</h4>
                     </Col>
                 </Row>
-                <Row className="mt-5">
+                <Row>
                     <Col lg="6" sm="6" xs="6" >
                         <h4><Translate type="bookingDetails" string="total"/></h4>
                     </Col>
                     <Col lg="6" sm="6" xs="6" className="text-right">
-                        <h4>{(this.props.price*this.props.nights)+this.props.price * 0.05 + 5}{coin}</h4>
+                        <h4>{(this.props.price*this.props.nights)+((this.props.price*this.props.nights) * 0.05 + 5)}{coin}</h4>
                     </Col>
                 </Row>
             </>);
