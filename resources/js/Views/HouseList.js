@@ -139,6 +139,12 @@ class HouseList extends Component {
         }
     };
 
+    handleMoveStart() {
+        if (mapDetected) {
+            mapDetected.leafletElement.closePopup();
+        }
+    }
+
     isInBounds(x, y) {
         let nE = this.state.bounds.nE;
         let sW = this.state.bounds.sW;
@@ -154,8 +160,31 @@ class HouseList extends Component {
         return true;
     };
 
+    getHouseProps(house) {
+        return {
+            pathname: `/houses/${house.id}/${cleanURI(house.nombre)}`,
+            state: {
+                guests: this.state.guests,
+                start: this.state.start,
+                end: this.state.end,
+                place: this.state.place
+            }
+        };
+    }
+
+    houseToCard(house, isMap = false) {
+        const houseProps = this.getHouseProps(house);
+
+        return <Link to={houseProps}
+                     className="card-house-link">
+            <HouseCard house={house} links={this.state.links}
+                       img={'/assets/uploads/img/casas/default-image.jpg'}
+                       clickable map={isMap}/>
+        </Link>
+    }
+
     render() {
-        let {houses, loading, error, showMap} = this.state;
+        let {houses, loading: isLoading, error, showMap} = this.state;
         houses = houses.filter(this.filterHouse);
         let houseList;
         const loader = (<Col>
@@ -167,82 +196,43 @@ class HouseList extends Component {
             </div>
         </Col>);
 
+        const markers = houses.map(house => {
+            const position = [house.latitude.x, house.latitude.y];
+            return (
+                <Marker key={house.id} position={position}>
+                    <Popup>
+                        {this.houseToCard(house, true)}
+                    </Popup>
+                </Marker>)
+        });
+
         const map = (
             <Map center={this.state.position} zoom={this.state.zoom} onMoveend={this.updateBounds}
+                 onMovestart={this.handleMoveStart}
                  ref={map => this.map = map}>
                 <TileLayer
                     attribution='&amp;copy <a href="https://www.mapbox.com/">Mapbox</a> contributors'
                     url="https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoieXVhbWk5OSIsImEiOiJjanBtZGViODYwM2hzNDRvYXYyMHdkaWt6In0.VH2qzO2CXgLzAN73axn2AQ"
                 />
-                {houses.map(house => {
-                    let x = house.latitude.x;
-                    let y = house.latitude.y;
-                    const position = [x, y];
-
-                    const houseProps = {
-                        pathname: `/houses/${house.id}/${cleanURI(house.nombre)}`,
-                        state: {
-                            guests: this.state.guests,
-                            start: this.state.start,
-                            end: this.state.end,
-                            place: this.state.place
-                        }
-                    };
-
-                    return (<Marker key={house.id} position={position}>
-                        <Popup>
-                            <Link to={houseProps}
-                                  className="card-house-link">
-                                <HouseCard house={house} links={this.state.links}
-                                           img={'/assets/uploads/img/casas/default-image.jpg'}
-                                           clickable map/>
-                            </Link>
-                        </Popup>
-                    </Marker>)
-                })}
+                {markers}
             </Map>
         );
 
-        if (!error) {
-            houseList = loading ? loader :
-                (<Row>
-                    <Col xs="12" lg={showMap ? "9" : "12"}>
-                        {houses.map(house => {
-                            if (house === null) return null;
-
-                            const houseProps = {
-                                pathname: `/houses/${house.id}/${cleanURI(house.nombre)}`,
-                                state: {
-                                    guests: this.state.guests,
-                                    start: this.state.start,
-                                    end: this.state.end,
-                                    place: this.state.place
-                                }
-                            };
-
-                            return (
-                                <Col key={house.id} xs="12" sm="6" md="4" lg={showMap ? "4" : "3"}
-                                     className="my-3">
-                                    <Link to={houseProps}
-                                          className="card-house-link">
-                                        <HouseCard house={house} links={this.state.links}
-                                                   img={'/assets/uploads/img/casas/default-image.jpg'}
-                                                   clickable/>
-                                    </Link>
-                                </Col>);
-                        })}
-                    </Col>
-                    <Col lg="3" className={"d-none " + (showMap ? "d-lg-block" : "")}>
-                        {map}
-                    </Col>
-                </Row>)
-        } else {
+        if (error) {
             houseList = (
                 <>
-                    <Alert color="danger" fade={false} className="w-100">
+                    <Alert color="warning" fade={false} className="w-100">
                         <Translate type="houselist" string="error"/>
                     </Alert>
                 </>);
+        } else if (isLoading) {
+            houseList = loader;
+        } else {
+            houseList = houses.map(house =>
+                    <Col key={house.id} xs="12" sm="6" md="4" lg={showMap ? "4" : "3"}
+                         className="my-3">
+                        {this.houseToCard(house)}
+                    </Col>);
         }
 
         const filterBtn = (<HouseListFilters/>);
@@ -256,28 +246,37 @@ class HouseList extends Component {
                 </Button>
             </div>);
 
+        const panelFilter =
+            (<Panel>
+                <Row>
+                    <Col xs="12" lg="7">
+                        {filterBtn}
+                    </Col>
+                    <Col lg="5" className="d-none d-lg-block">
+                        {switchMap}
+                    </Col>
+                </Row>
+            </Panel>);
+
         return (
-            <Container className="my-5" fluid={!error}>
+            <Container className="my-5" fluid>
                 <Row>
                     <Col xs="12" lg="9">
                         <PanelSearcher start={this.state.start} end={this.state.end} guests={this.state.guests}
                                        place={this.state.place} onSubmit={this.reload.bind(this)}/>
                     </Col>
-
                     <Col xs="12" lg="3">
-                        <Panel>
-                            <Row>
-                                <Col xs="12" lg="7">
-                                    {filterBtn}
-                                </Col>
-                                <Col lg="5" className="d-none d-lg-block">
-                                    {switchMap}
-                                </Col>
-                            </Row>
-                        </Panel>
+                        {panelFilter}
                     </Col>
                 </Row>
-                {houseList}
+                <Row>
+                    <Col xs="12" lg={showMap ? "9" : "12"}>
+                        {houseList}
+                    </Col>
+                    <Col lg="3" className={"d-none " + (showMap ? "d-lg-block" : "")}>
+                        {map}
+                    </Col>
+                </Row>
             </Container>
         );
     }
