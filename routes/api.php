@@ -22,7 +22,7 @@ Route::get("/cities", function () {
 });
 
 Route::get("/cities/{id}", function ($id) {
-    return \App\City::findOrFail($id);
+    return new \App\Http\Resources\City(\App\City::findOrFail($id));
 });
 
 Route::get("/regions", function () {

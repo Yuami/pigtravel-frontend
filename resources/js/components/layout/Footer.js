@@ -9,17 +9,17 @@ class Footer extends Component {
         const aboutUs = [
             {
                 value: "about-us.who",
-                link: "about-us"
+                link: "/about-us"
             },
             {
                 value: "about-us.terms",
-                link: "terms"
+                link: "/terms"
             },
         ];
         const support = [
             {
                 value: "support.contact",
-                link: "contact"
+                link: "/contact"
             }
         ];
 
@@ -27,7 +27,7 @@ class Footer extends Component {
             {
                 type: 'general',
                 value: 'email',
-                link: ""
+                link: "/contact"
             }
         ];
 

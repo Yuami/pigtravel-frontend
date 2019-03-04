@@ -16,14 +16,19 @@ import Panel from "../components/layout/Panel";
 import FaIcon from "../components/general/FaIcon";
 import Button from "reactstrap/es/Button";
 import HouseListFilters from "../components/general/HouseListFilters";
-import ModalHeader from "react-bootstrap/ModalHeader";
-import ModalBody from "react-bootstrap/ModalBody";
-import ModalFooter from "react-bootstrap/ModalFooter";
+import Map from "react-leaflet/es/Map";
+import TileLayer from "react-leaflet/es/TileLayer";
+import Marker from "react-leaflet/es/Marker";
+import Popup from "react-leaflet/es/Popup";
 
 const moment = extendMoment(originalMoment);
 
 
 class HouseList extends Component {
+
+    handleMove() {
+
+    }
 
     state = {
         houses: [],
@@ -36,7 +41,9 @@ class HouseList extends Component {
         guests: this.props.location.state.guests,
         place: this.props.location.state.place,
         showMap: true,
-        params: null
+        params: null,
+        position: [39.3262345, -4.8380649],
+        zoom: 4
     };
 
     componentDidMount() {
@@ -61,6 +68,21 @@ class HouseList extends Component {
             start: params.start,
             end: params.end
         });
+
+        if ((params.place != undefined || params.place != null) && params.place > 3000) {
+            axios.get(`/api/cities/${params.place}`)
+                .then(res => res.data)
+                .then(city => this.setState({
+                    position: [city.data.latitude.x, city.data.latitude.y],
+                    zoom: 13
+                }));
+        } else {
+            axios.get(`/api/regions/${params.place}`)
+                .then(res => res.data)
+                .then(region => {
+                    console.log(region.data);
+                })
+        }
 
         const endPoint = '/api/viviendas';
         let query = '?';
@@ -92,23 +114,69 @@ class HouseList extends Component {
         this.setState({showMap: !this.state.showMap})
     }
 
+    filterByBoundsFactory = (bounds) =>
+        (point) => {
+            const {lng, lat} = point;
+
+            return (
+                lng > bounds.southWest.lng &&
+                lng < bounds.northEast.lng &&
+                lat > bounds.southWest.lat &&
+                lat < bounds.northEast.lat
+            );
+        };
+
     render() {
         const {houses, loading, error, showMap} = this.state;
         let houseList;
+        const loader = (<Col>
+            <h1 className="text-primary d-flex justify-content-center mb-5">
+                <Translate string="loading" type="general"/>
+            </h1>
+            <div className="d-flex justify-content-center">
+                <Spinner color="primary" size="xl" style={{width: '8rem', height: '8rem'}} type="grow"/>
+            </div>
+        </Col>);
 
         if (!error) {
-            houseList = loading ?
-                (<Col>
-                    <h1 className="text-primary d-flex justify-content-center mb-5">
-                        <Translate string="loading" type="general"/>
-                    </h1>
-                    <div className="d-flex justify-content-center">
-                        <Spinner color="primary" size="xl" style={{width: '8rem', height: '8rem'}} type="grow"/>
-                    </div>
-                </Col>) :
+            houseList = loading ? loader :
                 (<Row>
-                        <Col xs="12" lg={showMap ? "9" : "12"}>
+                    <Col xs="12" lg={showMap ? "9" : "12"}>
+                        {houses.map(house => {
+                            const houseProps = {
+                                pathname: `/houses/${house.id}/${cleanURI(house.nombre)}`,
+                                state: {
+                                    guests: this.state.guests,
+                                    start: this.state.start,
+                                    end: this.state.end,
+                                    place: this.state.place
+                                }
+                            };
+                            if (house === null) return null;
+
+                            return (
+                                <Col key={house.id} xs="12" sm="6" md="4" lg={showMap ? "4" : "3"}
+                                     className="my-3">
+                                    <Link to={houseProps}
+                                          className="card-house-link">
+                                        <HouseCard house={house} links={this.state.links}
+                                                   img={'/assets/uploads/img/casas/default-image.jpg'}
+                                                   clickable/>
+                                    </Link>
+                                </Col>);
+                        })}
+                    </Col>
+                    <Col lg="3" className={"d-none " + (showMap ? "d-lg-block" : "")}>
+                        <Map center={this.state.position} zoom={this.state.zoom}>
+                            <TileLayer
+                                attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
                             {houses.map(house => {
+                                let x = house.latitude.x;
+                                let y = house.latitude.y;
+                                const position = [x, y];
+
                                 const houseProps = {
                                     pathname: `/houses/${house.id}/${cleanURI(house.nombre)}`,
                                     state: {
@@ -119,26 +187,20 @@ class HouseList extends Component {
                                     }
                                 };
 
-                                if (house !== null)
-                                    return (
-                                        <Col key={house.id} xs="12" sm="6" md="4" lg={showMap ? "4" : "3"}
-                                             className="my-3">
-                                            <Link to={houseProps}
-                                                  className="card-house-link">
-                                                <HouseCard house={house} links={this.state.links}
-                                                           img={'/assets/uploads/img/casas/default-image.jpg'}
-                                                           clickable/>
-                                            </Link>
-                                        </Col>);
-                                return null;
-                            })
-                            }
-                        </Col>
-                        <Col lg="3" className={"d-none " + (showMap ? "d-lg-block" : "")}>
-                            Mapa
-                        </Col>
-                    </Row>
-                )
+                                return (<Marker position={position}>
+                                    <Popup>
+                                        <Link to={houseProps}
+                                              className="card-house-link">
+                                            <HouseCard house={house} links={this.state.links}
+                                                       img={'/assets/uploads/img/casas/default-image.jpg'}
+                                                       clickable map/>
+                                        </Link>
+                                    </Popup>
+                                </Marker>)
+                            })}
+                        </Map>
+                    </Col>
+                </Row>)
         } else {
             houseList = (
                 <>
@@ -153,9 +215,9 @@ class HouseList extends Component {
         const switchMap = (
             <div>
                 <Button color={showMap ? "success" : "danger"} onClick={this.toogleMap.bind(this)} block>
-                <span className="mt-2">
-                    <FaIcon icon="fa fa-map-marked-alt" size="fa-3x"/>
-                </span>
+                                <span className="mt-2">
+                                <FaIcon icon="fa fa-map-marked-alt" size="fa-3x"/>
+                                </span>
                 </Button>
             </div>);
 

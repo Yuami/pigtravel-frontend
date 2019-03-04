@@ -18,24 +18,27 @@ class HouseCard extends Component {
         const {fotos, nombre: name, tipoVivienda: type, tarifas, valoracion} = house;
         let image =  this.props.links.back + (fotos.length === 0 ? img : fotos[0].path);
         let tarifa = tarifas.general == null ? tarifas.extra[0] : tarifas.general;
-        return (
+        const info = (<>
+            <div className="house-card-img">
+                <img src={image} alt={name} width="100%"/>
+                <span><h4>{type.nombre}</h4></span>
+            </div>
+            <Container fluid className="mt-3">
+                <CardTitle><h1>{name}</h1></CardTitle>
+                <CardSubtitle>
+                    <p className="mt-3" style={{textDecoration: "none"}}>
+                        {tarifa.precio + coin + ' '}<Translate type="houselist" string="night"/>
+                    </p>
+                    <Stars rating={valoracion == undefined || valoracion.length == 0 ? 0 : valoracion[0].media == null ? 0 : valoracion[0].media}
+                           color="primary"/>
+                </CardSubtitle>
+            </Container>
+        </>);
+
+        return this.props.map ? info :
             <MainCard clickable={clickable}>
-                <div className="house-card-img">
-                    <img src={image} alt={name} width="100%"/>
-                    <span><h4>{type.nombre}</h4></span>
-                </div>
-                <Container fluid className="mt-3">
-                    <CardTitle><h1>{name}</h1></CardTitle>
-                    <CardSubtitle>
-                        <p className="mt-3" style={{textDecoration: "none"}}>
-                            {tarifa.precio + coin + ' '}<Translate type="houselist" string="night"/>
-                        </p>
-                        <Stars rating={valoracion == undefined || valoracion.length == 0 ? 0 : valoracion[0].media == null ? 0 : valoracion[0].media}
-                               color="primary"/>
-                    </CardSubtitle>
-                </Container>
+                {info}
             </MainCard>
-        );
     }
 
     static propTypes = {
