@@ -63,6 +63,9 @@ class Main extends Component {
     render() {
         let token = document.head.querySelector('meta[name="csrf-token"]');
 
+        const reservation = this.state.isAuth ? <Reservation/> : <LogIn/>;
+        const payment = this.state.isAuth ? <ReservationPayment/> : <LogIn/>;
+
         return (
             <LocaleContext.Provider value={this.state.locale}>
                 <AuthContext.Provider value={this.state.isAuth}>
@@ -81,10 +84,10 @@ class Main extends Component {
                             <Route exact path="/contact" component={Contact}/>
                             <Route exact path="/register" component={Register}/>
                             <Route exact path="/reservation">
-                                <Reservation/>
+                                {reservation}
                             </Route>
                             <Route exact path="/payment">
-                                <ReservationPayment/>
+                                {payment}
                             </Route>
                             <Route exact path="/terms" component={Terms}/>
                             <Route exact path="/search" component={HouseList}/>

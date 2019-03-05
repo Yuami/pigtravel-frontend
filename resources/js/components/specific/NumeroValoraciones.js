@@ -22,7 +22,7 @@ class NumeroValoraciones extends Component {
 
         return (
             <p>
-                ({this.state.numeroValoraciones} {this.state.numeroValoracion = 1 ? <Translate type={'house'} string={'rating'}/> : <Translate type={'house'} string={'ratings'}/>})
+                ({this.state.numeroValoraciones} {this.state.numeroValoracion === 1 ? <Translate type={'house'} string={'rating'}/> : <Translate type={'house'} string={'ratings'}/>})
             </p>
         );
     }

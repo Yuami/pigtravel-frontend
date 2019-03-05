@@ -49,7 +49,7 @@ class Profile extends Component {
                 link: '/profile'
             };
 
-        console.log(this.state)
+        console.log(this.state);
         return (
             <>
                 <UserRouter title={'profile'} list={profile}/>
