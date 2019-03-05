@@ -22,9 +22,6 @@ import {extendMoment} from "moment-range";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
 
 const moment = extendMoment(originalMoment);
-import PanelSearcher from "../components/PanelSearcher";
-import ReservationInfo from "../components/specific/ReservationInfo";
-import NumeroValoraciones from "../components/specific/NumeroValoraciones";
 
 class House extends Component {
     constructor(props, context) {
@@ -85,6 +82,11 @@ class House extends Component {
 
     render() {
         document.title =this.state.details.map((v) => v.nombre);
+        console.log(this.state.details.map((v) => v.descripcion));
+        var meta  = document.createElement('meta');
+        meta.name   = 'description';
+        meta.content = this.state.details.map((v) => v.descripcion);
+        document.head.appendChild(meta);
         const coordX = this.state.details.map((v) => v.coordX).toString();
         const coordY = this.state.details.map((v) => v.coordY).toString();
         const decreaseBtn = this.state.guests === 1 ?
@@ -109,7 +111,7 @@ class House extends Component {
                                     <Col lg="3" sm="3" xs="4">
                                         <img
                                             src={"http://admin.pigtravel.top" + this.state.details.map((v) => v.perfilVendedor)}
-                                            height="70px" class="rounded-circle"></img>
+                                            height="70px" class="rounded-circle" alt="Pig Travel"></img>
                                     </Col>
                                     <Col lg="9" sm="9" xs="8" className="my-auto">
                                         {this.state.details.map((v) => (
@@ -166,8 +168,8 @@ class House extends Component {
                                                 <LinkButton block={true} page={'/reservation'} pageParams={
                                                     {
                                                         idVivienda: parseInt(this.props.match.params.idHouse),
-                                                        checkIn: new Date(this.props.location.state.start),
-                                                        checkOut: new Date(this.props.location.state.end),
+                                                        checkIn: new Date(this.state.date.start),
+                                                        checkOut: new Date(this.state.date.end),
                                                         pax: this.state.guests,
                                                         price: this.state.details.map((v) => (v.precio))[0] * this.state.days ?
                                                             this.state.details.map((v) => (v.precio))[0] * this.state.days : 0,

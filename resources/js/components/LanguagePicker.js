@@ -39,7 +39,7 @@ class LanguagePicker extends Component {
             <>
                 <DropdownToggle nav caret>
                     <LocaleContext.Consumer>
-                        {locale => <img src={this.handleImg(locale)} height='20px'></img>}
+                        {locale => <img src={this.handleImg(locale)} height='20px' alt="Pig Travel"></img>}
                     </LocaleContext.Consumer>
                 </DropdownToggle>
                 <DropdownMenu right>

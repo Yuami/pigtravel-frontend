@@ -75,6 +75,8 @@ class Main extends Component {
                             </Route>
                             <Route exact path="/houses/:idHouse/:name" component={House}>
                             </Route>
+                            <Route exact path="/houses/:idHouse" component={House}>
+                            </Route>
                             <Route exact path="/about-us" component={AboutUs}/>
                             <Route exact path="/login" component={LogIn}/>
                             <Route exact path="/logout" component={LogOut}/>

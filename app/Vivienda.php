@@ -79,6 +79,13 @@ class Vivienda extends Model
             ->get();
         return $regions;
     }
+    static function sitemapID(){
+        $sitemap = DB::table('vivienda')
+            ->select('vivienda.id')
+            ->get();
+        return $sitemap;
+    }
+
 
     static function images($id){
         $fotos = DB::table('fotos')
