@@ -15,18 +15,12 @@ class UserRouter extends Component {
             <Container fluid className="p-4">
                 <Row>
                     <Col lg="8" xs="8" className="mx-auto">
-                        <Row><Link to="/"> <Translate type={"pagesTitles"} string={"home"}/></Link>
-                            {
-                                this.props.list
-                                    .map(obj =>
-
-                                        <p> /<Link to={obj.link}> <Translate type={"pagesTitles"}
-                                                                              string={obj.type}/></Link></p>
-                                    )
-                            }
-                        </Row>
                         <Row>
                             <h1><Translate type={"pagesTitles"} string={title}/></h1>
+                        </Row>
+                        <Row><Link to="/"> <Translate type={"pagesTitles"} string={"home"}/></Link>
+                            {<p>&nbsp;/ <Link to={this.props.list["link"]}>
+                                            <Translate type={"pagesTitles"} string={this.props.list["type"]}/></Link></p>}
                         </Row>
                     </Col>
                 </Row>
@@ -37,7 +31,7 @@ class UserRouter extends Component {
 
 UserRouter.propTypes = {
     title: PropTypes.string.isRequired,
-    list: PropTypes.arrayOf(PropTypes.object),
+    list: PropTypes.object.isRequired,
 };
 
 export default UserRouter;
