@@ -9,9 +9,13 @@ import {
     Row
 } from "reactstrap";
 import Panel from "../components/layout/Panel";
+import {LocaleContext} from "../LocaleContext";
+import {translate} from "../helpers";
 
 class Register extends Component {
+    static contextType = LocaleContext;
     render() {
+        document.title =translate(this.context,'register','header');
         return (
             <Container className="my-4">
                 <Row>

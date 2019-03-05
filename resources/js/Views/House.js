@@ -84,6 +84,7 @@ class House extends Component {
     };
 
     render() {
+        document.title =this.state.details.map((v) => v.nombre);
         const coordX = this.state.details.map((v) => v.coordX).toString();
         const coordY = this.state.details.map((v) => v.coordY).toString();
         const decreaseBtn = this.state.guests === 1 ?

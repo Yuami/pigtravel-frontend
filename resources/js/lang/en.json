@@ -110,5 +110,10 @@
     "title": "Verification",
     "text": "Your Account has been verified!",
     "confirmButtonText": "Accept"
+  },
+  "titles": {
+    "home": "Book your vacation home | Pig Travel",
+    "booking": "Booking",
+    "profile": "Edit your profile"
   }
 }

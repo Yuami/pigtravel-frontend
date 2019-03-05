@@ -111,5 +111,10 @@
     "title": "Verificación",
     "text": "Tu cuenta ha sido verificada!",
     "confirmButtonText": "Aceptar"
-  }
+  },
+  "titles": {
+  "home": "Reserva tu casa de verano | Pig Travel",
+   "booking": "Reserva",
+   "profile": "Edita tu perfil"
+}
 }

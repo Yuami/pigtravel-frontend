@@ -176,6 +176,7 @@ class HouseList extends Component {
     }
 
     render() {
+
         let {houses, loading: isLoading, error, showMap} = this.state;
         houses = houses.filter(this.filterHouse);
         let houseList;

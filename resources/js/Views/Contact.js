@@ -24,6 +24,7 @@ const FormErrors = ({formErrors}) =>
 
 
 class Contact extends Component {
+    static contextType = LocaleContext;
     constructor(props) {
         super(props);
         this.state = {
@@ -87,7 +88,7 @@ class Contact extends Component {
     }
 
     render() {
-
+        document.title =translate(this.context,'support.contact','footer');
         const contact = [
             {
                 type: 'contact',

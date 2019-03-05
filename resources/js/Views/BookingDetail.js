@@ -9,7 +9,8 @@ import axios from "axios";
 import DesglosePrecio from "../components/specific/DesglosePrecio";
 import moment from "moment";
 import Panel from "../components/layout/Panel";
-import HouseCarrousel from "../components/specific/HouseCarrousel";
+import {translate} from "../helpers";
+import {LocaleContext} from "../LocaleContext";
 
 class BookingDetail extends Component {
     constructor(props) {
@@ -38,8 +39,9 @@ class BookingDetail extends Component {
 
     }
 
+    static contextType = LocaleContext;
     render() {
-
+        document.title =translate(this.context,'booking','titles')+" "+this.state.values.map((v) => (v.nombreVivienda));
         const bookingDetails = [
             {
                 type: 'bookings',

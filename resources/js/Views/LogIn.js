@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
 import FormLogIn from "../components/layout/FormLogIn";
 import {CardTitle, CardBody, Card, Col, Container, Row} from "reactstrap";
+import {translate} from "../helpers";
+import {LocaleContext} from "../LocaleContext";
 
 class LogIn extends Component {
+    static contextType = LocaleContext;
     render() {
+        document.title =translate(this.context,'login','header');
         return (
             <Container className="my-4">
                 <Row>

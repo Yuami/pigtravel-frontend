@@ -4,14 +4,16 @@ import Accordion from "../components/general/Accordion/Accordion";
 import terms from "../lang/terms.json";
 import {LocaleContext} from "../LocaleContext";
 import AccordionItem from "../components/general/Accordion/AccordionItem";
+import {translate} from "../helpers";
 
 class Terms extends Component {
 
     state = {
       terms
     };
-
+    static contextType = LocaleContext;
     render() {
+        document.title =translate(this.context,'about-us.terms','footer');
         const id = 'accordion';
         return (
             <div className={"container my-5"}>

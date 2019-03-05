@@ -27,6 +27,8 @@ class Home extends Component {
     static contextType = LocaleContext;
 
     render() {
+
+        document.title =translate(this.context,'home','titles');
         if (this.state.alert !== undefined)
             Swal.fire({
                 title: translate(this.context, 'title', 'verify'),
