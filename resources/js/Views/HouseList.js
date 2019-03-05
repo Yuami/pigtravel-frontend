@@ -203,7 +203,7 @@ class HouseList extends Component {
                  onMovestart={this.handleMoveStart}
                  ref={map => this.map = map}>
                 <TileLayer
-                    attribution='&amp;copy <a href="https://www.mapbox.com/">Mapbox</a> contributors'
+                    attribution={`© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>`}
                     url="https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoieXVhbWk5OSIsImEiOiJjanBtZGViODYwM2hzNDRvYXYyMHdkaWt6In0.VH2qzO2CXgLzAN73axn2AQ"
                 />
                 {markers}
@@ -221,10 +221,10 @@ class HouseList extends Component {
             houseList = loader;
         } else {
             houseList = houses.map(house =>
-                    <Col key={house.id} xs="12" sm="6" md="4" lg={showMap ? "4" : "3"}
-                         className="my-3">
-                        {this.houseToCard(house)}
-                    </Col>);
+                <Col key={house.id} xs="12" sm="6" md="4" lg={showMap ? "4" : "3"}
+                     className="my-3">
+                    {this.houseToCard(house)}
+                </Col>);
         }
 
         const filterBtn = (<HouseListFilters/>);
@@ -257,7 +257,7 @@ class HouseList extends Component {
                         <PanelSearcher start={this.state.start} end={this.state.end} guests={this.state.guests}
                                        place={this.state.place} onSubmit={this.reload.bind(this)}/>
                     </Col>
-                    <Col xs="12" lg="3">
+                    <Col xs="12" lg="3" style={showMap ? {position: "fixed", right: 0}: null}>
                         {panelFilter}
                     </Col>
                 </Row>
@@ -265,8 +265,8 @@ class HouseList extends Component {
                     <Col xs="12" lg={showMap ? "9" : "12"}>
                         {houseList}
                     </Col>
-                    <Col lg="3" className={"d-none " + (showMap ? "d-lg-block" : "")}>
-                        {map}
+                    <Col lg="3" className={"d-none " + (showMap ? "d-lg-block" : "")} style={{position: "fixed", right: 0}}>
+                            {map}
                     </Col>
                 </Row>
             </Container>
