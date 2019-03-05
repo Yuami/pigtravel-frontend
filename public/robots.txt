@@ -12,3 +12,4 @@ Disallow: /index.php
 Disallow: /mix-manifest.json
 
 Sitemap: https://wwww.pigtravel.top/sitemap.xml
+Sitemap: https://wwww.pigtravel.top/sitemap/houses
