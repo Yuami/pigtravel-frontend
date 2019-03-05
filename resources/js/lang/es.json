@@ -116,7 +116,8 @@
   "home": "Reserva tu casa de verano | Pig Travel",
    "booking": "Reserva",
    "profile": "Edita tu perfil"
-}, "description": {
-  "home": "Disfruta las vacaciones de la mano de Pig Travel. Donde podrás encontrar alojamientos al mejor precio para disfrutar al máximo tus vacaciones"
-}
+  },
+  "cookies": {
+    "cookie": "Empleamos el uso de cookies. Al acceder a pigtravel, acepta usar cookies de acuerdo con la política de privacidad de pigtravel.\n\nLa mayoría de los sitios web interactivos utilizan cookies para permitir recuperar los detalles del usuario para cada visita. Las cookies son utilizadas por nuestro sitio web para habilitar la funcionalidad de ciertas áreas para que sea más fácil para las personas que visitan nuestro sitio web. Algunos de nuestros socios afiliados / publicitarios también pueden usar cookies."
+  }
 }
