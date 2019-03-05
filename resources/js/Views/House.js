@@ -20,6 +20,8 @@ import {translate} from "../helpers";
 import originalMoment from "moment";
 import {extendMoment} from "moment-range";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
+import PanelSearcher from "../components/PanelSearcher";
+import TwoDatePicker from "../components/specific/TwoDatePicker";
 
 const moment = extendMoment(originalMoment);
 
@@ -28,7 +30,7 @@ class House extends Component {
 
         super(props, context);
 
-        const stateless = checkIfUndefined(this.props.location.state, ["guests", "start", "end"]);
+        const stateless = checkIfUndefined(this.props.location.state, ["guests", "start", "end","place"]);
 
         if (stateless) {
             this.state = {
@@ -41,6 +43,7 @@ class House extends Component {
         } else {
             this.state = {
                 details: [],
+                place: this.props.location.state.place,
                 guests: this.props.location.state.guests,
                 show: false,
                 date: moment.range(this.props.location.state.start, this.props.location.state.end),
@@ -81,7 +84,7 @@ class House extends Component {
     };
 
     render() {
-        document.title =this.state.details.map((v) => v.nombre);
+        document.title =this.state.details.map((v) => v.nombre)+" | Pig Travel";
         console.log(this.state.details.map((v) => v.descripcion));
         var meta  = document.createElement('meta');
         meta.name   = 'description';
@@ -94,10 +97,12 @@ class House extends Component {
                 icon={'fa fa-minus'}/></Button> :
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon
                 icon={'fa fa-minus'}/></Button>;
+
         console.log(this.state.days);
         return (
             <div>
                 <Container>
+                    <PanelSearcher start={this.state.date.start} end={this.state.date.end} place={this.state.place} guests={this.state.guests}/>
                     <h1>{this.state.details.map((v) => v.nombre)}</h1>
                     <Row className="house">
                         <Col lg="8">

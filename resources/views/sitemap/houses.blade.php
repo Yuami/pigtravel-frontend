@@ -5,8 +5,7 @@
     </url>
     @foreach ($houses as $house)
         <url>
-            <loc>{{url($house->id)}}</loc>
-            c
+            <loc>http://www.pigtravel.top/houses/{{$house->id}}</loc>
         </url>
     @endforeach
 </urlset>

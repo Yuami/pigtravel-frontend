@@ -54,3 +54,22 @@
   padding: 0 !important;
 
 }
+.img-profile {
+  border-radius: 50%;
+  position: relative;
+  height: 70px;
+  width: 70px;
+  overflow: hidden;
+
+  float: left;
+  margin-right: 10px;
+}
+
+
+.img-profile img {
+  position: absolute;
+  top: 50%;
+  width: 117px;
+  height: auto;
+  transform: translateY(-50%);
+}
