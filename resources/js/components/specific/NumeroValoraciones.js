@@ -12,17 +12,22 @@ class NumeroValoraciones extends Component {
         }
     }
 
-    render() {
+    componentWillMount() {
         axios.get('/api/viviendas/' + this.props.idVivienda).then(
             (res) =>
                 this.setState({
                     numeroValoraciones: res.data.data.valoracion.length
                 })
         );
+    }
 
+    render() {
+
+        console.log("numero: " + this.state.numeroValoraciones);
         return (
             <p>
-                ({this.state.numeroValoraciones} {this.state.numeroValoracion === 1 ? <Translate type={'house'} string={'rating'}/> : <Translate type={'house'} string={'ratings'}/>})
+                ({this.state.numeroValoraciones} {this.state.numeroValoraciones === 1 ?
+                <Translate type={'house'} string={'rating'}/> : <Translate type={'house'} string={'ratings'}/>})
             </p>
         );
     }
