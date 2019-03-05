@@ -7,12 +7,13 @@ import {translate} from "../helpers";
 import FormButton from "../components/general/Forms/LinkButton";
 import Label from "reactstrap/es/Label";
 import UserRouter from "../components/layout/UserRouter";
+import Panel from "../components/layout/Panel";
 
 
 const FormErrors = ({formErrors}) =>
     <div className='formErrors'>
         {Object.keys(formErrors).map((fieldName, i) => {
-            if(formErrors[fieldName].length > 0){
+            if (formErrors[fieldName].length > 0) {
                 return (
                     <p key={i}>{formErrors[fieldName]}</p>
                 )
@@ -29,11 +30,11 @@ class Contact extends Component {
         this.state = {
             email: '',
             message: '',
-            contactName:'',
-            formErrors: {email: '', message: '',contactName: ''},
+            contactName: '',
+            formErrors: {email: '', message: '', contactName: ''},
             emailValid: false,
-            nameValid:false,
-            messageValid:false,
+            nameValid: false,
+            messageValid: false,
             formValid: false
         };
 
@@ -45,23 +46,26 @@ class Contact extends Component {
         const value = e.target.value;
         const name = e.target.name;
         this.setState({[name]: value},
-            () => {this.validateField(name, value) });
+            () => {
+                this.validateField(name, value)
+            });
     }
 
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
         let emailValid = this.state.emailValid;
         let messageValid = this.state.messageValid;
-        let nameValid= this.state.nameValid;
+        let nameValid = this.state.nameValid;
 
-        switch(fieldName) {
+        switch (fieldName) {
             case 'email':
                 emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
                 fieldValidationErrors.email = emailValid ? '' : ' is invalid';
                 break;
             case 'message':
                 messageValid = value.length >= 5;
-                fieldValidationErrors.message = messageValid ? '' : <Translate type={'contact'} string={'invalidMessage'}/>;
+                fieldValidationErrors.message = messageValid ? '' :
+                    <Translate type={'contact'} string={'invalidMessage'}/>;
                 break;
             case 'contactName':
                 nameValid = value.length >= 1;
@@ -71,7 +75,8 @@ class Contact extends Component {
                 break;
         }
 
-        this.setState({formErrors: fieldValidationErrors,
+        this.setState({
+            formErrors: fieldValidationErrors,
             emailValid: emailValid,
             messageValid: messageValid,
             nameValid: nameValid
@@ -83,33 +88,31 @@ class Contact extends Component {
     }
 
     errorClass(error) {
-        return(error.length === 0 ? '' : 'has-danger');
+        return (error.length === 0 ? '' : 'has-danger');
     }
 
     render() {
 
-        const contact = [
-            {
+        const contact = {
                 type: 'contact',
                 link: '/contact'
-            },
-        ];
+            };
         return (
-            <>  <UserRouter title={'contact'} list={contact}/>
-                <Container className="contact shadow">
-                    <div className="App">
+            <> <UserRouter title={'contact'} list={contact}/>
+                <Container className="contact">
+                    <Panel className="App">
                         <form>
                             <FormGroup className={`${this.errorClass(this.state.formErrors.contactName)}`}>
                                 <label htmlFor="nameContact"><Translate type={'contact'} string={'name'}/></label>
-                            <LocaleContext.Consumer>
-                                {locale => <input className="form-control"
-                                                  type="text"
-                                                  name="contactName"
-                                                  value={this.state.contactName}
-                                                  onChange={this.handleUserInput}
-                                                  placeholder={translate(locale, 'name', 'contact')}/>}
-                            </LocaleContext.Consumer>
-                        </FormGroup>
+                                <LocaleContext.Consumer>
+                                    {locale => <input className="form-control"
+                                                      type="text"
+                                                      name="contactName"
+                                                      value={this.state.contactName}
+                                                      onChange={this.handleUserInput}
+                                                      placeholder={translate(locale, 'name', 'contact')}/>}
+                                </LocaleContext.Consumer>
+                            </FormGroup>
                             <FormGroup className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
                                 <label htmlFor="email"><Translate type={'contact'} string={'email'}/></label>
                                 <LocaleContext.Consumer>
@@ -140,9 +143,11 @@ class Contact extends Component {
                             <div>
                                 <FormErrors formErrors={this.state.formErrors}/>
                             </div>
-                            <button type="submit" className="btn btn-primary btn-block" disabled={!this.state.formValid}><Translate type={'contact'} string={'send'}/></button>
+                            <button type="submit" className="btn btn-primary btn-block"
+                                    disabled={!this.state.formValid}><Translate type={'contact'} string={'send'}/>
+                            </button>
                         </form>
-                    </div>
+                    </Panel>
                 </Container>
             </>
         );
