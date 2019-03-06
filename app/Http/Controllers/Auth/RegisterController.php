@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Cliente;
 use App\Http\Controllers\TokenController;
 use App\User;
 use App\Http\Controllers\Controller;
@@ -95,6 +96,9 @@ class RegisterController extends Controller
             'descripcion' => $data['desc'],
             'idC' => $data['idC'],
             'idF' => $data['idF'],
+        ]);
+        Cliente::create([
+            'idPersona' => $user->id
         ]);
         TokenController::generate($data['email'], 'verifyAcc');
         return $user;
