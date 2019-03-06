@@ -22,7 +22,7 @@ Route::get("/cities", function () {
 });
 
 Route::get("/cities/{id}", function ($id) {
-    return new \App\Http\Resources\City(\App\City::findOrFail($id));
+    return \App\City::findOrFail($id);
 });
 
 Route::get("/regions", function () {
@@ -69,22 +69,9 @@ Route::get('/auth/id', function () {
     return json_encode(auth()->id());
 });
 
-Route::get('/persona/{id}', function ($id){
-   return \App\Persona::find($id);
-});
-
 Route::get('/persona/{id}/img', function ($id) {
-    $foto = \App\Persona::find($id)->foto;
-
-    if ($foto == null) {
-        $foto = [
-            "id" => null,
-            "path" => "/assets/uploads/img/perfiles/default-image.png"
-        ];
-    }
-
     return [
-        'foto' => $foto,
+        'foto' => \App\Persona::find($id)->foto,
         'back' => env('BACKDOMAIN')
     ];
 });

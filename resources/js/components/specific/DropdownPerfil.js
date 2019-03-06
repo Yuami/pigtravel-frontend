@@ -13,18 +13,20 @@ class DropdownPerfil extends Component {
     }
 
     componentWillMount() {
-        axios.get('/api/auth/id').then((response) => {
-            this.setState({idPersona: response.data});
-        });
+        axios.get('/api/auth/id')
+            .then((response) => {
+                this.setState({idPersona: response.data});
+            }).then(this.fotoPerfil());
 
     }
-    componentDidMount() {
+
+    fotoPerfil = () => {
         axios.get('/api/persona/' + this.state.idPersona + '/img').then((response) => {
+                console.log(response);
                 this.setState({foto: response.data.back + response.data.foto.path});
             }
         )
-    }
-
+    };
 
 
     render() {
