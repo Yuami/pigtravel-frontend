@@ -70,8 +70,17 @@ Route::get('/auth/id', function () {
 });
 
 Route::get('/persona/{id}/img', function ($id) {
+    $foto = \App\Persona::find($id)->foto;
+
+    if ($foto == null) {
+        $foto = [
+            "id" => null,
+            "path" => "/assets/uploads/img/perfiles/default-image.png"
+        ];
+    }
+
     return [
-        'foto' => \App\Persona::find($id)->foto,
+        'foto' => $foto,
         'back' => env('BACKDOMAIN')
     ];
 });
