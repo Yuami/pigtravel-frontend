@@ -5,11 +5,15 @@ import FormGroupButton from "../general/Forms/FormGroupButton";
 import FormGroupReg from "../general/Forms/FormGroupReg";
 import axios from "axios";
 import {ToastContainer, toast} from 'react-toastify';
+import {translate} from "../../helpers";
+import {LocaleContext} from "../../LocaleContext"
 
 class FormLogin extends Component {
+    static contextType = LocaleContext;
+
     render() {
         let notify = () => {
-            toast.success("Has iniciado Sesion!!");
+            toast.success(translate(this.context,''));
         };
         return (
             <Formik initialValues={{

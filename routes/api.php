@@ -70,7 +70,6 @@ Route::get('/auth/id', function () {
 });
 
 Route::get('/persona/{id}/img', function ($id) {
-    dd($id);
     return [
         'foto' => \App\Persona::find($id)->foto,
         'back' => env('BACKDOMAIN')

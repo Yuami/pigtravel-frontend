@@ -21,6 +21,7 @@ import House from "../Views/House";
 import Profile from "../Views/Profile";
 import axios from "axios";
 import LogIn from "../Views/LogIn";
+import Bookings from "../Views/Bookings";
 
 class Main extends Component {
     constructor(props) {
@@ -77,6 +78,7 @@ class Main extends Component {
                             <Route exact path="/login" component={LogIn}/>
                             <Route exact path="/logout" component={LogOut}/>
                             <Route exact path="/contact" component={Contact}/>
+                            <Route exact path="/bookings" component={Bookings}/>
                             <Route exact path="/modal">
                                 <MainModal buttonLabel="Reservate" modalBody={"body"} modalHeader={"header"}
                                            primaryButton={"lol"}/>
