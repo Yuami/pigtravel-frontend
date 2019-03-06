@@ -1690,6 +1690,25 @@ textarea {
   padding: 0 !important;
 }
 
+.img-profile {
+  border-radius: 50%;
+  position: relative;
+  height: 70px;
+  width: 70px;
+  overflow: hidden;
+  float: left;
+  margin-right: 10px;
+}
+
+.img-profile img {
+  position: absolute;
+  top: 50%;
+  width: 117px;
+  height: auto;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
