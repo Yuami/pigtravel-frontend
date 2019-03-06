@@ -11,6 +11,17 @@ class Profile extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            img: null,
+            persona: {
+                nombre: "",
+                apellido1: "",
+                correo: "",
+                dni: "",
+                tlf: "",
+                fechaNacimiento: "",
+            },
+        }
     }
 
     componentWillMount() {
@@ -22,23 +33,18 @@ class Profile extends Component {
         axios.get(urlPersona).then(
             (res) => {
                 this.setState({
-                    persona: res.data
-                })
+                        persona: res.data
+                    });
             }
         );
 
         axios.get(urlPersonaImg).then(
             (res) => {
                 this.setState({
-                    persona: res.data
-                })
-                $persona['img'] = res.data.back + res.data.foto.path;
+                    img: res.data.back + res.data.foto.path
+                });
             }
         );
-
-        this.setState({
-            persona: $persona
-        });
 
     }
 
@@ -49,29 +55,30 @@ class Profile extends Component {
                 link: '/profile'
             };
 
-        console.log(this.state);
         return (
             <>
                 <UserRouter title={'profile'} list={profile}/>
                 <Container className={'pt-5'}>
                     <Row>
-                        <Col md={4} className={'offset-md-1'}>
+                        <Col lg={4} className={'offset-md-1'}>
                             <Panel id={'profile'}>
-                                <h4>Perfil</h4>
-                                <Row>
+                                <h4>PERFIL</h4>
+                                <Row className={"mt-4"}>
                                     <Col xs={5}>
-                                        <Image src="" roundedCircle />
+                                        <Image src={this.state.img} className={'w-75'} roundedCircle/>
                                     </Col>
-                                    <Col xs={7}>
-
+                                    <Col xs={7} className={"mt-3"}>
+                                        <h4>{this.state.persona.nombre + " " + this.state.persona.apellido1}</h4>
+                                        <h5>{"ID Cliente: " + this.state.persona.id}</h5>
                                     </Col>
                                 </Row>
                             </Panel>
                             <Panel id={'options'}>
+                                <h4>OPCIONES DE CLIENTE</h4>
 
                             </Panel>
                         </Col>
-                        <Col md={4} className={'offset-md-1'}>
+                        <Col lg={4} className={'offset-md-1'}>
                             <Panel id={'email'}>
 
                             </Panel>

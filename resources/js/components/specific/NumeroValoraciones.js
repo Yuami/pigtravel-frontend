@@ -22,8 +22,6 @@ class NumeroValoraciones extends Component {
     }
 
     render() {
-
-        console.log("numero: " + this.state.numeroValoraciones);
         return (
             <p>
                 ({this.state.numeroValoraciones} {this.state.numeroValoraciones === 1 ?

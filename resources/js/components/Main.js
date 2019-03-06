@@ -23,6 +23,9 @@ import axios from "axios";
 import LogIn from "../Views/LogIn";
 import CookieConsent from "react-cookie-consent";
 import Translate from "../lang/Translate";
+import 'core-js/es6/map';
+import 'core-js/es6/set';
+import 'raf/polyfill';
 
 class Main extends Component {
     constructor(props) {
