@@ -27,8 +27,8 @@ class reservedEmail extends Mailable
     public function __construct($email, $idReserva, $estado, $paymentID)
     {
         $this->paymentID = $paymentID;
-        $this->reserva = Reserva::find($idReserva)->first();
-        $this->house = Vivienda::find(Reserva::find($idReserva))->first();
+        $this->reserva = Reserva::find($idReserva);
+        $this->house = Vivienda::find($this->reserva->idVivienda);
         $this->email = $email;
         $this->estado = $estado;
 
