@@ -132,7 +132,7 @@ class ReservationPayment extends Component {
                             </div>
                         </div>
                     </div>
-                    <StripeCheckout/>
+                    <StripeCheckout {...this.state}/>
                 </div>
         } else if (this.state.paymentMethod === "paypal") {
             paymentButton = <PaypalCheckout {...this.state} />

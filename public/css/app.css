@@ -72,6 +72,11 @@ body {
   z-index: 999 !important;
 }
 
+#profile #profileImg {
+  max-width: 75% !important;
+  max-height: 90px !important;
+}
+
 footer {
   position: absolute;
   bottom: 0;

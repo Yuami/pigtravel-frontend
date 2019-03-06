@@ -47,7 +47,7 @@ class ReservasController extends Controller
         $reserva->totalClientes = $request->pax;
         $reserva->idMetodoPago = 1;
         $reserva->precio = $request->precio;
-        $reserva->idCliente = 1;
+        $reserva->idCliente = auth()->id();
         $reserva->save();
 
 

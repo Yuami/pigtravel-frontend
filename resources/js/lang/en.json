@@ -66,7 +66,8 @@
     "contact" : "Contact",
     "home": "Home",
     "bookings": "Bookings",
-    "booking": "Booking"
+    "booking": "Booking",
+    "profile": "Profile"
   },
   "contact": {
     "email": "Email",

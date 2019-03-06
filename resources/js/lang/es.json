@@ -67,7 +67,8 @@
     "contact" : "Contacto",
     "home": "Inicio",
     "bookings": "Reservas",
-    "booking": "Reserva"
+    "booking": "Reserva",
+    "profile": "Perfil"
   },
   "contact": {
     "email": "Correo",
