@@ -13,7 +13,7 @@ class FormLogin extends Component {
 
     render() {
         let notify = () => {
-            toast.success(translate(this.context,'succes','toastLog'));
+            toast.success(translate(this.context, 'success', 'toastLog'));
         };
         return (
             <Formik initialValues={{

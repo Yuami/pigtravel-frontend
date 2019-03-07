@@ -63,11 +63,12 @@ Route::get('/idiomas', function () {
 });
 
 Route::get('/auth', function () {
-    return json_encode(auth()->check());
+    $user = [];
+    $user[] += auth()->check();
+    $user[] += auth()->id();
+    return $user;
 });
-Route::get('/auth/id', function () {
-    return json_encode(auth()->id());
-});
+
 
 Route::get('/persona/{id}/img', function ($id) {
     $foto = \App\Persona::find($id)->foto;
@@ -88,13 +89,17 @@ Route::get('/viviendas', "ViviendaController@index");
 
 Route::get('/viviendas/{id}', "ViviendaController@show");
 
-Route::get('/viviendas/{id}/servicios', function ($id){
+Route::get('/viviendas/{id}/servicios', function ($id) {
     return \App\ViviendasHasServicio::getByVivienda($id);
 });
 
-Route::get('/servicios', function (){ return \App\Servicio::all();});
+Route::get('/servicios', function () {
+    return \App\Servicio::all();
+});
 
-Route::get('/servicios/{id}', function ($id){ return \App\Servicio::findOrFail($id);});
+Route::get('/servicios/{id}', function ($id) {
+    return \App\Servicio::findOrFail($id);
+});
 
 Route::post('/locale', 'LocaleController@change');
 

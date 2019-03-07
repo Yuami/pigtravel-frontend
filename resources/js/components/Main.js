@@ -23,6 +23,7 @@ import axios from "axios";
 import LogIn from "../Views/LogIn";
 import CookieConsent from "react-cookie-consent";
 import Translate from "../lang/Translate";
+import Bookings from "../Views/Bookings";
 
 class Main extends Component {
     constructor(props) {
@@ -81,6 +82,7 @@ class Main extends Component {
                             <Route exact path="/houses/:idHouse" component={House}>
                             </Route>
                             <Route exact path="/about-us" component={AboutUs}/>
+                            <Route exact path="/bookings" component={Bookings}/>
                             <Route exact path="/login" component={LogIn}/>
                             <Route exact path="/logout" component={LogOut}/>
                             <Route exact path="/contact" component={Contact}/>
