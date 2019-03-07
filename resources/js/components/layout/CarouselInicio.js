@@ -7,9 +7,27 @@ import CardImg from "reactstrap/es/CardImg";
 import CardBody from "reactstrap/es/CardBody";
 import CardTitle from "reactstrap/es/CardTitle";
 import CardText from "reactstrap/es/CardText";
+import Link from "@material-ui/core/es/Link/Link";
+import originalMoment from "moment";
+import {extendMoment} from "moment-range";
+import {Button} from "reactstrap";
+import FaIcon from "../general/FaIcon";
+import CardLink from "reactstrap/es/CardLink";
+
+const moment = extendMoment(originalMoment);
 
 class CarouselInicio extends Component {
     render() {
+        const linkButtonData = {
+            pathname: "/search",
+            state: {
+                guests: 1,
+                place: 954,
+                start: moment().toDate(),
+                end: moment().add(1,'days').toDate()
+            }
+        };
+
         return (
             <InfiniteCarousel
                 breakpoints={[
@@ -32,11 +50,12 @@ class CarouselInicio extends Component {
                 showSides={true}
                 sidesOpacity={0}
                 sideSize={.5}
-                slidesToScroll={3}
+                slidesToScroll={1}
                 slidesToShow={3}
-                scrollOnDevice={true}>
+                scrollOnDevice={true}
+               >
 
-                <MainCard clickable>
+                <MainCard  clickable>
                     <CardImg top src="/img/mallorca.jpg"/>
                     <CardBody>
                         <CardTitle>Mallorca</CardTitle>
@@ -45,26 +64,40 @@ class CarouselInicio extends Component {
                 </MainCard>
 
                 <MainCard clickable>
-                    <CardImg top src="/img/paris.jpg"/>
+                    <CardImg top src="/img/madrid.jpg"/>
                     <CardBody>
-                        <CardTitle>París</CardTitle>
-                        <CardText><Translate type={"carrousel"} string={"fr"}/></CardText>
+                        <CardTitle>Madrid</CardTitle>
+                        <CardText><Translate type={"carrousel"} string={"es"}/></CardText>
                     </CardBody>
                 </MainCard>
 
                 <MainCard clickable>
-                    <CardImg top src="/img/maldivas.jpg"/>
+                    <CardImg top src="/img/barcelona.jpg"/>
                     <CardBody>
-                        <CardTitle>Malé</CardTitle>
-                        <CardText><Translate type={"carrousel"} string={"mv"}/></CardText>
+                        <CardTitle>Barcelona</CardTitle>
+                        <CardText><Translate type={"carrousel"} string={"es"}/></CardText>
                     </CardBody>
                 </MainCard>
 
                 <MainCard clickable>
-                    <CardImg top src="/img/mallorca.jpg"/>
+                    <CardImg top src="/img/sevilla.jpg"/>
                     <CardBody>
-                        <CardTitle>Berlin</CardTitle>
-                        <CardText><Translate type={"carrousel"} string={"gr"}/></CardText>
+                        <CardTitle>Sevilla</CardTitle>
+                        <CardText><Translate type={"carrousel"} string={"es"}/></CardText>
+                    </CardBody>
+                </MainCard>
+                <MainCard clickable>
+                    <CardImg top src="/img/murcia.jpg"/>
+                    <CardBody>
+                        <CardTitle>Murcia</CardTitle>
+                        <CardText><Translate type={"carrousel"} string={"es"}/></CardText>
+                    </CardBody>
+                </MainCard>
+                <MainCard clickable>
+                    <CardImg top src="/img/galicia.jpg"/>
+                    <CardBody>
+                        <CardTitle>Galicia</CardTitle>
+                        <CardText><Translate type={"carrousel"} string={"es"}/></CardText>
                     </CardBody>
                 </MainCard>
             </InfiniteCarousel>

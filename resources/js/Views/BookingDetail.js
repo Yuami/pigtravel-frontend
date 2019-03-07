@@ -34,9 +34,11 @@ class BookingDetail extends Component {
             .then((res) => this.setState({values: res.data}));
         axios.get('/api/states')
             .then((res) => this.setState({states: res.data}));
-        axios.get('/api/fotoPerfil/'+this.state.values.map((v)=> v.idCliente))
-            .then((res) => this.setState({image: res.data}));
-
+        axios.get('/api/fotoPerfil/' + this.state.values.map((v) => v.idCliente))
+            .then((res) => this.setState({image: res.data}))
+            .catch((error) => {
+            this.setState({image: [{"path":"/assets/uploads/img/perfiles/default-image.png"}]})
+        });
     }
 
     static contextType = LocaleContext;
@@ -180,7 +182,7 @@ class BookingDetail extends Component {
                 <UserRouter title={'booking'} list={bookingDetails}/>
                 <Container className="bookingCont">
                     <Panel>
-                        {book}
+
                     </Panel>
 
                 </Container>

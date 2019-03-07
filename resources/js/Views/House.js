@@ -4,7 +4,7 @@ import Row from "reactstrap/es/Row";
 import Col from "reactstrap/es/Col";
 import HouseCarrousel from "../components/specific/HouseCarrousel"
 import axios from "axios";
-import DatePickerInicio from "../components/specific/DatePickerInicio";
+import DatePickerHouse from "../components/specific/DatePickerHouse";
 import FormGroup from "reactstrap/es/FormGroup";
 import {Button, Label, Popover, PopoverBody} from "reactstrap";
 import FaIcon from "../components/general/FaIcon";
@@ -102,7 +102,6 @@ class House extends Component {
         return (
             <div>
                 <Container>
-                    <PanelSearcher start={this.state.date.start} end={this.state.date.end} place={this.state.place} guests={this.state.guests}/>
                     <h1>{this.state.details.map((v) => v.nombre)}</h1>
                     <Row className="house">
                         <Col lg="8">
@@ -138,7 +137,7 @@ class House extends Component {
                                         <h3><Translate type={'house'} string={'priceNight'}/></h3>
                                     </Row>
                                     <Row className="filtro justify-content-center">
-                                        <DatePickerInicio onChange={this.handleChangeDates.bind(this)}
+                                        <DatePickerHouse onChange={this.handleChangeDates.bind(this)}
                                                           value={this.state.date}/>
                                     </Row>
                                     <Row className="justify-content-center">

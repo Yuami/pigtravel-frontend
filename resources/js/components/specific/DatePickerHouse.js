@@ -9,7 +9,7 @@ import {Label, Button, Popover, PopoverBody, InputGroup} from 'reactstrap';
 import FormGroup from "reactstrap/es/FormGroup";
 import FaIcon from "../general/FaIcon";
 
-class DatePickerInicio extends Component {
+class DatePickerHouse extends Component {
     constructor(props, context) {
         super(props, context);
 
@@ -67,4 +67,4 @@ class DatePickerInicio extends Component {
     }
 }
 
-export default DatePickerInicio;
+export default DatePickerHouse;

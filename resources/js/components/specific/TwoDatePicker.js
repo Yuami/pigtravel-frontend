@@ -1,20 +1,23 @@
 import React from 'react';
 import moment from 'moment';
-import Helmet from 'react-helmet';
-
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
-
 import {formatDate, parseDate} from 'react-day-picker/moment';
+import axios from "axios";
+import PropTypes from "prop-types";
+import Col from "react-bootstrap/es/Col";
+import FaIcon from "../general/FaIcon";
 
-export default class Example extends React.Component {
+
+export default class TwoDatePicker extends React.Component {
     constructor(props) {
         super(props);
         this.handleFromChange = this.handleFromChange.bind(this);
         this.handleToChange = this.handleToChange.bind(this);
         this.state = {
-            from: moment(this.props.value.start).toDate(),
-            to: moment(this.props.value.end).toDate(),
+            from: moment().toDate(),
+            to: moment().add(1, 'days').toDate(),
+            bookings: [],
         };
     }
 
@@ -37,49 +40,67 @@ export default class Example extends React.Component {
         this.setState({to}, this.showFromMonth);
     }
 
+    componentWillMount() {
+        axios({
+            url: '/api/blocks/' + this.props.idHouse,
+            method: 'get'
+        }).then((response) => {
+            this.setState({
+                bookings: response.data
+            });
+        }).catch((error) => {
+            console.log(error, 'error books')
+        });
+    }
+
     render() {
         const {from, to} = this.state;
         const modifiers = {start: from, end: to};
-        return (
-            <div className="InputFromTo">
-                <DayPickerInput
-                    value={from}
-                    placeholder="From"
-                    format="LL"
-                    formatDate={formatDate}
-                    parseDate={parseDate}
-                    dayPickerProps={{
-                        selectedDays: [from, {from, to}],
-                        disabledDays: {after: to},
-                        toMonth: to,
-                        modifiers,
-                        numberOfMonths: 2,
-                        onDayClick: () => this.to.getInput().focus(),
-                    }}
-                    onDayChange={this.handleFromChange}
-                />{' '}
-                —{' '}
-                <span className="InputFromTo-to">
-          <DayPickerInput
-              ref={el => (this.to = el)}
-              value={to}
-              placeholder="To"
-              format="LL"
-              formatDate={formatDate}
-              parseDate={parseDate}
-              dayPickerProps={{
-                  selectedDays: [from, {from, to}],
-                  disabledDays: {before: from},
-                  modifiers,
-                  month: from,
-                  fromMonth: from,
-                  numberOfMonths: 2,
-              }}
-              onDayChange={this.handleToChange}
-          />
-        </span>
-
-            </div>
+        const books = this.state.bookings.map(v => {
+                return {before: moment(v.checkOut).toDate(), after: moment(v.checkIn).toDate()}
+            }
         );
+        console.log(books);
+        return (
+            <div className="InputFromTo col-12 pt-5">
+                <Col lg={5} xs={5}>
+                    <DayPickerInput
+                        value={from}
+                        placeholder="From"
+                        dayPickerProps={{
+                            selectedDays: [from, {from, to}],
+                            toMonth: to,
+
+                            modifiers,
+                            numberOfMonths: 1,
+                            onDayClick: () => this.to.getInput().focus(),
+                        }}
+                        onDayChange={this.handleFromChange}
+                    />
+                </Col>
+                <Col lg={1} xs={1}>
+                    <FaIcon icon={"fa fa-long-arrow-alt-right"}/>
+                </Col>
+                <Col lg={5} xs={5}>
+                    <DayPickerInput
+                        ref={el => (this.to = el)}
+                        value={to}
+                        placeholder="To"
+                        dayPickerProps={{
+                            selectedDays: [from, {from, to}],
+
+                            modifiers,
+                            month: from,
+                            fromMonth: from,
+                            numberOfMonths: 1,
+                        }}
+                        onDayChange={this.handleToChange}
+                    />
+                </Col>
+            </div>
+        )
     }
 }
+TwoDatePicker.propTypes = {
+    idHouse: PropTypes.number.isRequired,
+};
