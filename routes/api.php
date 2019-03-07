@@ -22,7 +22,7 @@ Route::get("/cities", function () {
 });
 
 Route::get("/cities/{id}", function ($id) {
-    return new \App\Http\Resources\City(\App\City::findOrFail($id));
+    return \App\City::findOrFail($id);
 });
 
 Route::get("/regions", function () {
@@ -69,10 +69,6 @@ Route::get('/auth/id', function () {
     return json_encode(auth()->id());
 });
 
-Route::get('/persona/{id}', function ($id){
-   return \App\Persona::find($id);
-});
-
 Route::get('/persona/{id}/img', function ($id) {
     $foto = \App\Persona::find($id)->foto;
 
@@ -105,3 +101,5 @@ Route::post('/locale', 'LocaleController@change');
 Route::get('/locale', 'LocaleController@index');
 
 Route::post('/reservation', 'ReservasController@store');
+
+Route::post('/profile/{id}/img', 'ImagenController@Persona');

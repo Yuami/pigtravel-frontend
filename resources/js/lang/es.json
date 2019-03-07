@@ -4,7 +4,7 @@
     "logout": "Cerrar Sesión",
     "register": "Registrar"
   },
-  "footer" : {
+  "footer": {
     "about-us": "Sobre Pig Travel",
     "about-us.who": "Quiénes somos?",
     "about-us.terms": "Terminos y condiciones",
@@ -22,7 +22,6 @@
     "paymentMethod": "Selecciona el método de pago",
     "pay": "Pagar ahora",
     "request": "Envia una peticion de reserva"
-
   },
   "general": {
     "email": "contact@pigtravel.top",
@@ -64,10 +63,11 @@
   },
   "pagesTitles": {
     "messages": "Mensajes",
-    "contact" : "Contacto",
+    "contact": "Contacto",
     "home": "Inicio",
     "bookings": "Reservas",
-    "booking": "Reserva"
+    "booking": "Reserva",
+    "profile": "Perfil"
   },
   "contact": {
     "email": "Correo",
@@ -113,14 +113,19 @@
     "confirmButtonText": "Aceptar"
   },
   "titles": {
-  "home": "Reserva tu casa de verano | Pig Travel",
-   "booking": "Reserva",
-   "profile": "Edita tu perfil"
+    "home": "Reserva tu casa de verano | Pig Travel",
+    "booking": "Reserva",
+    "profile": "Edita tu perfil"
   },
   "cookies": {
     "cookie": "Empleamos el uso de cookies. Al acceder a pigtravel, acepta usar cookies de acuerdo con la política de privacidad de pigtravel.\n\nLa mayoría de los sitios web interactivos utilizan cookies para permitir recuperar los detalles del usuario para cada visita. Las cookies son utilizadas por nuestro sitio web para habilitar la funcionalidad de ciertas áreas para que sea más fácil para las personas que visitan nuestro sitio web. Algunos de nuestros socios afiliados / publicitarios también pueden usar cookies."
   },
   "description": {
     "home": "Disfruta de las vacaciones con Pig Travel. Donde puede encontrar alojamiento al mejor precio para disfrutar sus vacaciones al máximo."
+  },
+  "toastLog": {
+    "succes": "Has Iniciado Sesion!!",
+    "warning": "Tienes que verificar el correo!",
+    "danger": "Fallo en al iniciar sesion"
   }
 }

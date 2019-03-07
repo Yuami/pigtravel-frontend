@@ -63,10 +63,11 @@
   },
   "pagesTitles": {
     "messages": "Messages",
-    "contact" : "Contact",
+    "contact": "Contact",
     "home": "Home",
     "bookings": "Bookings",
-    "booking": "Booking"
+    "booking": "Booking",
+    "profile": "Profile"
   },
   "contact": {
     "email": "Email",
@@ -121,5 +122,10 @@
   },
   "description": {
     "home": "Enjoy the holidays with Pig Travel. Where you can find accommodations at the best price to enjoy your vacation to the fullest"
+  },
+  "toastLog": {
+    "succes": "You are Logged!!",
+    "warning": "You must verify the email!",
+    "danger": "Error at Log In!"
   }
 }

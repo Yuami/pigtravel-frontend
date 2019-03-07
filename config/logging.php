@@ -40,13 +40,13 @@ return [
         ],
 
         'single' => [
-            'driver' => 'single',
+            'driver' => 'stack',
             'path' => storage_path('logs/laravel.log'),
             'level' => 'debug',
         ],
 
         'daily' => [
-            'driver' => 'daily',
+            'driver' => 'stack',
             'path' => storage_path('logs/laravel.log'),
             'level' => 'debug',
             'days' => 14,
