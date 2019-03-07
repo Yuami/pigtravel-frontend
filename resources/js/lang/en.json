@@ -124,7 +124,7 @@
     "home": "Enjoy the holidays with Pig Travel. Where you can find accommodations at the best price to enjoy your vacation to the fullest"
   },
   "toastLog": {
-    "succes": "You are Logged!!",
+    "success": "You are Logged!!",
     "warning": "You must verify the email!",
     "danger": "Error at Log In!"
   }

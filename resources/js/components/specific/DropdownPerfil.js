@@ -2,38 +2,38 @@ import React, {Component} from 'react'
 import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from "reactstrap";
 import Translate from "../../lang/Translate";
 import axios from "axios";
+import {AuthContext} from "../../AuthContext";
 
 class DropdownPerfil extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            idPersona: null,
             foto: null
         };
     }
 
-    componentWillMount() {
-        axios.get('/api/auth/id')
-            .then((response) => {
-                this.setState({idPersona: response.data});
-            }).then(this.fotoPerfil());
+    static contextType = AuthContext;
 
-    }
-
-    fotoPerfil = () => {
-        axios.get('/api/persona/' + this.state.idPersona + '/img').then((response) => {
-                console.log(response);
+    renderImg() {
+        axios.get('/api/persona/' + this.context[1] + '/img').then((response) => {
                 this.setState({foto: response.data.back + response.data.foto.path});
             }
-        )
-    };
-
+        );
+        const img = <img src={this.state.foto} className="userImg"/>;
+        return (
+            <AuthContext.Consumer>
+                {isAuth => {
+                    return img;
+                }}
+            </AuthContext.Consumer>
+        );
+    }
 
     render() {
         return (
             <>
                 <DropdownToggle className="p-0" nav caret>
-                    <img src={this.state.foto} className="userImg"/>
+                    {this.renderImg()}
                 </DropdownToggle>
                 <DropdownMenu right>
                     <a>

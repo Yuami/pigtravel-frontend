@@ -124,7 +124,7 @@
     "home": "Disfruta de las vacaciones con Pig Travel. Donde puede encontrar alojamiento al mejor precio para disfrutar sus vacaciones al máximo."
   },
   "toastLog": {
-    "succes": "Has Iniciado Sesion!!",
+    "success": "Has Iniciado Sesion!!",
     "warning": "Tienes que verificar el correo!",
     "danger": "Fallo en al iniciar sesion"
   }
