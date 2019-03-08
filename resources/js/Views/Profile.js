@@ -8,6 +8,7 @@ import axios from "axios"
 import Image from "react-bootstrap/Image";
 import LanguagePicker from "../components/LanguagePicker";
 import {Input, Nav, UncontrolledDropdown} from "reactstrap";
+import {withRouter} from "react-router-dom";
 
 class Profile extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Profile extends Component {
 
         this.state = {
             img: null,
-            id: null,
+            id: this.props.match.params.id,
             persona: {
                 nombre: "",
                 apellido1: "",
@@ -29,41 +30,40 @@ class Profile extends Component {
         this.uploadImage = this.uploadImage.bind(this);
     }
 
-
-    componentWillMount() {
-        const id = this.props.match.params.id;
-        const urlPersona = "/api/persona/" + id;
-        const urlPersonaImg = urlPersona + "/img";
-
-        let $persona = [];
-        axios.get(urlPersona).then(
-            (res) => {
-                this.setState({
-                    id: id,
-                    persona: res.data
-                });
-            }
-        );
-
-        axios.get(urlPersonaImg).then(
-            (res) => {
-                this.setState({
-                    img: "http://back.pig.test" + res.data.foto.path
-                });
-            }
-        );
-
+    getUrlPersona() {
+        return "/api/persona/" + this.state.id;
     }
 
+    componentDidMount() {
+        axios.get(this.getUrlPersona()).then((res) =>
+            this.setState({persona: res.data}));
+
+        this.getProfileImage();
+    }
+
+    getProfileImage = () => {
+        axios.get(this.getUrlPersona() + "/img").then(
+            (res) => {
+                this.setState({
+                    img: res.data.back + res.data.foto.path
+                });
+            }
+        );
+    };
 
     uploadImage(event) {
         let file = event.target.files[0];
-        console.log(file);
 
         if (file) {
             let data = new FormData();
             data.append('file', file);
-            axios.post('/api/profile/' + this.state.id + '/img', data);
+            axios.post('/api/profile/' + this.state.id + '/img', data, {
+                header: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(() => {
+                this.getProfileImage();
+            });
         }
     }
 
@@ -109,9 +109,12 @@ class Profile extends Component {
                                 <h4>OPCIONES DE CLIENTE</h4>
                                 <Row>
                                     <Col xs={5}>
-                                        <h5>{"IDIOMA: "}</h5>
+                                        <h5 className={'mt-3'}>{"IDIOMA: "}</h5>
                                     </Col>
                                     <Col xs={7}>
+                                        <UncontrolledDropdown>
+                                            <LanguagePicker changeLanguage={this.props.changeLanguage}/>
+                                        </UncontrolledDropdown>
                                     </Col>
                                 </Row>
                             </Panel>
@@ -148,4 +151,4 @@ class Profile extends Component {
 
 }
 
-export default Profile;
+export default withRouter(Profile);
