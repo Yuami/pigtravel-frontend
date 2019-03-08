@@ -204,7 +204,7 @@ footer {
 }
 
 .css-xp4uvy {
-  top: 60% !important;
+  top: 50% !important;
 }
 
 .css-1492t68 {
@@ -215,6 +215,11 @@ footer {
 
 .DateRangePicker__Month {
   margin: 0px !important;
+}
+
+a.card:hover {
+  color: #212529;
+  text-decoration: none;
 }
 
 .buscador .form-group label {
@@ -1712,6 +1717,13 @@ textarea {
   height: auto;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+}
+
+.DayPickerInput input {
+  max-width: 100px !important;
+  border: 0px;
+  text-align: center;
+  font-size: 15px;
 }
 
 /*!
