@@ -8,7 +8,7 @@ import {
     NavLink,
     NavbarToggler,
     Collapse,
-    UncontrolledDropdown
+    UncontrolledDropdown, DropdownItem
 } from 'reactstrap';
 import LanguagePicker from "../LanguagePicker";
 import Translate from "../../lang/Translate";
@@ -71,6 +71,7 @@ class Header extends Component {
                 </NavItem>
                 <NavItem className="visible-xs">
                     <NavLink href="/logout">
+                        <i className="fas fa-sign-out-alt"/> <Translate type={'userDropdown'} string={'exit'}/>
                     </NavLink>
                 </NavItem>
             </Nav>

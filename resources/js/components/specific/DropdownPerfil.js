@@ -49,7 +49,8 @@ class DropdownPerfil extends Component {
                         <DropdownItem>
                             <i className="fas fa-cog"/> <Translate type={'userDropdown'} string={'account'}/>
                         </DropdownItem>
-                        <DropdownItem>
+
+                        <DropdownItem tag="a" href="/logout">
                             <i className="fas fa-sign-out-alt"/> <Translate type={'userDropdown'} string={'exit'}/>
                         </DropdownItem>
                     </a>
