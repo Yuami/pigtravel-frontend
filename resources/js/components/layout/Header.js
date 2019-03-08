@@ -70,12 +70,12 @@ class Header extends Component {
                     <i className="fas fa-cog"/> <Translate type={'userDropdown'} string={'account'}/>
                 </NavItem>
                 <NavItem className="visible-xs">
-                    <i className="fas fa-sign-out-alt"/> <Translate type={'userDropdown'} string={'exit'}/>
+                    <NavLink href="/logout">
+                    </NavLink>
                 </NavItem>
             </Nav>
         </Collapse>);
-        const unlogged = (
-            <Collapse isOpen={this.state.isOpen} className="w-100" navbar>
+        const unlogged = (<Collapse isOpen={this.state.isOpen} className="w-100" navbar>
             <Nav className="w-100 justify-content-center">
                 <NavItem active>
                     <h1 className="header-title"><Link to={'/'}>Pig Travel</Link></h1>
@@ -94,10 +94,11 @@ class Header extends Component {
             </Nav>
         </Collapse>);
         return (
-            <AuthContext.Consumer>{
-                isAuth => {
-                    return isAuth ? logged : unlogged
-                }}</AuthContext.Consumer>
+            <AuthContext.Consumer>
+                {isAuth => {
+                    return isAuth[0] ? logged : unlogged
+                }}
+            </AuthContext.Consumer>
         )
     }
 
