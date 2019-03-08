@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ReservedEmail;
 use App\Mensaje;
+use App\Persona;
 use App\ReservaHasEstado;
 use App\ReservaHasEstadoInsert;
 use App\Vivienda;
@@ -68,7 +69,9 @@ class ReservasController extends Controller
             $message->save();
         }
 
-        $this->generateMail('newtimestube@gmail.com', $reserva->id, $request->estado, $request->paymentID);
+        $persona = Persona::find($reserva->idCliente);
+
+        $this->generateMail($persona->correo, $reserva->id, $request->estado, $request->paymentID);
 
         return $reserva->id;
     }
