@@ -44,16 +44,6 @@ class BookingDetail extends Component {
     static contextType = LocaleContext;
     render() {
         document.title =translate(this.context,'booking','titles')+" "+this.state.values.map((v) => (v.nombreVivienda));
-        const bookingDetails = [
-            {
-                type: 'bookings',
-                link: '/bookings'
-            },
-            {
-                type: 'booking',
-                link: '/bookings/booking'
-            },
-        ];
         const precio = this.state.values.map((p) => (p.precio));
         const estado = this.state.values.map((p) => (p.idEstado));
         const fromDate= moment(this.state.values.map((v) => (v.checkIn))).format('YYYY-MM-DD');
@@ -179,12 +169,10 @@ class BookingDetail extends Component {
         );
         return (
             <div>
-                <UserRouter title={'booking'} list={bookingDetails}/>
                 <Container className="bookingCont">
                     <Panel>
-
+                        {book}
                     </Panel>
-
                 </Container>
             </div>
         );
