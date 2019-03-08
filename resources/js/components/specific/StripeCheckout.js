@@ -48,7 +48,7 @@ class StripeCheckout extends Component {
                 <LocaleContext.Consumer>
                     {locale =>
                         <Button
-                            onClick={this.addReservation()}
+                            onClick={() => this.addReservation()}
                             className={'pull-right'}
                             color={'primary'}
                             disabled={this.state.disabled}>{translate(locale, 'pay', 'reservation')}</Button>

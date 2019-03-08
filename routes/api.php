@@ -69,9 +69,12 @@ Route::get('/auth/id', function () {
     return json_encode(auth()->id());
 });
 
+Route::get('/persona/{id}', function ($id) {
+    return \App\Persona::find($id);
+});
 Route::get('/persona/{id}/img', function ($id) {
     $foto = \App\Persona::find($id)->foto;
-
+    $path = '';
     if ($foto == null) {
         $foto = [
             "id" => null,
@@ -79,11 +82,16 @@ Route::get('/persona/{id}/img', function ($id) {
         ];
     }
 
+    if ($foto->back) {
+        $path = env('BACKDOMAIN');
+    }
+
     return [
         'foto' => $foto,
-        'back' => env('BACKDOMAIN')
+        'back' => $path
     ];
 });
+
 Route::get('/viviendas', "ViviendaController@index");
 
 Route::get('/viviendas/{id}', "ViviendaController@show");
