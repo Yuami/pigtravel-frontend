@@ -97,7 +97,7 @@ class Profile extends Component {
                         </Col>
                         <Col className={"mt-3"}>
                             <h4>{this.state.persona.nombre + " " + this.state.persona.apellido1}</h4>
-                            <h5>{"ID Cliente: " + this.state.persona.id}</h5>
+                            <h5>{"ID Cliente : " + this.state.persona.id}</h5>
                         </Col>
                     </Row>
                     <Row>
