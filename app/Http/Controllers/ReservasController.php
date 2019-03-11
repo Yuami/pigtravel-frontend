@@ -18,12 +18,14 @@ class ReservasController extends Controller
 {
     public function index()
     {
+        $idC = auth()->id();
+//        dd($idC);
+        $dates = Reserva::dates($idC);
         return view('welcome');
     }
 
     public function show()
     {
-
         return view('welcome');
     }
 

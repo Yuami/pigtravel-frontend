@@ -21,15 +21,16 @@ class Reserva extends Model
         return $this->estados()->orderBy('fechaCambio', 'desc')->first();
     }
 
-    static function details($id){
+    static function details($id)
+    {
         return DB::table('reserva')
-            ->select('vivienda.nombre as nombreVivienda','fotoPerfil.path as perfilVendedor','fotoCasa.path as fotoCasa', 'reserva.*', 'persona.nombre', 'persona.apellido1', 'cities.name as cityName', 'countries.name as countryName', 'reserva_has_estado.idEstado')
+            ->select('vivienda.nombre as nombreVivienda', 'fotoPerfil.path as perfilVendedor', 'fotoCasa.path as fotoCasa', 'reserva.*', 'persona.nombre', 'persona.apellido1', 'cities.name as cityName', 'countries.name as countryName', 'reserva_has_estado.idEstado')
             ->join('vivienda', 'reserva.idVivienda', '=', 'vivienda.id')
             ->join('reserva_has_estado', 'reserva_has_estado.idReserva', '=', 'reserva.id')
-            ->join('vivienda_has_fotos','vivienda_has_fotos.idVivienda','=','vivienda.id')
+            ->join('vivienda_has_fotos', 'vivienda_has_fotos.idVivienda', '=', 'vivienda.id')
             ->join('persona', 'vivienda.idVendedor', '=', 'persona.id')
-            ->join('fotos as fotoPerfil','fotoPerfil.id','=','persona.idFoto')
-            ->join('fotos as fotoCasa','fotoCasa.id','=','vivienda_has_fotos.idFoto')
+            ->join('fotos as fotoPerfil', 'fotoPerfil.id', '=', 'persona.idFoto')
+            ->join('fotos as fotoCasa', 'fotoCasa.id', '=', 'vivienda_has_fotos.idFoto')
             ->join('cities', 'vivienda.idCiudad', '=', 'cities.id')
             ->join('countries', 'cities.country_id', '=', 'countries.id')
             ->where('reserva.id', '=', $id)
@@ -45,6 +46,15 @@ class Reserva extends Model
             ->where('reserva.idVivienda', '=', $id)
             ->get();
         return $block;
+    }
+
+    static function dates($idC)
+    {
+        $dates = DB::table('reserva')
+            ->select('reserva.checkIn', 'reserva.checkOut')
+            ->where('reserva.idCliente', '=', $idC)
+            ->get();
+        return $dates;
     }
 }
 
