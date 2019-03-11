@@ -75,7 +75,6 @@ class Main extends Component {
                 <AuthContext.Provider value={this.state.isAuth}>
                     <FormContext.Provider value={token}>
                         <Header changeLanguage={this.changeLanguage}/>
-                        {/*  <UserRouter title={"title"}/>  cambiado de userRouter a UserRouter */}
                         <Switch>
                             <Route exact path="/" component={Home}/>
                             <Route exact path="/bookings/:idReserva" component={BookingDetail}>
@@ -98,7 +97,9 @@ class Main extends Component {
                             </Route>
                             <Route exact path="/terms" component={Terms}/>
                             <Route exact path="/search" component={HouseList}/>
-                            <Route path="/profile/:id/:name" component={Profile}/>
+                            <Route path="/profile/:id/:name">
+                                <Profile changeLanguage={this.changeLanguage}/>
+                            </Route>
                         </Switch>
                         <Footer/>
                         <CookieConsent
