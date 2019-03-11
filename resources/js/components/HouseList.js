@@ -14,12 +14,14 @@ class HouseList extends Component {
             state: this.props.linkProps
         };
 
-        return (
+        const card = (<Link to={linkProps} className="card-house-link">
+            <HouseCard house={house} links={this.props.links} clickable map={isMap}/>
+        </Link>);
+
+        return !isMap ? (
             <Col key={house.id} sm="6" md="4" lg={this.props.mapIsShowing ? "4" : "3"} className="my-3">
-                <Link to={linkProps} className="card-house-link">
-                    <HouseCard house={house} links={this.props.links} clickable map={isMap}/>
-                </Link>
-            </Col>)
+                {card}
+            </Col>) : <div key={house.id}>{card}</div>;
     };
 
     houseToMarker = (house) => {

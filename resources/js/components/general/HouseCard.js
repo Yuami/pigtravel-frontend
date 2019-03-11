@@ -14,23 +14,22 @@ class HouseCard extends Component {
     state = {};
 
     render() {
-        const {clickable, house, links} = this.props;
+        const {clickable, house, links, map} = this.props;
         const {fotos, nombre: name, tipoVivienda: type, tarifas, valoracion} = house;
         let image = fotos.length == 0 ? "/img/house-default.jpeg" : links.back + fotos[0].path;
         let tarifa = tarifas.general == null ? tarifas.extra[0] : tarifas.general;
 
-        let cardImg = this.props.map ? null :
+        let cardImg = !map && (
             <div className="house-card-img">
                 <img src={image} alt={name} width="100%"/>
                 <span><h4>{type.nombre}</h4></span>
-            </div>;
+            </div>);
 
-        let stars =
-            (<>
+        let stars = (<>
                 <Stars
                     rating={valoracion == undefined || valoracion.length == 0 ? 0 : valoracion[0].media == null ? 0 : valoracion[0].media}
                     color="primary"/>
-                { this.props.map ? null : <NumeroValoraciones idVivienda={house.id}/>}
+                { map ? null : <NumeroValoraciones idVivienda={house.id}/>}
             </>);
 
         const info = (
