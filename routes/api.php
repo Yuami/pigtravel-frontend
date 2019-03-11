@@ -45,6 +45,10 @@ Route::get('/fotoPerfil/{id}', function ($id) {
 Route::get('/bookings/{id}', function ($id) {
     return \App\Reserva::details($id);
 });
+Route::get('/bookings', function () {
+    $idC = auth()->id();
+    return \App\Cliente::find($idC)->reservas;
+});
 Route::get('/houses/{id}', function ($id) {
     return \App\Vivienda::details($id);
 });

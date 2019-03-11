@@ -48,13 +48,9 @@ class Reserva extends Model
         return $block;
     }
 
-    static function dates($idC)
+    function dates()
     {
-        $dates = DB::table('reserva')
-            ->select('reserva.checkIn', 'reserva.checkOut')
-            ->where('reserva.idCliente', '=', $idC)
-            ->get();
-        return $dates;
+        return $this->belongsTo(Cliente::class,'idPersona','idCliente');
     }
 }
 
