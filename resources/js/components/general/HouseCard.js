@@ -8,36 +8,36 @@ import Container from "reactstrap/es/Container";
 import Stars from "../Stars";
 import {coin} from "../../LocaleContext"
 import NumeroValoraciones from "../specific/NumeroValoraciones";
-import Row from "reactstrap/es/Row";
 
 class HouseCard extends Component {
 
     state = {};
 
     render() {
-        const {clickable, house, img} = this.props;
+        const {clickable, house, links} = this.props;
         const {fotos, nombre: name, tipoVivienda: type, tarifas, valoracion} = house;
-        let image = this.props.links.back + (fotos.length === 0 ? img : fotos[0].path);
+        let image = fotos.length == 0 ? "/img/house-default.jpeg" : links.back + fotos[0].path;
         let tarifa = tarifas.general == null ? tarifas.extra[0] : tarifas.general;
+
         let cardImg = this.props.map ? null :
             <div className="house-card-img">
                 <img src={image} alt={name} width="100%"/>
                 <span><h4>{type.nombre}</h4></span>
             </div>;
 
-        let stars = this.props.map ? null :
+        let stars =
             (<>
                 <Stars
                     rating={valoracion == undefined || valoracion.length == 0 ? 0 : valoracion[0].media == null ? 0 : valoracion[0].media}
                     color="primary"/>
-                <NumeroValoraciones idVivienda={house.id}/>
+                { this.props.map ? null : <NumeroValoraciones idVivienda={house.id}/>}
             </>);
 
         const info = (
             <>
                 {cardImg}
                 <Container fluid className="mt-3">
-                    <CardTitle><h1>{name}</h1></CardTitle>
+                    <CardTitle><h1 className="text-truncate">{name}</h1></CardTitle>
                     <CardSubtitle>
                         <p className="mt-3" style={{textDecoration: "none"}}>
                             {tarifa.precio + coin + ' '}<Translate type="houselist" string="night"/>

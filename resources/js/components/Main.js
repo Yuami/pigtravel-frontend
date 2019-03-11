@@ -14,7 +14,7 @@ import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
 import Register from "../Views/Register";
 import Contact from "../Views/Contact";
-import HouseList from "../Views/HouseList";
+import Search from "../Views/Search";
 import Reservation from "../Views/Reservation";
 import ReservationPayment from "../Views/ReservationPayment";
 import House from "../Views/House";
@@ -89,7 +89,7 @@ class Main extends Component {
                                 <ReservationPayment/>
                             </Route>
                             <Route exact path="/terms" component={Terms}/>
-                            <Route exact path="/search" component={HouseList}/>
+                            <Route exact path="/search" component={Search}/>
                             <Route path="/profile/:id/:name" component={Profile}/>
                         </Switch>
                         <Footer/>

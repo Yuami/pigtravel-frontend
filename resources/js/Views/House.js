@@ -22,7 +22,7 @@ import {extendMoment} from "moment-range";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
 
 const moment = extendMoment(originalMoment);
-import PanelSearcher from "../components/PanelSearcher";
+import PanelSearcher from "../components/search/PanelSearcher";
 import ReservationInfo from "../components/specific/ReservationInfo";
 import NumeroValoraciones from "../components/specific/NumeroValoraciones";
 
