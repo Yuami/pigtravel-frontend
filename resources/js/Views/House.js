@@ -84,12 +84,18 @@ class House extends Component {
     };
 
     render() {
+
+
         document.title =this.state.details.map((v) => v.nombre)+" | Pig Travel";
-        console.log(this.state.details.map((v) => v.descripcion));
+
+
         var meta  = document.createElement('meta');
         meta.name   = 'description';
         meta.content = this.state.details.map((v) => v.descripcion);
         document.head.appendChild(meta);
+
+
+
         const coordX = this.state.details.map((v) => v.coordX).toString();
         const coordY = this.state.details.map((v) => v.coordY).toString();
         const decreaseBtn = this.state.guests === 1 ?
