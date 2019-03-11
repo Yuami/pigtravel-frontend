@@ -14,13 +14,14 @@ import {translate} from "../helpers";
 
 class Register extends Component {
     static contextType = LocaleContext;
+
     render() {
-        document.title =translate(this.context,'register','header');
+        document.title = translate(this.context, 'register', 'header');
         return (
             <Container className="my-4">
                 <Row>
-                    <Col className="d-none d-lg-block" md="6" style={{padding: 7 + '%'}}>
-                        <img src="img/clipboard.png" alt="logo" height="100%" width="100%"/>
+                    <Col className="d-none d-lg-block logoLog" md="6">
+                        <img src="img/clipboard.png" alt="logo" width="100%"/>
                     </Col>
                     <Col lg="6" sm="12">
                         <Panel>
