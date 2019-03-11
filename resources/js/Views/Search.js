@@ -19,24 +19,39 @@ let mapDetected = false;
 
 class Search extends Component {
 
-    state = {
-        houses: [],
-        loading: true,
-        links: null,
-        error: false,
-        start: moment().format('YYYY-MM-DD'),
-        end: moment().add(1, "week").format('YYYY-MM-DD'),
-        guests: 2,
-        place: null,
-        showMap: true,
-        params: null,
-        position: [39.3262345, -4.8380649],
-        zoom: 4,
-        bounds: {
-            nE: {lat: 51.56341232867588, lng: 5.537109375000001},
-            sW: {lat: 24.44714958973082, lng: -15.205078125000002}
-        },
-    };
+    constructor(props) {
+        super(props);
+        let guests = null;
+        let start = null;
+        let end =  null;
+        if (this.props.location && this.props.location.state) {
+            guests = this.props.location.state.guests;
+            start = this.props.location.state.start;
+            end = this.props.location.state.end;
+        } else {
+            window.location.replace("http://www.pigtravel.top");
+        }
+        
+        this.state = {
+            houses: [],
+            loading: true,
+            links: null,
+            error: false,
+            showMap: true,
+            params: {
+                guests,
+                place: null,
+                start,
+                end
+            },
+            position: [39.3262345, -4.8380649],
+            zoom: 4,
+            bounds: {
+                nE: {lat: 51.56341232867588, lng: 5.537109375000001},
+                sW: {lat: 24.44714958973082, lng: -15.205078125000002}
+            },
+        }
+    }
 
     componentDidMount() {
         this.reload(this.props.location.state);
@@ -96,11 +111,7 @@ class Search extends Component {
         } else {
             this.setState({
                 loading: true,
-                params,
-                guests: params.guests,
-                place: params.place,
-                start: params.start,
-                end: params.end
+                params
             });
 
             if (params.place !== undefined || params.place != null)
@@ -161,17 +172,18 @@ class Search extends Component {
 
     linkState() {
         return {
-            guests: this.state.guests,
-            start: this.state.start,
-            end: this.state.end,
-            place: this.state.place
+            guests: this.state.params.guests,
+            start: this.state.params.start,
+            end: this.state.params.end,
+            place: this.state.params.place
         };
     }
 
     static contextType = LocaleContext;
 
     render() {
-        let {houses, loading: isLoading, error, showMap, place} = this.state;
+        let {houses, loading: isLoading, error, showMap, params} = this.state;
+        let {guests, start, end, place} = params;
 
         houses = houses.filter(this.filterHouse);
         const loader = (<Col>
@@ -188,10 +200,10 @@ class Search extends Component {
         let markers = null;
         if (error) {
             houseList = (
-                    <Alert color="warning" fade={false} className="w-100">
-                        <Translate type="houselist" string="error"/>
-                    </Alert>
-                );
+                <Alert color="warning" fade={false} className="w-100">
+                    <Translate type="houselist" string="error"/>
+                </Alert>
+            );
         } else if (isLoading) {
             houseList = loader;
         } else {
@@ -243,8 +255,8 @@ class Search extends Component {
             <Container className="my-5" fluid>
                 <Row>
                     <Col xs="12" lg="9">
-                        <PanelSearcher start={this.state.start} end={this.state.end} guests={this.state.guests}
-                                       place={this.state.place} onSubmit={this.reload.bind(this)}/>
+                        <PanelSearcher start={start} end={end} guests={guests}
+                                       place={place} onSubmit={this.reload.bind(this)}/>
                     </Col>
                     <Col xs="12" lg="3"
                          style={(showMap && window.innerWidth >= 992) ? {position: "fixed", right: 0} : null}>
