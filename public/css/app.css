@@ -1509,9 +1509,12 @@ textarea {
   color: #d9534f;
 }
 
-#reservationForm ul,
+#reservationForm ul {
+  padding-left: 20px !important;
+}
+
 #reservationForm li {
-  padding-left: 40px !important;
+  padding-left: 15px !important;
 }
 
 #reservationForm .fas {
@@ -1595,6 +1598,10 @@ textarea {
   #reservationInfo #houseImage {
     width: 90px;
     height: auto;
+  }
+
+  #reservationForm ul {
+    padding-left: 50px !important;
   }
 }
 

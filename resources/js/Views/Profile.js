@@ -8,7 +8,10 @@ import axios from "axios"
 import Image from "react-bootstrap/Image";
 import LanguagePicker from "../components/LanguagePicker";
 import {Input, Nav, UncontrolledDropdown} from "reactstrap";
-import {withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
+import Swal from "sweetalert2";
+import {translate} from "../helpers";
+import * as PropTypes from "prop-types";
 
 class Profile extends Component {
     constructor(props) {
@@ -16,7 +19,7 @@ class Profile extends Component {
 
         this.state = {
             img: null,
-            id: this.props.match.params.id,
+            id: parseInt(this.props.match.params.id),
             persona: {
                 nombre: "",
                 apellido1: "",
@@ -63,8 +66,122 @@ class Profile extends Component {
                 }
             }).then(() => {
                 this.getProfileImage();
+                this.saveAlert();
             });
         }
+    }
+
+    saveAlert() {
+        Swal.fire({
+            title: translate(this.context, 'title', 'verify'),
+            text: translate(this.context, 'text', 'verify'),
+            type: 'success',
+            confirmButtonText: translate(this.context, 'confirmButtonText', 'verify'),
+        });
+    }
+
+    selfProfile() {
+        return <Row>
+            <Col lg={4} className={'offset-md-1'}>
+                <Panel id={'profile'}>
+                    <h4>PERFIL</h4>
+                    <Row className={"mt-4"}>
+                        <Col xs={5}>
+                            <Row>
+                                <Image className={'ml-3'} id={'profileImg'} src={this.state.img}
+                                       roundedCircle/>
+                            </Row>
+                            <Row>
+
+                            </Row>
+                        </Col>
+                        <Col className={"mt-3"}>
+                            <h4>{this.state.persona.nombre + " " + this.state.persona.apellido1}</h4>
+                            <h5>{"ID Cliente: " + this.state.persona.id}</h5>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <div className="custom-file mt-3">
+                            <input onChange={this.uploadImage} type="file" id="customFile"/>
+                        </div>
+                    </Row>
+                </Panel>
+                <Panel id={'options'}>
+                    <h4>OPCIONES DE CLIENTE</h4>
+                    <Row>
+                        <Col xs={5}>
+                            <h5 className={'mt-3'}>{"IDIOMA: "}</h5>
+                        </Col>
+                        <Col xs={7}>
+                            <Row>
+                                <UncontrolledDropdown>
+                                    <LanguagePicker changeLanguage={this.props.changeLanguage}/>
+                                </UncontrolledDropdown>
+                            </Row>
+
+                        </Col>
+                        <Col>
+                            <Link to="/logout" className="text-danger">Cerrar Session</Link>
+                        </Col>
+                    </Row>
+                </Panel>
+            </Col>
+            <Col lg={4} className={'offset-md-1'}>
+                <Panel id={'email'}>
+                    <h4>CORREO ELECTRONICO</h4>
+                    <Row className={'mt-3'}>
+                        <Col>
+                            <Input type="email" name="email" id="email" value={this.state.persona.correo}/>
+                        </Col>
+                    </Row>
+                </Panel>
+                <Panel id={'phone'}>
+                    <h4>TELEFONO</h4>
+                    <Row className={'mt-3'}>
+                        <Col>
+                            <Input type="number" name="telephone" id="telephone"
+                                   value={this.state.persona.tlf}/>
+                        </Col>
+                    </Row>
+                </Panel>
+                <Panel id={'email'}>
+                    <h4>SEGURIDAD AVANZADA</h4>
+                    <Row className={'mt-3'}>
+
+                    </Row>
+                </Panel>
+            </Col>
+        </Row>
+    }
+
+    outterProfile() {
+        return <Row>
+            <Col md={{"size": 4}}>
+                <Panel id={'profile'}>
+                    <h4>PERFIL</h4>
+                    <Row className={"mt-4"}>
+                        <Col xs={5}>
+                            <Row>
+                                <Image className={'ml-3'} id={'profileImg'} src={this.state.img}
+                                       roundedCircle/>
+                            </Row>
+                            <Row>
+
+                            </Row>
+                        </Col>
+                        <Col className={"mt-3"}>
+                            <h4>{this.state.persona.nombre + " " + this.state.persona.apellido1}</h4>
+                            <h5>{"ID Cliente: " + this.state.persona.id}</h5>
+                        </Col>
+                    </Row>
+                </Panel>
+            </Col>
+            <Col md={8}>
+                <Panel id={'reviews'}>
+                <h4>RESEÑAS</h4>
+                </Panel>
+            </Col>
+        </Row>
     }
 
     render() {
@@ -74,81 +191,27 @@ class Profile extends Component {
                 link: '/profile'
             };
 
-        console.log(this.state.img);
+        console.log({
+            authId: this.props.authId,
+            id: this.state.id
+        })
+
+        const showProfile = this.props.authId === this.state.id ? this.selfProfile() : this.outterProfile();
 
         return (
             <>
                 <UserRouter title={'profile'} list={profile}/>
                 <Container className={'pt-5'}>
-                    <Row>
-                        <Col lg={4} className={'offset-md-1'}>
-                            <Panel id={'profile'}>
-                                <h4>PERFIL</h4>
-                                <Row className={"mt-4"}>
-                                    <Col xs={5}>
-                                        <Row>
-                                            <Image className={'ml-3'} id={'profileImg'} src={this.state.img}
-                                                   roundedCircle/>
-                                        </Row>
-                                        <Row>
-
-                                        </Row>
-                                    </Col>
-                                    <Col className={"mt-3"}>
-                                        <h4>{this.state.persona.nombre + " " + this.state.persona.apellido1}</h4>
-                                        <h5>{"ID Cliente: " + this.state.persona.id}</h5>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <div className="custom-file mt-3">
-                                        <input onChange={this.uploadImage} type="file" id="customFile"/>
-                                    </div>
-                                </Row>
-                            </Panel>
-                            <Panel id={'options'}>
-                                <h4>OPCIONES DE CLIENTE</h4>
-                                <Row>
-                                    <Col xs={5}>
-                                        <h5 className={'mt-3'}>{"IDIOMA: "}</h5>
-                                    </Col>
-                                    <Col xs={7}>
-                                        <UncontrolledDropdown>
-                                            <LanguagePicker changeLanguage={this.props.changeLanguage}/>
-                                        </UncontrolledDropdown>
-                                    </Col>
-                                </Row>
-                            </Panel>
-                        </Col>
-                        <Col lg={4} className={'offset-md-1'}>
-                            <Panel id={'email'}>
-                                <h4>CORREO ELECTRONICO</h4>
-                                <Row className={'mt-3'}>
-                                    <Col>
-                                        <Input type="email" name="email" id="email"/>
-                                    </Col>
-                                </Row>
-                            </Panel>
-                            <Panel id={'phone'}>
-                                <h4>TELEFONO</h4>
-                                <Row className={'mt-3'}>
-                                    <Col>
-                                        <Input type="number" name="telephone" id="telephone"/>
-                                    </Col>
-                                </Row>
-                            </Panel>
-                            <Panel id={'email'}>
-                                <h4>SEGURIDAD AVANZADA</h4>
-                                <Row className={'mt-3'}>
-
-                                </Row>
-                            </Panel>
-                        </Col>
-                    </Row>
+                    {showProfile}
                 </Container>
             </>
         );
     }
 
 }
+
+Profile.propTypes = {
+    authId: PropTypes.number,
+};
 
 export default withRouter(Profile);
