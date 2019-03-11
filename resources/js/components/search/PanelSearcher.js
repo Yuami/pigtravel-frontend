@@ -18,10 +18,26 @@ class PanelSearcher extends Component {
 
     constructor(props) {
         super(props);
+        if (this.props.location.state.place === undefined) {
+            this.props.history.push(`/`);
+        }
+
+        let guests = null;
+        let start = null;
+        let end = null;
+        if ((this.props.location && this.props.location.state)) {
+            const state = this.props.location.state;
+            guests = state.guests;
+            start = state.start;
+            end = state.end;
+        } else {
+            window.location.replace("http://www.pigtravel.top");
+        }
+
         this.state = {
-            place: this.props.place || null,
-            guests: this.props.guests || 1,
-            date: this.formatDate(props),
+            place: this.props.location.state.place || null,
+            guests,
+            date: this.formatDate({start, end}),
             show: false,
             first: true
         };
@@ -35,26 +51,28 @@ class PanelSearcher extends Component {
         return date;
     }
 
+    componentDidMount() {
+        this.getPlace();
+    }
+
     getPlace() {
-        if (!this.props.place) return;
         if (!this.state.first) return;
 
-        let cities = true;
-        let label = `/api/cities/${this.props.place}`;
-        if (this.props.place < 3000) {
-            cities = false;
-            label = `/api/regions/${this.props.place}`
+        let label = `/api/cities/${this.state.place}`;
+        if (this.state.place < 3000) {
+            label = `/api/regions/${this.state.place}`
         }
 
         axios.get(label)
-            .then(r => r.data)
-            .then(data =>
+            .then(r => {
+                let data = r.data;
                 this.setState({
                     place: {
                         value: data.id,
-                        label: cities ? data.data.nombre : data.name
+                        label: data.name
                     }
-            }))
+                })
+            })
             .catch(e => console.log(e));
     }
 
@@ -83,8 +101,6 @@ class PanelSearcher extends Component {
     }
 
     render() {
-        if (this.props.place !== null) this.getPlace();
-
         const datePicker = (
             <div className="mt-3 mt-md-2">
                 <DatePickerInicio onChange={this.handleChangeDate.bind(this)}

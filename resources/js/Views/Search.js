@@ -12,7 +12,6 @@ import HouseList from "../components/HouseList";
 import 'react-toastify/dist/ReactToastify.css';
 import {LocaleContext} from "../LocaleContext";
 
-
 const moment = extendMoment(originalMoment);
 
 let mapDetected = false;
@@ -21,16 +20,6 @@ class Search extends Component {
 
     constructor(props) {
         super(props);
-        let guests = null;
-        let start = null;
-        let end = null;
-        if (this.props.location && this.props.location.state) {
-            guests = this.props.location.state.guests;
-            start = this.props.location.state.start;
-            end = this.props.location.state.end;
-        } else {
-            window.location.replace("http://www.pigtravel.top");
-        }
 
         this.state = {
             houses: [],
@@ -38,12 +27,7 @@ class Search extends Component {
             links: null,
             error: false,
             showMap: true,
-            params: {
-                guests,
-                place: null,
-                start,
-                end
-            },
+            params: {},
             position: [39.3262345, -4.8380649],
             zoom: 4,
             bounds: {
@@ -258,8 +242,7 @@ class Search extends Component {
             <Container className="my-5" fluid>
                 <Row>
                     <Col xs="12" lg="9">
-                        <PanelSearcher start={start} end={end} guests={guests}
-                                       place={place} onSubmit={this.reload.bind(this)}/>
+                        <PanelSearcher onSubmit={this.reload.bind(this)}/>
                     </Col>
                     <Col xs="12" lg="3"
                          style={(showMap && window.innerWidth >= 992) ? {position: "fixed", right: 0} : null}>

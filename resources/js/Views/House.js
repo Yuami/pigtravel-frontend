@@ -21,12 +21,12 @@ import originalMoment from "moment";
 import {extendMoment} from "moment-range";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
 import UserImage from "../components/specific/UserImage";
+import PanelSearcher from "../components/search/PanelSearcher";
 
 const moment = extendMoment(originalMoment);
 
 class House extends Component {
     constructor(props, context) {
-
         super(props, context);
 
         const stateless = checkIfUndefined(this.props.location.state, ["guests", "start", "end","place"]);
@@ -104,6 +104,9 @@ class House extends Component {
         return (
             <div>
                 <Container>
+                    <div className="mt-3">
+                    <PanelSearcher/>
+                    </div>
                     <h1>{this.state.details.map((v) => v.nombre)}</h1>
                     <Row className="house">
                         <Col lg="8">

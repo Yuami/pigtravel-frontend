@@ -86,6 +86,7 @@ class CarouselInicio extends Component {
                         <CardText><Translate type={"carrousel"} string={"es"}/></CardText>
                     </CardBody>
                 </MainCard>
+
                 <MainCard clickable>
                     <CardImg top src="/img/murcia.jpg"/>
                     <CardBody>
@@ -93,6 +94,7 @@ class CarouselInicio extends Component {
                         <CardText><Translate type={"carrousel"} string={"es"}/></CardText>
                     </CardBody>
                 </MainCard>
+
                 <MainCard clickable>
                     <CardImg top src="/img/galicia.jpg"/>
                     <CardBody>
@@ -100,6 +102,7 @@ class CarouselInicio extends Component {
                         <CardText><Translate type={"carrousel"} string={"es"}/></CardText>
                     </CardBody>
                 </MainCard>
+
             </InfiniteCarousel>
 
         )

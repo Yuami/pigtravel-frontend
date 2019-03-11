@@ -27,7 +27,6 @@ class Home extends Component {
     static contextType = LocaleContext;
 
     render() {
-
         document.title =translate(this.context,'home','titles');
 
         var meta  = document.createElement('meta');
