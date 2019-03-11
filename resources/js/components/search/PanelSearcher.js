@@ -57,23 +57,21 @@ class PanelSearcher extends Component {
 
     getPlace() {
         if (!this.state.first) return;
+        const place = this.state.place;
 
-        let label = `/api/cities/${this.state.place}`;
-        if (this.state.place < 3000) {
-            label = `/api/regions/${this.state.place}`
+        if (place > 3000) {
+            axios.get(`/api/cities/${place}`)
+                .then(res => res.data)
+                .then(city =>
+                    this.setState({place: {value: city.data.id, label: city.data.name}})
+                );
+        } else {
+            axios.get(`/api/regions/${place}`)
+                .then(res => res.data)
+                .then(region =>
+                    this.setState({place: {label: region.name, value: region.id}})
+                );
         }
-
-        axios.get(label)
-            .then(r => {
-                let data = r.data;
-                this.setState({
-                    place: {
-                        value: data.id,
-                        label: data.name
-                    }
-                })
-            })
-            .catch(e => console.log(e));
     }
 
     handleChangePlace(place) {

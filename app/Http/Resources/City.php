@@ -22,7 +22,7 @@ class City extends JsonResource
                 'x' => $this->latitude,
                 'y' => $this->longitude
             ],
-            'nombre' => $this->name
+            'name' => $this->name
         ];
     }
 }

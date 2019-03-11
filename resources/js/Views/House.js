@@ -10,7 +10,6 @@ import {Button, Label, Popover, PopoverBody} from "reactstrap";
 import FaIcon from "../components/general/FaIcon";
 import Translate from "../lang/Translate";
 import {LocaleContext, coin} from "../LocaleContext";
-
 import {checkIfUndefined} from "../helpers";
 import Stars from "../components/Stars";
 import SideBarHouse from "../components/layout/SideBarHouse";
@@ -21,7 +20,7 @@ import originalMoment from "moment";
 import {extendMoment} from "moment-range";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
 import UserImage from "../components/specific/UserImage";
-import PanelSearcher from "../components/search/PanelSearcher";
+import {withRouter} from "react-router-dom";
 
 const moment = extendMoment(originalMoment);
 
@@ -29,7 +28,7 @@ class House extends Component {
     constructor(props, context) {
         super(props, context);
 
-        const stateless = checkIfUndefined(this.props.location.state, ["guests", "start", "end","place"]);
+        const stateless = checkIfUndefined(this.props.location.state, ["guests", "start", "end", "place"]);
 
         if (stateless) {
             this.state = {
@@ -52,7 +51,7 @@ class House extends Component {
     }
 
     IncrementItem = () => {
-        const maxGuests= this.state.details.map((v)=> v.capacidad);
+        const maxGuests = this.state.details.map((v) => v.capacidad);
         const guests = this.state.guests + 1 > 3 ? 3 : this.state.guests + 1;
         this.setState({guests});
 
@@ -64,17 +63,15 @@ class House extends Component {
     };
 
     handleChangeDates(date) {
-
         this.setState({date});
-        this.setState({ days: date.end.diff(date.start,'days')})
-
+        this.setState({days: date.end.diff(date.start, 'days')})
     }
+
     componentWillMount() {
         axios.get('/api/houses/' + this.props.match.params.idHouse)
             .then(house => this.setState({
                 details: house.data
             }));
-
     }
 
     ToggleDiv = () => {
@@ -83,14 +80,13 @@ class House extends Component {
 
     render() {
 
-        document.title =this.state.details.map((v) => v.nombre)+" | Pig Travel";
+        document.title = this.state.details.map((v) => v.nombre) + " | Pig Travel";
 
 
-        var meta  = document.createElement('meta');
-        meta.name   = 'description';
+        var meta = document.createElement('meta');
+        meta.name = 'description';
         meta.content = this.state.details.map((v) => v.descripcion);
         document.head.appendChild(meta);
-
 
 
         const coordX = this.state.details.map((v) => v.coordX).toString();
@@ -102,11 +98,8 @@ class House extends Component {
                 icon={'fa fa-minus'}/></Button>;
 
         return (
-            <div>
+            <div className="mt-3">
                 <Container>
-                    <div className="mt-3">
-                    <PanelSearcher/>
-                    </div>
                     <h1>{this.state.details.map((v) => v.nombre)}</h1>
                     <Row className="house">
                         <Col lg="8">
@@ -118,7 +111,7 @@ class House extends Component {
                             <Panel className=" m-3">
                                 <Row>
                                     <Col lg="3" sm="3" xs="4">
-                                    <UserImage idUser={this.state.details.map((v) => (v.idVendedor))[0]}/>
+                                        <UserImage idUser={this.state.details.map((v) => (v.idVendedor))[0]}/>
                                     </Col>
                                     <Col lg="9" sm="9" xs="8" className="my-auto">
                                         {this.state.details.map((v) => (
@@ -141,7 +134,7 @@ class House extends Component {
                                     </Row>
                                     <Row className="filtro justify-content-center">
                                         <DatePickerHouse onChange={this.handleChangeDates.bind(this)}
-                                                          value={this.state.date}/>
+                                                         value={this.state.date}/>
                                     </Row>
                                     <Row className="justify-content-center">
                                         <FormGroup id={"guests"}>
@@ -206,4 +199,4 @@ class House extends Component {
     }
 }
 
-export default House;
+export default withRouter(House);

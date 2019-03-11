@@ -167,10 +167,9 @@ class Search extends Component {
 
     render() {
         let {houses, loading: isLoading, error, showMap, params} = this.state;
-        let {guests, start, end, place} = params;
 
         houses = houses.filter(this.filterHouse);
-        if (houses.length == 0 || !place) error = true;
+        if (houses.length == 0 || !params.place) error = true;
         const loader = (<Col>
             <h1 className="text-primary d-flex justify-content-center mb-5">
                 <Translate string="loading" type="general"/>
