@@ -42,7 +42,7 @@ class Footer extends Component {
                     </Row>
                 </Container>
                 <div className="text-center py-3 footer-darker">
-                    © 2018 Copyright: <a href="http://pigtravel.top" className="footer-link">PigTravel.top</a>
+                    Copyright © 2018 <a href="http://pigtravel.top" className="footer-link">PigTravel.top</a>
                 </div>
             </footer>
         );

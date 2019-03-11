@@ -89,12 +89,10 @@ class Contact extends Component {
 
     render() {
         document.title =translate(this.context,'support.contact','footer');
-        const contact = [
-            {
+        const contact = {
                 type: 'contact',
                 link: '/contact'
-            },
-        ];
+            };
         return (
             <>  <UserRouter title={'contact'} list={contact}/>
                 <Container className="contact shadow">
