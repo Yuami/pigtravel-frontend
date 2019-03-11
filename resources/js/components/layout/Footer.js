@@ -20,10 +20,7 @@ class Footer extends Component {
             {
                 value: "support.contact",
                 link: "/contact"
-            }
-        ];
-
-        const follow = [
+            },
             {
                 type: 'general',
                 value: 'email',
@@ -31,13 +28,17 @@ class Footer extends Component {
             }
         ];
 
+        const follow = [
+
+        ];
+
         return (
             <footer className="bg-secondary text-light pt-4">
                 <Container fluid className="text-center">
                     <Row>
                         <FooterCol xs="12" sm="6" md="4" title="about-us" list={aboutUs}/>
-                        <FooterCol xs="12" sm="6" md="4" title="support" list={support}/>
                         <FooterCol xs="12" sm="12" md="4" title="follow" list={follow} media/>
+                        <FooterCol xs="12" sm="6" md="4" title="support" list={support}/>
                     </Row>
                 </Container>
                 <div className="text-center py-3 footer-darker">
