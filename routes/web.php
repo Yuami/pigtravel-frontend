@@ -12,6 +12,7 @@
 */
 
 Auth::routes();
+
 Route::get('/bookings', 'ReservasController@index');
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/bookings/{idReserva}', 'ReservasController@show');

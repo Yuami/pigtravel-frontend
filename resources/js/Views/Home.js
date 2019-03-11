@@ -35,6 +35,7 @@ class Home extends Component {
         meta.content = translate(this.context,'home','description');
         document.head.appendChild(meta);
 
+
         if (this.state.alert !== undefined)
             Swal.fire({
                 title: translate(this.context, 'title', 'verify'),

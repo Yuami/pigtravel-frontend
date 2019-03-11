@@ -14,6 +14,11 @@ class DropdownPerfil extends Component {
 
     static contextType = AuthContext;
 
+    componentWillMount() {
+        this.renderImg();
+    }
+
+
     renderImg() {
         axios.get('/api/persona/' + this.context[1] + '/img').then((response) => {
                 this.setState({foto: response.data.back + response.data.foto.path});
@@ -33,7 +38,7 @@ class DropdownPerfil extends Component {
         return (
             <>
                 <DropdownToggle className="p-0" nav caret>
-                    {this.renderImg()}
+                    <img src={this.state.foto} className="userImg"/>
                 </DropdownToggle>
                 <DropdownMenu right>
                     <a>

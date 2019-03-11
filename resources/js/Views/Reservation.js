@@ -87,14 +87,14 @@ class Reservation extends Component {
             if (rules.includes(value.idServicio) && Reservation.checkServiceLanguage(value.idioma)) {
                 if (value.activo) {
                     return (
-                        <li key={value.idServicio}><span
+                        <li className={'col-12'} key={value.idServicio}><span
                             className={'fas fa-fw ' + value.icon}/> {value.nombre}&nbsp;
                             <Translate type={"reservation"} string={"allowed"}/>
                         </li>
                     );
                 } else {
                     return (
-                        <li key={value.idServicio}><span
+                        <li className={'col-12'} key={value.idServicio}><span
                             className={'fas fa-fw ' + value.icon}/> {value.nombre}&nbsp;
                             <Translate type={"reservation"}
                                        string={"disallowed"}/></li>
@@ -184,7 +184,7 @@ class Reservation extends Component {
                     <Col lg='8' className={'order-1 order-lg-0'}>
                         <Panel id={"reservationForm"}>
                             <li><h3><Translate type={'reservation'} string={'house-rules'}/></h3></li>
-                            <ul className={'mb-4'}>{renderRules}</ul>
+                            <ul className={'row mb-4'}>{renderRules}</ul>
                             <li><h3><Translate type={'reservation'} string={'includes'}/></h3></li>
                             <ul className={'row mb-4'}>{renderInformacion}</ul>
                             <li><h3><Translate type={'reservation'} string={'message'}/></h3></li>
