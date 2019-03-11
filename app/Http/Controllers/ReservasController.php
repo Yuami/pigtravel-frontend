@@ -11,6 +11,7 @@ use App\Vivienda;
 use App\Reserva;
 use http\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -18,12 +19,14 @@ class ReservasController extends Controller
 {
     public function index()
     {
+        $idC = auth()->id();
+//        dd($idC);
+        $dates = Reserva::dates($idC);
         return view('welcome');
     }
 
     public function show()
     {
-
         return view('welcome');
     }
 
@@ -48,7 +51,7 @@ class ReservasController extends Controller
         $reserva->totalClientes = $request->pax;
         $reserva->idMetodoPago = 1;
         $reserva->precio = $request->precio;
-        $reserva->idCliente = auth()->id();
+        $reserva->idCliente = Auth::id();
         $reserva->save();
 
 
@@ -70,7 +73,6 @@ class ReservasController extends Controller
         }
 
         $persona = Persona::find($reserva->idCliente);
-
         $this->generateMail($persona->correo, $reserva->id, $request->estado, $request->paymentID);
 
         return $reserva->id;

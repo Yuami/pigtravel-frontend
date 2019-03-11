@@ -1,7 +1,13 @@
 #reservationForm {
-  ul, li {
+
+  ul {
     @extend .list-unstyled;
-    padding-left: 40px !important;
+    padding-left: 20px !important;
+  }
+
+  li {
+    @extend .list-unstyled;
+    padding-left: 15px !important;
   }
 
   .fas {
@@ -101,6 +107,11 @@
     }
   }
 
+  #reservationForm {
+    ul {
+      padding-left: 50px !important;
+    }
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)

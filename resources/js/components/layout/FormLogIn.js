@@ -59,9 +59,8 @@ class FormLogin extends Component {
                                           onChange={handleChange} onBlur={handleBlur} value={values.password}
                                           error={errors.password}/>
                             <FormGroupButton page={'/'}/>
-                            <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false}
-                                            newestOnTop={false} closeOnClick rtl={false} pauseOnVisibilityChange
-                                            draggable pauseOnHover/>
+                            <ToastContainer position="top-right" autoClose={5000} closeOnClick
+                                            pauseOnVisibilityChangedraggable pauseOnHover/>
                         </Form>
                     );
                 }}

@@ -98,7 +98,7 @@ class Main extends Component {
                             <Route exact path="/terms" component={Terms}/>
                             <Route exact path="/search" component={HouseList}/>
                             <Route path="/profile/:id/:name">
-                                <Profile changeLanguage={this.changeLanguage}/>
+                                <Profile authId={this.state.isAuth[1]} changeLanguage={this.changeLanguage}/>
                             </Route>
                         </Switch>
                         <Footer/>
