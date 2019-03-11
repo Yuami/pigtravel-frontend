@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import Panel from "./layout/Panel";
+import Panel from "../layout/Panel";
 import originalMoment from "moment";
 import {extendMoment} from "moment-range";
-import AutocompleteCity from "./specific/AutocompleteCity";
-import DatePickerInicio from "./specific/DatePickerInicio";
+import AutocompleteCity from "../specific/AutocompleteCity";
+import DatePickerInicio from "../specific/DatePickerInicio";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import FaIcon from "./general/FaIcon";
+import FaIcon from "../general/FaIcon";
 import {Button, Label, Popover, PopoverBody} from "reactstrap";
-import Translate from "../lang/Translate";
+import Translate from "../../lang/Translate";
 import {Link, withRouter} from "react-router-dom";
 import axios from "axios";
 
@@ -18,40 +18,43 @@ class PanelSearcher extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            place: this.props.place || null,
+            guests: this.props.guests || 1,
+            date: this.formatDate(props),
+            show: false,
+            first: true
+        };
     }
 
-    state = {
-        place: this.props.place || null,
-        guests: this.props.guests || 1,
-        date: moment.range(this.props.start || moment.format('YYYY-MM-DD'), this.props.end || moment.add(1, 'week').format('YYYY-MM-DD')),
-        show: false,
-        first: true
-    };
-
-    componentWillMount() {
-        this.getPlace();
+    formatDate(props) {
+        let date = moment.range(props.start, props.end);
+        if (props.start === null || props.end === null) {
+            date = moment.range(moment().format('YYYY-MM-DD'), moment().add(1, 'week').format('YYYY-MM-DD'));
+        }
+        return date;
     }
-
 
     getPlace() {
-        if (!this.props.place) return null;
+        if (!this.props.place) return;
         if (!this.state.first) return;
 
+        let cities = true;
         let label = `/api/cities/${this.props.place}`;
         if (this.props.place < 3000) {
+            cities = false;
             label = `/api/regions/${this.props.place}`
         }
 
         axios.get(label)
-            .then(r => {
-                let data = r.data;
+            .then(r => r.data)
+            .then(data =>
                 this.setState({
                     place: {
                         value: data.id,
-                        label: data.name
+                        label: cities ? data.data.nombre : data.name
                     }
-                })
-            })
+            }))
             .catch(e => console.log(e));
     }
 
@@ -80,6 +83,8 @@ class PanelSearcher extends Component {
     }
 
     render() {
+        if (this.props.place !== null) this.getPlace();
+
         const datePicker = (
             <div className="mt-3 mt-md-2">
                 <DatePickerInicio onChange={this.handleChangeDate.bind(this)}
@@ -153,7 +158,6 @@ class PanelSearcher extends Component {
         );
     }
 
-    static propTypes = {}
 }
 
 export default withRouter(PanelSearcher);

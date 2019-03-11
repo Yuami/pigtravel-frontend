@@ -14,7 +14,7 @@ import Terms from "../Views/Terms";
 import BookingDetail from "../Views/BookingDetail";
 import Register from "../Views/Register";
 import Contact from "../Views/Contact";
-import HouseList from "../Views/HouseList";
+import Search from "../Views/Search";
 import Reservation from "../Views/Reservation";
 import ReservationPayment from "../Views/ReservationPayment";
 import House from "../Views/House";
@@ -77,12 +77,9 @@ class Main extends Component {
                         <Header changeLanguage={this.changeLanguage}/>
                         <Switch>
                             <Route exact path="/" component={Home}/>
-                            <Route exact path="/bookings/:idReserva" component={BookingDetail}>
-                            </Route>
-                            <Route exact path="/houses/:idHouse/:name" component={House}>
-                            </Route>
-                            <Route exact path="/houses/:idHouse" component={House}>
-                            </Route>
+                            <Route exact path="/bookings/:idReserva" component={BookingDetail}/>
+                            <Route exact path="/houses/:idHouse/:name" component={House}/>
+                            <Route exact path="/houses/:idHouse" component={House}/>
                             <Route exact path="/about-us" component={AboutUs}/>
                             <Route exact path="/bookings" component={Bookings}/>
                             <Route exact path="/login" component={LogIn}/>
@@ -96,7 +93,7 @@ class Main extends Component {
                                 {payment}
                             </Route>
                             <Route exact path="/terms" component={Terms}/>
-                            <Route exact path="/search" component={HouseList}/>
+                            <Route exact path="/search" component={Search}/>
                             <Route path="/profile/:id/:name">
                                 <Profile authId={this.state.isAuth[1]} changeLanguage={this.changeLanguage}/>
                             </Route>

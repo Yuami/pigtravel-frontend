@@ -87,7 +87,7 @@
     "title": "House list",
     "service": "Services",
     "night": "per night",
-    "error": "Search error! Try another search or try the same search later."
+    "error": "We did not found any houses with that search! Please fill all inputs."
   },
   "house": {
     "book": "BOOK",

@@ -87,7 +87,7 @@
     "title": "Lista de casas",
     "service": "Servicios",
     "night": "por noche",
-    "error": "Hay un error en la busqueda! Intenta otra busqueado o intentaló más tarde."
+    "error": "No hemos encontrado casas para esa busqueda! Rellena todos los campos."
   },
   "house": {
     "book": "RESERVAR",
