@@ -20,8 +20,6 @@ import {translate} from "../helpers";
 import originalMoment from "moment";
 import {extendMoment} from "moment-range";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
-import PanelSearcher from "../components/PanelSearcher";
-import TwoDatePicker from "../components/specific/TwoDatePicker";
 import UserImage from "../components/specific/UserImage";
 
 const moment = extendMoment(originalMoment);

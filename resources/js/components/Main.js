@@ -21,12 +21,12 @@ import House from "../Views/House";
 import Profile from "../Views/Profile";
 import axios from "axios";
 import LogIn from "../Views/LogIn";
-import CookieConsent from "react-cookie-consent";
 import Translate from "../lang/Translate";
 import 'core-js/es6/map';
 import 'core-js/es6/set';
 import 'raf/polyfill';
 import Bookings from "../Views/Bookings";
+import CookieConsent from "react-cookie-consent";
 
 class Main extends Component {
     constructor(props) {
