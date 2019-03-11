@@ -11,6 +11,8 @@ import moment from "moment";
 import Panel from "../components/layout/Panel";
 import {translate} from "../helpers";
 import {LocaleContext} from "../LocaleContext";
+import Button from "react-bootstrap/es/Button";
+import UserImage from "../components/specific/UserImage";
 
 class BookingDetail extends Component {
     constructor(props) {
@@ -19,7 +21,6 @@ class BookingDetail extends Component {
             values: [],
             states: [],
             houseImg:[],
-            image:[],
             days: 0,
         };
     }
@@ -34,11 +35,6 @@ class BookingDetail extends Component {
             .then((res) => this.setState({values: res.data}));
         axios.get('/api/states')
             .then((res) => this.setState({states: res.data}));
-        axios.get('/api/fotoPerfil/' + this.state.values.map((v) => v.idCliente))
-            .then((res) => this.setState({image: res.data}))
-            .catch((error) => {
-            this.setState({image: [{"path":"/assets/uploads/img/perfiles/default-image.png"}]})
-        });
     }
 
     static contextType = LocaleContext;
@@ -54,7 +50,7 @@ class BookingDetail extends Component {
                     <Col lg="12">
                         <Row>
                             <Col lg="2" className="image">
-                                <img src={"http://admin.pigtravel.top" + this.state.values.map((v) => v.fotoCasa)}></img>
+                                <img src={"http://admin.pigtravel.top/assets/uploads/img/casas/default-image.jpg"}></img>
                             </Col>
                             <Col lg="7" sm="12" xs="12">
                                 <Row>
@@ -101,8 +97,7 @@ class BookingDetail extends Component {
                                 </Row>
                                 <Row>
                                     <Col lg="2" sm="2" xs="3">
-                                        <img src={"http://admin.pigtravel.top" + this.state.values.map((v) => v.perfilVendedor)}
-                                            height="70px" className="rounded-circle"></img>
+                                        <UserImage idUser={this.state.values.map((p) => (p.idVendedor))}/>
 
                                     </Col>
                                     <Col sm="8" xs="8" className="my-auto">
@@ -162,8 +157,21 @@ class BookingDetail extends Component {
                                 <DesglosePrecio price={precio} nights={2}/>
                             </Col>
                         </Row>
+                        <Row className="float-right mr-5 mt-5">
+                            {this.state.values.map(function (value, index) {
+                                if (value.idEstado==2) {
+                                    return (
+                                        <Button><Translate type={"reservation"} string={"pay"}/></Button>
+                                    )
+                                }
+                            })}
+
+
+                        </Row>
                     </Col>
                 </Row>
+
+
             </>
 
         );

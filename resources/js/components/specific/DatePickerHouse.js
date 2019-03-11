@@ -17,9 +17,6 @@ class DatePickerHouse extends Component {
             show: false
         };
     }
-    onSelect = (value, states) => {
-        console.log('fddf'+this.props.value.start.format("DD-MM"));
-    };
 
     ToggleDiv = () => {
         this.setState({show: !this.state.show});

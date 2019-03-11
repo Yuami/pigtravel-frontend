@@ -18,22 +18,29 @@ class HouseCarrousel extends Component {
     componentWillMount() {
         axios.get('/api/houseImages/'+this.props.idHouse)
             .then((res) => this.setState({images: res.data}));
-        if (this.state.images == null){
-
-        }
     }
 
     render() {
-        return (
-            <ImageGallery items={
-                this.state.images.map(v => {
-                            return {
-                                original: "http://admin.pigtravel.top" + v.path,
-                                thumbnail: "http://admin.pigtravel.top" + v.path
-                            }
-                    }
-                )}/>
-        );
+        const items=   this.state.images.map(v => {
+            return {
+                original: "http://admin.pigtravel.top" + v.path,
+                thumbnail: "http://admin.pigtravel.top" + v.path
+            }
+        });
+        const itemsDefault=
+            [{
+                original: "http://admin.pigtravel.top/assets/uploads/img/casas/default-image.jpg",
+                thumbnail:  "http://admin.pigtravel.top/assets/uploads/img/casas/default-image.jpg"
+            }];
+        if(items.length==0) {
+            return (
+                <ImageGallery items={itemsDefault}/>
+            )
+        }else{
+            return (
+                <ImageGallery items={items}/>
+            )
+        }
     }
 
 }

@@ -22,6 +22,7 @@ import {extendMoment} from "moment-range";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
 import PanelSearcher from "../components/PanelSearcher";
 import TwoDatePicker from "../components/specific/TwoDatePicker";
+import UserImage from "../components/specific/UserImage";
 
 const moment = extendMoment(originalMoment);
 
@@ -54,7 +55,6 @@ class House extends Component {
 
     IncrementItem = () => {
         const maxGuests= this.state.details.map((v)=> v.capacidad);
-        console.log(maxGuests);
         const guests = this.state.guests + 1 > 3 ? 3 : this.state.guests + 1;
         this.setState({guests});
 
@@ -75,7 +75,7 @@ class House extends Component {
         axios.get('/api/houses/' + this.props.match.params.idHouse)
             .then(house => this.setState({
                 details: house.data
-            }))
+            }));
 
     }
 
@@ -84,7 +84,6 @@ class House extends Component {
     };
 
     render() {
-
 
         document.title =this.state.details.map((v) => v.nombre)+" | Pig Travel";
 
@@ -104,7 +103,6 @@ class House extends Component {
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem}><FaIcon
                 icon={'fa fa-minus'}/></Button>;
 
-        console.log(this.state.days);
         return (
             <div>
                 <Container>
@@ -119,9 +117,7 @@ class House extends Component {
                             <Panel className=" m-3">
                                 <Row>
                                     <Col lg="3" sm="3" xs="4">
-                                        <img
-                                            src={"http://admin.pigtravel.top" + this.state.details.map((v) => v.perfilVendedor)}
-                                            height="70px" class="rounded-circle" alt="Pig Travel"></img>
+                                    <UserImage idUser={this.state.details.map((v) => (v.idVendedor))[0]}/>
                                     </Col>
                                     <Col lg="9" sm="9" xs="8" className="my-auto">
                                         {this.state.details.map((v) => (

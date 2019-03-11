@@ -22,7 +22,6 @@ class DesglosePrecioCasa extends Component {
     }
 
     render() {
-       console.log(this.props.nights);
         return (
             <>
                 <Row className="desglose">
