@@ -23,7 +23,7 @@ class Search extends Component {
         super(props);
         let guests = null;
         let start = null;
-        let end =  null;
+        let end = null;
         if (this.props.location && this.props.location.state) {
             guests = this.props.location.state.guests;
             start = this.props.location.state.start;
@@ -31,7 +31,7 @@ class Search extends Component {
         } else {
             window.location.replace("http://www.pigtravel.top");
         }
-        
+
         this.state = {
             houses: [],
             loading: true,
@@ -186,6 +186,7 @@ class Search extends Component {
         let {guests, start, end, place} = params;
 
         houses = houses.filter(this.filterHouse);
+        if (houses.length == 0 || !place) error = true;
         const loader = (<Col>
             <h1 className="text-primary d-flex justify-content-center mb-5">
                 <Translate string="loading" type="general"/>
@@ -200,9 +201,11 @@ class Search extends Component {
         let markers = null;
         if (error) {
             houseList = (
-                <Alert color="warning" fade={false} className="w-100">
-                    <Translate type="houselist" string="error"/>
-                </Alert>
+                <Col>
+                    <Alert color="warning" fade={false} className="w-100">
+                        <Translate type="houselist" string="error"/>
+                    </Alert>
+                </Col>
             );
         } else if (isLoading) {
             houseList = loader;
