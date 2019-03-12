@@ -17,12 +17,26 @@ class TokenController extends Controller
         $token = Token::getByToken($request->token);
         $this->checkToken($token);
         $this->verify($token);
-        //$this->destroy($token);
+        $this->destroy($token);
 
         setcookie('alert', 'verified', time() + (60), "/");
         return redirect('/');
     }
 
+    public function change(Request $request)
+    {
+        $request->validate([
+            'new' => 'required|confirmed',
+            'token' => 'required'
+        ]);
+
+        $persona = Persona::where('correo',
+            (Token::where('token', $request->token)
+                ->get()->first()->email))->get();
+
+        $persona->password = $request->new;
+        $persona->save();
+    }
 
     public function recover(Request $request)
     {
@@ -31,12 +45,13 @@ class TokenController extends Controller
         $this->verify($token);
         //$this->destroy($token);
 
-        setcookie('pwd', $token, time() + (120), "/");
+        setcookie('pwd', $token->token, time() + (120), "/");
         return redirect('/');
     }
 
 
-    public function checkToken($token){
+    public function checkToken($token)
+    {
         if (is_null($token))
             return abort(403, 'Token has expired or does not exist');
     }

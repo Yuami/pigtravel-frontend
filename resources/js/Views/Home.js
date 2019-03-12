@@ -24,8 +24,9 @@ class Home extends Component {
     componentWillMount() {
         if (this.state.alert !== undefined) {
             Cookies.remove('alert');
-            Cookies.remove('pwd')
         }
+        if (this.state.pwd !== undefined)
+            Cookies.remove('pwd');
     }
 
 
@@ -39,7 +40,7 @@ class Home extends Component {
         meta.content = translate(this.context, 'home', 'description');
         document.head.appendChild(meta);
 
-        const pwd = this.state.pwd && <ForgotPasswordModal token={this.state.pwd}/>
+        const pwd = this.state.pwd && <ForgotPasswordModal token={this.state.pwd}/>;
 
 
         if (this.state.alert !== undefined)

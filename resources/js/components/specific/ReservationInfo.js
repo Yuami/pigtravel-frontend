@@ -20,6 +20,7 @@ class ReservationInfo extends Component {
             checkIn: moment(this.props.checkIn),
             checkOut: moment(this.props.checkOut),
             success: false,
+            foto: undefined,
         };
 
         this.state = {
@@ -35,16 +36,17 @@ class ReservationInfo extends Component {
             <Translate type={'searcher'} string={'guest'}/>;
 
         axios.get(viviendaURL).then((res) => {
+                console.log(res);
             this.setState({
                 vivienda: res.data.data,
-                success: true
+                success: true,
+                foto: res.data.data.fotos[0].path
             });
         });
     }
 
 
     render() {
-        console.log(this.state.vivienda.valoracion);
         const valoracion = this.state.vivienda.valoracion !== undefined && this.state.vivienda.valoracion.length > 0 ?
             this.state.vivienda.valoracion[0].media / 1 : 0;
         return (
@@ -68,7 +70,7 @@ class ReservationInfo extends Component {
                 <Row>
                     <Col xs={'12'} lg={'4'} className={'order-lg-1'}>
                         <img className={'pull-right'} id="houseImage"
-                             src={'http://admin.pigtravel.top/assets/uploads/img/casas/default-image.jpg'}
+                             src={'http://admin.pigtravel.top' + this.state.foto }
                              alt='house image'/>
                     </Col>
                     <Col xs={'12'} lg={'8'} className={'order-lg-0'}>

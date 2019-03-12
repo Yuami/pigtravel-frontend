@@ -19,6 +19,7 @@ Route::get('/bookings/{idReserva}', 'ReservasController@show');
 
 Route::get('/verify', 'TokenController@index');
 Route::get('/recover', 'TokenController@recover');
+Route::post('/recover', 'TokenController@change');
 Route::get('/gentoken/{email}/{type}', 'TokenController@generate');
 
 
