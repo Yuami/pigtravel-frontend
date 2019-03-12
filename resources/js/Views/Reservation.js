@@ -14,6 +14,7 @@ import {withRouter} from "react-router-dom";
 import {FormGroup, Input, Label} from "reactstrap";
 import Textarea from "@material-ui/core/InputBase/Textarea";
 import Button from "react-bootstrap/Button";
+import Redirect from "./ReservationPayment";
 
 class Reservation extends Component {
 
@@ -37,7 +38,7 @@ class Reservation extends Component {
         this.renderSubmitButton.bind(this);
     }
 
-    rules = [13, 14, 22];
+    rules = [7, 8, 12];
 
     componentWillMount() {
         const state = this.props.location.state;
@@ -173,6 +174,9 @@ class Reservation extends Component {
     };
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={'/'}/>;
+        }
 
         const renderRules = this.renderRules();
         const renderInformacion = this.renderInformation();
