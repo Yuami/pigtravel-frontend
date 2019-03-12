@@ -21,7 +21,7 @@ class FormLogin extends Component {
                 correo: '',
                 password: '',
             }}
-                    onSubmit={(values, {setSubmitting}) => {
+                    onSubmit={(values) => {
                         axios.post('/login', {values})
                             .then(function (response) {
                             }).catch(function (error) {
@@ -43,12 +43,9 @@ class FormLogin extends Component {
                         values,
                         touched,
                         errors,
-                        dirty,
-                        isSubmitting,
                         handleChange,
                         handleBlur,
                         handleSubmit,
-                        handleReset,
                     } = props;
                     return (
                         <Form onSubmit={handleSubmit}>
