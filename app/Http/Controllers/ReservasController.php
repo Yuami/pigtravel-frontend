@@ -36,20 +36,7 @@ class ReservasController extends Controller
         $reserva->delete();
     }
 
-    public function stripeToken($params)
-    {
-        return Token::create([
-            'card' => [
-                'number' => $params->number,
-                'exp_month' => $params->exp_month,
-                'exp_year' => $params->exp_year,
-                'cvc' => $params->cvc,
-                'name' => $params->name,
-            ]
-        ]);
-    }
-
-    public function update(Request $request)
+     public function update(Request $request)
     {
         if ($request->estado != 3) {
             $estado = new ReservaHasEstadoInsert();
@@ -66,15 +53,6 @@ class ReservasController extends Controller
 
         $persona = Persona::findOrFail(auth()->id());
 
-        $params = [
-            "number" => $request->card,
-            "exp_month" => $request->month,
-            "exp_year" => $request->year,
-            "cvc" => $request->cvc,
-            "name" => $persona->nombre,
-        ];
-
-        $persona->updateCard($this->stripeToken($params)->id);
 
         //Cambia el tiempo a la entrada y salida de la vivienda
         $checkIn = substr($request->checkIn, 0, 11) . $vivienda->horaEntrada;
@@ -108,8 +86,6 @@ class ReservasController extends Controller
             $message->idReserva = $reserva->id;
             $message->save();
         }
-
-        $persona->charge($request->precio * 100);
 
         $persona = Persona::find($reserva->idCliente);
         $this->generateMail($persona->correo, $reserva->id, $request->estado, $request->paymentID);
