@@ -94,8 +94,8 @@ class RegisterController extends Controller
                 'threads' => 2]),
             'fechaNacimiento' => $data['fechaN'],
             'descripcion' => $data['desc'],
-            'idC' => $data['idC'],
-            'idF' => $data['idF'],
+            'idCiudad' => $data['idC'],
+            'idFoto' => $data['idF'],
         ]);
         Cliente::create([
             'idPersona' => $user->id

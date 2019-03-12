@@ -83,7 +83,10 @@ Route::get('/auth', function () {
     $user[] += auth()->id();
     return $user;
 });
-
+Route::get('/bookings', function () {
+    $idC = auth()->id();
+    return \App\Cliente::find($idC)->reservas;
+});
 
 Route::get('/persona/{id}', function ($id) {
     return \App\Persona::find($id);

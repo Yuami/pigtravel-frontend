@@ -222,3 +222,22 @@
   background: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
+
+.bookings .DayPicker-Day--selected:not(.DayPicker-Day--from):not(.DayPicker-Day--to):not(.DayPicker-Day--outside) {
+  background-color: $primary !important;
+  color: $secondary;
+}
+
+.bookings .DayPicker-Day {
+  border-radius: 0 !important;
+}
+
+.bookings .DayPicker-Day--from {
+  border-top-left-radius: 50% !important;
+  border-bottom-left-radius: 50% !important;
+}
+
+.bookings .DayPicker-Day--to {
+  border-top-right-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
+}

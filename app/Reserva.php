@@ -21,9 +21,10 @@ class Reserva extends Model
         return $this->estados()->orderBy('fechaCambio', 'desc')->first();
     }
 
-    static function details($id){
+    static function details($id)
+    {
         return DB::table('reserva')
-            ->select('vivienda.nombre as nombreVivienda','vivienda.idVendedor', 'reserva.*', 'persona.nombre', 'persona.apellido1', 'cities.name as cityName', 'countries.name as countryName', 'reserva_has_estado.idEstado')
+            ->select('vivienda.nombre as nombreVivienda', 'vivienda.idVendedor', 'reserva.*', 'persona.nombre', 'persona.apellido1', 'cities.name as cityName', 'countries.name as countryName', 'reserva_has_estado.idEstado')
             ->join('vivienda', 'reserva.idVivienda', '=', 'vivienda.id')
             ->join('reserva_has_estado', 'reserva_has_estado.idReserva', '=', 'reserva.id')
             ->join('persona', 'vivienda.idVendedor', '=', 'persona.id')
@@ -42,6 +43,11 @@ class Reserva extends Model
             ->where('reserva.idVivienda', '=', $id)
             ->get();
         return $block;
+    }
+
+    function dates()
+    {
+        return $this->belongsTo(Cliente::class, 'idPersona', 'idCliente');
     }
 }
 

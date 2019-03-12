@@ -15,11 +15,16 @@ class Cliente extends Model
 {
 
     protected $table = 'cliente';
-
+    protected $primaryKey = 'idPersona';
     protected $fillable = ['idPersona'];
 
     public const CREATED_AT = null;
 
     public const UPDATED_AT = null;
 
+
+    function reservas()
+    {
+        return $this->hasMany(Reserva::class, 'idCliente', 'idPersona');
+    }
 }
