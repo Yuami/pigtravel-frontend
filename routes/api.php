@@ -42,6 +42,9 @@ Route::get('/states', function () {
 Route::get('/fotoPerfil/{id}', function ($id) {
     return \App\User::images($id);
 });
+Route::get('/fotoCasa/{id}', function ($id) {
+    return \App\Vivienda::image($id);
+});
 Route::get('/bookings/{id}', function ($id) {
     return \App\Reserva::details($id);
 });

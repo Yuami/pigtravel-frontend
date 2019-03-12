@@ -28,6 +28,7 @@ class PanelSearcher extends Component {
         if ((this.props.location && this.props.location.state)) {
             const state = this.props.location.state;
             guestsSearcher = state.guests;
+            console.log(guestsSearcher);
             start = state.start;
             end = state.end;
         } else {

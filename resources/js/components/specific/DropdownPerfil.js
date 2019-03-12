@@ -38,7 +38,7 @@ class DropdownPerfil extends Component {
         return (
             <>
                 <DropdownToggle className="p-0" nav caret>
-                    <img src={this.state.foto} className="userImg"/>
+                    <img src={this.state.foto} className="userImg img-circle"/>
                 </DropdownToggle>
                 <DropdownMenu right>
                         <DropdownItem  tag="a" href="/inbox">

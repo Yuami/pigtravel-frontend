@@ -85,7 +85,15 @@ class Vivienda extends Model
         return $sitemap;
     }
 
-
+    static function image($id){
+        $foto = DB::table('fotos')
+            ->select('fotos.path')
+            ->join('vivienda_has_fotos','vivienda_has_fotos.idFoto','=','fotos.id')
+            ->where('vivienda_has_fotos.idVivienda','=',$id)
+            ->limit(1)
+            ->get();
+        return $foto;
+    }
     static function images($id){
         $fotos = DB::table('fotos')
             ->select('fotos.path')

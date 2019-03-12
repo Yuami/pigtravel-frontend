@@ -70,14 +70,16 @@ class Search extends Component {
         if (place > 3000) {
             axios.get(`/api/cities/${place}`)
                 .then(res => res.data)
-                .then(city => this.setState({
-                    position: [city.data.latitude.x, city.data.latitude.y],
-                    zoom: 12
-                }));
+                .then(city =>
+                    this.setState({
+                        position: [city.data.latitude.x, city.data.latitude.y],
+                        zoom: 12
+                    }));
         } else {
             axios.get(`/api/regions/${place}`)
                 .then(res => res.data)
-                .then(region => this.setState({
+                .then(region =>
+                    this.setState({
                     position: [region.lat, region.lng],
                     zoom: region.zoom
                 }));

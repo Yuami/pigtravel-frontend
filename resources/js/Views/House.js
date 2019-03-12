@@ -42,6 +42,7 @@ class House extends Component {
         } else {
             this.state = {
                 details: [],
+                image: "",
                 place: this.props.location.state.place,
                 guests: this.props.location.state.guests,
                 show: false,
@@ -74,7 +75,15 @@ class House extends Component {
                 details: house.data
             }));
     }
-
+    fotoPerfil($id){
+        axios.get('/api/fotoPerfil/' + $id)
+            .then(response => {
+                this.setState({
+                    image: response.data[0].path || "/assets/uploads/img/perfiles/default-image.png"
+                });
+            })
+    }
+ 
     ToggleDiv = () => {
         this.setState({show: !this.state.show});
     };
@@ -82,12 +91,14 @@ class House extends Component {
     render() {
 
         document.title = this.state.details.map((v) => v.nombre) + " | Pig Travel";
+
+
         var meta = document.createElement('meta');
         meta.name = 'description';
         meta.content = this.state.details.map((v) => v.descripcion);
         document.head.appendChild(meta);
 
-
+        this.fotoPerfil(this.state.details.map((v) => v.idVendedor));
         const coordX = this.state.details.map((v) => v.coordX).toString();
         const coordY = this.state.details.map((v) => v.coordY).toString();
         const decreaseBtn = this.state.guests === 1 ?
@@ -111,7 +122,8 @@ class House extends Component {
                             <Panel className=" m-3">
                                 <Row>
                                     <Col lg="3" sm="3" xs="4">
-                                        <UserImage idUser={this.state.details.map((v) => (v.idVendedor))[0]}/>
+                                        <img className="img-circle img-profile"
+                                             src={"http://admin.pigtravel.top"+this.state.image}/>
                                     </Col>
                                     <Col lg="9" sm="9" xs="8" className="my-auto">
                                         {this.state.details.map((v) => (
