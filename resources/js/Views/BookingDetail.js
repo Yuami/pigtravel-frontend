@@ -76,7 +76,6 @@ class BookingDetail extends Component {
         document.title = translate(this.context, 'booking', 'titles') + " " + this.state.values.map((v) => (v.nombreVivienda));
         const precio = this.state.values.map((p) => (p.precio));
         const estado = this.state.values.map((p) => (p.idEstado));
-        this.fotoPerfil(this.state.values.map((v) => v.idVendedor));
         this.fotoCasa(this.state.values.map((v) => v.idVivienda));
         const book = (
             <>

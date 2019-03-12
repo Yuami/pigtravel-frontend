@@ -162,6 +162,10 @@ footer {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.userImg {
+  height: 50px !important;
+}
+
 @media (max-width: 768px) {
   .header-logo {
     margin-left: 5px;
