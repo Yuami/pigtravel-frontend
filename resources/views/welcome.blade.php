@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="google-site-verification" content="aex_gkFep_tNH6ySshU56f_q-aL2ydD2lFCyqYVInrk"/>
+    <meta name="google-site-verification" content="F31iyu97iNtM1eV__WtlGQ6Fdzy4qKGk6xjHsgf2-Xg" />
     <meta name="_token" content="{{ csrf_token() }}"/>
     <link rel="shortcut icon" href="{{{ asset('img/favicon.ico') }}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">

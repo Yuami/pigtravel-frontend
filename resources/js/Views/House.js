@@ -69,6 +69,7 @@ class House extends Component {
         this.setState({days: date.end.diff(date.start, 'days')})
     }
 
+
     componentWillMount() {
         axios.get('/api/houses/' + this.props.match.params.idHouse)
             .then(house => this.setState({
