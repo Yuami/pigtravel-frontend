@@ -85,10 +85,6 @@ body {
   margin-top: 8%;
 }
 
-i {
-  color: #314D68;
-}
-
 footer {
   position: absolute;
   bottom: 0;
@@ -1669,8 +1665,8 @@ a.card:hover {
 }
 
 .userImg {
-  height: 42px;
-  padding: 10px;
+  height: 42px !important;
+  padding: 10px !important;
 }
 
 .right {
