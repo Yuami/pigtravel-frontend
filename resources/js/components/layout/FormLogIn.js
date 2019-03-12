@@ -17,7 +17,7 @@ class FormLogin extends Component {
         };
 
         axios.post('/login', {values})
-            .then(() => console.log("hi"))
+            .then(() => window.history.back())
             .then(function () {
                 notify();
             });
