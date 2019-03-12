@@ -67,6 +67,8 @@ class Main extends Component {
     render() {
         let token = document.head.querySelector('meta[name="csrf-token"]');
 
+        
+
         const reservation = this.state.isAuth[0] ? <Reservation/> : <LogIn/>;
         const payment = this.state.isAuth[0] ? <ReservationPayment/> : <LogIn/>;
 

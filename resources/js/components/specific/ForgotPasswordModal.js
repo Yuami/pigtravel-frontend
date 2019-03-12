@@ -35,11 +35,10 @@ class ForgotPasswordModal extends React.Component {
                 <Modal centered={true} fade={false} isOpen={this.state.modal} toggle={this.toggle}
                        className={this.props.className}>
                     <form action={'/recover'} method={'post'}>
-                        <CSRF/>
                         <ModalHeader toggle={this.toggle}><Translate
                             type={'passwordModal'} string={'title'}/></ModalHeader>
                         <ModalBody>
-                            <input type="hidden" className="border-0 w-100 bg-transparent" value={this.props.token}/>
+                            <input name={'token'} type="hidden" className="border-0 w-100 bg-transparent" value={this.props.token}/>
                             <Label for={'new'}><Translate type={'passwordModal'} string={'new'}/></Label>
                             <Input id="new" name={'new'} type="password"/>
                             <Label for={'repeat'}><Translate type={'passwordModal'} string={'repeat'}/></Label>

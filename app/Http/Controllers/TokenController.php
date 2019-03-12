@@ -32,10 +32,11 @@ class TokenController extends Controller
 
         $persona = Persona::where('correo',
             (Token::where('token', $request->token)
-                ->get()->first()->email))->get();
+                ->get()->first()->email))->first();
 
-        $persona->password = $request->new;
+        $persona->password = password_hash($request->new, PASSWORD_ARGON2I);
         $persona->save();
+        return redirect('/');
     }
 
     public function recover(Request $request)
