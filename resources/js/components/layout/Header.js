@@ -45,14 +45,8 @@ class Header extends Component {
             </Nav>
             <Nav className="ml-auto w-100 justify-content-end" navbar>
                 <NavItem className="header-content">
-                    <NavLink href="/logout">
-                        <Translate string={'logout'} type={'header'}/>
-                    </NavLink>
-                </NavItem>
-                <NavItem className="header-content">
                     <NavLink href="/register">Anuncie su propiedad</NavLink>
                 </NavItem>
-
                 <UncontrolledDropdown className="visible-lg visible-md header-content visible-sm" nav
                                       inNavbar>
                     <DropdownPerfil/>
@@ -61,7 +55,9 @@ class Header extends Component {
                     <i className="fas fa-envelope"/> <Translate type={'userDropdown'} string={'inbox'}/>
                 </NavItem>
                 <NavItem className="visible-xs">
-                    <i className="fas fa-suitcase"/> <Translate type={'userDropdown'} string={'bookings'}/>
+                    <NavLink href="/bookings">
+                        <i className="fas fa-suitcase"/> <Translate type={'userDropdown'} string={'bookings'}/>
+                    </NavLink>
                 </NavItem>
                 <NavItem className="visible-xs">
                     <i className="fas fa-user"/> <Translate type={'userDropdown'} string={'profile'}/>

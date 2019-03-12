@@ -45,7 +45,7 @@ class DropdownPerfil extends Component {
                         <DropdownItem>
                             <i className="fas fa-envelope"/> <Translate type={'userDropdown'} string={'inbox'}/>
                         </DropdownItem>
-                        <DropdownItem>
+                        <DropdownItem tag="a" href="/bookings">
                             <i className="fas fa-suitcase"/> <Translate type={'userDropdown'} string={'bookings'}/>
                         </DropdownItem>
                         <DropdownItem>

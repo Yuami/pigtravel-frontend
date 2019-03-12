@@ -224,16 +224,19 @@
 }
 
 .bookings .DayPicker-Day--selected:not(.DayPicker-Day--from):not(.DayPicker-Day--to):not(.DayPicker-Day--outside) {
-  background-color: #f0f8ff !important;
-  color: #4a90e2;
+  background-color: $primary !important;
+  color: $secondary;
 }
+
 .bookings .DayPicker-Day {
   border-radius: 0 !important;
 }
+
 .bookings .DayPicker-Day--from {
   border-top-left-radius: 50% !important;
   border-bottom-left-radius: 50% !important;
 }
+
 .bookings .DayPicker-Day--to {
   border-top-right-radius: 50% !important;
   border-bottom-right-radius: 50% !important;

@@ -50,6 +50,9 @@
     "es": "España",
     "mv": "Maldivas"
   },
+  "bookings": {
+    "button": "Ir a la Reserva"
+  },
   "bookingDetails": {
     "bookingDetails": "Detalles reserva",
     "owner": "Propietario",

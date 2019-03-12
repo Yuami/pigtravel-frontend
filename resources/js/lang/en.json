@@ -50,6 +50,9 @@
     "es": "Spain",
     "mv": "Maldives"
   },
+  "bookings": {
+    "button": "Go to Booking"
+  },
   "bookingDetails": {
     "bookingDetails": "Booking details",
     "owner": "Owner",

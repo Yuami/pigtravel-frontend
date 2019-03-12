@@ -81,6 +81,14 @@ body {
   margin-top: 10%;
 }
 
+.text-booking {
+  margin-top: 8%;
+}
+
+i {
+  color: #314D68;
+}
+
 footer {
   position: absolute;
   bottom: 0;
@@ -308,6 +316,11 @@ a.card:hover {
 
 .btn-cancelar {
   color: white;
+}
+
+.btn-book {
+  margin-left: 35%;
+  margin-top: 15%;
 }
 
 .form-control {
@@ -541,8 +554,8 @@ a.card:hover {
 }
 
 .bookings .DayPicker-Day--selected:not(.DayPicker-Day--from):not(.DayPicker-Day--to):not(.DayPicker-Day--outside) {
-  background-color: #f0f8ff !important;
-  color: #4a90e2;
+  background-color: #FA6839 !important;
+  color: #314D68;
 }
 
 .bookings .DayPicker-Day {

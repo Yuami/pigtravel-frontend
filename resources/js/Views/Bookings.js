@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
-import Panel from "../components/layout/Panel";
-import {Col, Row, Button} from "reactstrap";
-import DayPicker from 'react-day-picker';
+import {Col, Row} from "reactstrap";
 import axios from "axios";
+import moment from "moment";
+import {Link} from "react-router-dom";
+import Translate from "../lang/Translate";
+import Container from "react-bootstrap/es/Container";
+import PanelBooking from "../components/general/Bookings/PanelBooking";
 
 
 class Bookings extends Component {
@@ -23,31 +26,27 @@ class Bookings extends Component {
     render() {
 
         return (
-            <Panel>
+            <Container>
 
                 {this.state.bookings.map((booking, i) => {
-                    const highlighted = {
-                        from: new Date(booking.checkIn),
-                        to: new Date(booking.checkOut)
-                    };
+                    const back = "http://admin.pigtravel.top";
+                    let url = "";
+                    axios.get('/api/viviendas/' + booking.idVivienda).then((response) => {
+                        console.log(response.data.data);
+                        if (response.data.data.fotos[0].foto.back) {
+                            url = back + response.data.data.fotos[0].foto.path;
+                        } else {
+                            url = response.data.data.fotos[0].foto.path;
+                        }
+                        console.log(url);
+                    });
                     return (
-                        <Row key={i}>
-                            <Col md={2}>
-                                <img src="/img/clipboard.png" height={100} width={150} alt="casa"/>
-                            </Col>
-                            <Col>Texto descriptivo de los servicios de esta casa </Col>
-                            <Col>
-                                <DayPicker className="bookings" selectedDays={highlighted}
-                                           month={new Date(highlighted.from.getFullYear(), highlighted.from.getMonth())}/>
-                            </Col>
-                            <Col>
-                                <Button>Ir a La Reserva</Button>
-                            </Col>
-                        </Row>
+                        <PanelBooking />
                     )
                 })}
 
-            </Panel>
+
+            </Container>
         )
             ;
     }
