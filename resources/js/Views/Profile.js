@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 import {translate} from "../helpers";
 import * as PropTypes from "prop-types";
 import Translate from "../lang/Translate";
+import ProfileImg from "../components/general/ProfileImg";
 
 class Profile extends Component {
     constructor(props) {
@@ -89,8 +90,7 @@ class Profile extends Component {
                     <Row className={"mt-4"}>
                         <Col xs={5}>
                             <Row>
-                                <Image className={'ml-3'} id={'profileImg'} src={this.state.img}
-                                       roundedCircle/>
+                                <ProfileImg id="profileImg" idPersona={this.state.id} className="ml-3"/>
                             </Row>
                             <Row>
 

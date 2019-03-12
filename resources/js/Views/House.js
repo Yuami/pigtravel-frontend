@@ -21,6 +21,7 @@ import {extendMoment} from "moment-range";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
 import UserImage from "../components/specific/UserImage";
 import {withRouter} from "react-router-dom";
+import ProfileImg from "../components/general/ProfileImg";
 
 const moment = extendMoment(originalMoment);
 
@@ -111,7 +112,7 @@ class House extends Component {
                             <Panel className=" m-3">
                                 <Row>
                                     <Col lg="3" sm="3" xs="4">
-                                        <UserImage idUser={this.state.details.map((v) => (v.idVendedor))[0]}/>
+                                        <ProfileImg idPersona={this.state.details.map((v) => (v.idVendedor))[0]} className="img-profile"/>
                                     </Col>
                                     <Col lg="9" sm="9" xs="8" className="my-auto">
                                         {this.state.details.map((v) => (
