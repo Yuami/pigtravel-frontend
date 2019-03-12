@@ -16,7 +16,7 @@ class ProfileImg extends Component {
     profileImg = () => {
         axios.get(`/api/persona/${this.props.idPersona}/img`)
             .then(res =>  res.data)
-            .then(res => {console.log("res: ", res); return res})
+            .then(res => res)
             .then(res => this.setState({
                 img: res.back + res.foto.path
             }))
