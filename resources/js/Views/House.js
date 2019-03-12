@@ -21,6 +21,7 @@ import {extendMoment} from "moment-range";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
 import UserImage from "../components/specific/UserImage";
 import {withRouter} from "react-router-dom";
+import PanelSearcher from "../components/search/PanelSearcher";
 
 const moment = extendMoment(originalMoment);
 
@@ -81,8 +82,6 @@ class House extends Component {
     render() {
 
         document.title = this.state.details.map((v) => v.nombre) + " | Pig Travel";
-
-
         var meta = document.createElement('meta');
         meta.name = 'description';
         meta.content = this.state.details.map((v) => v.descripcion);
@@ -100,6 +99,7 @@ class House extends Component {
         return (
             <div className="mt-3">
                 <Container>
+                    <PanelSearcher/>
                     <h1>{this.state.details.map((v) => v.nombre)}</h1>
                     <Row className="house">
                         <Col lg="8">

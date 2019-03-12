@@ -10,10 +10,7 @@ import CardText from "reactstrap/es/CardText";
 import Link from "@material-ui/core/es/Link/Link";
 import originalMoment from "moment";
 import {extendMoment} from "moment-range";
-import {Button} from "reactstrap";
-import FaIcon from "../general/FaIcon";
-import CardLink from "reactstrap/es/CardLink";
-
+import { withRouter } from 'react-router-dom';
 const moment = extendMoment(originalMoment);
 
 class CarouselInicio extends Component {
@@ -23,8 +20,8 @@ class CarouselInicio extends Component {
             state: {
                 guests: 1,
                 place: 954,
-                start: moment().toDate(),
-                end: moment().add(1,'days').toDate()
+                start: moment().format("YYYY-MM-DD"),
+                end: moment().add(1,'week').format("YYYY-MM-DD"),
             }
         };
 
@@ -55,13 +52,15 @@ class CarouselInicio extends Component {
                 scrollOnDevice={true}
                >
 
+                <Link to={linkButtonData}>
                 <MainCard  clickable>
-                    <CardImg top src="/img/mallorca.jpg"/>
+                    <CardImg top src="/img/mallorca.jpg" />
                     <CardBody>
                         <CardTitle>Mallorca</CardTitle>
                         <CardText><Translate type={"carrousel"} string={"es"}/></CardText>
                     </CardBody>
                 </MainCard>
+                </Link>
 
                 <MainCard clickable>
                     <CardImg top src="/img/madrid.jpg"/>
@@ -109,4 +108,4 @@ class CarouselInicio extends Component {
     }
 }
 
-export default CarouselInicio;
+export default withRouter(CarouselInicio);

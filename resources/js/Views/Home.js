@@ -7,6 +7,8 @@ import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
 import {LocaleContext} from "../LocaleContext";
 import {translate} from "../helpers";
+import FormGroup from "@material-ui/core/es/FormGroup/FormGroup";
+import {withRouter} from "react-router-dom";
 
 class Home extends Component {
 

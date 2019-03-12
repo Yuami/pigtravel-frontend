@@ -14,16 +14,16 @@ class DatePickerHouse extends Component {
         super(props, context);
 
         this.state = {
-            show: false
+            showHouse: false
         };
     }
 
-    ToggleDiv = () => {
-        this.setState({show: !this.state.show});
+    ToggleDivHouse = () => {
+        this.setState({showHouse: !this.state.showHouse});
     };
 
     render() {
-        const selectedDates = (
+        const selectedDatesHouse = (
             <div className="inputSearcher" style={{cursor: "pointer"}}>
                 {this.props.value.start.format("DD-MM")}
                 <FaIcon icon={"fa fa-long-arrow-alt-right"}/>
@@ -31,7 +31,7 @@ class DatePickerHouse extends Component {
             </div>
         );
 
-        const listSelectedDates = (
+        const listSelectedDatesHouse = (
             <div style={{
                 cursor: "pointer",
                 fontSize: "18px"
@@ -43,11 +43,11 @@ class DatePickerHouse extends Component {
         );
 
         return (
-            <FormGroup id="calendario">
+            <FormGroup id="calendarioHouse">
                 {this.props.notIcon ? null : <Label><FaIcon icon={"fa fa-calendar"}/></Label>}
-                {this.props.list ? listSelectedDates : selectedDates}
-                <Popover placement="bottom" isOpen={this.state.show} target="calendario"
-                         toggle={this.ToggleDiv} trigger="legacy">
+                {this.props.list ? listSelectedDatesHouse : selectedDatesHouse}
+                <Popover placement="bottom" isOpen={this.state.showHouse} target="calendarioHouse"
+                         toggle={this.ToggleDivHouse} trigger="legacy">
                     <PopoverBody>
                         <DateRangePicker
                             value={this.props.value}

@@ -22,12 +22,12 @@ class PanelSearcher extends Component {
             this.props.history.push(`/`);
         }
 
-        let guests = null;
+        let guestsSearcher = null;
         let start = null;
         let end = null;
         if ((this.props.location && this.props.location.state)) {
             const state = this.props.location.state;
-            guests = state.guests;
+            guestsSearcher = state.guests;
             start = state.start;
             end = state.end;
         } else {
@@ -36,19 +36,19 @@ class PanelSearcher extends Component {
 
         this.state = {
             place: this.props.location.state.place || null,
-            guests,
-            date: this.formatDate({start, end}),
+            guestsSearcher,
+            dateSearcher: this.formatDate({start, end}),
             show: false,
             first: true
         };
     }
 
     formatDate(props) {
-        let date = moment.range(props.start, props.end);
+        let dateSearcher = moment.range(props.start, props.end);
         if (props.start === null || props.end === null) {
-            date = moment.range(moment().format('YYYY-MM-DD'), moment().add(1, 'week').format('YYYY-MM-DD'));
+            dateSearcher = moment.range(moment().format('YYYY-MM-DD'), moment().add(1, 'week').format('YYYY-MM-DD'));
         }
-        return date;
+        return dateSearcher;
     }
 
     componentDidMount() {
@@ -78,20 +78,20 @@ class PanelSearcher extends Component {
         this.setState({place});
     }
 
-    handleChangeDate(date) {
-        this.setState({date});
+    handleChangeDateSearcher(dateSearcher) {
+        this.setState({dateSearcher});
     }
 
     increaseGuests() {
         this.setState({
-            guests: ++this.state.guests
+            guestsSearcher: ++this.state.guestsSearcher
         });
     }
 
     decreaseGuests() {
-        const guests = this.state.guests - 1 <= 0 ? 1 : this.state.guests - 1;
+        const guestsSearcher = this.state.guestsSearcher - 1 <= 0 ? 1 : this.state.guestsSearcher - 1;
 
-        this.setState({guests})
+        this.setState({guestsSearcher})
     }
 
     toggleDiv() {
@@ -101,26 +101,26 @@ class PanelSearcher extends Component {
     render() {
         const datePicker = (
             <div className="mt-3 mt-md-2">
-                <DatePickerInicio onChange={this.handleChangeDate.bind(this)}
-                                  value={this.state.date}
+                <DatePickerInicio onChange={this.handleChangeDateSearcher.bind(this)}
+                                  value={this.state.dateSearcher}
                                   notIcon
                                   list
                 />
             </div>
         );
 
-        const guests = (
-            <div id={"guests"}>
+        const guestsSearcher = (
+            <div id={"guestsSearcher"}>
                 <div className="mt-3 mt-md-2" style={{cursor: "pointer", fontSize: '18px'}}>
                     <span className="text-nowrap">
-                    {this.state.guests} <input type="hidden" name="guests" value={this.state.guests}/>
-                    <Translate string={this.state.guests === 1 ? 'guest' : 'guests'} type={'searcher'}/></span>
+                    {this.state.guestsSearcher} <input type="hidden" name="guestsSearcher" value={this.state.guestsSearcher}/>
+                    <Translate string={this.state.guestsSearcher === 1 ? 'guest' : 'guests'} type={'searcher'}/></span>
                 </div>
-                <Popover placement="bottom" isOpen={this.state.show} target="guests"
+                <Popover placement="bottom" isOpen={this.state.show} target="guestsSearcher"
                          toggle={this.toggleDiv.bind(this)} trigger="legacy">
                     <PopoverBody>
                         <Button color="" className="incrementIcon" onClick={this.decreaseGuests.bind(this)}
-                                disabled={this.state.guests === 1}>
+                                disabled={this.state.guestsSearcher === 1}>
                             <FaIcon icon={'fa fa-minus'}/>
                         </Button>
                         <Button color="" className="incrementIcon" onClick={this.increaseGuests.bind(this)}>
@@ -131,12 +131,12 @@ class PanelSearcher extends Component {
             </div>
         );
 
-        const {start, end} = this.state.date;
+        const {start, end} = this.state.dateSearcher;
 
         const linkProps = {
             pathname: "/search",
             state: {
-                guests: this.state.guests,
+                guests: this.state.guestsSearcher,
                 place: this.state.place === null ? undefined : this.state.place.value,
                 start: start.format('YYYY-MM-DD'),
                 end: end.format('YYYY-MM-DD')
@@ -162,7 +162,7 @@ class PanelSearcher extends Component {
                         {datePicker}
                     </Col>
                     <Col xs="12" sm="6" lg="2">
-                        {guests}
+                        {guestsSearcher}
                     </Col>
                     <Col xs="12" sm="12" lg="2">
                         {submit}
