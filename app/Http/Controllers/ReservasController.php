@@ -35,6 +35,17 @@ class ReservasController extends Controller
         $reserva->delete();
     }
 
+    public function update(Request $request)
+    {
+        if ($request->estado != 3) {
+            $estado = new ReservaHasEstadoInsert();
+            $estado->idEstado = $request->estado;
+            $estado->idReserva = $request->id;
+            sleep(1);
+            $estado->save();
+        }
+    }
+
     public function store(Request $request)
     {
         $vivienda = Vivienda::find($request->idVivienda);
