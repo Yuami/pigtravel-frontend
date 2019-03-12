@@ -13,6 +13,7 @@ import {translate} from "../helpers";
 import {LocaleContext} from "../LocaleContext";
 import Button from "react-bootstrap/es/Button";
 import UserImage from "../components/specific/UserImage";
+import LinkButton from "../components/general/Forms/LinkButton";
 
 class BookingDetail extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class BookingDetail extends Component {
         this.state = {
             values: [],
             states: [],
-            houseImg:[],
+            houseImg: [],
             days: 0,
         };
     }
@@ -55,7 +56,7 @@ class BookingDetail extends Component {
             });
     }
 
-    fotoCasa($id){
+    fotoCasa($id) {
         axios.get('/api/fotoCasa/' + $id)
             .then(response => {
                 this.setState({
@@ -64,14 +65,35 @@ class BookingDetail extends Component {
             });
     }
 
+    paymentButton() {
+        const info = {
+            idVivienda: this.state.values[0].idVivienda,
+            checkIn: new Date(this.state.values[0].checkIn),
+            checkOut: new Date(this.state.values[0].checkOut),
+            pax: this.state.values[0].totalClientes,
+            price: (this.state.values[0].precio - 5) / 1.05,
+            serviceFee: this.state.values[0].precio - ((this.state.values[0].precio - 5) / 1.05),
+            total: this.state.values[0].precio,
+            idReserva: this.state.values[0].id,
+        };
+
+        console.log(info);
+        return <Row className="float-right mr-5 mt-5">
+            <LocaleContext.Consumer>
+                {locale =>
+                    <LinkButton page={'/payment'} pageParams={info}
+                                id="reservationButton" className={'pull-right'}
+                                text={translate(locale, 'pay', 'reservation')
+                                } size={'lg'}/>
+                }
+            </LocaleContext.Consumer>
+        </Row>
+    };
 
     static contextType = LocaleContext;
 
     render() {
-        const payButton = this.state.state === 2 &&
-            <Row className="float-right mr-5 mt-5">
-                <Button><Translate type={"reservation"} string={"pay"}/></Button>
-            </Row>;
+        const payButton = this.state.state === 2 && this.paymentButton();
 
         document.title = translate(this.context, 'booking', 'titles') + " " + this.state.values.map((v) => (v.nombreVivienda));
         const precio = this.state.values.map((p) => (p.precio));
@@ -83,7 +105,7 @@ class BookingDetail extends Component {
                     <Col lg="12">
                         <Row>
                             <Col lg="2" className="image">
-                                <img src={"http://admin.pigtravel.top"+this.state.imageHouse}></img>
+                                <img src={"http://admin.pigtravel.top" + this.state.imageHouse}></img>
                             </Col>
                             <Col lg="7" sm="12" xs="12">
                                 <Row>

@@ -9,6 +9,7 @@ import {LocaleContext} from "../LocaleContext";
 import {translate} from "../helpers";
 import FormGroup from "@material-ui/core/es/FormGroup/FormGroup";
 import {withRouter} from "react-router-dom";
+import ForgotPasswordModal from "../components/specific/ForgotPasswordModal";
 
 class Home extends Component {
 
@@ -16,12 +17,14 @@ class Home extends Component {
         super(props);
         this.state = {
             alert: Cookies.get('alert'),
+            pwd: Cookies.get('pwd')
         };
     }
 
     componentWillMount() {
         if (this.state.alert !== undefined) {
             Cookies.remove('alert');
+            Cookies.remove('pwd')
         }
     }
 
@@ -29,12 +32,14 @@ class Home extends Component {
     static contextType = LocaleContext;
 
     render() {
-        document.title =translate(this.context,'home','titles');
+        document.title = translate(this.context, 'home', 'titles');
 
-        var meta  = document.createElement('meta');
-        meta.name   = 'description';
-        meta.content = translate(this.context,'home','description');
+        var meta = document.createElement('meta');
+        meta.name = 'description';
+        meta.content = translate(this.context, 'home', 'description');
         document.head.appendChild(meta);
+
+        const pwd = this.state.pwd && <ForgotPasswordModal token={this.state.pwd}/>
 
 
         if (this.state.alert !== undefined)
@@ -58,6 +63,7 @@ class Home extends Component {
                         </div>
                     </div>
                     <CarouselInicio/>
+                    {pwd}
                 </div>
             </>
         );
