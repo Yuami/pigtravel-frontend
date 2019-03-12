@@ -148,7 +148,7 @@ class BookingDetail extends Component {
                                 </Row>
                                 <Row>
                                     <Col lg="2" sm="2" xs="3">
-                                        <ProfileImg idPersona={this.state.values.map((p) => (p.idVendedor))}/>
+                                        <ProfileImg id={'profileImgSeller'} idPersona={this.state.values.map((p) => (p.idVendedor))}/>
                                     </Col>
                                     <Col sm="8" xs="8" className="my-auto">
                                         {this.state.values.map((v) => (

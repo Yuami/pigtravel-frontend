@@ -22,7 +22,7 @@ class ReservasController extends Controller
     public function index()
     {
         $idC = auth()->id();
-        $dates = Reserva::dates($idC);
+//        $dates = Reserva::dates($idC);
         return view('welcome');
     }
 
