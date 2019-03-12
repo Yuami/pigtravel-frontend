@@ -8,6 +8,6 @@ use Illuminate\Support\Facades\DB;
 class ReservaHasEstadoInsert extends Model
 {
     protected $table = 'reserva_has_estado';
-    const CREATED_AT = 'fechaCambio';
-    const UPDATED_AT = 'fechaCambio';
+    public $timestamps = false;
+
 }

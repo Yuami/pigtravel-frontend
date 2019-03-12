@@ -9,31 +9,24 @@ class UserImage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: [],
+            image: '',
         };
     }
 
     componentWillMount() {
-        axios.get('/api/fotoPerfil/' + this.props.idUser)
-            .then(user => {
-                if (user.data) {
+        axios.get('/api/persona/' + 1 + '/img')
+            .then(
+                (res) => {
                     this.setState({
-                        image: user.data
+                        image: res.data.back + res.data.foto.path
                     });
-                } else {
-                    this.setState({
-                        image: [{"path": "/assets/uploads/img/perfiles/default-image.png"}]
-                    });
-                }
-            });
+                });
     }
 
     render() {
-        console.log(this.state.image);
         return (
             <>
-                <img className="img-circle img-profile"
-                     src={"http://admin.pigtravel.top/assets/uploads/img/perfiles/default-image.png"}/>
+                <img className="img-circle img-profile" src={this.state.image}/>
             </>
         );
 
