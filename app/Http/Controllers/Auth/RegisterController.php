@@ -101,8 +101,6 @@ class RegisterController extends Controller
             'idPersona' => $user->id
         ]);
 
-        $user->createAsStripeCustomer();
-
         TokenController::generate($data['email'], 'verifyAcc');
         return $user;
     }

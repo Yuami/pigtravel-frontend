@@ -28,8 +28,6 @@ import 'raf/polyfill';
 import Bookings from "../Views/Bookings";
 import CookieConsent from "react-cookie-consent";
 
-const history = createBrowserHistory();
-
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -119,7 +117,7 @@ export default withRouter(Main);
 
 if (document.getElementById('app')) {
     ReactDOM.render(
-        <BrowserRouter history={history}>
+        <BrowserRouter>
             <Main/>
         </BrowserRouter>,
         document.getElementById('app'));
