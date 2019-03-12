@@ -141,5 +141,11 @@
     "title": "Profile",
     "text": "Your fprofile picture has been changed!",
     "confirmButtonText": "Accept"
+  },
+  "passwordModal": {
+    "title":  "Change Password",
+    "old": "Old password",
+    "new": "New password",
+    "repeat": "Confirm your new password"
   }
 }

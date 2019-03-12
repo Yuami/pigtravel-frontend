@@ -141,5 +141,11 @@
     "title": "Perfil",
     "text": "Tu foto de perfil ha sido cambiada!",
     "confirmButtonText": "Aceptar"
+  },
+  "passwordModal": {
+    "title":  "Cambiar contraseña",
+    "old": "Contraseña vieja",
+    "new": "Contraseña nueva",
+    "repeat": "Repite la contraseña nueva"
   }
 }
