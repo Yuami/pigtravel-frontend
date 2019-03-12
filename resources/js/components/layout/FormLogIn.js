@@ -11,27 +11,25 @@ import {LocaleContext} from "../../LocaleContext"
 class FormLogin extends Component {
     static contextType = LocaleContext;
 
-    render() {
+    submit = (values) => {
         let notify = () => {
             toast.success(translate(this.context, 'success', 'toastLog'));
         };
+
+        axios.post('/login', {values})
+            .then(() => console.log("hi"))
+            .then(function () {
+                notify();
+            });
+    };
+
+    render() {
         return (
             <Formik initialValues={{
                 correo: 'q@q.q',
                 password: '123123',
             }}
-                    onSubmit={(values, {setSubmitting}) => {
-                        axios.post('/login', {values})
-                            .then(function (response) {
-                            }).catch(function (error) {
-                            console.log(error);
-                        }).then(function () {
-                                window.location = '/';
-                            }
-                        ).then(function () {
-                            notify();
-                        });
-                    }}
+                    onSubmit={this.submit}
                     validationSchema={Yup.object().shape({
                         correo: Yup.string().email('El email no es valido').required('El email es necesario'),
                         password: Yup.string().min(4, 'La contraseña ha de tener minimo 4 caracteres')
