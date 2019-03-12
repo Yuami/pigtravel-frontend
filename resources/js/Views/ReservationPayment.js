@@ -89,57 +89,7 @@ class ReservationPayment extends Component {
 
         let paymentButton;
         if (this.state.paymentMethod === "creditCard") {
-            paymentButton =
-                <div id={'creditCard'}>
-                    <div className="row">
-                        <div className="col-xs-12">
-                            <div className="form-group">
-                                <label htmlFor="cardNumber">CARD NUMBER</label>
-                                <div className="input-group">
-                                    <input
-                                        type="tel"
-                                        className="form-control"
-                                        name="cardNumber"
-                                        placeholder="Valid Card Number"
-                                        autoComplete="cc-number"
-                                        required autoFocus
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-xs-7 col-md-7">
-                            <div className="form-group">
-                                <label htmlFor="cardExpiry"><span
-                                    className="hidden-xs">EXPIRATION</span><span
-                                    className="visible-xs-inline">EXP</span> DATE</label>
-                                <input
-                                    type="tel"
-                                    className="form-control"
-                                    name="cardExpiry"
-                                    placeholder="MM / YY"
-                                    autoComplete="cc-exp"
-                                    required
-                                />
-                            </div>
-                        </div>
-                        <div className="col-xs-5 col-md-5 pull-right">
-                            <div className="form-group">
-                                <label htmlFor="cardCVC">CV CODE</label>
-                                <input
-                                    type="tel"
-                                    className="form-control"
-                                    name="cardCVC"
-                                    placeholder="CVC"
-                                    autoComplete="cc-csc"
-                                    required
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <StripeCheckout {...this.state}/>
-                </div>
+            paymentButton = <StripeCheckout {...this.state}/>
         } else if (this.state.paymentMethod === "paypal") {
             paymentButton = <PaypalCheckout {...this.state} idReserva={this.state.idReserva}/>
         }

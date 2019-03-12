@@ -21,6 +21,7 @@ import {extendMoment} from "moment-range";
 import DesglosePrecioCasa from "../components/specific/DesglosePrecioCasa";
 import UserImage from "../components/specific/UserImage";
 import {withRouter} from "react-router-dom";
+import ProfileImg from "../components/general/ProfileImg";
 import PanelSearcher from "../components/search/PanelSearcher";
 
 const moment = extendMoment(originalMoment);
@@ -34,6 +35,7 @@ class House extends Component {
         if (stateless) {
             this.state = {
                 details: [],
+                houseDetails: {},
                 guests: 1,
                 show: false,
                 date: moment.range(moment().format('YYYY-MM-DD'), moment().add(1, 'week').format('YYYY-MM-DD')),
@@ -64,42 +66,80 @@ class House extends Component {
         this.setState({guests});
     };
 
+    tarifaContains(day, tarifa) {
+        let range = moment().range(tarifa.fechaInicio, tarifa.fechaFin);
+        return range.contains(day)
+    }
+
+    updatePrecio(){
+        const range = this.state.date;
+        const dates = this.getDates(range.start, range.end);
+        const tarifas = this.state.houseDetails.tarifas;
+        const general = tarifas.general;
+        const extras = tarifas.extra;
+        let price = 0;
+        for (let day of dates) {
+            let dayPrice = general.precio;
+            for (let tarifa in extras) {
+                if (this.tarifaContains(day, extras[tarifa])) {
+                    dayPrice = extras[tarifa].precio;
+                    break;
+                }
+            }
+            price += dayPrice;
+        }
+
+        let media = price / dates.length;
+        let details = this.state.details[0];
+        details.precio = Math.round(media * 100) / 100;
+        this.setState({details: [details]})
+    }
+
     handleChangeDates(date) {
-        this.setState({date});
-        this.setState({days: date.end.diff(date.start, 'days')})
+        this.setState({date,
+            days: date.end.diff(date.start, 'days')
+        });
+        this.updatePrecio();
+    }
+
+    getDates(startDate, stopDate) {
+        let dateArray = [];
+        let currentDate = moment(startDate);
+        stopDate = moment(stopDate);
+        while (currentDate <= stopDate) {
+            dateArray.push(moment(currentDate));
+            currentDate = moment(currentDate).add(1, 'days');
+        }
+        return dateArray;
     }
 
 
     componentWillMount() {
+        axios.get('/api/viviendas/' + this.props.match.params.idHouse)
+            .then(res => res.data)
+            .then(house => this.setState({
+                houseDetails: house.data
+            }));
         axios.get('/api/houses/' + this.props.match.params.idHouse)
             .then(house => this.setState({
                 details: house.data
-            }));
+            }))
+            .then(() => this.updatePrecio());
     }
-    fotoPerfil($id){
-        axios.get('/api/fotoPerfil/' + $id)
-            .then(response => {
-                this.setState({
-                    image: response.data[0].path || "/assets/uploads/img/perfiles/default-image.png"
-                });
-            })
-    }
- 
+
     ToggleDiv = () => {
         this.setState({show: !this.state.show});
     };
 
     render() {
-
         document.title = this.state.details.map((v) => v.nombre) + " | Pig Travel";
-
 
         var meta = document.createElement('meta');
         meta.name = 'description';
         meta.content = this.state.details.map((v) => v.descripcion);
         document.head.appendChild(meta);
 
-        this.fotoPerfil(this.state.details.map((v) => v.idVendedor));
+
         const coordX = this.state.details.map((v) => v.coordX).toString();
         const coordY = this.state.details.map((v) => v.coordY).toString();
         const decreaseBtn = this.state.guests === 1 ?
@@ -123,8 +163,8 @@ class House extends Component {
                             <Panel className=" m-3">
                                 <Row>
                                     <Col lg="3" sm="3" xs="4">
-                                        <img className="img-circle img-profile"
-                                             src={"http://admin.pigtravel.top"+this.state.image}/>
+                                        <ProfileImg idPersona={this.state.details.map((v) => (v.idVendedor))[0]}
+                                                    className="img-profile"/>
                                     </Col>
                                     <Col lg="9" sm="9" xs="8" className="my-auto">
                                         {this.state.details.map((v) => (
