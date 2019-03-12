@@ -21,7 +21,10 @@ class Reserva extends JsonResource
             "estados" => [
                 "ultimo" => $this->lastEstado,
                 "todos" => $this->estados
-            ]
+            ],
+            "idVivienda" => $this->idVivienda,
+            "pax" => $this->totalClientes,
+            "total" => $this->precio
         ];
     }
 }

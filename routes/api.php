@@ -132,5 +132,6 @@ Route::post('/locale', 'LocaleController@change');
 Route::get('/locale', 'LocaleController@index');
 
 Route::post('/reservation', 'ReservasController@store');
+Route::post('/reservation/{id}/estado', 'ReservasController@update');
 
 Route::post('/profile/{id}/img', 'ImagenController@Persona');

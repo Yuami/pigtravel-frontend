@@ -48,9 +48,14 @@ class ReservationPayment extends Component {
 
     componentWillMount() {
         const state = this.props.location.state;
+        let idReserva = null;
         if (checkIfUndefined(state, ['idVivienda', 'checkIn', 'checkOut', 'pax', 'price', 'total', 'serviceFee'])) {
             this.setState({redirect: true});
             return;
+        }
+
+        if (!checkIfUndefined(state, ['idReserva'])) {
+            idReserva = state;
         }
 
         const {
@@ -73,6 +78,7 @@ class ReservationPayment extends Component {
             price: price,
             total: total,
             message: message,
+            idReserva: idReserva
         });
     }
 
@@ -135,7 +141,7 @@ class ReservationPayment extends Component {
                     <StripeCheckout {...this.state}/>
                 </div>
         } else if (this.state.paymentMethod === "paypal") {
-            paymentButton = <PaypalCheckout {...this.state} />
+            paymentButton = <PaypalCheckout {...this.state} idReserva={this.state.idReserva}/>
         }
 
         return (
@@ -174,7 +180,5 @@ class ReservationPayment extends Component {
     }
 }
 
-
-ReservationPayment.propTypes = {};
 
 export default withRouter(ReservationPayment);

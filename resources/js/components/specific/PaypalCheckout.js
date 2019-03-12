@@ -25,26 +25,37 @@ class PaypalCheckout extends React.Component {
     render() {
 
         const onSuccess = (payment) => {
+            const $this = this;
 
-            axios.post('/api/reservation', {
-                paymentID: payment.paymentID,
-                idVivienda: this.state.info.idVivienda,
-                checkIn: this.state.info.checkIn,
-                checkOut: this.state.info.checkOut,
-                pax: this.state.info.pax,
-                precio: this.state.info.precio,
-                estado: 4,
-                message: this.props.message
-            }).then(function (response) {
-                window.location = ("/bookings/" + response.data);
-            }).catch(function (error) {
-                console.log(error);
-            });
-
+            if (this.props.idReserva.idReserva) {
+                axios.post('/api/reservation/' + this.props.idReserva.idReserva + '/estado', {
+                    idReserva: this.props.idReserva.idReserva,
+                    estado: 4,
+                }).then(function (response) {
+                    window.location = ("/bookings/" + $this.props.idReserva.idReserva);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            } else {
+                axios.post('/api/reservation', {
+                    paymentID: payment.paymentID,
+                    idVivienda: this.state.info.idVivienda,
+                    checkIn: this.state.info.checkIn,
+                    checkOut: this.state.info.checkOut,
+                    pax: this.state.info.pax,
+                    precio: this.state.info.precio,
+                    estado: 4,
+                    message: this.props.message
+                }).then(function (response) {
+                    window.location = ("/bookings/" + response.data);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
         };
 
         const onCancel = (data) => {
-            // User pressed "cancel" or close Paypal's popup!
+            console.log(this.props);
             console.log('The payment was cancelled!', data);
         };
 
@@ -101,6 +112,7 @@ PaypalCheckout.propTypes = {
     serviceFee: PropTypes.number,
     total: PropTypes.number.isRequired,
     message: PropTypes.string,
+    idReserva: PropTypes.number,
 };
 
 export default withRouter(PaypalCheckout);

@@ -31,6 +31,7 @@ class TokenController extends Controller
         $this->verify($token);
         //$this->destroy($token);
 
+        setcookie('pwd', $token, time() + (120), "/");
         return redirect('/');
     }
 
