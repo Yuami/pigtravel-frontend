@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 import {translate} from "../helpers";
 import * as PropTypes from "prop-types";
 import Translate from "../lang/Translate";
+import ModifyPersona from "../components/specific/ModifyPersona";
 
 class Profile extends Component {
     constructor(props) {
@@ -38,7 +39,7 @@ class Profile extends Component {
         return "/api/persona/" + this.state.id;
     }
 
-    componentDidMount() {
+    componentWillMount() {
         axios.get(this.getUrlPersona()).then((res) =>
             this.setState({persona: res.data}));
 
@@ -122,7 +123,8 @@ class Profile extends Component {
 
                         </Col>
                         <Col>
-                            <Link to="/logout" className="text-danger"><Translate type={'profile'} string={'logout'}/></Link>
+                            <Link to="/logout" className="text-danger"><Translate type={'profile'}
+                                                                                  string={'logout'}/></Link>
                         </Col>
                     </Row>
                 </Panel>
@@ -132,7 +134,7 @@ class Profile extends Component {
                     <h4 className={'text-uppercase'}><Translate type={'profile'} string={'email'}/></h4>
                     <Row className={'mt-3'}>
                         <Col>
-                            <Input type="email" name="email" id="email" value={this.state.persona.correo}/>
+                            <ModifyPersona info={this.state.persona.correo}/>
                         </Col>
                     </Row>
                 </Panel>
@@ -140,8 +142,7 @@ class Profile extends Component {
                     <h4 className={'text-uppercase'}><Translate type={'profile'} string={'tlf'}/></h4>
                     <Row className={'mt-3'}>
                         <Col>
-                            <Input type="number" name="telephone" id="telephone"
-                                   value={this.state.persona.tlf}/>
+                            <ModifyPersona info={this.state.persona.tlf}/>
                         </Col>
                     </Row>
                 </Panel>
@@ -179,7 +180,7 @@ class Profile extends Component {
             </Col>
             <Col md={8}>
                 <Panel id={'reviews'}>
-                <h4 className={'text-uppercase'}><Translate type={'profile'} string={'review'}/> </h4>
+                    <h4 className={'text-uppercase'}><Translate type={'profile'} string={'review'}/></h4>
                 </Panel>
             </Col>
         </Row>
@@ -191,11 +192,6 @@ class Profile extends Component {
                 type: 'profile',
                 link: '/profile'
             };
-
-        console.log({
-            authId: this.props.authId,
-            id: this.state.id
-        })
 
         const showProfile = this.props.authId === this.state.id ? this.selfProfile() : this.outterProfile();
 

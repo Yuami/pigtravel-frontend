@@ -20,32 +20,41 @@ class BookingDetail extends Component {
         this.state = {
             values: [],
             states: [],
-            imageUser: "",
-            imageHouse: "",
             houseImg:[],
             days: 0,
         };
     }
 
-    static checkServiceLanguage(idioma) {
+    static checkServiceLanguage(idIdioma) {
+        const idioma = idIdioma === 1 ? "en" : "es";
         return (localStorage["locale"] === idioma);
+    };
+
+    getNombreEstado() {
+        return this.state.states.map(function (value, index, array) {
+            if (BookingDetail.checkServiceLanguage(value.idIdioma)) {
+                return value.nombre;
+            }
+        });
     }
     ;
 
     componentWillMount() {
         axios.get('/api/bookings/' + this.props.match.params.idReserva)
             .then((res) => this.setState({values: res.data}));
-        axios.get('/api/states')
-            .then((res) => this.setState({states: res.data}));
-    }
-    fotoPerfil($id){
-        axios.get('/api/fotoPerfil/' + $id)
-            .then(response => {
-                this.setState({
-                    imageUser: response.data[0].path || "/assets/uploads/img/perfiles/default-image.png"
-                })
+        axios.get('/api/reservas/' + this.props.match.params.idReserva)
+            .then((res) => {
+                if (res.data.data.estados.ultimo.id)
+                    axios.get('/api/estados/' + res.data.data.estados.ultimo.id)
+                        .then((res) => this.setState(
+                            {
+                                states: res.data,
+                                state: res.data[0].idEstado
+                            }
+                        ));
             });
     }
+
     fotoCasa($id){
         axios.get('/api/fotoCasa/' + $id)
             .then(response => {
@@ -57,8 +66,14 @@ class BookingDetail extends Component {
 
 
     static contextType = LocaleContext;
+
     render() {
-        document.title =translate(this.context,'booking','titles')+" "+this.state.values.map((v) => (v.nombreVivienda));
+        const payButton = this.state.state === 2 &&
+            <Row className="float-right mr-5 mt-5">
+                <Button><Translate type={"reservation"} string={"pay"}/></Button>
+            </Row>;
+
+        document.title = translate(this.context, 'booking', 'titles') + " " + this.state.values.map((v) => (v.nombreVivienda));
         const precio = this.state.values.map((p) => (p.precio));
         const estado = this.state.values.map((p) => (p.idEstado));
         this.fotoPerfil(this.state.values.map((v) => v.idVendedor));
@@ -91,13 +106,7 @@ class BookingDetail extends Component {
                                 <Row className="precio">
                                     <strong>
                                         <h4>
-                                            {this.state.states.map(function (value, index) {
-                                                if (estado == value.id && BookingDetail.checkServiceLanguage(value.idioma)) {
-                                                    return (
-                                                        value.nombre
-                                                    )
-                                                }
-                                            })}
+                                            {this.getNombreEstado()}
                                         </h4>
                                     </strong>
                                 </Row>
@@ -116,8 +125,8 @@ class BookingDetail extends Component {
                                 </Row>
                                 <Row>
                                     <Col lg="2" sm="2" xs="3">
-                                        <img className="img-circle img-profile"
-                                             src={"http://admin.pigtravel.top"+this.state.imageUser}/>
+                                        <UserImage idUser={this.state.values.map((p) => (p.idVendedor))}/>
+
                                     </Col>
                                     <Col sm="8" xs="8" className="my-auto">
                                         {this.state.values.map((v) => (
@@ -176,21 +185,10 @@ class BookingDetail extends Component {
                                 <DesglosePrecio price={precio} nights={2}/>
                             </Col>
                         </Row>
-                        <Row className="float-right mr-5 mt-5">
-                            {this.state.values.map(function (value, index) {
-                                if (value.idEstado==2) {
-                                    return (
-                                        <Button><Translate type={"reservation"} string={"pay"}/></Button>
-                                    )
-                                }
-                            })}
 
-
-                        </Row>
                     </Col>
                 </Row>
-
-
+                {payButton}
             </>
 
         );
@@ -205,4 +203,5 @@ class BookingDetail extends Component {
         );
     }
 }
+
 export default BookingDetail;

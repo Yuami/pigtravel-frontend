@@ -39,15 +39,24 @@ Route::get('/blocks/{id}', function ($id) {
 Route::get('/states', function () {
     return \App\Estados::statesByLanguage();
 });
+
 Route::get('/fotoPerfil/{id}', function ($id) {
     return \App\User::images($id);
 });
 Route::get('/fotoCasa/{id}', function ($id) {
     return \App\Vivienda::image($id);
 });
+Route::get('/reservas/{id}', function ($id) {
+    return new \App\Http\Resources\Reserva(\App\Reserva::findOrFail($id));
+});
+Route::get('/estados/{id}', function ($id) {
+    return \App\Estados::where('idEstado', '=', $id)->get();
+});
+
 Route::get('/bookings/{id}', function ($id) {
     return \App\Reserva::details($id);
 });
+
 Route::get('/houses/{id}', function ($id) {
     return \App\Vivienda::details($id);
 });
@@ -63,6 +72,9 @@ Route::get('/block/{id}', function ($id) {
 
 Route::get('/idiomas', function () {
     return \App\Idioma::all();
+});
+Route::get('/idiomas/{id}', function ($id) {
+    return \App\Idioma::find($id);
 });
 
 Route::get('/auth', function () {

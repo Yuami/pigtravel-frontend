@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\passwordChangeEmail;
 use App\Mail\validateEmail;
 use App\Persona;
 use App\Token;
@@ -14,13 +15,29 @@ class TokenController extends Controller
     public function index(Request $request)
     {
         $token = Token::getByToken($request->token);
-        if (is_null($token))
-            return abort(403, 'Token has expired or does not exist');
+        $this->checkToken($token);
         $this->verify($token);
         //$this->destroy($token);
 
         setcookie('alert', 'verified', time() + (60), "/");
         return redirect('/');
+    }
+
+
+    public function recover(Request $request)
+    {
+        $token = Token::getByToken($request->token);
+        $this->checkToken($token);
+        $this->verify($token);
+        //$this->destroy($token);
+
+        return redirect('/');
+    }
+
+
+    public function checkToken($token){
+        if (is_null($token))
+            return abort(403, 'Token has expired or does not exist');
     }
 
     public function destroy($token)
@@ -61,7 +78,7 @@ class TokenController extends Controller
                 Mail::to($email)->send(new validateEmail(Token::getByToken($genToken)));
                 break;
             case "changePass":
-                echo " ♥ (/^-^)/ ♥ ";
+                Mail::to($email)->send(new passwordChangeEmail(Token::getByToken($genToken)));
                 break;
         }
     }

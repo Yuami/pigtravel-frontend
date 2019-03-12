@@ -59,6 +59,7 @@ class ReservasController extends Controller
             $estado = new ReservaHasEstadoInsert();
             $estado->idEstado = $request->estado;
             $estado->idReserva = $reserva->id;
+            sleep(1);
             $estado->save();
         }
 

@@ -18,6 +18,9 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/bookings/{idReserva}', 'ReservasController@show');
 
 Route::get('/verify', 'TokenController@index');
+Route::get('/recover', 'TokenController@recover');
+Route::get('/gentoken/{email}/{type}', 'TokenController@generate');
+
 
 Route::post('/receivemail', 'MailController@receive');
 Route::get('/sitemap.xml', 'SitemapController@sitemap');

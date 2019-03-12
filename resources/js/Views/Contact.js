@@ -7,6 +7,7 @@ import {translate} from "../helpers";
 import FormButton from "../components/general/Forms/LinkButton";
 import Label from "reactstrap/es/Label";
 import UserRouter from "../components/layout/UserRouter";
+import Panel from "../components/layout/Panel";
 
 
 const FormErrors = ({formErrors}) =>
@@ -95,8 +96,8 @@ class Contact extends Component {
             };
         return (
             <>  <UserRouter title={'contact'} list={contact}/>
-                <Container className="contact shadow">
-                    <div className="App">
+                <Container className="contact" fluid>
+                    <Panel className="App">
                         <form>
                             <FormGroup className={`${this.errorClass(this.state.formErrors.contactName)}`}>
                                 <label htmlFor="nameContact"><Translate type={'contact'} string={'name'}/></label>
@@ -141,7 +142,7 @@ class Contact extends Component {
                             </div>
                             <button type="submit" className="btn btn-primary btn-block" disabled={!this.state.formValid}><Translate type={'contact'} string={'send'}/></button>
                         </form>
-                    </div>
+                    </Panel>
                 </Container>
             </>
         );
