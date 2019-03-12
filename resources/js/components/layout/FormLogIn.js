@@ -7,6 +7,7 @@ import axios from "axios";
 import {ToastContainer, toast} from 'react-toastify';
 import {translate} from "../../helpers";
 import {LocaleContext} from "../../LocaleContext"
+import Translate from "../../lang/Translate";
 
 class FormLogin extends Component {
     static contextType = LocaleContext;
@@ -52,10 +53,10 @@ class FormLogin extends Component {
                     return (
                         <Form onSubmit={handleSubmit}>
                             <FormGroupReg md={12} invalid={errors.correo && touched.correo ? true : false}
-                                          type={'email'} name={'correo'} label={'Correo'} onChange={handleChange}
+                                          type={'email'} name={'correo'} label={<Translate type={'login'} string={'correo'}/>} onChange={handleChange}
                                           onBlur={handleBlur} value={values.correo} error={errors.correo}/>
                             <FormGroupReg md={12} invalid={errors.password && touched.password ? true : false}
-                                          type={'password'} name={'password'} label={'Contraseña'}
+                                          type={'password'} name={'password'} label={<Translate type={'login'} string={'contraseña'}/>}
                                           onChange={handleChange} onBlur={handleBlur} value={values.password}
                                           error={errors.password}/>
                             <FormGroupButton page={'/'}/>

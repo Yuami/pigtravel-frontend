@@ -4,6 +4,25 @@
     "logout": "Log Out",
     "register": "Register"
   },
+  "login": {
+    "titulo": "Log In",
+    "correo": "Email",
+    "contraseña": "Password",
+    "confirmar": "Submit",
+    "cancelar": "Cancel"
+  },
+  "register": {
+    "titulo": "Sing In",
+    "nom": "First Name",
+    "ap1": "Last Name",
+    "ap2": "Last Name",
+    "dni": "ID",
+    "fN": "Birth Date",
+    "correo": "Email",
+    "tel": "Phone",
+    "con": "Password",
+    "conC": "Confirm Password"
+  },
   "footer": {
     "about-us": "ABOUT PIG TRAVEL",
     "about-us.who": "About us",
@@ -51,7 +70,11 @@
     "mv": "Maldives"
   },
   "bookings": {
-    "button": "Go to Booking"
+    "button": "Go to Booking",
+    "precio": "Price",
+    "personas": "People",
+    "entrada": "Check In",
+    "salida": "Check Out"
   },
   "bookingDetails": {
     "bookingDetails": "Booking details",

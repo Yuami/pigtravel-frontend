@@ -4,6 +4,25 @@
     "logout": "Cerrar Sesión",
     "register": "Registrar"
   },
+  "login": {
+    "titulo": "Iniciar Sesion",
+    "correo": "Correo",
+    "contraseña": "Contraseña",
+    "confirmar": "Confirmar",
+    "cancelar": "Cancelar"
+  },
+  "register": {
+    "titulo": "Registrate",
+    "nom": "Nombre",
+    "ap1": "Primer Apellido",
+    "ap2": "Segundo Apellido",
+    "dni": "DNI",
+    "fN": "Fecha de Nacimiento",
+    "correo": "Correo",
+    "tel": "Telefono",
+    "con": "Contraseña",
+    "conC": "Confirmar Contraseña"
+  },
   "footer": {
     "about-us": "Sobre Pig Travel",
     "about-us.who": "Quiénes somos?",
@@ -51,7 +70,11 @@
     "mv": "Maldivas"
   },
   "bookings": {
-    "button": "Ir a la Reserva"
+    "button": "Ir a la Reserva",
+    "precio": "Precio",
+    "personas": "Persona",
+    "entrada": "Entrada",
+    "salida": "Salida"
   },
   "bookingDetails": {
     "bookingDetails": "Detalles reserva",

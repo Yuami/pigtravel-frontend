@@ -6,6 +6,8 @@ import FormGroupButton from "../general/Forms/FormGroupButton";
 import FormGroupReg from "../general/Forms/FormGroupReg";
 import axios from "axios";
 import Input from "reactstrap/es/Input";
+import Translate from "../../lang/Translate";
+
 
 class FormRegister extends Component {
     render() {
@@ -73,41 +75,51 @@ class FormRegister extends Component {
                             <Input type={'hidden'} value={values.desc} name={'desc'}/>
                             <Row>
                                 <FormGroupReg md={4} invalid={errors.nombre && touched.nombre ? true : false}
-                                              type={'text'}
-                                              name={'nombre'} label={'Nombre'} onChange={handleChange}
+                                              type={'text'} name={'nombre'}
+                                              label={<Translate type={'register'} string={'nom'}/>}
+                                              onChange={handleChange}
                                               onBlur={handleBlur} value={values.nombre} error={errors.nombre}/>
                                 <FormGroupReg md={4} invalid={errors.ap1 && touched.ap1 ? true : false} type={'text'}
-                                              name={'ap1'} label={'Primer Apellido'} onChange={handleChange}
+                                              name={'ap1'} label={<Translate type={'register'} string={'ap1'}/>}
+                                              onChange={handleChange}
                                               onBlur={handleBlur} value={values.ap1} error={errors.ap1}/>
-                                <FormGroupReg md={4} type={'text'} name={'ap2'} label={'Segundo Apellido'}
+                                <FormGroupReg md={4} type={'text'} name={'ap2'}
+                                              label={<Translate type={'register'} string={'ap2'}/>}
                                               onChange={handleChange} onBlur={handleBlur} value={values.ap2}
                                               error={errors.ap2}/>
                             </Row>
                             <Row>
 
                                 <FormGroupReg md={6} invalid={errors.dni && touched.dni ? true : false} type={'text'}
-                                              name={'dni'} label={'Dni'} onChange={handleChange}
+                                              name={'dni'} label={<Translate type={'register'} string={'dni'}/>}
+                                              onChange={handleChange}
                                               onBlur={handleBlur} value={values.dni} error={errors.dni}/>
                                 <FormGroupReg md={6} invalid={errors.fechaN && touched.fechaN ? true : false}
-                                              type={'date'} name={'fechaN'} label={'Fecha Nacimiento'}
+                                              type={'date'} name={'fechaN'}
+                                              label={<Translate type={'register'} string={'fN'}/>}
                                               onChange={handleChange}
                                               onBlur={handleBlur} value={values.fechaN} error={errors.fechaN}/>
                             </Row>
                             <Row>
                                 <FormGroupReg md={6} invalid={errors.email && touched.email ? true : false}
-                                              type={'email'} name={'email'} label={'Correo'} onChange={handleChange}
+                                              type={'email'} name={'email'}
+                                              label={<Translate type={'register'} string={'correo'}/>}
+                                              onChange={handleChange}
                                               onBlur={handleBlur} value={values.email} error={errors.email}/>
                                 <FormGroupReg md={6} invalid={errors.tlf && touched.tlf ? true : false} type={'tel'}
-                                              name={'tlf'} label={'Telefono'} onChange={handleChange}
+                                              name={'tlf'} label={<Translate type={'register'} string={'tel'}/>}
+                                              onChange={handleChange}
                                               onBlur={handleBlur} value={values.tlf} error={errors.tlf}/>
                             </Row>
                             <Row>
                                 <FormGroupReg md={6} invalid={errors.password && touched.password ? true : false}
-                                              type={'password'} name={'password'} label={'Contraseña'}
+                                              type={'password'} name={'password'}
+                                              label={<Translate type={'register'} string={'con'}/>}
                                               onChange={handleChange} onBlur={handleBlur} value={values.password}
                                               error={errors.passweord}/>
                                 <FormGroupReg md={6} invalid={errors.passwordC && touched.passwordC ? true : false}
-                                              type={'password'} name={'passwordC'} label={'Confirmar Contraseña'}
+                                              type={'password'} name={'passwordC'}
+                                              label={<Translate type={'register'} string={'conC'}/>}
                                               onChange={handleChange} onBlur={handleBlur} value={values.passwordC}
                                               error={errors.passwordC}/>
                             </Row>

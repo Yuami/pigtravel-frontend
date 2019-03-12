@@ -30,8 +30,8 @@ class Bookings extends Component {
 
                 {this.state.bookings.map((booking, i) => {
                     return (
-                        <PanelBooking key={i} idV={booking.idVivienda} text={'Precio'} text2={'Personas'}
-                                      text3={'CheckIn'} text4={'CheckOut'} icon={'fas fa-coins'} icon2={'fas fa-male'}
+                        <PanelBooking key={i} idV={booking.idVivienda} text={<Translate type={'bookings'} string={'precio'}/>} text2={<Translate type={'bookings'} string={'personas'}/>}
+                                      text3={<Translate type={'bookings'} string={'entrada'}/>} text4={<Translate type={'bookings'} string={'salida'}/>} icon={'fas fa-coins'} icon2={'fas fa-male'}
                                       icon3={'far fa-arrow-alt-circle-right'} icon4={'fas fa-arrow-alt-circle-left'}
                                       textData={booking.precio} textData2={booking.totalClientes}
                                       textData3={booking.checkIn} textData4={booking.checkOut} bookingID={booking.id} alt={'casa'}/>

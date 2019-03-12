@@ -4,6 +4,7 @@ import {CardTitle, CardBody, Card, Col, Container, Row} from "reactstrap";
 import {translate} from "../helpers";
 import {LocaleContext} from "../LocaleContext";
 import Panel from "../components/layout/Panel";
+import Translate from "../lang/Translate";
 
 class LogIn extends Component {
     static contextType = LocaleContext;
@@ -19,7 +20,9 @@ class LogIn extends Component {
                     <Col lg="6" sm="12">
                         <Panel>
                             <Card action="/persona">
-                                <CardTitle className="mt-5 mb-3 text-center"><h3>Inicia Sesion</h3></CardTitle>
+                                <CardTitle className="mt-5 mb-3 text-center">
+                                    <h3><Translate type={'login'} string={'titulo'}/></h3>
+                                </CardTitle>
                                 <CardBody>
                                     <FormLogIn/>
                                 </CardBody>

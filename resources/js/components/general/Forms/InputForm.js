@@ -7,7 +7,8 @@ class InputForm extends Component {
         return (
             <Input invalid={this.props.invalid} type={this.props.type} className={this.props.className} name={this.props.name} id={this.props.name}
                    placeholder={this.props.placeholder} value={this.props.value} onChange={this.props.onChange}
-                   onBlur={this.props.onBlur}/>);
+                   onBlur={this.props.onBlur}/>
+        );
     }
 }
 

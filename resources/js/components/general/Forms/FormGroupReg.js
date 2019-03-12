@@ -12,9 +12,8 @@ class FormGroupReg extends Component {
                 <FormGroup>
                     <LabelForm name={this.props.name} label={this.props.label}/>
                     <InputForm invalid={this.props.invalid} type={this.props.type} className={this.props.className}
-                               name={this.props.name}
-                               id={this.props.name} placeholder={this.props.placeholder} value={this.props.value}
-                               onChange={this.props.onChange} onBlur={this.props.onBlur}/>
+                               name={this.props.name} id={this.props.name} placeholder={this.props.placeholder}
+                               value={this.props.value} onChange={this.props.onChange} onBlur={this.props.onBlur}/>
                     <FormFeedback invalid>{this.props.error}</FormFeedback>
                 </FormGroup>
             </Col>
