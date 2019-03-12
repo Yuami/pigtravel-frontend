@@ -29,19 +29,12 @@ class Bookings extends Component {
             <Container>
 
                 {this.state.bookings.map((booking, i) => {
-                    const back = "http://admin.pigtravel.top";
-                    let url = "";
-                    axios.get('/api/viviendas/' + booking.idVivienda).then((response) => {
-                        console.log(response.data.data);
-                        if (response.data.data.fotos[0].foto.back) {
-                            url = back + response.data.data.fotos[0].foto.path;
-                        } else {
-                            url = response.data.data.fotos[0].foto.path;
-                        }
-                        console.log(url);
-                    });
                     return (
-                        <PanelBooking />
+                        <PanelBooking key={i} idV={booking.idVivienda} text={'Precio'} text2={'Personas'}
+                                      text3={'CheckIn'} text4={'CheckOut'} icon={'fas fa-coins'} icon2={'fas fa-male'}
+                                      icon3={'far fa-arrow-alt-circle-right'} icon4={'fas fa-arrow-alt-circle-left'}
+                                      textData={booking.precio} textData2={booking.totalClientes}
+                                      textData3={booking.checkIn} textData4={booking.checkOut} bookingID={booking.id} alt={'casa'}/>
                     )
                 })}
 
