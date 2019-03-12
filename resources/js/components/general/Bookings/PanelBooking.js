@@ -22,7 +22,6 @@ class PanelBooking extends Component {
 
     componentWillMount() {
         axios.get('/api/viviendas/' + this.props.idV).then((response) => {
-            console.log(response.data.data.fotos);
             if (response.data.data.fotos[0].foto.back) {
                 this.setState({url: back + response.data.data.fotos[0].foto.path});
             } else {
