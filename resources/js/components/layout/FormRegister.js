@@ -13,18 +13,18 @@ class FormRegister extends Component {
     render() {
         return (
             <Formik initialValues={{
-                email: 'q@q.q',
-                nombre: 'q',
-                ap1: 'q',
-                ap2: 'q',
-                dni: '123123123',
-                tlf: '123123123',
-                desc: '123123123',
+                email: '',
+                nombre: '',
+                ap1: '',
+                ap2: '',
+                dni: '',
+                tlf: '',
+                desc: '',
                 idF: '',
-                idC: '716694',
-                fechaN: '2002/02/02',
-                password: '123123',
-                passwordC: '123123'
+                idC: '',
+                fechaN: '',
+                password: '',
+                passwordC: ''
             }}
                     onSubmit={(values, {setSubmitting}) => {
                         delete values.passwordC;

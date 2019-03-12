@@ -18,8 +18,8 @@ class FormLogin extends Component {
         };
         return (
             <Formik initialValues={{
-                correo: 'q@q.q',
-                password: '123123',
+                correo: '',
+                password: '',
             }}
                     onSubmit={(values, {setSubmitting}) => {
                         axios.post('/login', {values})
