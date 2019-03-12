@@ -57,12 +57,13 @@ class BookingDetail extends Component {
     }
 
     fotoCasa($id) {
-        axios.get('/api/fotoCasa/' + $id)
-            .then(response => {
-                this.setState({
-                    imageHouse: response.data[0].path || "/assets/uploads/img/casas/default-image.jpg"
-                })
-            });
+        if (!this.state.imageHouse)
+            axios.get('/api/fotoCasa/' + $id)
+                .then(response => {
+                    this.setState({
+                        imageHouse: response.data[0].path || "/assets/uploads/img/casas/default-image.jpg"
+                    })
+                });
     }
 
     paymentButton() {

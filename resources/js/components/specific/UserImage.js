@@ -14,7 +14,7 @@ class UserImage extends Component {
     }
 
     componentWillMount() {
-        axios.get('/api/persona/' + 1 + '/img')
+        axios.get('/api/persona/' + this.props.idUser + '/img')
             .then(
                 (res) => {
                     this.setState({

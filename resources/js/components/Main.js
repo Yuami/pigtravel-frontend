@@ -28,6 +28,8 @@ import 'raf/polyfill';
 import Bookings from "../Views/Bookings";
 import CookieConsent from "react-cookie-consent";
 
+const history = createBrowserHistory();
+
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -66,8 +68,6 @@ class Main extends Component {
 
     render() {
         let token = document.head.querySelector('meta[name="csrf-token"]');
-
-        
 
         const reservation = this.state.isAuth[0] ? <Reservation/> : <LogIn/>;
         const payment = this.state.isAuth[0] ? <ReservationPayment/> : <LogIn/>;
@@ -119,7 +119,7 @@ export default withRouter(Main);
 
 if (document.getElementById('app')) {
     ReactDOM.render(
-        <BrowserRouter>
+        <BrowserRouter history={history}>
             <Main/>
         </BrowserRouter>,
         document.getElementById('app'));

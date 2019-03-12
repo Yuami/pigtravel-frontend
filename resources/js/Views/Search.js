@@ -171,7 +171,7 @@ class Search extends Component {
         let {houses, loading: isLoading, error, showMap, params} = this.state;
 
         houses = houses.filter(this.filterHouse);
-        if (houses.length == 0 || !params.place) error = true;
+        if (!params.place) error = true;
         const loader = (<Col>
             <h1 className="text-primary d-flex justify-content-center mb-5">
                 <Translate string="loading" type="general"/>
