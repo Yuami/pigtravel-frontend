@@ -14,6 +14,7 @@ import {LocaleContext} from "../LocaleContext";
 import Button from "react-bootstrap/es/Button";
 import UserImage from "../components/specific/UserImage";
 import LinkButton from "../components/general/Forms/LinkButton";
+import ProfileImg from "../components/general/ProfileImg";
 
 class BookingDetail extends Component {
     constructor(props) {
@@ -147,8 +148,7 @@ class BookingDetail extends Component {
                                 </Row>
                                 <Row>
                                     <Col lg="2" sm="2" xs="3">
-                                        <UserImage idUser={this.state.values.map((p) => (p.idVendedor))}/>
-
+                                        <ProfileImg idPersona={this.state.values.map((p) => (p.idVendedor))}/>
                                     </Col>
                                     <Col sm="8" xs="8" className="my-auto">
                                         {this.state.values.map((v) => (
