@@ -23,6 +23,7 @@ import UserImage from "../components/specific/UserImage";
 import {withRouter} from "react-router-dom";
 import ProfileImg from "../components/general/ProfileImg";
 import PanelSearcher from "../components/search/PanelSearcher";
+import Link from "react-router-dom/es/Link";
 
 const moment = extendMoment(originalMoment);
 
@@ -44,6 +45,7 @@ class House extends Component {
         } else {
             this.state = {
                 details: [],
+                houseDetails: {},
                 image: "",
                 place: this.props.location.state.place,
                 guests: this.props.location.state.guests,
@@ -71,7 +73,7 @@ class House extends Component {
         return range.contains(day)
     }
 
-    updatePrecio(){
+    updatePrecio() {
         const range = this.state.date;
         const dates = this.getDates(range.start, range.end);
         const tarifas = this.state.houseDetails.tarifas;
@@ -96,7 +98,8 @@ class House extends Component {
     }
 
     handleChangeDates(date) {
-        this.setState({date,
+        this.setState({
+            date,
             days: date.end.diff(date.start, 'days')
         });
         this.updatePrecio();
@@ -119,12 +122,12 @@ class House extends Component {
             .then(res => res.data)
             .then(house => this.setState({
                 houseDetails: house.data
-            }));
+            }))
+            .then(() => this.updatePrecio());
         axios.get('/api/houses/' + this.props.match.params.idHouse)
             .then(house => this.setState({
                 details: house.data
-            }))
-            .then(() => this.updatePrecio());
+            }));
     }
 
     ToggleDiv = () => {
