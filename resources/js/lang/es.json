@@ -127,5 +127,19 @@
     "success": "Has Iniciado Sesion!!",
     "warning": "Tienes que verificar el correo!",
     "danger": "Fallo en al iniciar sesion"
+  },
+  "profile": {
+    "profile": "Perfil",
+    "options": "Opciones del cliente",
+    "language": "Idioma: ",
+    "id": "ID Cliente: ",
+    "logout": "Cerrar Sesion",
+    "email": "Correo Electronico",
+    "tlf": "Telefono",
+    "advanced": "Seguridad Avanzada",
+    "review": "Reseñas",
+    "title": "Perfil",
+    "text": "Tu foto de perfil ha sido cambiada!",
+    "confirmButtonText": "Aceptar"
   }
 }

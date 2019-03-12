@@ -127,5 +127,19 @@
     "success": "You are Logged!!",
     "warning": "You must verify the email!",
     "danger": "Error at Log In!"
+  },
+  "profile": {
+    "profile": "Profile",
+    "options": "Client options",
+    "language": "Language: ",
+    "id": "Client ID: ",
+    "logout": "Log Out",
+    "email": "Email",
+    "tlf": "Telephone",
+    "advanced": "Advanced Security",
+    "review": "Reviews",
+    "title": "Profile",
+    "text": "Your fprofile picture has been changed!",
+    "confirmButtonText": "Accept"
   }
 }

@@ -12,6 +12,7 @@ import {Link, withRouter} from "react-router-dom";
 import Swal from "sweetalert2";
 import {translate} from "../helpers";
 import * as PropTypes from "prop-types";
+import Translate from "../lang/Translate";
 
 class Profile extends Component {
     constructor(props) {
@@ -73,10 +74,10 @@ class Profile extends Component {
 
     saveAlert() {
         Swal.fire({
-            title: translate(this.context, 'title', 'verify'),
-            text: translate(this.context, 'text', 'verify'),
+            title: translate(this.context, 'title', 'profile'),
+            text: translate(this.context, 'text', 'profile'),
             type: 'success',
-            confirmButtonText: translate(this.context, 'confirmButtonText', 'verify'),
+            confirmButtonText: translate(this.context, 'confirmButtonText', 'profile'),
         });
     }
 
@@ -84,7 +85,7 @@ class Profile extends Component {
         return <Row>
             <Col lg={4} className={'offset-md-1'}>
                 <Panel id={'profile'}>
-                    <h4>PERFIL</h4>
+                    <h4 className={'text-uppercase'}><Translate type={'profile'} string={'profile'}/></h4>
                     <Row className={"mt-4"}>
                         <Col xs={5}>
                             <Row>
@@ -97,7 +98,7 @@ class Profile extends Component {
                         </Col>
                         <Col className={"mt-3"}>
                             <h4>{this.state.persona.nombre + " " + this.state.persona.apellido1}</h4>
-                            <h5>{"ID Cliente : " + this.state.persona.id}</h5>
+                            <h5><Translate type={'profile'} string={'id'}/> {this.state.persona.id}</h5>
                         </Col>
                     </Row>
                     <Row>
@@ -107,10 +108,10 @@ class Profile extends Component {
                     </Row>
                 </Panel>
                 <Panel id={'options'}>
-                    <h4>OPCIONES DE CLIENTE</h4>
+                    <h4 className={'text-uppercase'}><Translate type={'profile'} string={'options'}/></h4>
                     <Row>
                         <Col xs={5}>
-                            <h5 className={'mt-3'}>{"IDIOMA: "}</h5>
+                            <h5 className={'mt-3 text-uppercase'}><Translate type={'profile'} string={'language'}/></h5>
                         </Col>
                         <Col xs={7}>
                             <Row>
@@ -121,14 +122,14 @@ class Profile extends Component {
 
                         </Col>
                         <Col>
-                            <Link to="/logout" className="text-danger">Cerrar Session</Link>
+                            <Link to="/logout" className="text-danger"><Translate type={'profile'} string={'logout'}/></Link>
                         </Col>
                     </Row>
                 </Panel>
             </Col>
             <Col lg={4} className={'offset-md-1'}>
                 <Panel id={'email'}>
-                    <h4>CORREO ELECTRONICO</h4>
+                    <h4 className={'text-uppercase'}><Translate type={'profile'} string={'email'}/></h4>
                     <Row className={'mt-3'}>
                         <Col>
                             <Input type="email" name="email" id="email" value={this.state.persona.correo}/>
@@ -136,7 +137,7 @@ class Profile extends Component {
                     </Row>
                 </Panel>
                 <Panel id={'phone'}>
-                    <h4>TELEFONO</h4>
+                    <h4 className={'text-uppercase'}><Translate type={'profile'} string={'tlf'}/></h4>
                     <Row className={'mt-3'}>
                         <Col>
                             <Input type="number" name="telephone" id="telephone"
@@ -145,7 +146,7 @@ class Profile extends Component {
                     </Row>
                 </Panel>
                 <Panel id={'email'}>
-                    <h4>SEGURIDAD AVANZADA</h4>
+                    <h4 className={'text-uppercase'}><Translate type={'profile'} string={'advanced'}/></h4>
                     <Row className={'mt-3'}>
 
                     </Row>
@@ -158,7 +159,7 @@ class Profile extends Component {
         return <Row>
             <Col md={{"size": 4}}>
                 <Panel id={'profile'}>
-                    <h4>PERFIL</h4>
+                    <h4 className={'text-uppercase'}><Translate type={'profile'} string={'profile'}/></h4>
                     <Row className={"mt-4"}>
                         <Col xs={5}>
                             <Row>
@@ -171,14 +172,14 @@ class Profile extends Component {
                         </Col>
                         <Col className={"mt-3"}>
                             <h4>{this.state.persona.nombre + " " + this.state.persona.apellido1}</h4>
-                            <h5>{"ID Cliente: " + this.state.persona.id}</h5>
+                            <h5><Translate type={'profile'} string={'id'}/> {this.state.persona.id}</h5>
                         </Col>
                     </Row>
                 </Panel>
             </Col>
             <Col md={8}>
                 <Panel id={'reviews'}>
-                <h4>RESEÑAS</h4>
+                <h4 className={'text-uppercase'}><Translate type={'profile'} string={'review'}/> </h4>
                 </Panel>
             </Col>
         </Row>
