@@ -63,7 +63,7 @@ class ReservasController extends Controller
             "name" => $persona->nombre,
         ];
 
-        $persona->updateCard($this->stripeToken($params));
+        $persona->updateCard($this->stripeToken($params)->id);
 
         //Cambia el tiempo a la entrada y salida de la vivienda
         $checkIn = substr($request->checkIn, 0, 11) . $vivienda->horaEntrada;
