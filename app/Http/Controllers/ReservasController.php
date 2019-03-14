@@ -38,12 +38,15 @@ class ReservasController extends Controller
 
      public function update(Request $request)
     {
+        $persona = Persona::findOrFail(auth()->id());
+
         if ($request->estado != 3) {
             $estado = new ReservaHasEstadoInsert();
             $estado->idEstado = $request->estado;
             $estado->idReserva = $request->id;
             sleep(1);
             $estado->save();
+            $this->generateMail($persona->correo, $estado->idReserva, $request->estado, $request->paymentID);
         }
     }
 

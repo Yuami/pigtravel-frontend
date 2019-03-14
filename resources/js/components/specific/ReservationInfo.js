@@ -70,7 +70,7 @@ class ReservationInfo extends Component {
                 <Row>
                     <Col xs={'12'} lg={'4'} className={'order-lg-1'}>
                         <img className={'pull-right'} id="houseImage"
-                             src={'http://admin.pigtravel.top' + this.state.foto }
+                             src={'http://back.pig.test' + this.state.foto }
                              alt='house image'/>
                     </Col>
                     <Col xs={'12'} lg={'8'} className={'order-lg-0'}>

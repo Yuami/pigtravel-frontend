@@ -9,7 +9,7 @@ import TextBooking from "./TextBooking";
 import BtnBooking from "./BtnBooking";
 import PropTypes from "prop-types";
 
-const back = "http://admin.pigtravel.top";
+const back = "http://back.pig.test";
 
 class PanelBooking extends Component {
 

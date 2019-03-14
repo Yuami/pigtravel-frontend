@@ -23,8 +23,8 @@ class HouseCarrousel extends Component {
     render() {
         const items=   this.state.images.map(v => {
             return {
-                original: "http://admin.pigtravel.top" + v.path,
-                thumbnail: "http://admin.pigtravel.top" + v.path
+                original: "http://back.pig.test" + v.path,
+                thumbnail: "http://back.pig.test" + v.path
             }
         });
         const itemsDefault=
