@@ -43,7 +43,15 @@ class BookingDetail extends Component {
 
     componentWillMount() {
         axios.get('/api/bookings/' + this.props.match.params.idReserva)
-            .then((res) => this.setState({values: res.data}));
+            .then((res) => {
+                this.setState({values: res.data});
+                axios.get('/api/viviendas/' + res.data[0].idVivienda).then((res) => {
+                    console.log(res);
+                    this.setState({
+                        imageHouse: res.data.data.fotos[0].path
+                    });
+                });
+            });
         axios.get('/api/reservas/' + this.props.match.params.idReserva)
             .then((res) => {
                 if (res.data.data.estados.ultimo.id)
@@ -55,17 +63,9 @@ class BookingDetail extends Component {
                             }
                         ));
             });
+
     }
 
-    fotoCasa($id) {
-        if (!this.state.imageHouse)
-            axios.get('/api/fotoCasa/' + $id)
-                .then(response => {
-                    this.setState({
-                        imageHouse: response.data[0].path || "/assets/uploads/img/casas/default-image.jpg"
-                    })
-                });
-    }
 
     paymentButton() {
         const info = {
@@ -100,14 +100,13 @@ class BookingDetail extends Component {
         document.title = translate(this.context, 'booking', 'titles') + " " + this.state.values.map((v) => (v.nombreVivienda));
         const precio = this.state.values.map((p) => (p.precio));
         const estado = this.state.values.map((p) => (p.idEstado));
-        this.fotoCasa(this.state.values.map((v) => v.idVivienda));
         const book = (
             <>
                 <Row className="mb-2">
                     <Col lg="12">
                         <Row>
                             <Col lg="2" className="image">
-                                <img src={"http://admin.pigtravel.top" + this.state.imageHouse}></img>
+                                <img src={"http://back.pig.test" + this.state.imageHouse}></img>
                             </Col>
                             <Col lg="7" sm="12" xs="12">
                                 <Row>
@@ -148,7 +147,7 @@ class BookingDetail extends Component {
                                 </Row>
                                 <Row>
                                     <Col lg="2" sm="2" xs="3">
-                                        <ProfileImg idPersona={this.state.values.map((p) => (p.idVendedor))}/>
+                                        <ProfileImg id={'profileImgSeller'} idPersona={this.state.values.map((p) => (p.idVendedor))}/>
                                     </Col>
                                     <Col sm="8" xs="8" className="my-auto">
                                         {this.state.values.map((v) => (

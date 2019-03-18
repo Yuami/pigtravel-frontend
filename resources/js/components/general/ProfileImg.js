@@ -19,7 +19,7 @@ class ProfileImg extends Component {
             .then(res => res.data)
             .then(res => res)
             .then(res => this.setState({
-                img: res.back + res.foto.path
+                img: "http://back.pig.test" + res.foto.path
             }))
             .catch(e => console.error(e));
     };
