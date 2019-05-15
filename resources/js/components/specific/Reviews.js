@@ -22,7 +22,7 @@ export default class Reviews extends Component {
                     <div className="review card">
                         <div className="card-header">
                             {value.nombre}
-                            <div className={'pull-right'}>{<Stars rating={value.media}/>}</div>
+                            <div className={'pull-right'}>{<Stars color={'primary'} rating={value.media}/>}</div>
                         </div>
                         <div className="card-body">
                             <p className="card-text">{value.mensaje}</p>

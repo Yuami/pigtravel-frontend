@@ -35,7 +35,7 @@ class House extends Component {
 
         if (stateless) {
             this.state = {
-                details: [],
+                details: [{idVendedor: 0}],
                 houseDetails: {},
                 guests: 1,
                 show: false,
@@ -44,7 +44,7 @@ class House extends Component {
             }
         } else {
             this.state = {
-                details: [],
+                details: [{idVendedor: 0}],
                 houseDetails: {},
                 image: "",
                 place: this.props.location.state.place,
@@ -166,7 +166,7 @@ class House extends Component {
                             <Panel className=" m-3">
                                 <Row>
                                     <Col lg="3" sm="3" xs="4">
-                                        <ProfileImg idPersona={this.state.details.map((v) => (v.idVendedor))[0]}
+                                        <ProfileImg idPersona={this.state.houseDetails.vendedor}
                                                     className="img-profile"/>
                                     </Col>
                                     <Col lg="9" sm="9" xs="8" className="my-auto">
