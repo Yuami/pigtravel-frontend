@@ -45,7 +45,7 @@ class DesglosePrecioCasa extends Component {
                         <h4><Translate type="bookingDetails" string="total"/></h4>
                     </Col>
                     <Col lg="6" sm="6" xs="6" className="text-right">
-                        <h4>{(this.props.price*this.props.nights)+((this.props.price*this.props.nights) * 0.05 + 5)}{coin}</h4>
+                        <h4>{((this.props.price*this.props.nights)+((this.props.price*this.props.nights) * 0.05 + 5)).toFixed(2)}{coin}</h4>
                     </Col>
                 </Row>
             </>);
