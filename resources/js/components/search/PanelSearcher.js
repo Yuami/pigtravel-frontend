@@ -18,7 +18,7 @@ class PanelSearcher extends Component {
 
     constructor(props) {
         super(props);
-        if (this.props.location.state.place === undefined) {
+        if (typeof this.props.location.state === "undefined") {
             this.props.history.push(`/`);
         }
 
@@ -31,7 +31,7 @@ class PanelSearcher extends Component {
             start = state.start;
             end = state.end;
         } else {
-            window.location.replace("http://www.pigtravel.top");
+            window.location.replace("http://127.0.0.1:8000");
         }
 
         this.state = {
