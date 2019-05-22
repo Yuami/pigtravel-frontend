@@ -21,7 +21,7 @@ class HouseCarrousel extends Component {
     }
 
     render() {
-        const items=   this.state.images.map(v => {
+        const items = this.state.images.map(v => {
             return {
                 original: "http://back.pig.test" + v.path,
                 thumbnail: "http://back.pig.test" + v.path
@@ -29,10 +29,10 @@ class HouseCarrousel extends Component {
         });
         const itemsDefault=
             [{
-                original: "http://admin.pigtravel.top/assets/uploads/img/casas/default-image.jpg",
-                thumbnail:  "http://admin.pigtravel.top/assets/uploads/img/casas/default-image.jpg"
+                original: "/img/house-default.jpeg",
+                thumbnail:  "/img/house-default.jpeg"
             }];
-        if(items.length==0) {
+        if(items.length === 0) {
             return (
                 <ImageGallery items={itemsDefault}/>
             )
@@ -46,6 +46,6 @@ class HouseCarrousel extends Component {
 }
 
 HouseCarrousel.propTypes = {
-    idHouse: PropTypes.number.isRequired,
+    idHouse: PropTypes.any.isRequired,
 };
 export default HouseCarrousel;

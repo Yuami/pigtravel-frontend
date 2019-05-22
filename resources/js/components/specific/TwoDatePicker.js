@@ -60,7 +60,6 @@ export default class TwoDatePicker extends React.Component {
                 return {before: moment(v.checkOut).toDate(), after: moment(v.checkIn).toDate()}
             }
         );
-        console.log(books);
         return (
             <div className="InputFromTo col-12 pt-5">
                 <Col lg={5} xs={5}>

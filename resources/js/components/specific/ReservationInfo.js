@@ -36,7 +36,6 @@ class ReservationInfo extends Component {
             <Translate type={'searcher'} string={'guest'}/>;
 
         axios.get(viviendaURL).then((res) => {
-                console.log(res);
             this.setState({
                 vivienda: res.data.data,
                 success: true,
@@ -91,11 +90,11 @@ class ReservationInfo extends Component {
                 <hr/>
                 <Row>
                     <Col xs='8'>
-                        <p className={'mb-0'}>{this.state.nights} x {this.props.price / this.state.nights}{coin}
+                        <p className={'mb-0'}>{this.state.nights} x {(this.props.price / this.state.nights).toFixed(2)}{coin}
                             &nbsp;<Translate type={'houselist'} string={'night'}/></p>
                     </Col>
                     <Col xs='4'>
-                        <p className={'text-right mb-0'}>{this.props.price}{coin}</p>
+                        <p className={'text-right mb-0'}>{this.props.price.toFixed(2)}{coin}</p>
                     </Col>
                 </Row>
                 <Row>
@@ -103,7 +102,7 @@ class ReservationInfo extends Component {
                         <p className={'mb-0'}><Translate type={'bookingDetails'} string={'serviceFee'}/></p>
                     </Col>
                     <Col xs='4'>
-                        <p className={'pull-right mb-0'}>{this.props.serviceFee}{coin}</p>
+                        <p className={'pull-right mb-0'}>{this.props.serviceFee.toFixed(2)}{coin}</p>
                     </Col>
                 </Row>
                 <hr/>

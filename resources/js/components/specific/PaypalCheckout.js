@@ -56,8 +56,8 @@ class PaypalCheckout extends React.Component {
 
         const onCancel = (data) => {
             onSuccess('91775352');
-            console.log(this.props);
-            console.log('The payment was cancelled!', data);
+            // console.log(this.props);
+            // console.log('The payment was cancelled!', data);
         };
 
         const onError = (err) => {

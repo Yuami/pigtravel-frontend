@@ -74,7 +74,12 @@
     "precio": "Price",
     "personas": "People",
     "entrada": "Check In",
-    "salida": "Check Out"
+    "salida": "Check Out",
+    "estado": "State",
+    "estado-1": "Canceled",
+    "estado-2": "Waiting payment",
+    "estado-3": "Pending",
+    "estado-4": "Booked"
   },
   "bookingDetails": {
     "bookingDetails": "Booking details",

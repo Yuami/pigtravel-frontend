@@ -31,25 +31,38 @@ class StripeCheckout extends Component {
     }
 
     addReservation() {
-        axios.post('/api/reservation', {
-            paymentID: "stripe",
-            idVivienda: this.state.info.idVivienda,
-            checkIn: this.state.info.checkIn,
-            checkOut: this.state.info.checkOut,
-            pax: this.state.info.pax,
-            precio: this.state.info.precio,
-            estado: 4,
-            message: this.props.message,
-            card: this.state.card,
-            month: this.state.month,
-            year: this.state.year,
-            cvc: this.state.cvc
-        }).then(function (response) {
-            window.location = ("/bookings/" + response.data);
-        }).catch(function (error) {
-            console.log(error);
-        });
+        const $this = this;
 
+        if (this.props.idReserva.idReserva) {
+            axios.post('/api/reservation/' + this.props.idReserva.idReserva + '/estado', {
+                idReserva: this.props.idReserva.idReserva,
+                estado: 4,
+            }).then(function (response) {
+                window.location = ("/bookings/" + $this.props.idReserva.idReserva);
+            }).catch(function (error) {
+                window.location = ("/bookings/" + $this.props.idReserva.idReserva);
+                console.log(error);
+            });
+        } else {
+            axios.post('/api/reservation', {
+                paymentID: "stripe",
+                idVivienda: this.state.info.idVivienda,
+                checkIn: this.state.info.checkIn,
+                checkOut: this.state.info.checkOut,
+                pax: this.state.info.pax,
+                precio: this.state.info.precio,
+                estado: 4,
+                message: this.props.message,
+                card: this.state.card,
+                month: this.state.month,
+                year: this.state.year,
+                cvc: this.state.cvc
+            }).then(function (response) {
+                window.location = ("/bookings/" + response.data);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
     };
 
     cardChange = (event) => {

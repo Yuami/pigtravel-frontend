@@ -10,28 +10,22 @@ class ProfileImg extends Component {
         img: "/img/default-profileImg.png"
     };
 
-    constructor(props) {
-        super(props);
-        console.log(props);
-    }
-
-
     componentWillMount() {
-
-        axios.get(`/api/persona/${this.props.idPersona}/img`)
-            .then(res => res.data)
-            .then(res => { console.log(res);
-                return res})
-            .then(res => this.setState({
-                img: "http://back.pig.test" + res.foto.path
-            }))
-            .catch(e => console.error(e));
+        if (this.props.idPersona) {
+            axios.get(`/api/persona/${this.props.idPersona}/img`)
+                .then(res => res.data)
+                .then(res => this.setState({
+                    img: "http://back.pig.test" + res.foto.path
+                }))
+                .catch(e => console.error(e));
+        }
 
         this.forceUpdate()
     }
 
 
     render() {
+
         return <Image id={this.props.id} className={"rounded-circle " + this.props.className} src={this.state.img}
                       onError={(e) => {
                           e.target.onerror = null;
@@ -42,7 +36,7 @@ class ProfileImg extends Component {
 }
 
 ProfileImg.propTypes = {
-    idPersona: PropTypes.any.isRequired,
+    idPersona: PropTypes.any.isRequired
 };
 
 export default ProfileImg;

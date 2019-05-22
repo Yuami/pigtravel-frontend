@@ -120,10 +120,6 @@ class Search extends Component {
         }
     }
 
-    toggleMapShow() {
-        this.setState({showMap: !this.state.showMap})
-    }
-
     updateBounds = () => {
         if (mapDetected) {
             let bounds = mapDetected.leafletElement.getBounds();

@@ -43,5 +43,5 @@ export default class BlockedDays extends Component {
 }
 
 BlockedDays.propTypes = {
-    idHouse: PropTypes.number.isRequired,
+    idHouse: PropTypes.any.isRequired,
 };

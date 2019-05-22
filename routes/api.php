@@ -1,5 +1,7 @@
 <?php
 
+use App\Cliente;
+use App\Http\Resources\Reserva;
 use Illuminate\Http\Request;
 
 /*
@@ -47,7 +49,7 @@ Route::get('/fotoCasa/{id}', function ($id) {
     return \App\Vivienda::image($id);
 });
 Route::get('/reservas/{id}', function ($id) {
-    return new \App\Http\Resources\Reserva(\App\Reserva::findOrFail($id));
+    return new Reserva(\App\Reserva::findOrFail($id));
 });
 Route::get('/estados/{id}', function ($id) {
     return \App\Estados::where('idEstado', '=', $id)->get();
@@ -85,29 +87,29 @@ Route::get('/auth', function () {
 });
 Route::get('/bookings', function () {
     $idC = auth()->id();
-    return \App\Cliente::find($idC)->reservas;
+    return Reserva::collection(Cliente::find($idC)->reservas);
 });
 
 Route::get('/persona/{id}', function ($id) {
     return \App\Persona::find($id);
 });
 Route::get('/persona/{id}/img', function ($id) {
-    $foto = \App\Persona::find($id)->foto;
-    $path = '';
-    if ($foto == null) {
-        $foto = [
-            "id" => null,
-            "path" => "/assets/uploads/img/perfiles/default-image.png"
+    $persona = \App\Persona::find($id);
+    if (!$persona || !$persona->foto) {
+        return [
+            'foto' => [
+                "id" => null,
+                "path" => "/assets/uploads/img/perfiles/default-image.png"
+            ],
+            'back' => ''
         ];
-    }
-
-    if ($foto->back) {
-        $path = env('BACKDOMAIN');
+    } else {
+        $foto = $persona->foto;
     }
 
     return [
         'foto' => $foto,
-        'back' => $path
+        'back' => $persona->foto->back ? env('BACKDOMAIN') : ''
     ];
 });
 

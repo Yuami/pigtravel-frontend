@@ -15,14 +15,13 @@ class Bookings extends Component {
 
     componentWillMount() {
         axios.get('/api/bookings').then((response) => {
-            this.setState({bookings: response.data});
+            this.setState({bookings: response.data.data});
         })
     }
 
     render() {
-
         return (
-            <Container>
+            <Container className="mt-5">
 
                 {this.state.bookings.map((booking, i) => {
                     return (
@@ -33,8 +32,9 @@ class Bookings extends Component {
                                       text4={<Translate type={'bookings'} string={'salida'}/>}
                                       icon={'fas fa-coins'} icon2={'fas fa-male'}
                                       icon3={'far fa-arrow-alt-circle-right'} icon4={'fas fa-arrow-alt-circle-left'}
-                                      textData={booking.precio} textData2={booking.totalClientes}
+                                      textData={booking.total} textData2={booking.clientes}
                                       textData3={booking.checkIn} textData4={booking.checkOut} bookingID={booking.id}
+                                      estado={<Translate type={'bookings'} string={'estado-' + booking.estados.ultimo.id}/>}
                                       alt={'casa'}/>
                     )
                 })}

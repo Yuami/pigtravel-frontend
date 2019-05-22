@@ -46,7 +46,6 @@ class ModifyPersona extends Component {
     render() {
 
         const value = this.state.text ? this.state.text : this.props.info;
-console.log(this.state.text);
         return (
             this.state.edit ?
                 <div className="d-flex align-items-center justify-content-between border-bottom border-info">

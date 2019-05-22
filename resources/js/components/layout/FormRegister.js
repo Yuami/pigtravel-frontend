@@ -28,10 +28,8 @@ class FormRegister extends Component {
             }}
                     onSubmit={(values, {setSubmitting}) => {
                         delete values.passwordC;
-                        console.log(values);
                         axios.post('/register', {values})
                             .then(function (response) {
-                                console.log(response);
                             }).catch(function (error) {
                             console.log(error);
                         }).then(function () {

@@ -57,9 +57,9 @@ class Reservation extends Component {
 
         this.setState({
             idVivienda: idVivienda,
-            price: price,
-            serviceFee: price * 0.05 + 5,
-            total: (price * 0.05 + 5) + price,
+            price: price.toFixed(2),
+            serviceFee: (price * 0.05 + 5).toFixed(2),
+            total: ((price * 0.05 + 5) + price).toFixed(2),
             checkIn: checkIn,
             checkOut: checkOut,
             pax: pax,

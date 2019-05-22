@@ -37,7 +37,7 @@ class PanelBooking extends Component {
                     <ImgBooking url={this.state.url} alt={this.props.alt}/>
                     <TextBooking text={this.props.text} text2={this.props.text2} icon={this.props.icon}
                                  icon2={this.props.icon2} textData={this.props.textData}
-                                 textData2={this.props.textData2}/>
+                                 textData2={this.props.textData2} estado={this.props.estado}/>
                     <TextBooking text={this.props.text3} text2={this.props.text4} icon={this.props.icon3}
                                  icon2={this.props.icon4} textData={this.props.textData3}
                                  textData2={this.props.textData4}/>

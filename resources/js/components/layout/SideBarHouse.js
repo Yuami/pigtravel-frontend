@@ -82,7 +82,7 @@ export default class SideBarHouse extends Component {
                                     <Nav>
                                         <NavItem>
                                             <NavLink
-                                                className={({active: this.state.activeTab === '1'})}
+                                                className={this.state.activeTab === '1' ? "active" : ""}
                                                 onClick={() => {
                                                     this.toggle('1');
                                                 }}>
@@ -91,7 +91,7 @@ export default class SideBarHouse extends Component {
                                         </NavItem>
                                         <NavItem>
                                             <NavLink
-                                                className={{active: this.state.activeTab === '2'}}
+                                                className={this.state.activeTab === '2' ? "active" : ""}
                                                 onClick={() => {
                                                     this.toggle('2');
                                                 }}>
@@ -102,7 +102,7 @@ export default class SideBarHouse extends Component {
                                         </NavItem>
                                         <NavItem>
                                             <NavLink
-                                                className={{active: this.state.activeTab === '2'}}
+                                                className={this.state.activeTab === '2' ? "active" : ""}
                                                 onClick={() => {
                                                     this.toggle('3');
                                                 }}>
@@ -111,7 +111,7 @@ export default class SideBarHouse extends Component {
                                         </NavItem>
                                         <NavItem>
                                             <NavLink
-                                                className={{active: this.state.activeTab === '2'}}
+                                                className={this.state.activeTab === '2' ? "active" : ""}
                                                 onClick={() => {
                                                     this.toggle('4');
                                                 }}>
@@ -120,7 +120,7 @@ export default class SideBarHouse extends Component {
                                         </NavItem>
                                         <NavItem>
                                             <NavLink
-                                                className={{active: this.state.activeTab === '2'}}
+                                                className={this.state.activeTab === '2' ? "active" : ""}
                                                 onClick={() => {
                                                     this.toggle('5');
                                                 }}>
@@ -171,7 +171,7 @@ export default class SideBarHouse extends Component {
                                     <Row>
                                         <Col sm="12">
                                             <h1><strong><Translate type="house" string="location"/></strong></h1>
-                                            <MapView lat={this.props.coordX} lng={this.props.coordY}/>
+                                            <MapView lat={this.props.coordX} lang={this.props.coordY}/>
                                         </Col>
                                     </Row>
                                 </TabPane>
@@ -185,7 +185,7 @@ export default class SideBarHouse extends Component {
 }
 SideBarHouse.propTypes = {
     description: PropTypes.string.isRequired,
-    houseID: PropTypes.number.isRequired,
-    coordX: PropTypes.number.isRequired,
-    coordY: PropTypes.number.isRequired,
+    houseID: PropTypes.any.isRequired,
+    coordX: PropTypes.any.isRequired,
+    coordY: PropTypes.any.isRequired,
 };

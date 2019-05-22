@@ -18,13 +18,17 @@ class Reserva extends JsonResource
             "id" => $this->id,
             "checkIn" => $this->checkIn,
             "checkOut" => $this->checkOut,
+            "fecha" => $this->fechaReserva,
+            "idVivienda" => $this->idVivienda,
+            "pax" => $this->totalClientes,
+            "total" => $this->precio,
+            "cliente" => $this->idCliente,
+            "clientes" => $this->totalClientes,
+            "idMetodoPago" => $this->idMetodoPago,
             "estados" => [
                 "ultimo" => $this->lastEstado,
                 "todos" => $this->estados
             ],
-            "idVivienda" => $this->idVivienda,
-            "pax" => $this->totalClientes,
-            "total" => $this->precio
         ];
     }
 }

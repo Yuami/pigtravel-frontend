@@ -32,10 +32,20 @@ class House extends Component {
         super(props, context);
 
         const stateless = checkIfUndefined(this.props.location.state, ["guests", "start", "end", "place"]);
+        const details = {
+            idVendedor: 0,
+            precio: 0,
+            nombre: "",
+            apellido1: "",
+            descripcion: "",
+            coordX: "0",
+            coordY: "0",
+            vendedor: null,
+        };
 
         if (stateless) {
             this.state = {
-                details: [{idVendedor: 0}],
+                details,
                 houseDetails: {},
                 guests: 1,
                 show: false,
@@ -44,7 +54,7 @@ class House extends Component {
             }
         } else {
             this.state = {
-                details: [{idVendedor: 0}],
+                details,
                 houseDetails: {},
                 image: "",
                 place: this.props.location.state.place,
@@ -57,9 +67,9 @@ class House extends Component {
     }
 
     IncrementItem = () => {
-        const maxGuests = this.state.details.map((v) => v.capacidad);
+        const maxGuests = this.state.details.capacidad;
         const guests = this.state.guests + 1 > 3 ? 3 : this.state.guests + 1;
-        this.setState({guests});
+        this.setState({guests, maxGuests});
 
     };
 
@@ -77,7 +87,7 @@ class House extends Component {
         const range = this.state.date;
         const dates = this.getDates(range.start, range.end);
         const tarifas = this.state.houseDetails.tarifas;
-        const general = tarifas.general;
+        const general = tarifas.general || {precio: 0};
         const extras = tarifas.extra;
         let price = 0;
         for (let day of dates) {
@@ -91,10 +101,10 @@ class House extends Component {
             price += dayPrice;
         }
 
-        let media = price / dates.length;
-        let details = this.state.details[0];
+        const media = price / dates.length;
+        const details = this.state.details;
         details.precio = Math.round(media * 100) / 100;
-        this.setState({details: [details]})
+        this.setState({details})
     }
 
     handleChangeDates(date) {
@@ -122,12 +132,13 @@ class House extends Component {
             .then(res => res.data)
             .then(house => this.setState({
                 houseDetails: house.data
-            }))
-            .then(() => this.updatePrecio());
+            }));
+
         axios.get('/api/houses/' + this.props.match.params.idHouse)
             .then(house => this.setState({
-                details: house.data
-            }));
+                details: house.data[0]
+            }))
+            .then(() => this.updatePrecio());
     }
 
     ToggleDiv = () => {
@@ -135,16 +146,14 @@ class House extends Component {
     };
 
     render() {
-        document.title = this.state.details.map((v) => v.nombre) + " | Pig Travel";
+        const {nombre, descripcion, coordX, coordY, vendedor, apellido1, precio} = this.state.details;
+        const meta = document.createElement('meta');
 
-        var meta = document.createElement('meta');
+        document.title = nombre + " | Pig Travel";
         meta.name = 'description';
-        meta.content = this.state.details.map((v) => v.descripcion);
+        meta.content = descripcion;
         document.head.appendChild(meta);
 
-
-        const coordX = this.state.details.map((v) => v.coordX).toString();
-        const coordY = this.state.details.map((v) => v.coordY).toString();
         const decreaseBtn = this.state.guests === 1 ?
             <Button color="" className="incrementIcon" onClick={this.DecreaseItem} disabled><FaIcon
                 icon={'fa fa-minus'}/></Button> :
@@ -155,7 +164,7 @@ class House extends Component {
             <div className="mt-3">
                 <Container>
                     <PanelSearcher/>
-                    <h1>{this.state.details.map((v) => v.nombre)}</h1>
+                    <h1>{nombre}</h1>
                     <Row className="house">
                         <Col lg="8">
                             <Panel>
@@ -166,13 +175,11 @@ class House extends Component {
                             <Panel className=" m-3">
                                 <Row>
                                     <Col lg="3" sm="3" xs="4">
-                                        <ProfileImg idPersona={this.state.houseDetails.vendedor}
+                                        <ProfileImg idPersona={this.state.houseDetails.vendedor || -1}
                                                     className="img-profile"/>
                                     </Col>
                                     <Col lg="9" sm="9" xs="8" className="my-auto">
-                                        {this.state.details.map((v) => (
-                                            <h3>{v.vendedor} {v.apellido1}</h3>
-                                        ))}
+                                        {<h3>{vendedor} {apellido1}</h3>}
                                     </Col>
                                 </Row>
                             </Panel>
@@ -183,7 +190,7 @@ class House extends Component {
                                     </Row>
                                     <Row className="justify-content-center">
                                         <h1 className="precioNoche">
-                                            <strong>{this.state.details.map((v) => (v.precio))}{coin}</strong></h1>
+                                            <strong>{precio.toFixed(2)}{coin}</strong></h1>
                                     </Row>
                                     <Row className="justify-content-center">
                                         <h3><Translate type={'house'} string={'priceNight'}/></h3>
@@ -215,7 +222,7 @@ class House extends Component {
                                     <Row>
                                         <Col lg="12" className="mt-4">
                                             <DesglosePrecioCasa nights={this.state.days}
-                                                                price={this.state.details.map((v) => v.precio)}/>
+                                                                price={precio}/>
                                         </Col>
                                     </Row>
                                     <Row id={'buttonRow'}>
@@ -227,8 +234,7 @@ class House extends Component {
                                                         checkIn: new Date(this.state.date.start),
                                                         checkOut: new Date(this.state.date.end),
                                                         pax: this.state.guests,
-                                                        price: this.state.details.map((v) => (v.precio))[0] * this.state.days ?
-                                                            this.state.details.map((v) => (v.precio))[0] * this.state.days : 0,
+                                                        price: (precio * this.state.days).toFixed(2),
                                                     }}
                                                             id="reservationButton"
                                                             className={'btn btn-primary btn-block'}
@@ -241,7 +247,7 @@ class House extends Component {
                     </Row>
                     <Row>
                         <Col lg="12">
-                            <SideBarHouse description={this.state.details.map((v) => (v.descripcion))}
+                            <SideBarHouse description={descripcion}
                                           houseID={this.props.match.params.idHouse}
                                           coordX={coordX}
                                           coordY={coordY}

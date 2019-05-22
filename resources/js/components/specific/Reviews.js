@@ -44,5 +44,5 @@ export default class Reviews extends Component {
     }
 }
 Reviews.propTypes = {
-    houseID: PropTypes.number.isRequired,
+    houseID: PropTypes.any.isRequired,
 };

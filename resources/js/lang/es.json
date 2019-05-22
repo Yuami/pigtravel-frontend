@@ -74,7 +74,12 @@
     "precio": "Precio",
     "personas": "Persona",
     "entrada": "Entrada",
-    "salida": "Salida"
+    "salida": "Salida",
+    "estado": "Estado",
+    "estado-1": "Cancelado",
+    "estado-2": "Pendiente de pago",
+    "estado-3": "Pendiente",
+    "estado-4": "Reservada"
   },
   "bookingDetails": {
     "bookingDetails": "Detalles reserva",

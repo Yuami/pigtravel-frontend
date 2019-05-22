@@ -29,10 +29,10 @@ class DesglosePrecio extends Component {
             <>
                 <Row>
                     <Col lg="6" sm="6" xs="6" className="text-center">
-                        <h4>{standartPrice / this.props.nights}{coin} x {this.props.nights} noches</h4>
+                        <h4>{(standartPrice / this.props.nights).toFixed(2)}{coin} x {this.props.nights} noches</h4>
                     </Col>
                     <Col lg="6" sm="6" xs="6" className="text-center">
-                        <h4>{standartPrice}{coin}</h4>
+                        <h4>{standartPrice.toFixed(2)}{coin}</h4>
                     </Col>
                 </Row>
                 <Row>
@@ -40,7 +40,7 @@ class DesglosePrecio extends Component {
                         <h4><Translate type="bookingDetails" string="serviceFee"/></h4>
                     </Col>
                     <Col lg="6" sm="6" xs="6" className="text-center">
-                        <h4>{serviceFee}{coin}</h4>
+                        <h4>{serviceFee.toFixed(2)}{coin}</h4>
                     </Col>
                 </Row>
                 <Row className="mt-5">
